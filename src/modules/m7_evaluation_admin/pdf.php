@@ -10,6 +10,10 @@ if (!class_exists('TCPDF')) {
     }
 }
 
+if (!class_exists('TCPDF')) {
+    throw new RuntimeException('TCPDF library is missing. Run "composer install" in the project root before generating certificates.');
+}
+
 function pdf_escape(string $text): string
 {
     // TCPDF handles UTF-8 natively; preserve Unicode characters (Devanagari, CJK, etc.)
