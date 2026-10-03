@@ -282,6 +282,11 @@
       max-width: 230px;
     }
 
+    .ch.qr-proof span {
+      max-width: none;
+      white-space: nowrap;
+    }
+
     .ch small {
       display: block;
       font-size: 11px;
@@ -2807,6 +2812,138 @@
       transform: translateY(-50%)
     }
   </style>
+  <style>
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid var(--ln);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      margin: 3px 0;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .mobile-register {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .nav {
+        gap: 10px;
+      }
+
+      .nav > .btn {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+        flex: 0 0 40px;
+        margin-left: auto;
+      }
+
+      .nav nav,
+      .nav nav.is-open {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        display: none;
+        max-height: calc(100vh - 100px);
+        max-height: calc(100svh - 100px);
+        margin: 0;
+        padding: 8px;
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        border: 1px solid var(--ln);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+      }
+
+      .nav nav.is-open {
+        display: flex;
+      }
+
+      .nav nav a {
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .nav nav a:hover {
+        background: var(--sky);
+      }
+
+      .nav nav .mobile-register {
+        display: block;
+        margin-top: 4px;
+        background: var(--bl);
+        color: #fff;
+        text-align: center;
+      }
+
+      .nav nav .mobile-register:hover {
+        background: #1e40af;
+        color: #fff;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav {
+        padding-right: 6px;
+        padding-left: 10px;
+      }
+
+      .nav img {
+        height: 23px;
+      }
+
+      .nav .btn {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+    }
+
+    .nav nav a[aria-current="page"] {
+      position: relative;
+      color: var(--bl);
+    }
+
+    .nav nav a[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -7px;
+      width: 5px;
+      height: 5px;
+      margin-left: -2.5px;
+      border-radius: 50%;
+      background: var(--bl);
+    }
+
+    @media (max-width: 960px) {
+      .nav nav a[aria-current="page"] {
+        background: var(--sky);
+      }
+
+      .nav nav a[aria-current="page"]::after {
+        display: none;
+      }
+    }
+  </style>
   <script>
     setTimeout(() => {
       window.__ok || document.documentElement.classList.add("nj");
@@ -2818,10 +2955,10 @@
   <i id="pg"></i>
   <header class="nav">
     <a href="#top"><img src="assets/internboot-logo.png" alt="InternBoot" /></a>
-    <nav>
-      <a href="#contrast">Why LAT</a><a href="#climb">Levels</a><a href="#journey">100 days</a><a
-        href="#register">Registration</a><a href="#assessment">Assessment</a><a href="#fee">Fee</a><a
-        href="faq.html">FAQs</a><a href="contact.html">Contact</a><a href="login.php">Login</a>
+    <nav id="primary-nav" aria-label="Primary navigation">
+      <a href="#top" aria-current="page">Home</a><a href="#contrast">About</a><a href="achievements.html">Achievements</a><a
+        href="contact.html">Contact</a><a href="faq.html">FAQ</a>
+      <a class="mobile-register" href="register.php">Register now</a>
     </nav>
     <a class="btn" href="register.php">Register now</a>
   </header>
@@ -2851,7 +2988,7 @@
         <div class="ch" data-d="26" style="top: 6%; left: -2%">
           <span><small>Not sure where you stand?</small><b>✅ Take the 60-min LAT</b></span>
         </div>
-        <div class="ch" data-d="-30" style="top: 20%; right: -2%">
+        <div class="ch qr-proof" data-d="-30" style="top: 20%; right: -2%">
           <span style="animation-delay: -2s"><small>Need proof recruiters trust?</small><b>🏅 Get a QR-verified
               certificate</b></span>
         </div>
@@ -6427,22 +6564,20 @@
           <div class="ftr-cols">
             <div class="ftr-col">
               <strong>PLATFORM</strong>
-              <a href="#contrast">Why LAT</a>
-              <a href="#climb">Levels</a>
-              <a href="#journey">100 days</a>
+              <a href="#top">Home</a>
+              <a href="#contrast">About</a>
+              <a href="achievements.html">Achievements</a>
             </div>
             <div class="ftr-col">
-              <strong>RESOURCES</strong>
-              <a href="#assessment">Assessment</a>
-              <a href="#fee">Pricing</a>
-              <a href="faq.html">FAQs</a>
-              <a href="login.php">Login</a>
+              <strong>EXPLORE</strong>
+              <a href="contact.html">Contact</a>
+              <a href="faq.html">FAQ</a>
+              <a href="register.php">Register</a>
             </div>
             <div class="ftr-col">
               <strong>LEGAL</strong>
               <a href="privacy.html">Privacy Policy</a>
               <a href="terms.html">Terms of Service</a>
-              <a href="contact.html">Contact Us</a>
             </div>
           </div>
         </div>
