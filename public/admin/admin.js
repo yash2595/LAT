@@ -571,8 +571,9 @@
 
     const recent = $("#recentCandidates");
     if (recent) {
-      recent.innerHTML = data.recent_candidates?.length
-        ? data.recent_candidates
+      const candidates = data.recent_candidates || [];
+      recent.innerHTML = candidates.length
+        ? candidates
             .map(
               (c) => `
         <tr class="hover:bg-slate-50">
@@ -585,6 +586,9 @@
             )
             .join("")
         : `<tr><td class="px-6 py-8 text-center text-sm text-slate-500" colspan="5">No candidate data available</td></tr>`;
+
+      const countBadge = $("#recentCandidatesCount");
+      if (countBadge) countBadge.textContent = `Last ${candidates.length} candidates`;
     }
 
     const batches = $("#upcomingBatchesTable");
@@ -604,6 +608,54 @@
             )
             .join("")
         : `<tr><td class="px-6 py-8 text-center text-sm text-slate-500" colspan="6">No upcoming batches available</td></tr>`;
+    }
+    
+    const alertsContainer = $("#batchAlertsContainer");
+    if (alertsContainer) {
+      if (data.pending_requests && data.pending_requests.length > 0) {
+        alertsContainer.innerHTML = data.pending_requests.map(req => {
+          return `
+            <div class="flex items-center justify-between bg-amber-100 border-b border-amber-200 px-4 py-3 shadow-sm">
+              <div class="flex items-center gap-3">
+                <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600"></i>
+                <div>
+                  <h4 class="font-semibold text-amber-900 text-sm">Action Required: Finalize Batch for ${escapeHtml(req.assessment_title)}</h4>
+                  <p class="text-xs text-amber-700 mt-0.5">
+                    Preferred Date: <strong>${formatDate(req.preferred_date)}</strong> &middot; Slot: <strong>${escapeHtml(req.preferred_time_slot)}</strong> &middot; Candidates Registered: <strong>${req.candidate_count}</strong>
+                  </p>
+                </div>
+              </div>
+              <button class="finalize-batch-btn shrink-0 rounded-lg bg-amber-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-amber-700 transition" 
+                data-schedule-id="${req.schedule_id}" data-assessment-id="${req.assessment_id}">
+                Finalize Batch
+              </button>
+            </div>
+          `;
+        }).join("");
+        
+        $$(".finalize-batch-btn").forEach(btn => {
+          btn.onclick = async () => {
+            if (!confirm("Are you sure you want to finalize this batch? This action cannot be undone.")) return;
+            try {
+              btn.disabled = true;
+              btn.textContent = "Finalizing...";
+              await api("finalize_batch", {
+                method: "POST",
+                body: { schedule_id: Number(btn.dataset.scheduleId), assessment_id: Number(btn.dataset.assessmentId) }
+              });
+              notify("Batch finalized successfully!");
+              await loadDashboard();
+            } catch (err) {
+              notify(err.message, true);
+              btn.disabled = false;
+              btn.textContent = "Finalize Batch";
+            }
+          };
+        });
+      } else {
+        alertsContainer.innerHTML = "";
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
     }
   }
 
@@ -1263,7 +1315,7 @@
     set("eligibleCandidateCount", eligible.filter((c) => !c.batch_id).length);
     set(
       "availableSlotCount",
-      slots.reduce((s, x) => s + Number(x.seats_remaining || 0), 0),
+      slots.filter(s => s.schedule_status !== 'provisional').reduce((s, x) => s + Number(x.seats_remaining || 0), 0),
     );
     const slotBody = $("#slotsTableBody");
     if (slotBody)
@@ -1274,8 +1326,8 @@
       <tr class="hover:bg-slate-50">
         <td class="px-4 py-3 font-medium font-mono text-xs">${escapeHtml(s.batch_number)}</td>
         <td class="px-4 py-3 text-slate-500 text-xs">${escapeHtml(s.start_time?.slice(0, 5) || "")} - ${escapeHtml(s.end_time?.slice(0, 5) || "")}</td>
-        <td class="px-4 py-3 text-xs">${s.capacity}</td><td class="px-4 py-3 text-xs">${s.allocated}</td><td class="px-4 py-3 text-xs">${s.seats_remaining}</td>
-        <td class="px-4 py-3 text-xs">${badge("Available", "green")}</td>
+        <td class="px-4 py-3 text-xs">${s.schedule_status === 'provisional' ? 'N/A' : s.capacity}</td><td class="px-4 py-3 text-xs">${s.allocated}</td><td class="px-4 py-3 text-xs">${s.schedule_status === 'provisional' ? 'N/A' : s.seats_remaining}</td>
+        <td class="px-4 py-3 text-xs">${badge(s.schedule_status === 'provisional' ? 'Provisional' : (s.seats_remaining > 0 ? 'Available' : 'Full'), s.schedule_status === 'provisional' ? 'amber' : (s.seats_remaining > 0 ? 'green' : 'red'))}</td>
         <td class="px-4 py-3 text-right">
           <button class="delete-batch rounded-lg bg-red-50 hover:bg-red-100 px-3 py-1.5 text-xs font-semibold text-red-600 transition" data-batch-id="${s.batch_id}">Delete</button>
         </td>
@@ -1361,7 +1413,12 @@
     );
 
     const pendingRequestsBody = $("#pendingRequestsTableBody");
-    const pendingRequests = data.pending_requests || [];
+    const pendingRequests = [...(data.pending_requests || [])].sort((a, b) => {
+      const aReady = a.candidate_count >= 100 ? 1 : 0;
+      const bReady = b.candidate_count >= 100 ? 1 : 0;
+      if (aReady !== bReady) return bReady - aReady;
+      return new Date(a.preferred_date) - new Date(b.preferred_date);
+    });
 
     // Alert notification logic for 100+ candidates threshold
     const readyRequests = pendingRequests.filter((r) => Number(r.candidate_count) >= 100);

@@ -61,10 +61,14 @@ try {
             LIMIT 1
         ) p ON 1=1
         LEFT JOIN (
-            SELECT id, assessment_id, payment_id, batch_id, eligibility_status, created_at, preferred_date, preferred_time_slot
-            FROM enrollments
-            WHERE candidate_id = ?
-            ORDER BY id DESC
+            SELECT en.id, en.assessment_id, en.payment_id, en.batch_id, en.eligibility_status, en.created_at, 
+                   COALESCE(ps.exam_date, en.preferred_date) AS preferred_date, 
+                   COALESCE(CONCAT(psl.start_time, \' - \', psl.end_time), en.preferred_time_slot) AS preferred_time_slot
+            FROM enrollments en
+            LEFT JOIN exam_schedules ps ON ps.id = en.provisional_schedule_id
+            LEFT JOIN exam_slots psl ON psl.exam_schedule_id = ps.id
+            WHERE en.candidate_id = ?
+            ORDER BY en.id DESC
             LIMIT 1
         ) e ON 1=1
         LEFT JOIN assessments ass ON ass.id = COALESCE(NULLIF(e.assessment_id, 0), NULLIF(p.assessment_id, 0))
@@ -381,7 +385,7 @@ try {
             $placement['statusLabel'] = $placementStatusLabels[$rawStatus] ?? ucfirst(str_replace('_', ' ', $rawStatus));
             $placement['company']     = $placementRow['company_name'] ?: null;
             $placement['notes']       = $placementRow['notes'] ?: null;
-            $placement['updated_at']  = !empty($placementRow['updated_at']) ? date('d M Y', strtotime($placementRow['updated_at'])) : null;
+            $placement['updated_at']  = !empty($placementRow['updated_at']) ? date('d M Y', strtotime($placementRow['updated_at'])) : date('d M Y');
         }
     }
 
@@ -421,7 +425,7 @@ try {
         'demo_mode' => demo_mode()
     ]);
 } catch (Throwable $e) {
-    error_log('InternBoot dashboard error: ' . $e->getMessage());
-    send_json_response('error', 'Unable to fetch dashboard data. Please try again or contact support.', null, 500);
+    error_log('InternBoot dashboard error: ' . $e->getMessage() . ' on line ' . $e->getLine());
+    send_json_response('error', 'Unable to fetch dashboard data. Please try again or contact support. Line: ' . $e->getLine(), null, 500);
 }
 

@@ -383,6 +383,14 @@ function m7_handle_request(mysqli $conn): void
             update_admin_profile($conn,$_SESSION['user_id']??null,$name,$email,$phone);
             send_json_response('success','Profile saved successfully.');
 
+        case 'finalize_batch':
+            $scheduleId = require_positive_int($body['schedule_id'] ?? null, 'schedule_id');
+            $assessmentId = require_positive_int($body['assessment_id'] ?? null, 'assessment_id');
+            require_once __DIR__ . '/../m5_batch_slots/service.php';
+            finalize_provisional_batch($scheduleId, $assessmentId, $conn);
+            create_admin_log($conn, $_SESSION['user_id'] ?? null, 'finalize_batch', json_encode(['schedule_id' => $scheduleId]));
+            send_json_response('success', 'Batch finalized successfully.');
+
         case 'logout':
             require_once __DIR__ . '/../m3_auth/controller.php';
             handle_logout_request();

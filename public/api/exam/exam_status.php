@@ -27,12 +27,15 @@ try {
         if ($latest) {
             $attemptId = (int)$latest['id'];
         } else {
-            $prefSql = "SELECT e.preferred_date, e.preferred_time_slot, e.batch_id, 
-                               es.exam_date, sl.start_time, sl.end_time 
+            $prefSql = "SELECT e.preferred_date, e.preferred_time_slot, e.batch_id, e.provisional_schedule_id,
+                               es.exam_date, sl.start_time, sl.end_time,
+                               ps.exam_date AS prov_date, psl.start_time AS prov_time, psl.end_time AS prov_end_time
                         FROM enrollments e 
                         LEFT JOIN batches b ON e.batch_id = b.id 
                         LEFT JOIN exam_schedules es ON es.batch_id = b.id
                         LEFT JOIN exam_slots sl ON sl.exam_schedule_id = es.id
+                        LEFT JOIN exam_schedules ps ON ps.id = e.provisional_schedule_id
+                        LEFT JOIN exam_slots psl ON psl.exam_schedule_id = ps.id
                         WHERE e.candidate_id = ? ORDER BY e.id DESC LIMIT 1";
             $prefStmt = $conn->prepare($prefSql);
             $prefStmt->bind_param("i", $candidateId);
@@ -44,6 +47,11 @@ try {
                     'exam_date' => $pref['exam_date'],
                     'start_time' => $pref['start_time'],
                     'end_time' => $pref['end_time']
+                ], 404);
+            } elseif ($pref && !empty($pref['provisional_schedule_id'])) {
+                send_json_response('error', 'Preference saved, awaiting batch formation', [
+                    'preferred_date' => $pref['prov_date'], 
+                    'preferred_time_slot' => $pref['prov_time'] . ' - ' . $pref['prov_end_time']
                 ], 404);
             } elseif ($pref && !empty($pref['preferred_date'])) {
                 send_json_response('error', 'Preference saved, awaiting batch formation', ['preferred_date' => $pref['preferred_date'], 'preferred_time_slot' => $pref['preferred_time_slot']], 404);

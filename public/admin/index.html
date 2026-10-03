@@ -128,6 +128,8 @@
 
   <!-- Main Content -->
   <div class="flex-1 flex flex-col h-screen overflow-hidden">
+    <!-- Batch Alerts Container (Top Level) -->
+    <div id="batchAlertsContainer" class="empty:hidden bg-amber-50"></div>
                 <!-- Header -->
     <header class="h-16 bg-white border-b border-slate-200 px-4 sm:px-4 lg:px-5 flex items-center justify-between flex-shrink-0">
       <!-- Header Left -->
@@ -151,7 +153,6 @@
     <!-- Main Scrollable Area -->
     <main class="flex-1 overflow-auto bg-slate-50">
       <div class="p-6">
-
         <!-- Hero Banner -->
         <section class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#21489f] via-[#2f63c8] to-[#4388f2] p-5 sm:p-7 lg:p-6 mb-6 text-white shadow-sm">
           <!-- Decorative circles -->
@@ -323,20 +324,25 @@
         </div>
 
         <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 mb-8">
-          <h3 class="font-medium text-slate-800 mb-4">Recent Candidates</h3>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-medium text-slate-800">Recent Candidates</h3>
+            <span id="recentCandidatesCount" class="text-xs bg-slate-100 text-slate-500 font-semibold px-2.5 py-1 rounded-full"></span>
+          </div>
           <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-slate-600">
-              <thead class="bg-slate-50 text-slate-500 uppercase text-xs">
-                <tr>
-                  <th class="px-6 py-3 font-medium">Candidate Name</th>
-                  <th class="px-6 py-3 font-medium">Email</th>
-                  <th class="px-6 py-3 font-medium">Payment Status</th>
-                  <th class="px-6 py-3 font-medium">Enrollment Status</th>
-                  <th class="px-6 py-3 font-medium">Exam Status</th>
-                </tr>
-              </thead>
-              <tbody id="recentCandidates" class="divide-y divide-slate-100"></tbody>
-            </table>
+            <div style="max-height: 480px; overflow-y: auto; border-radius: 8px; border: 1px solid #f1f5f9;">
+              <table class="w-full text-left text-sm text-slate-600">
+                <thead class="bg-slate-50 text-slate-500 uppercase text-xs" style="position: sticky; top: 0; z-index: 1;">
+                  <tr>
+                    <th class="px-6 py-3 font-medium">Candidate Name</th>
+                    <th class="px-6 py-3 font-medium">Email</th>
+                    <th class="px-6 py-3 font-medium">Payment Status</th>
+                    <th class="px-6 py-3 font-medium">Enrollment Status</th>
+                    <th class="px-6 py-3 font-medium">Exam Status</th>
+                  </tr>
+                </thead>
+                <tbody id="recentCandidates" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
           </div>
         </div>
 

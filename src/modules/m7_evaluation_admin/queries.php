@@ -40,13 +40,13 @@ function get_dashboard_stats(mysqli $conn): array
     return [
         'total_registrations' => (int)q_value($conn, 'SELECT COUNT(*) FROM candidates'),
         'paid_candidates' => (int)q_value($conn, "SELECT COUNT(DISTINCT candidate_id) FROM payments WHERE status = 'success'"),
-        'eligible_candidates' => (int)q_value($conn, "SELECT COUNT(DISTINCT e.candidate_id) FROM enrollments e WHERE e.eligibility_status = 'eligible' AND NOT EXISTS (SELECT 1 FROM attempts at LEFT JOIN results r ON r.attempt_id = at.id WHERE at.candidate_id = e.candidate_id AND (at.status = 'submitted' OR r.id IS NOT NULL))"),
+        'eligible_candidates' => (int)q_value($conn, "SELECT COUNT(DISTINCT e.candidate_id) FROM enrollments e WHERE e.eligibility_status = 'eligible' AND e.batch_id IS NULL AND NOT EXISTS (SELECT 1 FROM attempts at LEFT JOIN results r ON r.attempt_id = at.id WHERE at.candidate_id = e.candidate_id AND (at.status = 'submitted' OR r.id IS NOT NULL))"),
         'upcoming_batches' => (int)q_value($conn, "SELECT COUNT(DISTINCT b.id) FROM batches b JOIN exam_schedules s ON s.batch_id=b.id WHERE s.exam_date >= CURDATE() AND s.status='scheduled'"),
         'available_slots' => (int)q_value($conn, "SELECT COALESCE(SUM(seats_remaining),0) FROM exam_slots es JOIN exam_schedules s ON s.id=es.exam_schedule_id WHERE s.exam_date >= CURDATE() AND s.status='scheduled'"),
         'completed_assessments' => (int)q_value($conn, "SELECT COUNT(DISTINCT at.id) FROM attempts at LEFT JOIN results r ON r.attempt_id=at.id WHERE at.status='submitted' OR r.id IS NOT NULL"),
         'certificates' => (int)q_value($conn, 'SELECT COUNT(*) FROM certificates'),
         'level_counts' => $levelCounts,
-        'recent_candidates' => get_recent_candidates($conn, 8),
+        'recent_candidates' => get_recent_candidates($conn, 100),
         'upcoming_batch_rows' => get_upcoming_batches($conn, 8),
         'pending_attempt_count' => (int)q_value($conn, "SELECT COUNT(*) FROM attempts at LEFT JOIN results r ON r.attempt_id=at.id WHERE r.id IS NULL AND at.start_time IS NOT NULL AND (at.status IN ('submitted', 'expired') OR (at.status = 'in_progress' AND at.end_time IS NOT NULL AND at.end_time <= NOW()))")
     ];
@@ -272,7 +272,7 @@ function get_batches(mysqli $conn): array
 {
     $batches = q_all($conn, "SELECT b.id, b.batch_number, b.assessment_id, a.title assessment_title,
         s.id schedule_id, s.exam_date, s.status schedule_status,
-        COALESCE((SELECT COUNT(*) FROM enrollments e WHERE e.batch_id=b.id),0) candidate_count,
+        COALESCE((SELECT COUNT(*) FROM enrollments e WHERE e.batch_id=b.id OR (e.provisional_schedule_id=s.id AND s.status='provisional' AND e.eligibility_status='eligible')),0) candidate_count,
         COALESCE((SELECT SUM(es.seats_remaining) FROM exam_slots es WHERE es.exam_schedule_id=s.id),0) available_slots,
         COALESCE((SELECT SUM(es.capacity) FROM exam_slots es WHERE es.exam_schedule_id=s.id),0) total_capacity
       FROM batches b
@@ -281,8 +281,12 @@ function get_batches(mysqli $conn): array
       ORDER BY s.exam_date IS NULL, s.exam_date ASC, b.id DESC");
 
     $slots = q_all($conn, "SELECT es.id slot_id, es.exam_schedule_id, b.id batch_id,b.batch_number,
-        s.exam_date, es.start_time,es.end_time,es.capacity,es.seats_remaining,
-        (es.capacity-es.seats_remaining) allocated
+        s.exam_date, s.status as schedule_status, es.start_time,es.end_time,es.capacity,es.seats_remaining,
+        (es.capacity-es.seats_remaining + 
+          (CASE WHEN s.status = 'provisional' THEN 
+             (SELECT COUNT(*) FROM enrollments e WHERE e.provisional_schedule_id = s.id AND e.eligibility_status = 'eligible')
+           ELSE 0 END)
+        ) allocated
         FROM exam_slots es
         JOIN exam_schedules s ON s.id=es.exam_schedule_id
         JOIN batches b ON b.id=s.batch_id
