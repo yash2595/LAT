@@ -93,12 +93,27 @@ if ($isRailway && str_contains((string)$host, '.proxy.rlwy.net')) {
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
+/*
+ * Optional TLS (needed for managed MySQL such as Aiven).
+ * Enable with DB_SSL=true (uses ./aiven-ca.pem) or DB_SSL_CA=/path/to/ca.pem.
+ * Railway / local setups are unaffected when neither is set.
+ */
+$sslCa = (string)env_value('DB_SSL_CA', '');
+$useSsl = $sslCa !== '' || in_array(strtolower((string)env_value('DB_SSL', '')), ['1', 'true', 'on', 'yes', 'required'], true);
+if ($useSsl && $sslCa === '') $sslCa = __DIR__ . '/aiven-ca.pem';
+
 try {
-    $conn = new mysqli($host, $user, $password, $dbname, $port);
+    $conn = mysqli_init();
+    if ($useSsl) {
+        $conn->ssl_set(null, null, is_file($sslCa) ? $sslCa : null, null, null);
+    }
+    $conn->real_connect($host, $user, $password, $dbname, $port, null, $useSsl ? MYSQLI_CLIENT_SSL : 0);
     $conn->set_charset('utf8mb4');
     // Synchronize MySQL DB session time zone with PHP timezone offset (e.g. +05:30)
     $conn->query("SET time_zone = '" . date('P') . "'");
 } catch (mysqli_sql_exception $e) {
+    // Real reason goes to server logs only (never shown to visitors).
+    error_log('db.php: connection failed host=' . $host . ' port=' . $port . ' user=' . $user . ' db=' . $dbname . ' ssl=' . ($useSsl ? 'on' : 'off') . ' :: ' . $e->getMessage());
     $accept = $_SERVER['HTTP_ACCEPT'] ?? '';
     $prefersHtml = str_contains($accept, 'text/html') || str_contains($accept, 'application/pdf');
     $isApi = str_contains($_SERVER['REQUEST_URI'] ?? '', '/api/') && !$prefersHtml;
@@ -117,4 +132,3 @@ try {
     echo '<!DOCTYPE html><html><head><title>Database Connection Error</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f172a;color:#e2e8f0;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;padding:20px;box-sizing:border-box}.card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:32px;max-width:480px;width:100%;text-align:center}h1{font-size:20px;margin:0 0 12px;color:#f87171}p{font-size:14px;color:#94a3b8;line-height:1.6;margin:0}</style></head><body><div class="card"><h1>Database Connection Failed</h1><p>Database connection failed. Check DB_* or Railway MYSQL_* credentials in .env.</p></div></body></html>';
     exit;
 }
-
