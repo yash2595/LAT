@@ -1,0 +1,334 @@
+/* Shared exam-portal theme for ALL student pages (after student-dashboard.css) */
+:is(:is(body[data-dashboard="student"], body[data-dashboard="admin"]), body[data-dashboard="admin"]){--x-navy:#0f1e4a;--x-blue:#2457d6;--x-amber:#ffb703;--x-mint:#12b886;background:#f1f5fd radial-gradient(circle,#d3dcf1 1px,transparent 1.2px) 0 0/24px 24px fixed!important}
+/* Top bar */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) .hbar{background:rgba(255,255,255,.86)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--ib-line)!important;box-shadow:0 1px 0 rgba(36,87,214,.08),0 8px 24px -16px rgba(15,30,74,.25)!important}
+/* Sidebar active item */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .nl{border-radius:12px!important;transition:background .2s,transform .2s}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .nl:hover{transform:translateX(3px)}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside.fixed nav a.nl.act, :is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl.act{background:linear-gradient(120deg,#0f1e4a,#2457d6)!important;color:#fff!important;box-shadow:0 10px 20px -10px rgba(36,87,214,.7)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .nl.act *{color:#fff!important}
+/* Page hero banners */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] {
+  position: relative;
+  overflow: hidden;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 24px !important;
+  background: linear-gradient(135deg, #091330 0%, #112867 50%, #1e45b8 100%) !important;
+  box-shadow: 0 20px 40px -15px rgba(15,30,74,.6), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+}
+
+/* Premium Abstract Glow Background */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"]::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(67, 136, 243, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 20% 80%, rgba(20, 60, 150, 0.5) 0%, transparent 45%);
+  animation: ib-inner-bg-float 15s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > :not([class*="absolute"]) {
+  position: relative;
+  z-index: 10;
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] :is(h1,h2,p) { color: #fff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.xp-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.xp-chip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; color: #fff !important; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s; }
+.xp-chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.15); }
+.xp-chip.hot { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: #fff !important; border-color: rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+/* Cards */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-white"]{border:1px solid var(--ib-line)!important;border-radius:20px!important;box-shadow:var(--ib-shadow),inset 0 3px 0 var(--x-blue)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main div[class*="rounded-2xl"][class*="bg-white"],:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main div[class*="rounded-xl"][class*="bg-white"]{border:1px solid var(--ib-line)!important;border-radius:16px!important;transition:transform .2s,box-shadow .2s}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main div[class*="rounded-2xl"][class*="bg-white"]:hover{transform:translateY(-2px);box-shadow:0 14px 28px -16px rgba(15,30,74,.3)}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(h1,h2,h3){color:var(--x-navy);letter-spacing:-.01em}
+/* Tables */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main table thead th{background:#eaf0ff!important;color:var(--x-navy)!important;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:800}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main table tbody tr{transition:background .15s}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main table tbody tr:hover{background:#f4f8ff}
+/* Forms */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(input,select,textarea):not([type=checkbox],[type=radio]){border:1.5px solid #cdd8f0!important;border-radius:12px!important;background:#fff!important;transition:border-color .2s,box-shadow .2s}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(input,select,textarea):focus{border-color:var(--x-blue)!important;box-shadow:0 0 0 4px rgba(36,87,214,.14)!important;outline:none!important}
+/* Buttons */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(button,a)[class*="rounded"][class*="bg-"]{transition:transform .18s,box-shadow .18s,filter .18s}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(button,a)[class*="rounded"][class*="bg-"]:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 12px 22px -12px rgba(36,87,214,.55)}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(button,a)[class*="rounded"][class*="bg-"]:active{transform:none}
+@media(prefers-reduced-motion:reduce){:is(body[data-dashboard="student"], body[data-dashboard="admin"]) *{transition:none!important}}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .av{display:grid!important;place-items:center;line-height:1}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .av>span[data-candidate]{all:unset!important;display:block!important;font-weight:800;font-size:14px;line-height:1;color:inherit}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] [class*="bg-white"]:not([class*="bg-white/"]) :is(svg,i,span,p){color:var(--x-blue)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl{display:flex;align-items:center;gap:12px;padding:10px 12px;font-size:14px;font-weight:700;color:rgba(255,255,255,.92)}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) #sidebar-student-avatar{display:flex!important;align-items:center;justify-content:center;border-radius:12px!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) #sidebar-student-avatar>span{all:unset!important;display:block!important;font-weight:800;font-size:14px;line-height:1;color:#fff}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] [class*="bg-white/"]{background:rgba(255,255,255,.14)!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] [class*="bg-white/"] :is(svg,i){color:#fff!important;stroke:#fff!important}
+@media(max-width:767px){:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] div:has(>svg:only-child)[class*="w-2"]{display:none!important}}
+
+/* ===== v3: stronger text contrast everywhere ===== */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .text-slate-400{color:#475569!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .text-slate-500{color:#334155!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.text-slate-600,.text-slate-700,.text-slate-800){color:#020617!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.text-slate-500,.text-slate-400){font-weight:600}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.font-medium,.font-normal):is(.text-slate-500,.text-slate-400){font-weight:600}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(h1,h2,h3,h4){color:#020617!important;font-weight:800}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] :is(h1,h2,h3,p){color:#fff!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main [class*="text-[11px]"]{font-size:12px!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main [class*="text-[10px]"]{font-size:11px!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main [class*="opacity-60"],:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main [class*="opacity-50"]{opacity:.85!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.st label,.st small){color:#334155!important;opacity:1!important;font-weight:700}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .st strong{color:#020617!important}
+.hbar :is(strong,h1,.text-slate-600){color:#020617!important}
+.hbar small,.hbar p{color:#334155!important;opacity:1!important}
+.hbar span[class*="rounded-full"]{color:#1740b5!important;background:#e3ebff!important;font-weight:800}
+.x-card .sub{color:#334155;opacity:1;font-weight:700}
+.x-check{color:#020617}
+
+/* ===== v3: sidebar profile chip ===== */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside a:has(#sidebar-student-avatar){gap:12px!important;padding:10px 12px!important;border-radius:16px!important;background:linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.06))!important;border:1px solid rgba(255,255,255,.24)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside a:has(#sidebar-student-avatar):hover{background:linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.1))!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside #sidebar-student-avatar{width:44px!important;height:44px!important;border-radius:50%!important;border:2px solid #fff!important;background:linear-gradient(135deg,#ffd45e,#ff8a5c)!important;box-shadow:0 8px 16px -8px rgba(0,0,0,.6)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside #sidebar-student-avatar>span{color:#020617!important;font-size:15px;font-weight:800;letter-spacing:.02em}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside #sidebar-student-name{font-size:14px!important;font-weight:800!important;color:#fff!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside #sidebar-student-name+p{margin-top:3px!important;font-size:10px!important;font-weight:800!important;letter-spacing:.14em;text-transform:uppercase;color:#ffd45e!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.text-amber-500,.text-amber-600){color:#9a5600!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main :is(.text-green-600,.text-emerald-600){color:#0b7a4f!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .step-phase,:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .badge.gray{color:#334155!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .idc .hd :is(p,h2){color:#020617!important;opacity:1!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .idc .hd p{color:#334155!important;font-weight:700}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .idc .row,:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main .idc .row span{color:#020617!important;font-weight:700}
+
+
+/* ===== Premium Inner Page Hero Animations ===== */
+@keyframes ib-inner-hero-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); filter: blur(5px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes ib-inner-fade-up {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ib-inner-icon-pop {
+  from { opacity: 0; transform: scale(0.8) rotate(-10deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+@keyframes ib-inner-bg-float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-10px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] {
+  animation: ib-inner-hero-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > div.absolute:not([class*="border"]) {
+  animation: ib-inner-bg-float 12s ease-in-out infinite alternate;
+}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > div.absolute:nth-child(2) {
+  animation-delay: -5s;
+  animation-duration: 15s;
+}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > div.absolute[class*="border"] {
+  animation: ib-inner-icon-pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+}
+
+/* Target all text blocks and buttons inside the hero content wrapper for staggered fade-up */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div > * {
+  animation: ib-inner-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+/* Left side elements (Eyebrow, H1/H2, P, Chips) */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:first-child > *:nth-child(1) { animation-delay: 0.15s; }
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:first-child > *:nth-child(2) { animation-delay: 0.22s; }
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:first-child > *:nth-child(3) { animation-delay: 0.29s; }
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:first-child > *:nth-child(4) { animation-delay: 0.36s; }
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:first-child > *:nth-child(5) { animation-delay: 0.43s; }
+
+/* Right side elements (Buttons) */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div:last-child > * {
+  animation: ib-inner-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.40s;
+}
+
+/* Make sure .xp-chips container animates as one block but its children can animate if needed */
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .xp-chips {
+  animation: ib-inner-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.36s;
+}
+
+@media(prefers-reduced-motion:reduce) {
+  :is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"],
+  :is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > div.absolute:not([class*="border"]),
+  :is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] > div.absolute[class*="border"],
+  :is(body[data-dashboard="student"], body[data-dashboard="admin"]) main section[class*="bg-gradient"][class*="text-white"] .relative.z-10 > div > * {
+    animation: none !important;
+  }
+}
+
+
+/* ===== Premium Sidebar Animations ===== */
+@keyframes ib-sidebar-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl {
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl:not(.act):hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  transform: translateX(6px);
+  box-shadow: -4px 0 0 0 rgba(255, 255, 255, 0.3);
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside.fixed nav a.nl.act,
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl.act {
+  background: linear-gradient(120deg, #0f1e4a 0%, #1b3a9e 40%, #2457d6 60%, #0f1e4a 100%) !important;
+  background-size: 200% auto !important;
+  animation: ib-sidebar-shine 6s linear infinite !important;
+  color: #fff !important;
+  box-shadow: 0 12px 24px -8px rgba(36, 87, 214, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  transform: scale(1.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside.fixed nav a.nl.act i,
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl.act i {
+  color: #a7c5ff !important;
+  filter: drop-shadow(0 0 6px rgba(167, 197, 255, 0.6));
+}
+
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside nav a.nl.act span.ml-auto {
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6) !important;
+  animation: ib-inner-icon-pop 1s infinite alternate ease-in-out;
+}
+
+/* Admin Sidebar Hard Overrides to exactly match Student */
+body[data-dashboard="admin"] aside#sidebar { 
+  isolation:isolate;
+  overflow:hidden;
+  border-right:1px solid rgba(164,192,241,.17)!important;
+  color:#e8f0ff!important;
+  background: radial-gradient(ellipse at 15% 2%,rgba(67,119,224,.2),transparent 36%), radial-gradient(ellipse at 102% 82%,rgba(39,93,174,.2),transparent 34%), linear-gradient(180deg,#101b32 0%,#142744 53%,#101d36 100%)!important;
+  box-shadow:8px 0 30px rgba(9,24,50,.14),inset -1px 0 rgba(255,255,255,.035)!important; 
+}
+body[data-dashboard="admin"] aside#sidebar::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  display:block!important;
+  pointer-events:none;
+  opacity:.8;
+  background: radial-gradient(circle at 88% 13%,rgba(152,187,255,.12) 1px,transparent 1.8px) 0 0/22px 22px, linear-gradient(148deg,transparent 0 47%,rgba(255,255,255,.022) 47.2%,transparent 47.5%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.66) 45%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.66) 45%,transparent 100%);
+}
+
+body[data-dashboard="admin"] aside#sidebar .text-white { color: #e8f0ff !important; }
+body[data-dashboard="admin"] aside#sidebar .text-blue-100 { color: #8190a9 !important; }
+body[data-dashboard="admin"] aside#sidebar nav a { transition: transform 0.2s, background 0.2s, color 0.2s; border-radius: 12px !important; color: #8190a9 !important; background: transparent !important; }
+body[data-dashboard="admin"] aside#sidebar nav a:hover { transform: translateX(3px); color: #e8f0ff !important; background: rgba(255,255,255,.08) !important; }
+body[data-dashboard="admin"] aside#sidebar nav a[class*="bg-[#"] { 
+    background: linear-gradient(120deg,#0f1e4a,#2457d6) !important; 
+    color: #ffffff !important; 
+    box-shadow: 0 10px 20px -10px rgba(36,87,214,.7) !important; 
+}
+body[data-dashboard="admin"] aside#sidebar nav a[class*="bg-[#"] * { color: #ffffff !important; }
+body[data-dashboard="admin"] aside#sidebar > div:first-child { border-color: rgba(164,192,241,.17) !important; }
+
+/* Dashboard and Logout buttons */
+body[data-dashboard="admin"] aside#sidebar > div:last-child {
+  border-top: 1px solid rgba(187,209,247,.16) !important;
+  background: linear-gradient(180deg,rgba(4,14,31,.02),rgba(4,14,31,.24));
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > div {
+    border: 1px solid rgba(192,215,255,.17) !important;
+    background: rgba(255,255,255,.03) !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > div p { color: #f5f8ff !important; }
+body[data-dashboard="admin"] aside#sidebar > div:last-child a:last-child {
+    border: 1px solid rgba(192,214,248,.12) !important;
+    color: #71809b !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child a:last-child:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,.085) !important;
+}
+/* Override admin-dashboard.css light theme for Profile Block */
+body[data-dashboard="admin"] aside#sidebar > div:last-child > a:first-child {
+    border: 1px solid rgba(192,215,255,.17) !important;
+    background: rgba(255,255,255,.03) !important;
+    color: #e8f0ff !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > a:first-child p:first-child {
+    color: #f5f8ff !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > a:first-child p:not(:first-child) {
+    color: #8190a9 !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > button {
+    border: 1px solid transparent !important;
+    color: #8190a9 !important;
+    background: transparent !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > button:hover {
+    color: #e8f0ff !important;
+    background: rgba(255,255,255,.085) !important;
+}
+/* Override admin-dashboard.css logo block */
+body[data-dashboard="admin"] aside#sidebar > div:first-child a > div:first-child {
+    border-color: rgba(255,255,255,.2) !important;
+    background: rgba(255,255,255,.1) !important;
+}
+/* Override admin-dashboard.css logo text color */
+body[data-dashboard="admin"] aside#sidebar > div:first-child a > div:nth-child(2) > div:first-child { color: #ffffff !important; }
+body[data-dashboard="admin"] aside#sidebar > div:first-child a > div:nth-child(2) > div:nth-child(2) { color: #a5c7ff !important; }
+/* Admin Sidebar Layout Fixes (Padding and Overflow) */
+body[data-dashboard="admin"] aside#sidebar nav {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child {
+    padding: 16px 20px !important;
+}
+body[data-dashboard="admin"] aside#sidebar > div:last-child > a:first-child p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 130px;
+}
+/* Admin Layout Fix: ensure sidebar doesn't overlap main content */
+body[data-dashboard="admin"] {
+  display: flex !important;
+  flex-direction: row !important;
+}
+body[data-dashboard="admin"] > aside#sidebar {
+  position: relative !important;
+  translate: none !important;
+  transform: none !important;
+  flex-shrink: 0 !important;
+  width: 250px !important;
+  min-height: 100vh !important;
+}
+body[data-dashboard="admin"] > div.flex-1 {
+  margin-left: 0 !important;
+  min-width: 0 !important;
+  flex: 1 !important;
+}

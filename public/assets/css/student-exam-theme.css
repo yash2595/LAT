@@ -1,0 +1,38 @@
+/* Exam-portal theme layer for the student dashboard (loads after student-dashboard.css) */
+body[data-dashboard-page="overview"]{--x-navy:#0f1e4a;--x-blue:#2457d6;--x-amber:#ffb703;--x-mint:#12b886}
+body[data-dashboard-page="overview"] main .hero.student-welcome{position:relative;overflow:hidden;color:#fff!important;border:0!important;border-radius:24px!important;background:linear-gradient(125deg,#0f1e4a 0%,#1b3a9e 62%,#2457d6 100%)!important;box-shadow:0 18px 40px -18px rgba(15,30,74,.55)!important}
+/* OMR-sheet bubbles fading across the hero */
+body[data-dashboard-page="overview"] main .hero.student-welcome::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 4px,rgba(255,255,255,.16) 5px 6px,transparent 7px) 0 0/30px 30px;-webkit-mask-image:linear-gradient(100deg,#000,transparent 70%);mask-image:linear-gradient(100deg,#000,transparent 70%)}
+body[data-dashboard-page="overview"] main .hero.student-welcome>:not([class*="absolute"]){position:relative;z-index:1}
+body[data-dashboard-page="overview"] main .hero.student-welcome h2,body[data-dashboard-page="overview"] main .hero.student-welcome p,body[data-dashboard-page="overview"] main .hero.student-welcome .welcome-eyebrow{color:#fff!important}
+body[data-dashboard-page="overview"] main .hero.student-welcome .welcome-name{color:var(--x-amber)!important}
+.x-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.x-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:800;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(4px)}
+.x-chip.hot{background:var(--x-amber);color:#3b2a00;border-color:transparent}
+/* Stat cards: coloured top rule like a marksheet */
+body[data-dashboard-page="overview"] main .st{border-top:4px solid var(--c,#CFE0FF)!important;border-radius:16px!important}
+/* Exam-day readiness + tip */
+.x-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-bottom:32px}
+@media(max-width:1023px){.x-grid{grid-template-columns:1fr}}
+.x-card{background:#fff;border:1px solid var(--ib-line);border-radius:20px;padding:22px;box-shadow:var(--ib-shadow)}
+.x-card h3{font-size:19px;font-weight:800;margin:0}
+.x-card .sub{margin:4px 0 14px;font-size:13px;font-weight:700;color:#3b4a67}
+.x-check{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;margin-top:8px;border:1.5px solid var(--ib-line);border-radius:12px;background:#f9fbff;font:700 14px Manrope,sans-serif;color:var(--ib-ink);text-align:left;cursor:pointer;transition:.2s}
+.x-check:hover{border-color:#9db6f2}
+.x-check .box{display:grid;place-items:center;width:22px;height:22px;flex:none;border-radius:7px;border:2px solid #b8c6ea;color:transparent;background:#fff;font-size:13px}
+.x-check[aria-checked="true"]{background:#e8fbf3;border-color:#7ddcb6}
+.x-check[aria-checked="true"] .box{background:var(--x-mint);border-color:var(--x-mint);color:#fff}
+.x-check[aria-checked="true"] .lbl{text-decoration:line-through;opacity:.6}
+.x-meter{height:8px;border-radius:99px;background:#e6ecf8;overflow:hidden;margin-top:14px}
+.x-meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--x-blue),var(--x-mint));transition:width .4s}
+.x-tip{background:linear-gradient(145deg,#fff8e1,#fff);border:1px solid #ffe29a}
+.x-tip .q{font-size:17px;font-weight:800;line-height:1.5;margin:10px 0 0}
+.x-tag{align-self:flex-start;display:inline-block;padding:4px 10px;border-radius:99px;background:var(--x-amber);color:#3b2a00;font-size:11px;font-weight:800;letter-spacing:.06em}
+@media(prefers-reduced-motion:reduce){.x-check,.x-meter i{transition:none}}
+
+.x-tip{display:flex;flex-direction:column}
+.x-rules{margin-top:auto;padding-top:18px}
+.x-rules b{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:#8a6200;margin-bottom:8px}
+.x-rules ul{margin:0;padding:0;list-style:none}
+.x-rules li{position:relative;padding:8px 0 8px 26px;font-size:13.5px;font-weight:700;border-top:1px dashed #f0d58a}
+.x-rules li::before{content:"✓";position:absolute;left:0;top:8px;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--x-amber);color:#3b2a00;font-size:11px}

@@ -1,0 +1,6 @@
+/* Landing flow layer: small fixes on top of the existing theme */
+section[id],header[id]{scroll-margin-top:76px}
+.contact-status{min-height:1.4em;margin:0 0 14px;text-align:center;font-size:.9rem;font-weight:600}
+.contact-status.ok{color:#15803d}.contact-status.err{color:#b91c1c}
+.contact-form button[disabled]{opacity:.65;cursor:progress}
+@media(max-width:991px){.fx-rail{display:none}}

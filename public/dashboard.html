@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>InternBoot | Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/student-dashboard.css?v=35" />
+    <link rel="stylesheet" href="assets/css/student-pages-theme.css?v=8" />
+    <link rel="stylesheet" href="assets/css/student-exam-theme.css?v=4" />
+  </head>
+
+  <body data-dashboard="student" data-dashboard-page="overview" class="overflow-x-hidden">
+    <div class="min-h-screen">
+      <!-- SIDEBAR -->
+      <aside class="side fixed inset-y-0 left-0 z-50 hidden lg:flex w-[250px] flex-col overflow-hidden text-white">
+        <div class="h-16 shrink-0 px-5 flex items-center border-b-2 border-white/15">
+          <a href="dashboard.html" class="flex items-center gap-3 min-w-0">
+            <div class="w-11 h-11 rounded-2xl bg-white flex items-center justify-center shrink-0 overflow-hidden border-2 border-white/90">
+              <img src="assets/internboot-logo.png" alt="InternBoot logo" class="w-8 h-8 object-contain" />
+            </div>
+            <div class="min-w-0">
+              <div class="dp text-lg font-extrabold leading-tight">Internboot</div>
+              <div class="text-[11px] font-bold mt-0.5" style="color:var(--sun)">Student Dashboard</div>
+            </div>
+          </a>
+        </div>
+        <nav class="flex-1 min-h-0 overflow-y-auto p-4 space-y-1.5">
+          <a href="dashboard.html" data-page="dashboard.html" class="nl act"><i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i><span class="truncate">Dashboard</span><span class="ml-auto w-2 h-2 rounded-full shrink-0" style="background:var(--ink)"></span></a>
+          <a href="profile.html" data-page="profile.html" class="nl"><i data-lucide="user-round" class="w-5 h-5 shrink-0"></i><span class="truncate">My Profile</span></a>
+          <a href="payment.html" data-page="payment.html" class="nl"><i data-lucide="credit-card" class="w-5 h-5 shrink-0"></i><span class="truncate">Payments</span></a>
+          <a href="enrollment.html" data-page="enrollment.html" class="nl"><i data-lucide="clipboard-check" class="w-5 h-5 shrink-0"></i><span class="truncate">Enrollment</span></a>
+          <a href="batches-slots.html" data-page="batches-slots.html" class="nl"><i data-lucide="calendar-days" class="w-5 h-5 shrink-0"></i><span class="truncate">Batches &amp; Slots</span></a>
+          <a href="exam.html" data-page="exam.html" class="nl"><i data-lucide="file-pen-line" class="w-5 h-5 shrink-0"></i><span class="truncate">Exam</span></a>
+          <a href="results.html" data-page="results.html" class="nl"><i data-lucide="chart-no-axes-combined" class="w-5 h-5 shrink-0"></i><span class="truncate">Results</span></a>
+          <a href="certificates.html" data-page="certificates.html" class="nl"><i data-lucide="award" class="w-5 h-5 shrink-0"></i><span class="truncate">Certificates</span></a>
+          <a href="placement.html" data-page="placement.html" class="nl"><i data-lucide="briefcase-business" class="w-5 h-5 shrink-0"></i><span class="truncate">Placement</span></a>
+        </nav>
+        <div class="shrink-0 border-t-2 border-white/15 p-4 space-y-2">
+          <a href="profile.html" class="flex items-center gap-3 rounded-2xl px-3 py-2.5 bg-white/10 border-2 border-white/20 transition hover:bg-white/15">
+            <div id="sidebar-student-avatar" class="av h-10 w-10 text-sm" >
+              <span data-candidate="initials">KB</span>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p id="sidebar-student-name" data-candidate="name" class="truncate text-[13px] font-bold leading-tight text-white">Student</p>
+              <p class="mt-0.5 text-[11px] leading-tight text-white/60">Student</p>
+            </div>
+            <span class="h-2.5 w-2.5 shrink-0 rounded-full ring-4 ring-white/15" style="background:#36a276" title="Active"></span>
+          </a>
+          <a href="api/auth/logout.php" class="nl"><i data-lucide="log-out" class="w-5 h-5 shrink-0"></i><span>Logout</span></a>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="ml-0 lg:ml-[250px] w-full lg:w-[calc(100%-250px)] min-h-screen">
+        <header class="hbar fixed top-0 right-0 left-0 lg:left-[250px] z-40 h-16 px-4 sm:px-5 flex items-center justify-between">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="ico" style="--c:var(--sun);width:38px;height:38px;border-radius:12px"><i data-lucide="layout-dashboard" class="w-5 h-5"></i></div>
+            <div class="min-w-0"><h1 class="text-base sm:text-lg font-extrabold truncate">Learning dashboard</h1></div>
+          </div>
+          <a href="profile.html" title="Open My Profile" class="flex items-center gap-2 sm:gap-3 rounded-2xl px-2 py-1.5 hover:bg-white transition shrink-0">
+            <div class="av w-9 h-9 text-[13px]" data-candidate="initials">--</div>
+            <div class="hidden sm:flex flex-col min-w-0">
+              <strong class="text-[13px] font-bold truncate max-w-40"><span data-candidate="name"></span></strong>
+              <small class="text-[11px] font-medium opacity-60 truncate max-w-48"><span data-candidate="email"></span></small>
+            </div>
+            <i data-lucide="chevron-down" class="hidden sm:block w-4 h-4 opacity-50"></i>
+          </a>
+        </header>
+
+        <section class="min-h-screen px-4 lg:px-7 pt-[88px] pb-10">
+          <div class="content w-full max-w-[1500px] mx-auto">
+            <p data-api-error class="bx px-4 py-3 mb-5 text-sm font-bold" style="display:none;background:#FFE1DD"></p>
+
+            <!-- HERO -->
+            <section class="hero student-welcome mb-6">
+              <div class="hero-copy">
+                <div class="welcome-eyebrow"><span></span> YOUR LEARNING DASHBOARD</div>
+                <h2>
+                  <span class="welcome-line">Welcome back,</span>
+                  <strong class="welcome-name" data-candidate="name"></strong>
+                </h2>
+                <p>Track your upcoming assessments, review your progress, and keep your certification milestones moving forward.</p>
+                <div class="hero-actions flex flex-wrap">
+                  <a href="exam.html" class="btn btn-k"><i data-lucide="file-pen-line" class="w-4 h-4"></i>View Assessments</a>
+                  <a href="results.html" class="btn btn-w"><i data-lucide="chart-no-axes-combined" class="w-4 h-4"></i>View Results</a>
+                </div>
+              </div>
+              <div class="lc" id="lc">
+  <div class="lc-top"><span>Program snapshot</span>
+    <svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg></div>
+  <div class="lc-lbl">Your current level</div>
+  <div class="lc-big"><h2 id="lcLevel"></h2><span class="lc-chip" id="lcChip"></span></div>
+  <div class="lc-seg" id="lcSeg"></div>
+  <p class="lc-msg" id="lcMsg"></p>
+  <div class="lc-foot">
+    <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg>
+    <div><b id="lcPlTitle">Placement eligibility</b><small id="lcPlTxt"></small></div>
+    <span class="lc-pill" id="lcPlPill"></span>
+  </div>
+</div>
+            </section>
+            <!-- STATS -->
+            <section class="dashboard-stats grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
+              <div class="st" style="--c:#CFE0FF"><div class="ico"><i data-lucide="chart-no-axes-combined" class="w-5 h-5"></i></div><label>Overall Progress</label><strong data-status="result.status">—</strong></div>
+              <div class="st" style="--c:#C9F5DF"><div class="ico"><i data-lucide="circle-check" class="w-5 h-5"></i></div><label>Enrollment</label><strong data-status="enrollment.status">—</strong></div>
+              <div class="st" style="--c:#E6DBFF"><div class="ico"><i data-lucide="book-open" class="w-5 h-5"></i></div><label>Current Level</label><strong data-candidate="level">—</strong></div>
+              <div class="st" style="--c:#FFE3C2"><div class="ico"><i data-lucide="award" class="w-5 h-5"></i></div><label>Certificates</label><strong data-status="certificate.status">—</strong></div>
+            </section>
+
+            <!-- PROGRESSION -->
+            <section class="jr mb-8" id="jr">
+              <div class="jr-head">
+                <div>
+                  <div class="jr-eyebrow">Your InternBoot path <span class="jr-live" id="jrLive"><i></i><span id="jrAgo">Live</span></span></div>
+                  <h2>Your learning journey</h2>
+                  <p class="jr-sub">A live view of the milestones from payment through assessment and placement.</p>
+                  <div class="jr-toast" id="jrToast"></div>
+                </div>
+                <div class="jr-cap"><b id="jrCount">0/0</b><span id="jrNext">Tracing your path�</span></div>
+              </div>
+              <div class="jr-stage" id="jrStage">
+                <svg class="jr-svg" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="jrG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#6aa0ff"/></linearGradient></defs>
+                  <path class="jr-base" id="jrBase"/><path class="jr-prog" id="jrProg" pathLength="1"/></svg>
+                <div class="jr-orb" id="jrOrb"></div>
+              </div>
+            </section>
+
+            <!-- QUICK ACTIONS + PROFILE -->
+            <section class="grid grid-cols-1 lg:grid-cols-[1.25fr_1fr] gap-6">
+              <div class="bx p-5 md:p-6">
+                <div class="mb-5">
+                  <h2 class="text-xl font-extrabold">Quick Actions</h2>
+                  <p class="mt-1 text-[13px] font-semibold opacity-60">Jump back into your workspace.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <a href="exam.html" class="tl"><span class="ico" style="--c:#CFE0FF"><i data-lucide="file-pen-line" class="w-5 h-5"></i></span>Take Assessment<span class="go"><i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>
+                  <a href="certificates.html" class="tl"><span class="ico" style="--c:#E6DBFF"><i data-lucide="award" class="w-5 h-5"></i></span>Certificates<span class="go"><i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>
+                  <a href="batches-slots.html" class="tl"><span class="ico" style="--c:#C9F5DF"><i data-lucide="calendar-days" class="w-5 h-5"></i></span>Book a Slot<span class="go"><i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>
+                  <a href="profile.html" class="tl"><span class="ico" style="--c:#FFE3C2"><i data-lucide="user-round-pen" class="w-5 h-5"></i></span>Edit Profile<span class="go"><i data-lucide="arrow-right" class="w-4 h-4"></i></span></a>
+                </div>
+              </div>
+
+              <div class="bx idc">
+                <span class="hole"></span>
+                <div class="hd">
+                  <div>
+                    <h2 class="text-xl font-extrabold">My Profile</h2>
+                    <p class="mt-1 text-[13px] font-semibold text-white/80">Your account details.</p>
+                  </div>
+                  <a href="profile.html" class="edit">Edit →</a>
+                </div>
+                <div class="flex items-center gap-4 p-6">
+                  <div class="av w-[72px] h-[72px] text-2xl" data-candidate="initials">--</div>
+                  <div class="min-w-0 space-y-1.5">
+                    <b class="block dp text-lg font-extrabold truncate"><span data-candidate="name"></span></b>
+                    <span class="row min-w-0"><span class="ri"><i data-lucide="mail" class="w-3.5 h-3.5"></i></span><span class="truncate" data-candidate="email"></span></span>
+                    <span class="row"><span class="ri"><i data-lucide="phone" class="w-3.5 h-3.5"></i></span><span data-candidate="phone"></span></span>
+                  </div>
+                </div>
+                <div class="bar"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- EXISTING APPLICATION JS — DO NOT REMOVE -->
+    <script src="js/app.js?v=19"></script>
+
+    <script src="js/dashboard-journey.js?v=2"></script>
+      <script src="js/dashboard-effects.js?v=2"></script>
+    <script src="js/dashboard-personal.js?v=3"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

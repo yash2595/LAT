@@ -1,0 +1,78 @@
+<!-- LAT stats scoreboard: replaces <div class="sg"> ... </div>. Self-contained (own CSS + JS, classes prefixed "ls-").
+     Digits roll like an odometer / split-flap board. -->
+<div class="ls" id="ls"></div>
+<style>
+.ls{max-width:1080px;margin:0 auto}
+.ls *{box-sizing:border-box}
+.ls-p{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;overflow:hidden;border-radius:28px;background:#26324d;box-shadow:0 26px 54px #0f172a38}
+.ls-c{display:flex;flex-direction:column;align-items:center;padding:40px 10px 34px;background:#0f172a;text-align:center}
+.ls-n{display:flex;gap:.07em;font-size:clamp(40px,4.8vw,64px);line-height:1}
+.ls-d{--tb:#18243f;position:relative;display:block;flex:none;width:.64em;height:1.2em;overflow:hidden;border-radius:.14em;background:var(--tb);box-shadow:inset 0 0 0 1px #ffffff14}
+.ls-d::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(var(--tb),transparent 24%,transparent 76%,var(--tb))}
+.ls-d::after{content:"";position:absolute;left:0;right:0;top:50%;z-index:3;height:2px;margin-top:-1px;pointer-events:none;background:#060a14b8}
+.ls-r{display:block}
+.ls-r i,.ls-x b{display:block;height:1.2em;line-height:1.2em;text-align:center;font-style:normal;font-weight:800;color:#fff;font-variant-numeric:tabular-nums}
+.ls-x{--tb:#1d4ed8}
+.ls-l{margin-top:20px;max-width:15ch;font-size:14px;line-height:1.35;font-weight:700;color:#93a1bd}
+@media(max-width:900px){
+.ls-p{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ls-c:nth-child(5){grid-column:1/-1}
+.ls-c{padding:32px 10px 28px}
+}
+</style>
+<script>
+(() => {
+  const root = document.getElementById("ls");
+  if (!root) return;
+  const RM = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const C = [
+    ["100", "", "Questions in the test", "100 questions in the test"],
+    ["60", "", "Minutes to finish", "60 minutes to finish"],
+    ["5", "", "Levels, 1 to 5", "5 levels, 1 to 5"],
+    ["5", "+", "Placement opportunities", "5 or more placement opportunities"],
+    ["100", "", "Days to get your chances", "100 days to get your chances"],
+  ];
+  const reel = [...Array(30)].map((_, k) => `<i>${k % 10}</i>`).join("");
+  root.innerHTML = `<div class="ls-p">${C.map((c) => `<div class="ls-c" role="group" aria-label="${c[3]}"><div class="ls-n" aria-hidden="true">${[...c[0]].map((d) => `<span class="ls-d" data-v="${d}"><span class="ls-r">${reel}</span></span>`).join("")}${c[1] ? `<span class="ls-d ls-x"><b>${c[1]}</b></span>` : ""}</div><span class="ls-l" aria-hidden="true">${c[2]}</span></div>`).join("")}</div>`;
+  const cells = [...root.querySelectorAll(".ls-c")];
+  const at = (d) => `translateY(${-d * 1.2}em)`;
+  const busy = [];
+  const settle = (cell) => cell.querySelectorAll(".ls-d[data-v]").forEach((t) => (t.firstChild.style.transform = at(+t.dataset.v)));
+  const zero = (cell) => {
+    cell.querySelectorAll(".ls-d[data-v]").forEach((t) => (t.firstChild.style.transform = at(0)));
+    const x = cell.querySelector(".ls-x");
+    if (x) x.style.opacity = 0;
+  };
+
+  function roll(i, delay) {
+    const cell = cells[i], tiles = [...cell.querySelectorAll(".ls-d[data-v]")];
+    busy[i] = true;
+    let end = 0;
+    tiles.forEach((t, k) => {
+      const fromRight = tiles.length - 1 - k, d = +t.dataset.v;
+      const dur = 1300 + fromRight * 260, to = (fromRight === 0 ? 20 : 10) + d;
+      end = Math.max(end, delay + dur);
+      const a = t.firstChild.animate([{ transform: at(0) }, { transform: at(to) }], { duration: dur, delay, easing: "cubic-bezier(.2,.9,.25,1.07)", fill: "both" });
+      a.onfinish = () => { t.firstChild.style.transform = at(d); a.cancel(); };
+    });
+    const x = cell.querySelector(".ls-x");
+    if (x) {
+      x.style.opacity = 0;
+      const a = x.animate([{ opacity: 0, transform: "translateY(-.2em) scale(.8)" }, { opacity: 1, transform: "none" }], { duration: 420, delay: end - 150, easing: "cubic-bezier(.2,.9,.25,1.2)", fill: "both" });
+      a.onfinish = () => { x.style.opacity = 1; a.cancel(); };
+    }
+    setTimeout(() => (busy[i] = false), end + 450);
+  }
+
+  if (RM) cells.forEach(settle);
+  else {
+    cells.forEach(zero);
+    new IntersectionObserver(([e], o) => {
+      if (!e.isIntersecting) return;
+      o.disconnect();
+      cells.forEach((_, i) => roll(i, i * 220));
+    }, { threshold: 0.5 }).observe(root);
+    cells.forEach((c, i) => c.addEventListener("pointerenter", (e) => { if (e.pointerType === "mouse" && !busy[i]) roll(i, 0); }));
+  }
+})();
+</script>

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InternBoot | Level Assessment &amp; Certification</title>
+  <meta name="description"
+    content="Take the InternBoot level assessment, get your Level 1–5 certification, and become visible to our placement team.">
+
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+
+  <!-- Favicon for Browser Tab & URL Bar -->
+  <link rel="icon" type="image/png" href="assets/internboot-logo.png">
+  <link rel="shortcut icon" href="assets/internboot-logo.png">
+  <link rel="apple-touch-icon" href="assets/internboot-logo.png">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"
+    integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=13">
+  <link rel="stylesheet" href="css/landing-refresh.css?v=38">
+  <link rel="stylesheet" href="css/landing-compare.css?v=2">
+  <link rel="stylesheet" href="css/landing-flow.css?v=1">
+  <link rel="stylesheet" href="css/landing-theme-fix.css?v=1">
+  <link rel="stylesheet" href="css/landing-skin.css?v=2">
+  <link rel="stylesheet" href="css/landing-polish.css?v=2">
+</head>
+
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar navbar-expand-lg fixed-top ib-nav" id="ibNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home" aria-label="InternBoot Home">
+        <img src="assets/internboot-logo.png" alt="InternBoot" class="brand-logo-img">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ibMenu"
+        aria-controls="ibMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="ibMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#compare">Why LAT</a></li>
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#levels">Levels</a></li>
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#how">How it works</a></li>
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#pattern">Assessment</a></li>
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#fee">Fee</a></li>
+          <li class="nav-item"><a class="nav-link ib-nav-link" href="#faq">FAQs</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a class="btn btn-ib-primary w-100" href="register.php">
+              <span>Register now</span>
+              <i class="bi bi-arrow-right-short fs-5"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="ib-hero ib-hero-refresh" id="home">
+    <div class="hero-opening">
+      <div class="hero-opening-copy">
+        <div class="hero-badge-wrap"><i class="bi bi-calendar2-check hero-badge-icon" aria-hidden="true"></i><p class="hero-kicker">Your 100-day opportunity journey</p></div>
+        <h1 class="hero-title">One test.<br><span class="text-highlight">Five outcomes.</span><br>Your next move.</h1>
+        <p class="hero-sub">Take one 60-minute online test. Get a verified Level 1–5, a QR-verifiable certificate, and placement opportunities matched to your level.</p>
+        <div class="hero-actions d-flex flex-wrap gap-3">
+          <a href="register.php" class="btn btn-ib-primary btn-lg"><span>Register now</span><i class="bi bi-arrow-right"></i></a>
+          <a href="#how" class="btn btn-ib-ghost btn-lg"><i class="bi bi-play-circle-fill hero-play-icon"></i><span>See how it works</span></a>
+        </div>
+        <div class="hero-proof-line"><span class="proof-sparkle">✳</span><span>5+ placement opportunities</span><i></i><span>Support across a 100-day journey</span></div>
+        <ul class="hero-opening-benefits list-unstyled">
+          <li><i class="bi bi-calendar2-check-fill"></i><span><b>Weekend exam slots</b><small>Choose a time that works for you</small></span></li>
+          <li><i class="bi bi-lightning-charge-fill"></i><span><b>Quick result</b><small>See your level a few minutes after submission</small></span></li>
+          <li><i class="bi bi-patch-check-fill"></i><span><b>Verifiable digital certificate</b><small>Share your credentials with confidence</small></span></li>
+        </ul>
+      </div>
+      <div class="hero-opening-visual hero-visual" id="gaugeVisual">
+        <div class="st" id="lpStory" aria-label="How LAT works in four steps">
+          <div class="st-head"><span class="st-eyebrow"><i class="bi bi-play-circle-fill"></i> LAT in 4 steps</span>
+            <div class="st-steps"><button type="button" class="st-step" aria-label="Step 1: Take LAT"><span><i class="bi bi-pencil-square"></i></span><b>Take LAT</b></button><button type="button" class="st-step" aria-label="Step 2: Get Level"><span><i class="bi bi-bar-chart-fill"></i></span><b>Get Level</b></button><button type="button" class="st-step" aria-label="Step 3: Get verified"><span><i class="bi bi-patch-check-fill"></i></span><b>Get verified</b></button><button type="button" class="st-step" aria-label="Step 4: Placement"><span><i class="bi bi-briefcase-fill"></i></span><b>Placement</b></button></div></div>
+          <div class="st-stage">
+            <div class="st-scene on" data-s="0"><div class="lp-top"><span>Question 42 / 100</span><b id="stTimer">59:42</b></div><div class="lp-meter"><i style="--w:42%"></i></div><p class="lp-q">Which data structure follows FIFO order?</p><div class="lp-opts"><span>Stack</span><span class="sel">Queue</span><span>Tree</span></div></div>
+            <div class="st-scene" data-s="1"><div class="lp-ring"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50"/><circle class="p" cx="60" cy="60" r="50"/></svg><b>2</b></div><h4>Level 2 · Intermediate</h4><p>Your assessed level, from 1 to 5</p></div>
+            <div class="st-scene" data-s="2"><div class="lp-cert"><small>INTERNBOOT · LEVEL ASSESSMENT</small><h4>Certificate of Assessment</h4><p>Awarded to <b>Your Name</b></p><div class="lp-cert-row"><span>Level 2</span><i class="lp-qr"></i></div><em><i class="bi bi-patch-check-fill"></i> QR-verifiable</em></div><span class="st-stamp">VERIFIED</span></div>
+            <div class="st-scene" data-s="3"><h4>Placement opportunities unlocked</h4>
+              <div class="st-row" style="--k:0"><i class="bi bi-eye-fill"></i><span>Profile surfaced to hiring partners</span></div>
+              <div class="st-row" style="--k:1"><i class="bi bi-calendar-check-fill"></i><span>Interview invite</span></div>
+              <div class="st-row st-hi" style="--k:2"><i class="bi bi-briefcase-fill"></i><span>Placement opportunity · 5–10 LPA band</span></div>
+              <div class="st-conf" aria-hidden="true"><i style="--a:-160deg;--d:86px;--c:#ffb020"></i><i style="--a:-135deg;--d:110px;--c:#1f4fe0"></i><i style="--a:-110deg;--d:96px;--c:#16a34a"></i><i style="--a:-80deg;--d:118px;--c:#ffb020"></i><i style="--a:-55deg;--d:98px;--c:#1f4fe0"></i><i style="--a:-30deg;--d:112px;--c:#16a34a"></i><i style="--a:-10deg;--d:84px;--c:#ffb020"></i><i style="--a:-170deg;--d:60px;--c:#16a34a"></i><i style="--a:-95deg;--d:70px;--c:#1f4fe0"></i><i style="--a:-20deg;--d:64px;--c:#16a34a"></i></div></div>
+          </div>
+          <div class="st-cap"><b id="stCap">60 minutes · 100 questions · online</b><span>Illustrative preview</span></div>
+        </div>
+        <span class="visual-eyebrow"><i class="bi bi-stars"></i> YOUR ASSESSMENT · YOUR NEXT STEP</span>
+        <div class="hero-constellation" aria-hidden="true">
+          <svg viewBox="0 0 720 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="constellation-orbit constellation-orbit--outer" cx="360" cy="325" rx="305" ry="215" transform="rotate(-17 360 325)"/>
+            <ellipse class="constellation-orbit constellation-orbit--inner" cx="360" cy="325" rx="235" ry="165" transform="rotate(16 360 325)"/>
+            <path class="constellation-route" d="M68 420C174 541 260 488 336 364C417 231 514 202 652 260"/>
+            <circle class="constellation-dot constellation-dot--a" cx="68" cy="420" r="7"/><circle class="constellation-dot constellation-dot--b" cx="652" cy="260" r="8"/>
+            <circle class="constellation-dot constellation-dot--c" cx="360" cy="325" r="4"/>
+          </svg>
+          <span class="hero-signal-chip hero-signal-chip--verified"><i class="bi bi-patch-check-fill"></i><span><small>LAT PROFILE</small><b>Verified</b></span></span>
+          <span class="hero-signal-chip hero-signal-chip--doors"><i class="bi bi-stars"></i><span><small>CAREER PATHWAYS</small><b>5+ opportunities</b></span></span>
+        </div>
+        <div class="gauge-stage" aria-label="Assessment level gauge">
+
+            <!-- Subtle background decorations -->
+            <div class="gauge-bg-deco" aria-hidden="true">
+              <span class="gauge-bg-orb gauge-bg-orb--a"></span>
+              <span class="gauge-bg-orb gauge-bg-orb--b"></span>
+              <!-- Subtle wave vectors -->
+              <svg class="gauge-bg-waves" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <path d="M-50,180 C150,100 350,260 650,160" stroke="#1652d6" stroke-width="2" stroke-dasharray="6 6"
+                  opacity=".10" />
+                <path d="M-80,300 C120,220 380,380 680,270" stroke="#1652d6" stroke-width="2" opacity=".09" />
+                <path d="M-20,420 C180,360 320,480 620,400" stroke="#1652d6" stroke-width="1.5" stroke-dasharray="4 4"
+                  opacity=".07" />
+              </svg>
+              <!-- Dotted grid -->
+              <svg class="gauge-bg-grid" viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <pattern id="gdot" x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+                    <circle cx="1" cy="1" r="1" fill="#1652d6" opacity=".10" />
+                  </pattern>
+                </defs>
+                <rect width="420" height="420" fill="url(#gdot)" />
+              </svg>
+            </div>
+
+            <!-- Floating assessment visual (no rectangular card) -->
+            <div class="gauge-card">
+              <!-- SVG circular ring -->
+              <div class="gauge-ring-wrap">
+                <div class="gauge-ring-glow" id="gaugeGlow"></div>
+                <svg class="gauge-svg" viewBox="0 0 220 220" aria-hidden="true">
+                  <!-- track -->
+                  <circle class="gauge-track" cx="110" cy="110" r="88" />
+                  <!-- Complete credential ring; display the career outcome, not a score meter. -->
+                  <circle class="gauge-progress" id="gaugeRing" cx="110" cy="110" r="88" stroke-dasharray="553"
+                    stroke-dashoffset="0" transform="rotate(-90 110 110)" />
+                </svg>
+                <!-- Center content -->
+                <div class="gauge-center">
+                  <span class="gauge-center-your">Outcome band</span>
+                  <span class="gauge-center-pct gauge-center-outcome" id="gaugePct">10+ LPA</span>
+                  <i class="bi bi-trophy-fill gauge-center-trophy" id="gaugeTrophy"></i>
+                  <span class="gauge-center-label" id="gaugeLabel">Top / Excellent</span>
+                  <span class="gauge-center-lvl" id="gaugeLvl">Level 1</span>
+                </div>
+              </div>
+
+              <!-- Outcome band -->
+              <div class="gauge-range-pill" id="gaugeRange">
+                <i class="bi bi-briefcase-fill"></i> Package opportunities · 10+ LPA
+              </div>
+
+              <!-- 5-level selector strip -->
+              <div class="gauge-levels" role="list" aria-label="Assessment levels">
+                <div class="gauge-levels-track" aria-hidden="true"></div>
+
+                <button class="gauge-lvl-btn active" data-lvl="0" role="listitem" aria-pressed="true"
+                  aria-label="Level 1 – Top / Excellent, 10+ LPA package opportunities">
+                  <span class="glb-num">1</span>
+                  <span class="glb-name">Level 1</span>
+                  <span class="glb-range">10+ LPA</span>
+                </button>
+
+                <button class="gauge-lvl-btn" data-lvl="1" role="listitem" aria-pressed="false"
+                  aria-label="Level 2 – Intermediate, 5–10 LPA package opportunities">
+                  <span class="glb-num">2</span>
+                  <span class="glb-name">Level 2</span>
+                  <span class="glb-range">5–10 LPA</span>
+                </button>
+
+                <button class="gauge-lvl-btn" data-lvl="2" role="listitem" aria-pressed="false"
+                  aria-label="Level 3 – Basic / Employable, up to 5 LPA package opportunities">
+                  <span class="glb-num">3</span>
+                  <span class="glb-name">Level 3</span>
+                  <span class="glb-range">Up to 5 LPA</span>
+                </button>
+
+                <button class="gauge-lvl-btn" data-lvl="3" role="listitem" aria-pressed="false"
+                  aria-label="Level 4 – Basic Knowledge, paid internship">
+                  <span class="glb-num">4</span>
+                  <span class="glb-name">Level 4</span>
+                  <span class="glb-range">Paid internship</span>
+                </button>
+
+                <button class="gauge-lvl-btn" data-lvl="4" role="listitem" aria-pressed="false"
+                  aria-label="Level 5 – Needs Training, training then internship">
+                  <span class="glb-num">5</span>
+                  <span class="glb-name">Level 5</span>
+                  <span class="glb-range">Training → internship</span>
+                </button>
+              </div>
+
+              <p class="gauge-card-foot">
+                <i class="bi bi-patch-check-fill"></i>
+                Your assessment level points to a clear next step
+              </p>
+            </div><!-- /gauge-card -->
+
+          </div><!-- /gauge-stage -->
+      </div>
+      <a class="hero-scroll-cue" href="#compare"><span>Scroll to see why it matters</span><i class="bi bi-arrow-down"></i></a>
+    </div>
+    
+  </header>
+
+  <section class="lp-facts" aria-label="The assessment at a glance"><div class="container"><ul>
+    <li><b><i data-count="100">100</i></b><span>Questions</span></li><li><b><i data-count="60">60</i> min</b><span>Timed online test</span></li><li><b>Level 1–5</b><span>Your assessed result</span></li>
+    <li><b>QR</b><span>Verifiable certificate</span></li><li><b>Weekends</b><span>Pick your slot</span></li></ul></div></section>
+
+  <!-- ============ LEVELS ============ -->
+  <section class="section levels-cinematic" id="levels">
+    <div class="levels-cinematic-head">
+      <div class="levels-cinematic-copy">
+        <span class="cinema-kicker"><i></i> 02 · YOUR OUTCOME</span>
+        <h2>Five levels.<br><em>Five ways forward.</em></h2>
+        <p>The higher your assessed level, the bigger the opportunity. Tap any step to see what it unlocks.</p>
+      </div>
+      <div class="cinema-credential"><i class="bi bi-stars"></i><span>One assessment. A career path matched to your current skill level.</span></div>
+    </div>
+    <div class="lp-ladder" id="lpLadder">
+      <div class="lp-stairs"><button type="button" class="lp-st" data-i="0" data-n="05" data-nm="Needs Training" data-ns="Build your foundation with training, then an internship." data-o="Training → internship" style="--bg:#cfdcff;--fg:#0b1220;--h:110px;--w:44%"><span class="lp-you">You are here</span><span class="lp-so">Training → internship</span><span class="lp-sb"><em>LEVEL 05</em><b>Needs Training</b><small>Internship track</small></span></button><button type="button" class="lp-st" data-i="1" data-n="04" data-nm="Basic Knowledge" data-ns="Build practical experience through a paid internship." data-o="Paid internship" style="--bg:#a4bdff;--fg:#0b1220;--h:165px;--w:58%"><span class="lp-you">You are here</span><span class="lp-so">Paid internship</span><span class="lp-sb"><em>LEVEL 04</em><b>Basic Knowledge</b><small>Internship track</small></span></button><button type="button" class="lp-st" data-i="2" data-n="03" data-nm="Basic / Employable" data-ns="Explore entry-level placement opportunities up to 5 LPA." data-o="Up to 5 LPA" style="--bg:#6f93f5;--fg:#fff;--h:220px;--w:72%"><span class="lp-you">You are here</span><span class="lp-so">Up to 5 LPA</span><span class="lp-sb"><em>LEVEL 03</em><b>Basic / Employable</b><small>Placement track</small></span></button><button type="button" class="lp-st" data-i="3" data-n="02" data-nm="Intermediate" data-ns="Explore placement roles in the 5–10 LPA package band." data-o="5–10 LPA" style="--bg:#3f68ea;--fg:#fff;--h:270px;--w:86%"><span class="lp-you">You are here</span><span class="lp-so">5–10 LPA</span><span class="lp-sb"><em>LEVEL 02</em><b>Intermediate</b><small>Placement track</small></span></button><button type="button" class="lp-st" data-i="4" data-n="01" data-nm="Top / Excellent" data-ns="Explore placement roles in the 10+ LPA package band." data-o="10+ LPA" style="--bg:#1f4fe0;--fg:#fff;--h:320px;--w:100%"><span class="lp-you">You are here</span><span class="lp-so"><i class='bi bi-trophy-fill'></i> 10+ LPA</span><span class="lp-sb"><em>LEVEL 01</em><b>Top / Excellent</b><small>Placement track</small></span></button></div>
+      <div class="lp-ground"><span><i class="bi bi-graph-up-arrow"></i> Higher level = bigger opportunity</span></div>
+      <div class="lp-detail" id="lpDetail" aria-live="polite"><span class="lp-dbadge" id="lpDb">01</span><div><b id="lpDn"></b><p id="lpDs"></p></div></div>
+      <div class="lp-route-foot"><p>Your assessed level decides your route. Opportunities depend on your level, current openings and hiring-partner requirements.</p><a class="btn btn-ib-primary btn-lg" href="register.php"><span>Find my level</span><i class="bi bi-arrow-right"></i></a></div>
+    </div>
+    <span class="cinema-scroll-cue"><i class="bi bi-arrow-down"></i> Scroll to explore the rest of InternBoot</span>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section hiw-section" id="how">
+    <div class="hiw-shell" aria-hidden="true">
+      <span class="hiw-mesh hiw-mesh--a"></span>
+      <span class="hiw-mesh hiw-mesh--b"></span>
+      <span class="hiw-mesh hiw-mesh--c"></span>
+    </div>
+
+    <div class="container position-relative">
+      <div class="row hiw-layout g-4 g-xl-5 align-items-start">
+
+        <div class="col-12">
+          <div class="hiw-intro">
+            <span class="hiw-intro-badge"><i class="bi bi-lightning-charge-fill"></i> 03 · How it works</span>
+            <h2 class="hiw-intro-title">Your path from registration to verified certification</h2>
+            <p class="hiw-intro-text">A clear online journey from registration and assessment to your Level 1–5 result and digital certificate.</p>
+
+            <ul class="hiw-intro-stats list-unstyled">
+              <li>
+                <span class="hiw-stat-icon"><i class="bi bi-ui-checks-grid"></i></span>
+                <span><strong data-ib="questions">100 questions</strong> · industry-aligned MCQ paper</span>
+              </li>
+              <li>
+                <span class="hiw-stat-icon"><i class="bi bi-clock-history"></i></span>
+                <span><strong data-ib="duration">60 minutes</strong> · secure timed attempt</span>
+              </li>
+              <li>
+                <span class="hiw-stat-icon"><i class="bi bi-patch-check"></i></span>
+                <span><strong>Within minutes</strong> · level &amp; digital certificate</span>
+              </li>
+            </ul>
+
+            <a href="register.php" class="btn btn-ib-primary hiw-intro-cta">
+              <span>Start registration</span>
+              <i class="bi bi-arrow-right"></i>
+            </a>
+
+            <div class="hiw-route-status" aria-live="polite" aria-label="Current registration journey step">
+              <div class="hiw-route-top"><span>YOUR ASSESSMENT JOURNEY</span><b><span id="hiwRouteStep">01</span> <i>/</i> 06</b></div>
+              <div class="hiw-route-meter" aria-hidden="true"><i id="hiwRouteProgress"></i></div>
+              <div class="hiw-route-current"><span class="hiw-route-orb" id="hiwRouteOrb">01</span><span><small>CURRENT STEP</small><b id="hiwRouteTitle">Register your profile</b></span><i class="bi bi-arrow-up-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <ol class="hiw-flow list-unstyled mb-0">
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">01</span>
+                <div class="hiw-flow-icon"><i class="bi bi-person-plus"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 1</span>
+                  <h3 class="hiw-flow-title">Register your profile</h3>
+                  <p class="hiw-flow-desc">Add your academic details and target specializations. Use one account for your exam, results, and certificate.</p>
+                </div>
+              </article>
+            </li>
+
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">02</span>
+                <div class="hiw-flow-icon"><i class="bi bi-credit-card"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 2</span>
+                  <h3 class="hiw-flow-title">Pay the assessment fee</h3>
+                  <p class="hiw-flow-desc">Pay <span data-ib="fee">₹2999 + 18% GST</span> via UPI, debit/credit card, or
+                    net
+                    banking. Seat confirmation is instant on successful payment.</p>
+                </div>
+              </article>
+            </li>
+
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">03</span>
+                <div class="hiw-flow-icon"><i class="bi bi-calendar2-week"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 3</span>
+                  <h3 class="hiw-flow-title">Choose batch &amp; weekend slot</h3>
+                  <p class="hiw-flow-desc">When <span data-ib="batchSize">100</span> candidates fill a batch, pick your
+                    preferred Weekend slot from the dashboard.</p>
+                </div>
+              </article>
+            </li>
+
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">04</span>
+                <div class="hiw-flow-icon"><i class="bi bi-laptop"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 4</span>
+                  <h3 class="hiw-flow-title">Take the online exam</h3>
+                  <p class="hiw-flow-desc"><span data-ib="duration">60 minutes</span> proctored-style MCQ test with
+                    server-side autosave. Reconnect anytime without losing answers.</p>
+                </div>
+              </article>
+            </li>
+
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">05</span>
+                <div class="hiw-flow-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 5</span>
+                  <h3 class="hiw-flow-title">Get your Level 1–5 result</h3>
+                  <p class="hiw-flow-desc">Your level is published on your candidate dashboard <span data-ib="resultTiming">within a few minutes of submission</span>.</p>
+                </div>
+              </article>
+            </li>
+
+            <li class="hiw-flow-step">
+              <div class="hiw-flow-rail"><span class="hiw-flow-dot"></span></div>
+              <article class="hiw-flow-card">
+                <span class="hiw-flow-num" aria-hidden="true">06</span>
+                <div class="hiw-flow-icon"><i class="bi bi-award-fill"></i></div>
+                <div class="hiw-flow-body">
+                  <span class="hiw-flow-tag">Step 6</span>
+                  <h3 class="hiw-flow-title">Certificate &amp; placement visibility</h3>
+                  <p class="hiw-flow-desc">Download your QR-verifiable certificate. Higher levels are surfaced first to
+                    hiring partners across placement drives.</p>
+                </div>
+              </article>
+            </li>
+          </ol>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+          <div class="lp-device" id="lpDevice" aria-hidden="true">
+            <div class="lp-bar"><i></i><i></i><i></i><span>internboot.com</span></div>
+            <div class="lp-screen">
+              <div class="lp-scene on" data-s="0"><h4>Create your profile</h4><div class="lp-f"><span>Full name</span><b></b></div><div class="lp-f"><span>College</span><b></b></div><div class="lp-f"><span>Target stream</span><b></b></div><div class="lp-btn">Create account <i class="bi bi-arrow-right"></i></div></div>
+              <div class="lp-scene" data-s="1"><h4>Assessment fee</h4><div class="lp-price">₹2999 <small>+ 18% GST</small></div><div class="lp-chips"><span>UPI</span><span>Card</span><span>Net banking</span></div><div class="lp-ok"><i class="bi bi-check-circle-fill"></i> Seat confirmed</div></div>
+              <div class="lp-scene" data-s="2"><h4>Pick your weekend slot</h4><div class="lp-meter"><i></i></div><small>Batch of 100 candidates</small><div class="lp-slots"><span>Sat · Morning</span><span class="sel">Sat · Afternoon</span><span>Sun · Morning</span><span>Sun · Afternoon</span></div></div>
+              <div class="lp-scene" data-s="3"><div class="lp-top"><span>Question 42 / 100</span><b id="lpTimer">59:42</b></div><div class="lp-meter"><i style="--w:42%"></i></div><p class="lp-q">Which data structure follows FIFO order?</p><div class="lp-opts"><span>Stack</span><span class="sel">Queue</span><span>Tree</span><span>Graph</span></div><small class="lp-save"><i class="bi bi-cloud-check-fill"></i> Answer autosaved</small></div>
+              <div class="lp-scene" data-s="4"><div class="lp-ring"><svg viewBox="0 0 120 120"><circle class="t" cx="60" cy="60" r="50"/><circle class="p" cx="60" cy="60" r="50"/></svg><b>2</b></div><h4>Level 2 · Intermediate</h4><p>5–10 LPA placement opportunities</p></div>
+              <div class="lp-scene" data-s="5"><div class="lp-cert" id="lpCert"><small>INTERNBOOT · LEVEL ASSESSMENT</small><h4>Certificate of Assessment</h4><p>Awarded to <b>Your Name</b></p><div class="lp-cert-row"><span>Level 2</span><i class="lp-qr"></i></div><em><i class="bi bi-patch-check-fill"></i> QR-verifiable</em></div></div>
+            </div>
+            <p class="lp-cap">Illustrative preview of the candidate journey</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEST PATTERN & SYLLABUS ============ -->
+  <section class="section" id="pattern">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">04 · The assessment</span>
+        <h2>Areas covered in assessment</h2>
+        <p>One focused assessment across quantitative aptitude, core domain knowledge, and logical reasoning.</p>
+      </div>
+
+      <div class="pattern-deck-wrap" id="patternDeckWrap">
+        <span class="pattern-orb pattern-orb--a" aria-hidden="true"></span>
+        <span class="pattern-orb pattern-orb--b" aria-hidden="true"></span>
+
+        <div class="pattern-core">
+          <span class="pattern-core-kicker"><i></i> THE ASSESSMENT</span>
+          <div class="pattern-core-ring"><div><b>100</b><small>QUESTIONS</small></div></div>
+          <div class="pattern-core-stats"><span><i class="bi bi-clock-history"></i><b>60 min</b></span><span><i class="bi bi-grid-3x3-gap"></i><b>3 domains</b></span></div>
+          <p>One focused test.<br>Three skill areas.<br><strong>A clearer next step.</strong></p>
+          <div class="pattern-core-foot"><span>ASSESSMENT FORMAT</span><i class="bi bi-arrow-right"></i></div>
+        </div>
+
+        <div class="pattern-deck" id="patternDeck">
+
+          <div class="pattern-card pc-1">
+            <div class="pattern-icon"><i class="bi bi-calculator"></i></div>
+            <h4>Quantitative &amp; Aptitude</h4>
+            <p>Speed, numerical reasoning, pattern recognition, and data interpretation required in technical roles.</p>
+            <div class="pattern-allocation"><span>QUESTION SHARE</span><b>30%</b><i style="--share:30%"></i></div>
+            <div class="pattern-meta">
+              <span><i class="bi bi-check2-circle"></i> 30 Questions</span>
+              <span><i class="bi bi-clock"></i> ~18 mins</span>
+            </div>
+          </div>
+
+          <div class="pattern-card pc-2">
+            <div class="pattern-icon"><i class="bi bi-code-slash"></i></div>
+            <h4>Core Domain Knowledge</h4>
+            <p>Fundamentals of your selected stream: software engineering, web concepts, logic, and problem structuring.
+            </p>
+            <div class="pattern-allocation"><span>QUESTION SHARE</span><b>40%</b><i style="--share:40%"></i></div>
+            <div class="pattern-meta">
+              <span><i class="bi bi-check2-circle"></i> 40 Questions</span>
+              <span><i class="bi bi-clock"></i> ~24 mins</span>
+            </div>
+          </div>
+
+          <div class="pattern-card pc-3">
+            <div class="pattern-icon"><i class="bi bi-puzzle"></i></div>
+            <h4>Logical Reasoning</h4>
+            <p>Analytical deductions, critical thinking, algorithm tracing, and situational decision making.</p>
+            <div class="pattern-allocation"><span>QUESTION SHARE</span><b>30%</b><i style="--share:30%"></i></div>
+            <div class="pattern-meta">
+              <span><i class="bi bi-check2-circle"></i> 30 Questions</span>
+              <span><i class="bi bi-clock"></i> ~18 mins</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============ FEE ============ -->
+  <section class="section section-alt" id="fee">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">05 · Fee &amp; inclusions</span>
+        <h2>One assessment fee</h2>
+        <p>See what is included before you register. The listed assessment fee is exclusive of GST.
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="fee-card">
+            <div class="fee-price">
+              <span class="fee-label">Assessment Fee</span>
+              <span class="fee-amount" data-ib="fee">₹2999 <small
+                  style="font-size: 0.55em; font-weight: 600; opacity: 0.9;">+ 18% GST</small></span>
+              <span class="fee-note">Assessment, automated evaluation, a verifiable digital certificate, and consideration for placement opportunities based on your assessed level.</span>
+              <a href="register.php" class="btn btn-ib-accent w-100 mt-2">
+                <span>Register now</span>
+                <i class="bi bi-arrow-right"></i>
+              </a>
+              <div class="fee-secure-badge">
+                <i class="bi bi-shield-fill-check"></i>
+                <span>Secure online payment</span>
+              </div>
+            </div>
+
+            <div class="fee-list">
+              <ul class="list-unstyled mb-0">
+                <li><i class="bi bi-check-circle-fill"></i> <span><strong data-ib="questions">100 questions</strong>
+                    online assessment with server-side timer</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Automated evaluation and Level 1–5 outcome assignment</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Verifiable digital certificate for LinkedIn &amp;
+                    Resume</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Profile considered for placement opportunities based on your assessed level</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Full candidate dashboard with weekend slot
+                    selector</span></li>
+                <li><i class="bi bi-check-circle-fill"></i> <span>Dedicated candidate support till your result is
+                    published</span></li>
+              </ul>
+
+              <div class="payment-strip">
+                <span>Accepted Payment Modes:</span>
+                <div class="payment-icons">
+                  <i class="bi bi-wallet2" title="UPI (GPay / PhonePe / Paytm)"></i>
+                  <i class="bi bi-credit-card" title="Debit & Credit Cards"></i>
+                  <i class="bi bi-bank" title="NetBanking"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">06 · Your questions</span>
+        <h2>Questions candidates ask</h2>
+        <p>Have questions before you register? Everything you need to know about the exam and placement process.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion ib-accordion" id="faqBox">
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f1"
+                  aria-expanded="false" aria-controls="f1">
+                  Who can take this assessment?
+                </button>
+              </h3>
+              <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  Any college student, fresher, or early-career graduate registered on InternBoot. There are no strict
+                  college tier or percentage cutoffs — everyone is evaluated purely on demonstrated aptitude and skill.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2"
+                  aria-expanded="false" aria-controls="f2">
+                  When will my exam be scheduled?
+                </button>
+              </h3>
+              <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  A batch is formed once <span data-ib="batchSize">100</span> candidates enroll. Exams are held every
+                  weekend (Saturday and Sunday). Once your batch is formed, you can pick your preferred timing slot
+                  directly from your candidate dashboard.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3"
+                  aria-expanded="false" aria-controls="f3">
+                  What does the exam paper contain?
+                </button>
+              </h3>
+              <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  The test contains <span data-ib="questions">100 multiple-choice questions</span> across Quantitative
+                  Aptitude, Technical Fundamentals, and Logical Reasoning, completed in <span data-ib="duration">60
+                    minutes</span>.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f4"
+                  aria-expanded="false" aria-controls="f4">
+                  What happens if my internet connection drops?
+                </button>
+              </h3>
+              <div id="f4" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  Your responses are autosaved on every question. If your connection drops, simply refresh or log back
+                  in on the same browser to resume right where you left off. The exam timer is securely maintained on
+                  our server.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f5"
+                  aria-expanded="false" aria-controls="f5">
+                  When do I get my result and certificate?
+                </button>
+              </h3>
+              <div id="f5" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  Evaluation is automated. Your score, Level assignment, and verifiable certificate are generated <span
+                    data-ib="resultTiming">within a few minutes of submission</span> on your candidate dashboard.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f6"
+                  aria-expanded="false" aria-controls="f6">
+                  Can I take the exam again if I want a higher level?
+                </button>
+              </h3>
+              <div id="f6" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  <span data-ib="retake">No, you can only take the test once per drive.</span> Retake windows and
+                  upgrade drives are announced periodically on your candidate dashboard.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f7"
+                  aria-expanded="false" aria-controls="f7">
+                  Is the certificate verifiable by employers?
+                </button>
+              </h3>
+              <div id="f7" class="accordion-collapse collapse" data-bs-parent="#faqBox">
+                <div class="accordion-body">
+                  Yes. Every certificate carries a unique verification identifier that recruiters can instantly check
+                  against our candidate records database.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="faq-support-box">
+            <p class="fw-semibold">Still have a specific question before registering?</p>
+            <a href="#contact" class="btn btn-ib-ghost btn-sm">
+              <i class="bi bi-chat-dots-fill me-1"></i> Contact Candidate Support
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact" style="background-color: #ffffff; padding: 80px 0;">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Candidate support</span>
+        <h2>Talk to the InternBoot team</h2>
+        <p>Questions about the assessment, your registration, or the next step? Send a note and the team can help.</p>
+      </div>
+      <div class="row g-lg-5 g-4 align-items-center">
+        <!-- Contact Info Card -->
+        <!-- Contact Info Card -->
+        <div class="col-lg-5">
+          <div class="card border-0 p-4 h-100 d-flex flex-column justify-content-center"
+            style="background-color: #f8fafc; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02);">
+            <h5 class="fw-bold mb-4" style="color: #1e293b; font-size: 1.1rem;">Contact Information</h5>
+
+            <div class="d-flex align-items-center mb-3 p-3 rounded-3"
+              style="background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+              <div class="flex-shrink-0 me-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                  style="width: 36px; height: 36px; background-color: #2563eb; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);">
+                  <i class="bi bi-envelope-fill"></i>
+                </div>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0" style="font-size: 0.85rem; color: #1e293b;">Email Address</h6>
+                <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4; margin-top: 2px;">
+                  career@employementexpress.net<br>info@internboot.com</div>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3 p-3 rounded-3"
+              style="background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+              <div class="flex-shrink-0 me-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                  style="width: 36px; height: 36px; background-color: #2563eb; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);">
+                  <i class="bi bi-house-door-fill"></i>
+                </div>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0" style="font-size: 0.85rem; color: #1e293b;">Contact Address</h6>
+                <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4; margin-top: 2px;">C56A/25, C Block,
+                  Phase 2, Industrial Area, Sector 62,<br>Noida, Uttar Pradesh 201309</div>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center p-3 rounded-3"
+              style="background-color: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+              <div class="flex-shrink-0 me-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white"
+                  style="width: 36px; height: 36px; background-color: #2563eb; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);">
+                  <i class="bi bi-telephone-fill"></i>
+                </div>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0" style="font-size: 0.85rem; color: #1e293b;">Contact Number</h6>
+                <div style="font-size: 0.75rem; color: #64748b; line-height: 1.4; margin-top: 2px;">+919557019604</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="col-lg-7">
+          <div class="card border-0 p-4"
+            style="background-color: #ffffff; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.06);">
+
+            <form id="contactForm" class="contact-form" action="api/contact.php" method="post">
+
+              <div class="d-flex flex-column flex-md-row gap-3 mb-3">
+                <div class="w-100">
+                  <input type="text" id="name" name="name" class="form-control"
+                    style="background-color: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; font-size: 0.9rem; color: #475569;"
+                    placeholder="Your Name" required>
+                </div>
+                <div class="w-100">
+                  <input type="email" id="email" name="email" class="form-control"
+                    style="background-color: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; font-size: 0.9rem; color: #475569;"
+                    placeholder="Your Email" required>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column flex-md-row gap-3 mb-3">
+                <div class="w-100">
+                  <input type="tel" id="phone" name="phone" class="form-control"
+                    style="background-color: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; font-size: 0.9rem; color: #475569;"
+                    placeholder="Phone Number">
+                </div>
+                <div class="w-100">
+                  <select id="subject" name="subject" class="form-select"
+                    style="background-color: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; font-size: 0.9rem; color: #475569;"
+                    required>
+                    <option value="" disabled selected>Select a subject</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Internship Application">Internship Application</option>
+                    <option value="Partnership Opportunity">Partnership Opportunity</option>
+                    <option value="Technical Support">Technical Support</option>
+                    <option value="Feedback">Feedback</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <textarea id="message" name="message" class="form-control"
+                  style="background-color: #fafafa; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; font-size: 0.9rem; color: #475569;"
+                  rows="3" placeholder="Your Message" required></textarea>
+              </div>
+
+              <div class="form-check mb-4 d-flex align-items-start gap-2">
+                <input class="form-check-input flex-shrink-0 mt-1" type="checkbox" id="privacyPolicy"
+                  name="privacyPolicy" required
+                  style="border: 1px solid #cbd5e1; border-radius: 4px; width: 1em; height: 1em;">
+                <label class="form-check-label" for="privacyPolicy"
+                  style="font-size: 0.85rem; line-height: 1.4; color: #334155;">
+                  I agree with Internboot's <a href="terms.html"
+                    style="color: #0d6efd; text-decoration: none;">Terms of Service</a>, <a href="privacy.html"
+                    style="color: #0d6efd; text-decoration: none;">Privacy Policy</a><br>
+                  <span
+                    style="font-size: 0.75rem; color: #64748b; display: block; margin-top: 4px; font-weight: 400; line-height: 1.4;">By
+                    submitting this form, you agree to receive communications from Internboot regarding updates,
+                    services, offers, and other relevant information.</span>
+                </label>
+              </div>
+
+              <p class="contact-status" id="contactStatus" role="status" aria-live="polite"></p>
+              <div class="text-center">
+                <button type="submit" class="btn btn-contact-submit rounded-pill fw-semibold shadow-sm">
+                  SUBMIT <i class="bi bi-send-fill ms-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="ib-cta">
+    <div class="container text-center position-relative">
+      <div class="cta-urgency-pill">
+        <!-- <span class="pulse-dot"></span> -->
+        <span>LEVEL ASSESSMENT TEST · INTERNBOOT</span>
+      </div>
+      <h2>Find your level. Plan your next step.</h2>
+      <p>Start with the Level Assessment Test and see which career outcome path fits your skills.</p>
+      <div class="lp-mr" aria-hidden="true"><span style="--c:#1f4fe0;--i:0"><i></i><b>10+ LPA</b></span><span style="--c:#0891b2;--i:1"><i></i><b>5–10 LPA</b></span><span style="--c:#059669;--i:2"><i></i><b>Up to 5 LPA</b></span><span style="--c:#d97706;--i:3"><i></i><b>Paid internship</b></span><span style="--c:#ea580c;--i:4"><i></i><b>Training</b></span></div>
+      <a href="register.php" class="btn btn-ib-accent btn-lg px-5">
+        <span>Register now </span>
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="ib-footer text-white" style="background-color: #000; padding: 60px 0 25px; font-size: 0.95rem;">
+    <div class="container position-relative">
+      <div class="row g-4">
+        <!-- Column 1 -->
+        <div class="col-lg-4 pe-lg-5">
+          <a class="navbar-brand d-inline-block mb-4" href="#home" aria-label="InternBoot Home">
+            <img src="assets/internboot-logo.png" alt="InternBoot" class="footer-logo-img"
+              style="height: 75px; background: white; padding: 8px; border-radius: 6px;">
+          </a>
+          <p class="text-white-50 mb-4 pe-lg-4" style="line-height: 1.6;">
+            InternBoot helps candidates assess their skills and understand their next career opportunity.
+          </p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="https://www.linkedin.com/showcase/internboot/" target="_blank" rel="noopener noreferrer"
+              class="text-white d-flex align-items-center justify-content-center rounded-circle"
+              style="width: 38px; height: 38px; background: #1e40af; text-decoration: none; transition: 0.3s;"
+              aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/internboot_official?stkn=bTV0bXh0aGV0aG8w" target="_blank" rel="noopener noreferrer"
+              class="text-white d-flex align-items-center justify-content-center rounded-circle"
+              style="width: 38px; height: 38px; background: #1e40af; text-decoration: none; transition: 0.3s;"
+              aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61595012547804" target="_blank" rel="noopener noreferrer"
+              class="text-white d-flex align-items-center justify-content-center rounded-circle"
+              style="width: 38px; height: 38px; background: #1e40af; text-decoration: none; transition: 0.3s;"
+              aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/@Internboot-k7m" target="_blank" rel="noopener noreferrer"
+              class="text-white d-flex align-items-center justify-content-center rounded-circle"
+              style="width: 38px; height: 38px; background: #1e40af; text-decoration: none; transition: 0.3s;"
+              aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Platform -->
+        <div class="col-6 col-lg-3 ps-lg-4">
+          <h5 class="fw-bold mb-2 text-white fs-5">Platform</h5>
+          <div style="height: 2px; width: 35px; background-color: rgba(255,255,255,0.4); margin-bottom: 24px;"></div>
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+            <li><a href="#compare" class="text-white text-decoration-none"><i class="bi bi-chevron-right text-white-50 me-2"
+                  style="font-size: 0.75rem;"></i>Why LAT</a></li>
+            <li><a href="#levels" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Levels</a></li>
+            <li><a href="#pattern" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Pattern</a></li>
+            <li><a href="#fee" class="text-white text-decoration-none"><i class="bi bi-chevron-right text-white-50 me-2"
+                  style="font-size: 0.75rem;"></i>Fee</a></li>
+            <li><a href="#contact" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Contact Us</a></li>
+            <li><a href="#faq" class="text-white text-decoration-none"><i class="bi bi-chevron-right text-white-50 me-2"
+                  style="font-size: 0.75rem;"></i>FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Candidate -->
+        <div class="col-6 col-lg-2">
+          <h5 class="fw-bold mb-2 text-white fs-5">Candidate</h5>
+          <div style="height: 2px; width: 35px; background-color: rgba(255,255,255,0.4); margin-bottom: 24px;"></div>
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+            <li><a href="register.php" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Register</a></li>
+            <li><a href="login.php" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Login</a></li>
+            <li><a href="#contact" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Reach us -->
+        <div class="col-lg-3 position-relative d-flex flex-column">
+          <h5 class="fw-bold mb-2 text-white fs-5">Reach us</h5>
+          <div style="height: 2px; width: 35px; background-color: rgba(255,255,255,0.4); margin-bottom: 24px;"></div>
+          <ul class="list-unstyled d-flex flex-column gap-3 mb-5">
+            <li><a href="mailto:support@internboot.com" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2"
+                  style="font-size: 0.75rem;"></i>support@internboot.com</a></li>
+            <li><a href="#contact" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>Candidate Support
+                Desk</a></li>
+            <li><a href="https://internboot.com" class="text-white text-decoration-none"><i
+                  class="bi bi-chevron-right text-white-50 me-2" style="font-size: 0.75rem;"></i>internboot.com</a></li>
+            <li class="d-flex align-items-start"><i class="bi bi-chevron-right text-white-50 me-2 mt-1"
+                  style="font-size: 0.75rem;"></i><span class="text-white">C56A/25, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309</span></li>
+          </ul>
+
+
+        </div>
+      </div>
+
+      <hr class="mt-4 mb-4 border-white opacity-25">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center text-white-50"
+        style="font-size: 0.85rem;">
+        <div class="mb-3 mb-md-0">
+          &copy; <span id="year">2026</span> <span class="text-white fw-bold">InternBoot</span>. All rights reserved.
+        </div>
+        <div>
+          <a href="terms.html" class="text-white text-decoration-none">Terms of Services</a> <span
+            class="mx-2 text-white-50">|</span>
+          <a href="privacy.html" class="text-white text-decoration-none">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- Mobile Sticky Bottom Bar -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar">
+    <div class="mobile-sticky-info">
+      <span class="mobile-sticky-label">Assessment Fee</span>
+      <span class="mobile-sticky-fee" data-ib="feeShort">₹2999 <small style="font-size: 0.65em; opacity: 0.9;">+ 18%
+          GST</small></span>
+    </div>
+    <a href="register.php" class="btn btn-ib-accent btn-sm px-4">
+      <span>Register now</span>
+      <i class="bi bi-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- Application Script -->
+  <script src="js/script.js?v=22"></script>
+  <script src="js/landing-scroll.js?v=6"></script>
+    <script src="js/landing-compare.js?v=3"></script>
+  <script src="js/landing-polish.js?v=3"></script>
+</body>
+
+</html>

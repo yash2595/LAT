@@ -1,0 +1,114 @@
+/* InternBoot landing polish layer — additive, loads after landing-refresh.css */
+
+/* Scroll progress */
+.fx-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:2600;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,#1652d6,#7c5cf4,#ff8a1e);box-shadow:0 0 14px rgba(124,92,244,.6);pointer-events:none}
+
+/* Cursor aura (desktop only) */
+.fx-aura{position:fixed;top:0;left:0;width:560px;height:560px;margin:-280px 0 0 -280px;z-index:1;border-radius:50%;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(circle,rgba(41,104,245,.13),rgba(124,92,244,.07) 42%,transparent 68%);will-change:transform}
+.fx-aura.on{opacity:1}
+
+/* Hero headline word-by-word reveal */
+.fx-w{display:inline-block;opacity:0;transform:translateY(.55em) rotate(2deg);filter:blur(8px);animation:fxWord .8s cubic-bezier(.16,1,.3,1) forwards;animation-delay:calc(1.9s + var(--i)*.09s)}
+@keyframes fxWord{to{opacity:1;transform:none;filter:none}}
+.hero-title .text-highlight.fx-w{background-image:linear-gradient(100deg,#1652d6,#7c5cf4,#bc69dc,#ff8a1e,#bc69dc,#7c5cf4,#1652d6)!important;background-size:300% 100%;animation:fxWord .8s cubic-bezier(.16,1,.3,1) forwards,fxFlow 6s linear 2.8s infinite;animation-delay:calc(1.9s + var(--i)*.09s),2.8s}
+@keyframes fxFlow{to{background-position:300% 0}}
+
+/* Spotlight glow injected into cards */
+.fx-glow{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .35s;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(41,104,245,.14),rgba(124,92,244,.08) 40%,transparent 70%)}
+.fx-glow::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),#2968f5,#bc69dc 45%,transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.fx-card:hover>.fx-glow{opacity:1}
+
+/* Button shine sweep */
+.fx-btn{position:relative;overflow:hidden;isolation:isolate}
+.fx-shine{position:absolute;top:0;bottom:0;left:-70%;width:45%;z-index:-1;pointer-events:none;transform:skewX(-22deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent)}
+.fx-btn:hover .fx-shine{animation:fxShine .85s ease}
+@keyframes fxShine{to{left:140%}}
+.fx-btn i.bi-arrow-right,.fx-btn i.bi-arrow-right-short{transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.fx-btn:hover i.bi-arrow-right,.fx-btn:hover i.bi-arrow-right-short{transform:translateX(5px)}
+
+@media (hover:hover) and (pointer:fine){
+  /* independent transform props so existing transforms stay untouched */
+  .fx-card{transition:translate .4s cubic-bezier(.16,1,.3,1),scale .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
+  .fx-card:hover{translate:0 -6px;scale:1.012;box-shadow:0 28px 60px -22px rgba(22,82,214,.35)}
+  .hiw-flow-card:hover .hiw-flow-icon{animation:fxWobble .6s ease}
+  .hiw-flow-card:hover .hiw-flow-num{letter-spacing:.06em;transition:letter-spacing .4s ease}
+  .accordion-item.fx-card:hover{translate:6px 0;scale:1}
+  .ib-nav-link{position:relative}
+  .ib-nav-link::after{content:"";position:absolute;left:12%;right:12%;bottom:2px;height:2px;border-radius:2px;background:linear-gradient(90deg,#1652d6,#ff8a1e);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .ib-nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+  .ib-footer a{transition:translate .25s ease,color .25s ease}
+  .ib-footer a:hover{translate:4px 0}
+  .gauge-lvl-btn{transition:translate .3s cubic-bezier(.16,1,.3,1),scale .3s}
+  .gauge-lvl-btn:hover{translate:0 -5px;scale:1.06}
+  .floating-apply-btn:hover{scale:1.08}
+}
+@keyframes fxWobble{25%{rotate:-10deg;scale:1.12}60%{rotate:8deg;scale:1.12}100%{rotate:0;scale:1}}
+
+/* Section headings: soft rise + underline draw on reveal */
+.section-head h2,.hiw-intro-title{background-image:linear-gradient(90deg,#ff8a1e,#7c5cf4);background-repeat:no-repeat;background-size:0 3px;background-position:0 100%;padding-bottom:6px;transition:background-size 1.1s .3s cubic-bezier(.16,1,.3,1)}
+.is-visible .section-head h2,.section-head.is-visible h2,.is-visible .hiw-intro-title{background-size:72px 3px}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-w{animation:none;opacity:1;transform:none;filter:none}
+  .hero-title .text-highlight.fx-w,.fx-btn:hover .fx-shine{animation:none}
+  .fx-aura{display:none}
+}
+
+/* centered headings: draw the underline from the centre */
+.text-center .section-head h2,.section-head.text-center h2,.text-center>h2{background-position:50% 100%}
+
+.fx-c{background-position:50% 100%!important}
+
+/* ===== v2: creative layer ===== */
+@property --fxa{syntax:"<angle>";inherits:false;initial-value:0deg}
+
+/* Level marquee band */
+.fx-marquee{position:relative;z-index:5;overflow:hidden;padding:34px 0;background:#f6f9fe}
+.fx-band{width:106%;margin-left:-3%;transform:rotate(-1.6deg);overflow:hidden;background:linear-gradient(100deg,#0d1b3a,#1652d6 55%,#7c5cf4);box-shadow:0 18px 40px -16px rgba(22,82,214,.55);padding:16px 0}
+.fx-track{display:flex;gap:34px;width:max-content;animation:fxMarq 38s linear infinite}
+.fx-band:hover .fx-track{animation-play-state:paused}
+.fx-track span{display:flex;align-items:center;gap:34px;white-space:nowrap;font:800 15px/1 var(--font,sans-serif);letter-spacing:.16em;color:#fff}
+.fx-track b{color:#ffb15c;font-weight:800}
+.fx-track em{font-style:normal;color:#ffbd59;font-size:18px;animation:fxSpin2 6s linear infinite;display:inline-block}
+@keyframes fxMarq{to{transform:translateX(-50%)}}
+@keyframes fxSpin2{to{rotate:360deg}}
+
+/* Section rail */
+.fx-rail{position:fixed;right:18px;top:50%;translate:0 -50%;z-index:1500;display:none;flex-direction:column;gap:14px}
+@media (min-width:1280px){.fx-rail{display:flex}}
+.fx-rail a{position:relative;width:10px;height:10px;border-radius:50%;background:#b9c6e2;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.fx-rail a.on{background:linear-gradient(135deg,#1652d6,#ff8a1e);scale:1.7;box-shadow:0 0 0 5px rgba(22,82,214,.15)}
+.fx-rail a::before{content:attr(data-l);position:absolute;right:22px;top:50%;translate:8px -50%;opacity:0;padding:5px 11px;border-radius:99px;background:#0d1b3a;color:#fff;font:700 11px/1 var(--font,sans-serif);letter-spacing:.08em;white-space:nowrap;pointer-events:none;transition:all .3s}
+.fx-rail a:hover::before{opacity:1;translate:0 -50%}
+
+/* Fee card orbiting border */
+.fee-card>.fx-orbit{position:absolute;inset:0;border-radius:inherit;padding:2.5px;pointer-events:none;z-index:4;background:conic-gradient(from var(--fxa),transparent 0 62%,#ff8a1e 78%,#7c5cf4 90%,#2968f5 97%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:fxOrbit 6s linear infinite}
+@keyframes fxOrbit{to{--fxa:360deg}}
+
+/* Drifting blobs */
+.fx-sec{position:relative;overflow:hidden}
+.fx-sec>.container{position:relative;z-index:1}
+.fx-blob{position:absolute;z-index:0;width:420px;height:420px;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none;animation:fxDrift 14s ease-in-out infinite alternate}
+.fx-blob.a{top:-120px;left:-100px;background:#9db8ff}
+.fx-blob.b{bottom:-140px;right:-100px;background:#ffd2a0;animation-delay:-6s}
+@keyframes fxDrift{to{transform:translate(90px,60px) scale(1.2)}}
+
+/* Final CTA: floating level chips + shimmer headline */
+.ib-cta{position:relative;overflow:hidden}
+.ib-cta .container{position:relative;z-index:2}
+.ib-cta h2{background:linear-gradient(100deg,#fff 30%,#ffd08a 50%,#fff 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:fxFlow2 5s linear infinite}
+@keyframes fxFlow2{to{background-position:-250% 0}}
+.fx-lv{position:absolute;z-index:1;display:flex;align-items:center;gap:8px;padding:9px 15px;border-radius:99px;color:#fff;font:700 12px/1 var(--font,sans-serif);letter-spacing:.06em;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px);animation:fxFloat 7s ease-in-out infinite alternate}
+.fx-lv b{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#ffb15c,#ff8a1e);color:#101c34}
+@keyframes fxFloat{to{transform:translateY(-26px) rotate(3deg)}}
+@media (max-width:991px){.fx-lv{display:none}}
+
+/* Footer watermark */
+.ib-footer{position:relative;overflow:hidden}
+.ib-footer>.container{position:relative;z-index:1}
+.fx-wm{position:absolute;left:50%;bottom:-.34em;translate:-50% 0;z-index:0;font:800 clamp(56px,11vw,170px)/1 var(--font,sans-serif);letter-spacing:-.04em;white-space:nowrap;color:transparent;-webkit-text-stroke:1.5px rgba(120,160,255,.13);pointer-events:none;user-select:none}
+.fx-wm i{font-style:normal;background:linear-gradient(100deg,transparent 30%,rgba(255,177,92,.5),transparent 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:fxFlow2 7s linear infinite}
+.ib-footer .bi-linkedin,.ib-footer .bi-instagram,.ib-footer .bi-facebook,.ib-footer .bi-youtube{transition:rotate .4s,scale .4s}
+.ib-footer a:hover .bi-linkedin,.ib-footer a:hover .bi-instagram,.ib-footer a:hover .bi-facebook,.ib-footer a:hover .bi-youtube{rotate:-12deg;scale:1.3}
+
+@media (prefers-reduced-motion:reduce){.fx-track,.fx-track em,.fee-card>.fx-orbit,.fx-blob,.fx-lv,.ib-cta h2,.fx-wm i{animation:none}}

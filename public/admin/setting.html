@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard - InternBoot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'intern-blue': '#2563eb',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/admin-dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/student-pages-theme.css?v=41" />
+</head>
+<body data-dashboard="admin" class="bg-slate-50 text-slate-900 flex h-screen overflow-hidden">
+
+                  <!-- Sidebar -->
+    <aside id="sidebar"
+      class="w-[250px] bg-gradient-to-b from-[#294fae] to-[#347de9] text-white h-full flex-shrink-0 transition-transform absolute lg:relative z-40 -translate-x-full lg:translate-x-0 flex flex-col">
+      <!-- Logo -->
+      <div class="h-16 shrink-0 px-5 flex items-center border-b border-white/10">
+        <a href="index.html" class="flex items-center gap-3 min-w-0">
+          <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 overflow-hidden">
+            <img src="../assets/internboot-logo.png" alt="InternBoot logo" class="w-full h-full object-contain p-1" />
+          </div>
+          <div class="min-w-0">
+            <div class="text-base font-bold leading-tight">InternBoot</div>
+            <div class="text-[11px] text-blue-100 mt-0.5">Admin Dashboard</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Main Navigation -->
+      <nav class="flex-1 min-h-0 overflow-y-auto p-4 space-y-1 scrollbar-hide">
+          <a
+            href="index.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="layout-dashboard" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Dashboard </span>
+          </a>
+          <a
+            href="candidates.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="users" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Candidates </span>
+          </a>
+          <a
+            href="results.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="file-check-2" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Results </span>
+          </a>
+          <a
+            href="certificates.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="award" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Certificates </span>
+          </a>
+          <a
+            href="questions.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="help-circle" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Questions </span>
+          </a>
+          <a
+            href="batches.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="calendar-days" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Batches </span>
+          </a>
+          <a
+            href="placement.html"
+            class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200"
+          >
+            <i data-lucide="building-2" class="w-5 h-5 shrink-0"></i>
+            <span class="truncate"> Placement </span>
+          </a>
+      </nav>
+
+      <!-- Bottom Section -->
+      <div class="shrink-0 border-t border-white/10 p-4 space-y-2">
+        <!-- Live Admin Profile -->
+        <a href="setting.html" class="flex items-center gap-3 rounded-xl bg-white/10 border border-white/10 px-3 py-2.5 hover:bg-white/15 transition-all duration-200">
+          <!-- Avatar -->
+          <div id="sidebar-admin-avatar" class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-300 to-purple-400 text-white font-bold text-sm">
+            <span id="sidebar-admin-initials">...</span>
+          </div>
+
+          <!-- Admin Details -->
+          <div class="min-w-0 flex-1">
+            <p id="sidebar-admin-name" class="truncate text-[13px] font-bold leading-tight text-white">Loading...</p>
+            <p id="sidebar-admin-role" class="mt-0.5 text-[11px] leading-tight text-blue-100/80 capitalize">Admin</p>
+          </div>
+
+          <!-- Online Status -->
+          <span class="h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400" title="Active"></span>
+        </a>
+
+        <!-- Logout -->
+        <button id="sidebar-logout-btn" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:bg-white/10 hover:text-white transition-all duration-200">
+          <i data-lucide="log-out" class="w-5 h-5 shrink-0"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+  <!-- Overlay -->
+  <div id="sidebarOverlay" class="fixed inset-0 bg-slate-900/50 z-30 hidden lg:hidden"></div>
+
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col h-screen overflow-hidden">
+                <!-- Header -->
+    <header class="h-16 bg-white border-b border-slate-200 px-4 sm:px-4 lg:px-5 flex items-center justify-between flex-shrink-0">
+      <!-- Header Left -->
+      <div class="flex items-center gap-3 min-w-0">
+        <button id="menuButton" class="lg:hidden text-slate-500 hover:text-slate-700 shrink-0">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+        <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+          <i data-lucide="settings" class="w-5 h-5"></i>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-sm font-semibold text-slate-600 whitespace-nowrap">Settings</h1>
+            <span class="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 text-[11px] font-medium">Admin</span>
+          </div>
+          <p class="hidden md:block text-[11px] text-slate-500">Configure platform settings and profile</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Scrollable Area -->
+    <main class="flex-1 overflow-auto bg-slate-50">
+
+      <div class="p-6 max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold text-slate-800 mb-6">Settings</h2>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+            <div class="px-6 py-4 border-b border-slate-100">
+                <h3 class="font-semibold text-slate-800">Profile Settings</h3>
+            </div>
+            <div class="p-6 flex flex-col md:flex-row gap-8">
+                <div class="flex flex-col items-center gap-4">
+                    <div class="h-24 w-24 rounded-full bg-intern-blue text-white flex items-center justify-center text-3xl font-medium overflow-hidden border-4 border-slate-50 relative group">
+                        <span id="settingsAvatarInitial">A</span>
+                        <img id="settingsAvatarImage" src="" alt="Avatar" class="h-full w-full object-cover hidden">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer" id="changePhotoButton">
+                            <i data-lucide="camera" class="h-6 w-6 text-white"></i>
+                        </div>
+                    </div>
+                    <input type="file" id="avatarUpload" class="hidden" accept="image/png, image/jpeg, image/webp">
+                </div>
+
+                <div class="flex-1 space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <label class="block text-sm font-medium text-slate-700">Full Name
+                            <input id="fullName" type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-intern-blue/20">
+                        </label>
+                        <label class="block text-sm font-medium text-slate-700">Email Address
+                            <input id="email" type="email" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-intern-blue/20">
+                        </label>
+                    </div>
+                    <label class="block text-sm font-medium text-slate-700">Phone Number
+                        <input id="phone" type="text" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-600 focus:outline-none focus:ring-2 focus:ring-intern-blue/20">
+                    </label>
+                    <div class="pt-2">
+                        <button id="saveChangesButton" class="bg-intern-blue hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium text-sm">Save Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-100">
+                <h3 class="font-semibold text-slate-800">System Preferences</h3>
+            </div>
+            <div class="p-6 space-y-6">
+                <div>
+                    <h4 class="text-sm font-medium text-slate-700 mb-3">Email Notifications</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="batchNotifications" class="rounded border-slate-300 text-intern-blue focus:ring-intern-blue">
+                            <span class="text-sm text-slate-600">Batch Creation & Reminders</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="assessmentNotifications" class="rounded border-slate-300 text-intern-blue focus:ring-intern-blue">
+                            <span class="text-sm text-slate-600">Assessment Completion Alerts</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="placementNotifications" class="rounded border-slate-300 text-intern-blue focus:ring-intern-blue">
+                            <span class="text-sm text-slate-600">Placement Status Updates</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" id="certificateNotifications" class="rounded border-slate-300 text-intern-blue focus:ring-intern-blue">
+                            <span class="text-sm text-slate-600">Certificate Generation Events</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-medium text-slate-700 mb-3">Dashboard Auto-Refresh</h4>
+                    <select id="refreshPreference" class="w-full md:w-64 rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-intern-blue/20">
+                        <option value="none">Never</option>
+                        <option value="5m">Every 5 minutes</option>
+                        <option value="15m">Every 15 minutes</option>
+                        <option value="30m">Every 30 minutes</option>
+                    </select>
+                </div>
+
+                <div class="pt-2">
+                    <button id="savePreferences" class="bg-intern-blue hover:bg-blue-700 text-white px-5 py-2 rounded-lg font-medium text-sm">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+  <script src="admin-init.js"></script>
+  <script src="../js/dashboard-effects.js?v=1"></script>
+</body>
+</html>
+
+
+
+
