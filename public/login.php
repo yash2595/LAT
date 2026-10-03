@@ -294,25 +294,32 @@ $pageTitle = 'Log In — InternBoot';
   /* LOGIN BUTTON */
   .btn-login-submit {
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    width: 100%; padding: 17px 32px; margin-top: 10px;
+    width: 100%; padding: 16px 32px; margin-top: 10px;
     font-family: 'Poppins','Segoe UI',Arial,sans-serif;
-    font-size: 15.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-    color: #2563eb; background: #ffffff; border: 2px solid #2563eb;
+    font-size: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    color: #ffffff; 
+    background: linear-gradient(135deg, #1e40af, #3b82f6); 
+    border: none;
     border-radius: 14px; cursor: pointer;
     position: relative; overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.25,0.8,0.25,1);
-    box-shadow: 0 4px 16px rgba(37,99,235,0.1); z-index: 1;
+    transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1);
+    box-shadow: 0 8px 20px rgba(37,99,235,0.25); 
+    z-index: 1;
     animation: btnReveal 0.5s 0.85s cubic-bezier(0.16,1,0.3,1) backwards;
   }
   @keyframes btnReveal { from { opacity: 0; transform: translateY(15px) scale(0.95); } }
-  .btn-login-submit .icon { transition: transform 0.4s ease; }
+  .btn-login-submit .icon { transition: transform 0.4s ease; color: #ffffff; }
   .btn-login-submit .icon svg { width: 18px; height: 18px; stroke-width: 2.5; }
-  .btn-login-submit::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: linear-gradient(135deg,#1e40af,#2563eb,#3b82f6); z-index: -2; transition: width 0.5s cubic-bezier(0.25,0.8,0.25,1); border-radius: 12px; }
-  .btn-login-submit::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent); z-index: -1; transition: left 0.6s ease; }
-  .btn-login-submit:hover { color: #ffffff; border-color: #1e40af; transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,99,235,0.3), 0 4px 14px rgba(37,99,235,0.15); }
-  .btn-login-submit:hover::before { width: 100%; }
+  
+  /* Shiny Glare Effect */
+  .btn-login-submit::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent); z-index: 2; transition: left 0.7s ease; }
+  
+  .btn-login-submit:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 14px 28px rgba(37,99,235,0.35); 
+  }
   .btn-login-submit:hover::after { left: 120%; }
-  .btn-login-submit:hover .icon { transform: translateX(-3px) rotate(-8deg) scale(1.15); color: #ffffff; }
+  .btn-login-submit:hover .icon { transform: translateX(-3px) rotate(-8deg) scale(1.15); }
   .btn-login-submit:active { transform: translateY(-1px) scale(0.98); }
 
   /* OR divider */
