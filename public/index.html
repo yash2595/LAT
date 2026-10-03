@@ -2807,6 +2807,111 @@
       transform: translateY(-50%)
     }
   </style>
+  <style>
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid var(--ln);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      height: 2px;
+      margin: 3px 0;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .mobile-register {
+      display: none;
+    }
+
+    @media (max-width: 960px) {
+      .nav {
+        gap: 10px;
+      }
+
+      .nav > .btn {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: block;
+        flex: 0 0 40px;
+        margin-left: auto;
+      }
+
+      .nav nav,
+      .nav nav.is-open {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        display: none;
+        max-height: calc(100vh - 100px);
+        max-height: calc(100svh - 100px);
+        margin: 0;
+        padding: 8px;
+        overflow-y: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        border: 1px solid var(--ln);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+      }
+
+      .nav nav.is-open {
+        display: flex;
+      }
+
+      .nav nav a {
+        padding: 10px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+      }
+
+      .nav nav a:hover {
+        background: var(--sky);
+      }
+
+      .nav nav .mobile-register {
+        display: block;
+        margin-top: 4px;
+        background: var(--bl);
+        color: #fff;
+        text-align: center;
+      }
+
+      .nav nav .mobile-register:hover {
+        background: #1e40af;
+        color: #fff;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav {
+        padding-right: 6px;
+        padding-left: 10px;
+      }
+
+      .nav img {
+        height: 23px;
+      }
+
+      .nav .btn {
+        padding: 7px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
   <script>
     setTimeout(() => {
       window.__ok || document.documentElement.classList.add("nj");
@@ -2818,13 +2923,58 @@
   <i id="pg"></i>
   <header class="nav">
     <a href="#top"><img src="assets/internboot-logo.png" alt="InternBoot" /></a>
-    <nav>
-      <a href="#contrast">Why LAT</a><a href="#climb">Levels</a><a href="#journey">100 days</a><a
-        href="#register">Registration</a><a href="#assessment">Assessment</a><a href="#fee">Fee</a><a
-        href="faq.html">FAQs</a><a href="contact.html">Contact</a><a href="login.php">Login</a>
+    <nav id="primary-nav" aria-label="Primary navigation">
+      <a href="#top">Home</a><a href="#contrast">About</a><a href="#journey">Achievements</a><a
+        href="contact.html">Contact</a><a href="faq.html">FAQ</a><a
+        href="verify-certificate.php">Past Achiever</a><a href="login.php">Login</a>
+      <a class="mobile-register" href="register.php">Register now</a>
     </nav>
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
     <a class="btn" href="register.php">Register now</a>
   </header>
+  <script>
+    (() => {
+      const nav = document.getElementById("primary-nav");
+      const toggle = document.querySelector(".nav-toggle");
+
+      if (!nav || !toggle) return;
+
+      const closeMenu = () => {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open navigation menu");
+      };
+
+      toggle.addEventListener("click", () => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        nav.classList.toggle("is-open", !isOpen);
+        toggle.setAttribute("aria-expanded", String(!isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+      });
+
+      nav.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest("a")) closeMenu();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !event.target.closest(".nav")) closeMenu();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+          closeMenu();
+          toggle.focus();
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 960) closeMenu();
+      });
+    })();
+  </script>
 
   <section class="hero" id="top">
     <div class="dg"></div>
