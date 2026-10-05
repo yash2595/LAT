@@ -29,10 +29,10 @@ $asideVariant = $asideVariant ?? 'login';
         <path class="trail-base" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40"/>
         <path class="trail-glow" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40" pathLength="100"/>
       </svg>
-      <div class="nd" style="--i:0"><b>L1</b><em>Foundation</em></div>
-      <div class="nd" style="--i:1"><b>L2</b><em>Core skills</em></div>
-      <div class="nd" style="--i:2"><b>L3</b><em>Applied</em></div>
-      <div class="nd" style="--i:3"><b>L4</b><em>Advanced</em></div>
+      <div class="nd" style="--i:0"><b>1</b><em>Foundation</em></div>
+      <div class="nd" style="--i:1"><b>2</b><em>Core skills</em></div>
+      <div class="nd" style="--i:2"><b>3</b><em>Applied</em></div>
+      <div class="nd" style="--i:3"><b>4</b><em>Advanced</em></div>
       <div class="nd apex" style="--i:4"><b><svg class="ico"><use href="#i-star"/></svg></b><em>Placement ready</em></div>
       <i class="me"></i>
       <div class="gc g-lvl"><svg class="ico"><use href="#i-check"/></svg>Level 3 cleared</div>

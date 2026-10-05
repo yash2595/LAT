@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../src/core/bootstrap.php';
 if (isset($_SESSION['user_id'])) { header('Location: /dashboard.html'); exit; }
-$pageTitle='Create Account — InternBoot'; $asideVariant='register'; $asideTitle='Your first level starts here.'; $asideLead='Create your account, take the Level Assessment Test and climb from Level 1 to Level 5. Every level you clear opens up placement opportunities.';
+$pageTitle='Create Account — InternBoot'; $asideVariant='register'; $asideTitle='Your first level starts here.'; $asideLead='Create your account, take the Level Assessment Test and climb through the stages. Every stage you clear opens up placement opportunities.';
 ?>
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title><?= htmlspecialchars($pageTitle) ?></title><link rel="icon" href="assets/css/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/auth-v3.css"></head>
 <body><div class="auth"><?php require __DIR__ . '/../src/core/auth_aside.php'; ?><main class="main"><div class="top"><img class="m-logo" src="assets/css/internboot-official-logo.webp" alt="InternBoot"><p>Already registered? <a href="login.php">Log in</a></p></div>
