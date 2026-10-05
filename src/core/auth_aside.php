@@ -76,16 +76,16 @@ $asideVariant = $asideVariant ?? 'login';
         .oc-btn.primary { background: #fff; color: #0f172a; box-shadow: 0 4px 10px rgba(255,255,255,0.2); }
         
         @keyframes float-right {
-          0%, 100% { transform: translateY(0) rotate(6deg) scale(1.05); }
-          50% { transform: translateY(-15px) rotate(4deg) scale(1.05); }
+          0%, 100% { transform: translateY(0) rotate(6deg) scale(0.9); }
+          50% { transform: translateY(-15px) rotate(4deg) scale(0.9); }
         }
         @keyframes float-left {
-          0%, 100% { transform: translateY(0) rotate(-5deg) scale(0.95); }
-          50% { transform: translateY(-12px) rotate(-7deg) scale(0.95); }
+          0%, 100% { transform: translateY(0) rotate(-5deg) scale(0.85); }
+          50% { transform: translateY(-12px) rotate(-7deg) scale(0.85); }
         }
       </style>
 
-      <div class="offer-card" style="top: 80px; right: -15px; animation: float-right 6s ease-in-out infinite;">
+      <div class="offer-card" style="top: -10px; right: -50px; animation: float-right 6s ease-in-out infinite;">
         <div class="oc-header">
           <div class="oc-icon blue">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -106,7 +106,7 @@ $asideVariant = $asideVariant ?? 'login';
         </div>
       </div>
 
-      <div class="offer-card" style="bottom: 50px; left: -25px; animation: float-left 7s ease-in-out infinite reverse;">
+      <div class="offer-card" style="bottom: 80px; left: -60px; animation: float-left 7s ease-in-out infinite reverse;">
         <div class="oc-header">
           <div class="oc-icon emerald">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
