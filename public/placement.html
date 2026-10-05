@@ -479,8 +479,40 @@
             </div>
           </div>
         </section>
+
+          <!-- =================================================
+               JOB OPPORTUNITIES FOR YOUR LEVEL
+          ================================================== -->
+          <section class="mt-6 px-5 pb-6">
+            <div class="flex items-center justify-between mb-4 gap-4 flex-wrap">
+              <div>
+                <h2 class="text-base font-bold text-slate-600">Job Opportunities for You</h2>
+                <p class="text-[13px] text-slate-500 mt-0.5">Jobs matched to your assessment level — apply directly from here.</p>
+              </div>
+              <button id="refreshJobsBtn"
+                class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-500 text-[12px] hover:bg-slate-50 transition">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                Refresh
+              </button>
+            </div>
+
+            <div id="jobsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div id="jobsLoading" class="col-span-2 flex items-center justify-center py-10 text-slate-400 gap-2">
+                <i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i>
+                <span class="text-sm">Loading opportunities…</span>
+              </div>
+              <div id="jobsEmpty" class="col-span-2 hidden bg-white rounded-2xl border border-slate-200 p-8 text-center shadow-sm">
+                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-intern-blue mx-auto mb-3">
+                  <i data-lucide="briefcase" class="w-6 h-6"></i>
+                </div>
+                <p class="text-slate-500 text-sm">No job opportunities are currently available for your level. Check back soon!</p>
+              </div>
+            </div>
+          </section>
+
       </main>
     </div>
+
 
     <!-- =====================================================
          EXISTING APP JS
@@ -684,8 +716,181 @@
     </script>
       <script src="js/dashboard-effects.js?v=2"></script>
   <script src="js/page-personal.js?v=1"></script>
+
+  <!-- Job Opportunities Section JS -->
+  <script>
+    (function () {
+      function escHtml(v) {
+        return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      async function getCsrf() {
+        try {
+          const r = await fetch('/api/admin/evaluate.php?action=csrf', { credentials: 'same-origin', headers: { Accept: 'application/json' } });
+          const d = await r.json();
+          return d.data?.token || null;
+        } catch { return null; }
+      }
+
+      async function loadJobs() {
+        const grid    = document.getElementById('jobsGrid');
+        const loading = document.getElementById('jobsLoading');
+        const empty   = document.getElementById('jobsEmpty');
+        if (!grid) return;
+
+        if (loading) loading.classList.remove('hidden');
+        if (empty)   empty.classList.add('hidden');
+        grid.querySelectorAll('.stu-job-card').forEach(c => c.remove());
+
+        try {
+          const res  = await fetch('api/jobs.php?action=list&_t=' + Date.now(), { credentials: 'same-origin', headers: { Accept: 'application/json' } });
+          if (res.status === 401) { window.location.href = 'login.php'; return; }
+          const data = await res.json();
+
+          if (loading) loading.classList.add('hidden');
+
+          const jobs = (data.data && Array.isArray(data.data)) ? data.data : [];
+
+          if (!jobs.length) {
+            if (empty) empty.classList.remove('hidden');
+            return;
+          }
+
+          jobs.forEach(j => {
+            const card = document.createElement('div');
+            card.className = 'stu-job-card bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col gap-3 hover:shadow-md transition';
+            const applied = +j.has_applied > 0;
+            let actionHtml = '';
+            let applyUrl = j.apply_link ? escHtml(j.apply_link) : '';
+            if (applyUrl && !applyUrl.startsWith('http')) {
+              applyUrl = 'https://' + applyUrl;
+            }
+
+            if (applied) {
+              if (applyUrl) {
+                actionHtml = `
+                  <div class="flex gap-2 w-full mt-auto">
+                    <button class="flex-1 py-2 rounded-xl text-sm font-semibold transition bg-emerald-50 text-emerald-700 cursor-not-allowed" disabled>&#10003; Applied</button>
+                    <a href="${applyUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl text-sm font-semibold transition border border-intern-blue text-intern-blue hover:bg-blue-50 block text-center">Open Link ↗</a>
+                  </div>`;
+              } else {
+                actionHtml = `<button class="mt-auto w-full py-2.5 rounded-xl text-sm font-semibold transition bg-slate-100 text-slate-400 cursor-not-allowed" disabled>&#10003; Already Applied</button>`;
+              }
+            } else if (applyUrl) {
+              actionHtml = `<a href="${applyUrl}" target="_blank" rel="noopener noreferrer" class="apply-job-link mt-auto w-full py-2.5 rounded-xl text-sm font-semibold transition bg-intern-blue text-white hover:bg-blue-700 block text-center" data-id="${j.id}">Apply & Redirect ↗</a>`;
+            } else {
+              actionHtml = `<button class="apply-job-btn mt-auto w-full py-2.5 rounded-xl text-sm font-semibold transition bg-intern-blue text-white hover:bg-blue-700" data-id="${j.id}">Apply Now</button>`;
+            }
+
+            card.innerHTML = `
+              <div class="flex items-start justify-between gap-2">
+                <div class="min-w-0">
+                  <p class="font-bold text-slate-700 truncate">${escHtml(j.job_title)}</p>
+                  <p class="text-[13px] text-intern-blue font-medium truncate">${escHtml(j.company_name)}</p>
+                </div>
+                ${applied
+                  ? '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Applied</span>'
+                  : '<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-[11px] font-semibold whitespace-nowrap">Open</span>'}
+              </div>
+              ${j.description ? '<p class="text-[13px] text-slate-500 leading-relaxed line-clamp-3">' + escHtml(j.description) + '</p>' : ''}
+              <div class="flex gap-3 flex-wrap text-[12px] text-slate-400">
+                ${j.salary_range ? '<span class="flex items-center gap-1"><i data-lucide="indian-rupee" class="w-3 h-3"></i>' + escHtml(j.salary_range) + '</span>' : ''}
+                ${j.location     ? '<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + escHtml(j.location) + '</span>' : ''}
+                ${j.jd_pdf_path  ? '<a href="api/jd_file.php?id=' + j.id + '" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>View PDF</a>' : ''}
+              </div>
+              ${actionHtml}
+            `;
+            grid.appendChild(card);
+          });
+
+          if (window.lucide && typeof window.lucide.createIcons === 'function') {
+            window.lucide.createIcons();
+          }
+
+          // Wire normal internal apply buttons
+          grid.querySelectorAll('.apply-job-btn').forEach(btn => {
+            btn.onclick = async () => {
+              btn.disabled = true;
+              btn.textContent = 'Applying…';
+              try {
+                const token = await getCsrf();
+                const r = await fetch('api/jobs.php?action=apply', {
+                  method: 'POST',
+                  credentials: 'same-origin',
+                  headers: { 
+                    'Content-Type': 'application/json', 
+                    'Accept': 'application/json',
+                    'X-CSRF-Token': token 
+                  },
+                  body: JSON.stringify({ job_id: +btn.dataset.id })
+                });
+                const d = await r.json();
+                if (d.status === 'success') {
+                  btn.outerHTML = `<button class="mt-auto w-full py-2.5 rounded-xl text-sm font-semibold transition bg-emerald-50 text-emerald-700 cursor-not-allowed" disabled>✓ Applied Successfully!</button>`;
+                } else {
+                  alert(d.message || 'Could not submit application.');
+                  btn.textContent = 'Apply Now';
+                  btn.disabled = false;
+                }
+              } catch (e) {
+                btn.textContent = 'Error – try again';
+                btn.disabled = false;
+              }
+            };
+          });
+
+          // Wire external apply links (fire-and-forget tracking)
+          grid.querySelectorAll('.apply-job-link').forEach(link => {
+            link.onclick = async () => {
+              try {
+                const token = await getCsrf();
+                fetch('api/jobs.php?action=apply', {
+                  method: 'POST',
+                  credentials: 'same-origin',
+                  headers: { 
+                    'Content-Type': 'application/json', 
+                    'Accept': 'application/json',
+                    'X-CSRF-Token': token 
+                  },
+                  body: JSON.stringify({ job_id: +link.dataset.id })
+                });
+                
+                // Keep the link available in case they close the tab by mistake
+                const url = link.href;
+                setTimeout(() => {
+                  link.outerHTML = `
+                    <div class="flex gap-2 w-full mt-auto animate-fade-in">
+                      <button class="flex-1 py-2 rounded-xl text-sm font-semibold transition bg-emerald-50 text-emerald-700 cursor-not-allowed" disabled>&#10003; Applied</button>
+                      <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-2 rounded-xl text-sm font-semibold transition border border-intern-blue text-intern-blue hover:bg-blue-50 block text-center">Open Link ↗</a>
+                    </div>`;
+                }, 500);
+              } catch (e) {}
+            };
+          });
+
+        } catch (err) {
+          if (loading) loading.classList.add('hidden');
+          if (empty)   empty.classList.remove('hidden');
+          console.error('Jobs load error:', err);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          loadJobs();
+          const refreshBtn = document.getElementById('refreshJobsBtn');
+          if (refreshBtn) refreshBtn.onclick = loadJobs;
+        });
+      } else {
+        loadJobs();
+        const refreshBtn = document.getElementById('refreshJobsBtn');
+        if (refreshBtn) refreshBtn.onclick = loadJobs;
+      }
+    })();
+  </script>
 </body>
 </html>
+
 
 
 

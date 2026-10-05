@@ -1655,7 +1655,349 @@
     notify(`Exported ${filtered.length} placement record${filtered.length === 1 ? "" : "s"}.`);
   }
 
+  // ─── JOB DESCRIPTIONS (JD) MANAGEMENT ──────────────────────────────────────
+
+  async function apiJobs(action, opts = {}) {
+    const method = opts.method || 'GET';
+    const url    = `/api/admin/jobs.php?action=${action}`;
+    const fetchOpts = { method, credentials: 'same-origin', headers: { Accept: 'application/json' } };
+    if (method.toUpperCase() === 'POST') {
+      const token = await getCsrfToken();
+      fetchOpts.headers['X-CSRF-Token'] = token;
+    }
+    
+    if (opts.body) {
+      if (opts.body instanceof FormData) {
+        fetchOpts.body = opts.body;
+      } else {
+        fetchOpts.headers['Content-Type'] = 'application/json';
+        fetchOpts.body = JSON.stringify(opts.body);
+      }
+    }
+    const res     = await fetch(url, fetchOpts);
+    const payload = await res.json();
+    if (payload.status === 'error') throw new Error(payload.message || 'API error');
+    return payload.data;
+  }
+
+  const LEVEL_COLORS = ['','bg-purple-100 text-purple-700','bg-blue-100 text-blue-700','bg-cyan-100 text-cyan-700','bg-amber-100 text-amber-700','bg-slate-100 text-slate-700'];
+
+  function renderJdCards(jobs) {
+    const grid     = $('#jdGrid');
+    const emptyMsg = $('#jdEmptyState');
+    if (!grid) return;
+
+    // Remove previous cards (keep the empty-state node)
+    grid.querySelectorAll('.jd-card').forEach(c => c.remove());
+
+    if (!jobs || !jobs.length) {
+      if (emptyMsg) emptyMsg.classList.remove('hidden');
+      return;
+    }
+    if (emptyMsg) emptyMsg.classList.add('hidden');
+
+    jobs.forEach(j => {
+      const levels = String(j.target_levels || '').split(',').map(x => x.trim()).filter(Boolean);
+      const levelBadges = levels.map(l =>
+        `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold ${LEVEL_COLORS[+l] || 'bg-slate-100 text-slate-700'}">L${l}</span>`
+      ).join(' ');
+
+      const statusBadge = j.status === 'active'
+        ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Active</span>`
+        : `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 text-[11px] font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>Inactive</span>`;
+
+      const card = document.createElement('div');
+      card.className = 'jd-card bg-white rounded-2xl border border-slate-100 shadow-sm p-5 flex flex-col gap-3 hover:shadow-md transition';
+      card.innerHTML = `
+        <div class="flex items-start justify-between gap-2">
+          <div class="min-w-0">
+            <p class="font-bold text-slate-800 truncate">${escapeHtml(j.job_title)}</p>
+            <p class="text-[13px] text-slate-500 truncate">${escapeHtml(j.company_name)}</p>
+          </div>
+          ${statusBadge}
+        </div>
+
+        <div class="flex flex-wrap gap-1 items-center">
+          <span class="text-[11px] text-slate-400 mr-1">Levels:</span>
+          ${levelBadges}
+        </div>
+
+        ${j.description ? `<p class="text-[13px] text-slate-500 leading-relaxed line-clamp-2">${escapeHtml(j.description)}</p>` : ''}
+
+        <div class="flex gap-2 flex-wrap text-[12px] text-slate-400">
+          ${j.salary_range  ? `<span class="flex items-center gap-1"><i data-lucide="indian-rupee" class="w-3 h-3"></i>${escapeHtml(j.salary_range)}</span>` : ''}
+          ${j.location      ? `<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>${escapeHtml(j.location)}</span>` : ''}
+          ${j.jd_pdf_path   ? `<a href="/api/jd_file.php?id=${j.id}" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>View PDF</a>` : ''}
+          ${j.apply_link    ? `<a href="${escapeHtml(j.apply_link)}" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="external-link" class="w-3 h-3"></i>Ext. Link</a>` : ''}
+          <span class="flex items-center gap-1 ml-auto"><i data-lucide="users" class="w-3 h-3"></i>${j.application_count || 0} applied</span>
+        </div>
+
+        <div class="border-t border-slate-100 pt-3 flex gap-2 flex-wrap">
+          <button class="jd-edit-btn flex-1 min-w-0 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 text-[12px] font-medium text-slate-600 hover:bg-slate-50 transition" data-id="${j.id}">
+            <i data-lucide="edit" class="w-3.5 h-3.5"></i> Edit
+          </button>
+          <button class="jd-toggle-btn flex-1 min-w-0 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border text-[12px] font-medium transition
+            ${j.status === 'active' ? 'border-amber-200 text-amber-700 hover:bg-amber-50' : 'border-emerald-200 text-emerald-700 hover:bg-emerald-50'}"
+            data-id="${j.id}" data-status="${escapeHtml(j.status)}">
+            <i data-lucide="${j.status === 'active' ? 'eye-off' : 'eye'}" class="w-3.5 h-3.5"></i>
+            ${j.status === 'active' ? 'Deactivate' : 'Activate'}
+          </button>
+          <button class="jd-applicants-btn flex items-center gap-1.5 px-3 py-2 rounded-lg border border-blue-200 text-blue-700 text-[12px] font-medium hover:bg-blue-50 transition"
+            data-id="${j.id}" data-title="${escapeHtml(j.job_title)}">
+            <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            Applicants
+          </button>
+          <button class="jd-delete-btn flex items-center gap-1.5 px-3 py-2 rounded-lg border border-red-200 text-red-600 text-[12px] font-medium hover:bg-red-50 transition"
+            data-id="${j.id}" data-title="${escapeHtml(j.job_title)}">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // Wire toggle buttons
+    grid.querySelectorAll('.jd-toggle-btn').forEach(btn => {
+      btn.onclick = async () => {
+        const newStatus = btn.dataset.status === 'active' ? 'inactive' : 'active';
+        try {
+          await apiJobs('update_status', { method: 'POST', body: { job_id: +btn.dataset.id, status: newStatus } });
+          notify(`JD ${newStatus === 'active' ? 'activated' : 'deactivated'}.`);
+          await loadJobs();
+        } catch (e) { notify(e.message, true); }
+      };
+    });
+
+    // Wire delete buttons
+    grid.querySelectorAll('.jd-delete-btn').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm(`Delete "${btn.dataset.title}"? This cannot be undone.`)) return;
+        try {
+          await apiJobs('delete', { method: 'POST', body: { job_id: +btn.dataset.id } });
+          notify('JD deleted.');
+          await loadJobs();
+        } catch (e) { notify(e.message, true); }
+      };
+    });
+
+    // Wire edit buttons
+    grid.querySelectorAll('.jd-edit-btn').forEach(btn => {
+      btn.onclick = () => {
+        const job = jobs.find(j => j.id == btn.dataset.id);
+        if (job) openPostJdModal(job);
+      };
+    });
+
+    // Wire applicants buttons
+    grid.querySelectorAll('.jd-applicants-btn').forEach(btn => {
+      btn.onclick = async () => {
+        try {
+          const apps = await apiJobs(`applications&job_id=${btn.dataset.id}`);
+          const list = Array.isArray(apps) ? apps : [];
+          
+          function renderTable() {
+            const rows = list.length
+              ? list.map(a => `
+                <tr class="border-b border-slate-100 last:border-0">
+                  <td class="px-4 py-3 font-medium text-slate-800">${escapeHtml(a.full_name)}</td>
+                  <td class="px-4 py-3 text-slate-500">${escapeHtml(a.email || '—')}</td>
+                  <td class="px-4 py-3">${a.level_assigned ? `<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold ${LEVEL_COLORS[+a.level_assigned] || 'bg-slate-100 text-slate-700'}">L${a.level_assigned}</span>` : '—'}</td>
+                  <td class="px-4 py-3 text-slate-500">${a.percentage !== null && a.percentage !== undefined ? a.percentage + '%' : '—'}</td>
+                  <td class="px-4 py-3 text-slate-400 text-xs">${formatDate(a.applied_at)}</td>
+                  <td class="px-4 py-3 text-right">
+                    <button class="delete-app-btn text-red-500 hover:text-red-700 p-1" data-id="${a.application_id}" title="Delete Application"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+                  </td>
+                </tr>`).join('')
+              : `<tr><td colspan="6" class="px-4 py-8 text-center text-slate-400 text-sm">No applications yet</td></tr>`;
+              
+            return rows;
+          }
+
+          const root = modal(`Applicants – ${escapeHtml(btn.dataset.title)}`, `
+            <div class="flex justify-end mb-3">
+              <button id="exportAppsBtn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 text-[13px] font-semibold hover:bg-emerald-100 transition shadow-sm">
+                <i data-lucide="download" class="h-4 w-4"></i> Export CSV
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 text-slate-500 text-xs uppercase">
+                  <tr>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Level</th>
+                    <th class="px-4 py-2">Score</th>
+                    <th class="px-4 py-2">Applied</th>
+                    <th class="px-4 py-2 text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="appsTbody">${renderTable()}</tbody>
+              </table>
+            </div>
+          `);
+
+          $('#exportAppsBtn', root).onclick = () => {
+            if (!list.length) return alert('No applicants to export');
+            let csv = 'Name,Email,Level,Score,Applied At\n';
+            list.forEach(a => {
+              csv += `"${(a.full_name||'').replace(/"/g,'""')}","${(a.email||'').replace(/"/g,'""')}",${a.level_assigned||''},${a.percentage||''},"${formatDate(a.applied_at)}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Applicants_${btn.dataset.title.replace(/\s+/g,'_')}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          };
+
+          function attachDeleteHandlers() {
+            $$('.delete-app-btn', root).forEach(delBtn => {
+              delBtn.onclick = async () => {
+                if (!confirm("Are you sure you want to delete this applicant's record from this job?")) return;
+                try {
+                  await apiJobs('delete_application', {
+                    method: 'POST',
+                    body: { application_id: +delBtn.dataset.id }
+                  });
+                  notify('Application deleted successfully');
+                  // Remove from local list and re-render
+                  const idx = list.findIndex(a => a.application_id == delBtn.dataset.id);
+                  if (idx > -1) list.splice(idx, 1);
+                  $('#appsTbody', root).innerHTML = renderTable();
+                  attachDeleteHandlers();
+                  if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
+                  // Also refresh the background jobs grid to update applied count
+                  loadJobs();
+                } catch (e) {
+                  notify(e.message, true);
+                }
+              };
+            });
+          }
+          attachDeleteHandlers();
+          
+        } catch (e) { notify(e.message, true); }
+      };
+    });
+  }
+
+  function openPostJdModal(job = null) {
+    const isEdit = !!job;
+    const root = modal(isEdit ? 'Edit Job Description' : 'Post New Job Description', `
+      <form id="postJdForm" class="space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm text-slate-600">Company Name *
+            <input id="jdCompany" value="${isEdit ? escapeHtml(job.company_name) : ''}" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="e.g. Infosys" required />
+          </label>
+          <label class="block text-sm text-slate-600">Job Title *
+            <input id="jdTitle" value="${isEdit ? escapeHtml(job.job_title) : ''}" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="e.g. Software Engineer" required />
+          </label>
+        </div>
+
+        <label class="block text-sm text-slate-600">Description
+          <textarea id="jdDesc" rows="3" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="Brief job description...">${isEdit ? escapeHtml(job.description || '') : ''}</textarea>
+        </label>
+
+        <div>
+          <p class="text-sm font-medium text-slate-700 mb-2">Target Levels * <span class="text-[12px] text-slate-400 font-normal">(select which levels can see this JD)</span></p>
+          <div class="flex flex-wrap gap-3">
+            ${[1,2,3,4,5].map(l => `
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" name="jd_level" value="${l}" ${isEdit && (job.target_levels||'').split(',').includes(String(l)) ? 'checked' : ''} class="jd-level-chk w-4 h-4 rounded border-slate-300 accent-intern-blue" />
+                <span class="text-sm text-slate-600">Level ${l}</span>
+              </label>`).join('')}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <label class="block text-sm text-slate-600">Salary Range
+            <input id="jdSalary" value="${isEdit ? escapeHtml(job.salary_range || '') : ''}" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="e.g. ₹4–6 LPA" />
+          </label>
+          <label class="block text-sm text-slate-600">Location
+            <input id="jdLocation" value="${isEdit ? escapeHtml(job.location || '') : ''}" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="e.g. Bangalore / Remote" />
+          </label>
+        </div>
+        
+        <label class="block text-sm text-slate-600">Upload JD PDF (Optional)
+          <input type="file" id="jdPdf" accept="application/pdf" class="mt-1 w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+          ${isEdit && job.jd_pdf_path ? `<p class="text-[11px] text-slate-400 mt-1">Leave empty to keep existing PDF.</p>` : ''}
+        </label>
+        
+        <label class="block text-sm text-slate-600">External Apply Link (Optional)
+          <input id="jdApplyLink" value="${isEdit ? escapeHtml(job.apply_link || '') : ''}" type="url" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-intern-blue/20" placeholder="e.g. https://forms.gle/... or company career page" />
+          <p class="text-[11px] text-slate-400 mt-1">If provided, the "Apply Now" button will track the click internally and then redirect the student to this URL.</p>
+        </label>
+
+        <button type="submit" class="w-full rounded-xl bg-intern-blue px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700 transition">
+          ${isEdit ? 'Save Changes' : 'Post Job Description'}
+        </button>
+      </form>
+    `);
+
+    $('#postJdForm', root).onsubmit = async (e) => {
+      e.preventDefault();
+      const levels = [...$$('.jd-level-chk', root).filter(c => c.checked)].map(c => c.value).join(',');
+      if (!levels) { notify('Please select at least one target level.', true); return; }
+
+      const submitBtn = $('button[type="submit"]', root);
+      submitBtn.disabled = true;
+      submitBtn.textContent = isEdit ? 'Saving...' : 'Posting...';
+
+      try {
+        const formData = new FormData();
+        if (isEdit) formData.append('id', job.id);
+        formData.append('company_name', $('#jdCompany', root).value.trim());
+        formData.append('job_title', $('#jdTitle', root).value.trim());
+        formData.append('description', $('#jdDesc', root).value.trim());
+        formData.append('target_levels', levels);
+        formData.append('salary_range', $('#jdSalary', root).value.trim());
+        formData.append('location', $('#jdLocation', root).value.trim());
+        formData.append('apply_link', $('#jdApplyLink', root).value.trim());
+        
+        const pdfInput = $('#jdPdf', root);
+        if (pdfInput.files && pdfInput.files.length > 0) {
+          formData.append('jd_pdf', pdfInput.files[0]);
+        }
+
+        await apiJobs(isEdit ? 'edit' : 'create', {
+          method: 'POST',
+          body: formData
+        });
+        root.remove();
+        notify(isEdit ? 'Job description updated successfully!' : 'Job description posted successfully!');
+        await loadJobs();
+      } catch (err) {
+        notify(err.message, true);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Post Job Description';
+      }
+    };
+  }
+
+  async function loadJobs() {
+    try {
+      const jobs = await apiJobs('list');
+      renderJdCards(Array.isArray(jobs) ? jobs : []);
+    } catch (e) {
+      console.error('loadJobs error:', e);
+    }
+
+    // Wire "Post New JD" button (idempotent)
+    const postBtn = $('#postNewJdBtn');
+    if (postBtn && !postBtn.dataset.bound) {
+      postBtn.dataset.bound = '1';
+      postBtn.onclick = openPostJdModal;
+    }
+  }
+
+  // ────────────────────────────────────────────────────────────────────────────
+
   async function loadPlacements() {
+
     const data = await api("placements"),
       rows = data.placements || [];
     currentPlacementRows = rows;
@@ -1722,7 +2064,10 @@
       (btn) => (btn.onclick = () => openPlacementEditor(btn)),
     );
     wirePlacementFilters();
+    // Also load Job Descriptions section
+    await loadJobs();
   }
+
 
   function openPlacementEditor(btn) {
     const root = modal(
@@ -2309,6 +2654,128 @@
         } finally {
           cBtn.textContent = "Generate Certificate";
           cBtn.disabled = false;
+        }
+      };
+    }
+    
+    const autoGenBtn = $("#autoGenStatusButton");
+    if (autoGenBtn && !autoGenBtn.dataset.bound) {
+      autoGenBtn.dataset.bound = "1";
+      autoGenBtn.onclick = async () => {
+        try {
+          // Add loading state
+          const originalHTML = autoGenBtn.innerHTML;
+          autoGenBtn.innerHTML = `<i class="ri-loader-4-line animate-spin h-4 w-4"></i> Loading...`;
+          autoGenBtn.disabled = true;
+
+          const res = await apiQbank("auto_generate?action=status");
+          
+          let upcomingHtml = '';
+          if (res.upcoming_exams && res.upcoming_exams.length > 0) {
+            upcomingHtml = res.upcoming_exams.map(e => `
+              <div class="mb-3 p-3 rounded-lg border border-slate-200 bg-slate-50 flex flex-col gap-1 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-slate-800">${escapeHtml(e.assessment_title)}</span>
+                  <span class="text-xs font-medium text-slate-500">${escapeHtml(e.exam_date)} ${escapeHtml(e.start_time.slice(0,5))}</span>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs text-slate-600">Requires: ${e.total_questions} Qs | Approved: <span class="${e.approved_count >= e.total_questions ? 'text-green-600 font-bold' : 'text-amber-600 font-bold'}">${e.approved_count}</span></span>
+                  ${e.already_generated > 0 ? `<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">Auto-Generated</span>` : (e.approved_count >= e.total_questions ? `<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Ready</span>` : `<span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">Waiting for trigger</span>`)}
+                </div>
+              </div>
+            `).join('');
+          } else {
+            upcomingHtml = `<div class="p-4 text-center text-sm text-slate-500 border border-slate-200 rounded-lg">No upcoming exams scheduled.</div>`;
+          }
+
+          let logsHtml = '';
+          if (res.logs && res.logs.length > 0) {
+            logsHtml = res.logs.map(l => `
+              <div class="mb-2 p-3 rounded-lg border ${l.status === 'completed' ? 'border-green-200 bg-green-50/50' : (l.status === 'failed' ? 'border-red-200 bg-red-50/50' : 'border-slate-200 bg-slate-50')} flex flex-col gap-1 text-sm">
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-slate-800">${escapeHtml(l.assessment_title || 'Unknown Assessment')}</span>
+                  <span class="text-xs font-medium text-slate-500">${escapeHtml(l.created_at)}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-xs text-slate-600">${escapeHtml(l.details)}</span>
+                  <span class="text-xs font-bold ${l.status === 'completed' ? 'text-green-600' : (l.status === 'failed' ? 'text-red-600' : 'text-slate-600')}">${escapeHtml(l.status.toUpperCase())}</span>
+                </div>
+              </div>
+            `).join('');
+          } else {
+            logsHtml = `<div class="p-4 text-center text-sm text-slate-500 border border-slate-200 rounded-lg">No generation logs found.</div>`;
+          }
+
+          const html = `
+            <div class="p-6 space-y-6">
+              <!-- Header Stats -->
+              <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-4 flex justify-between items-center">
+                <div>
+                  <h4 class="font-semibold text-indigo-900 flex items-center gap-2"><i data-lucide="bot" class="h-5 w-5"></i> Auto-Generation Engine</h4>
+                  <p class="text-xs text-indigo-700 mt-1">Automatically generates test questions 1.5 hours before an exam starts if the pool is insufficient.</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs text-indigo-700 font-medium">Server Time</div>
+                  <div class="text-sm font-bold text-indigo-900 font-mono">${escapeHtml(res.server_time)}</div>
+                </div>
+              </div>
+
+              <!-- Content Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Left: Upcoming Exams -->
+                <div>
+                  <div class="flex justify-between items-end mb-3">
+                    <h5 class="font-semibold text-slate-800 text-sm">Upcoming Exams</h5>
+                    <span class="text-xs text-slate-500">Auto-triggers for exams within 90 mins</span>
+                  </div>
+                  <div class="max-h-64 overflow-y-auto pr-1">
+                    ${upcomingHtml}
+                  </div>
+                  <button id="triggerAutoGenBtn" class="mt-4 w-full py-2.5 rounded-lg bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition flex items-center justify-center gap-2 shadow-sm">
+                    <i data-lucide="zap" class="h-4 w-4"></i> Trigger Auto-Generation Now
+                  </button>
+                  <p class="text-[10px] text-slate-400 text-center mt-2 leading-tight">Clicking this will forcefully run the background cron script and generate questions for any upcoming exam in the next 1.5 hours that doesn't have enough questions.</p>
+                </div>
+
+                <!-- Right: Logs -->
+                <div>
+                  <h5 class="font-semibold text-slate-800 text-sm mb-3">Recent Generation Logs</h5>
+                  <div class="max-h-80 overflow-y-auto pr-1">
+                    ${logsHtml}
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+
+          modal("Auto-Generation Status", html);
+          if (typeof lucide !== 'undefined') lucide.createIcons();
+
+          const triggerBtn = $("#triggerAutoGenBtn");
+          if (triggerBtn) {
+            triggerBtn.onclick = async () => {
+              triggerBtn.disabled = true;
+              triggerBtn.innerHTML = `<i class="ri-loader-4-line animate-spin h-4 w-4"></i> Generating Questions...`;
+              try {
+                const triggerRes = await apiQbank("auto_generate", { method: "POST" });
+                notify("Auto-generation triggered successfully!");
+                $("#m7Modal").remove();
+                await loadQuestions();
+              } catch (err) {
+                notify("Auto-generation failed: " + err.message, true);
+                triggerBtn.disabled = false;
+                triggerBtn.innerHTML = `<i data-lucide="zap" class="h-4 w-4"></i> Trigger Auto-Generation Now`;
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+              }
+            };
+          }
+          
+        } catch (e) {
+          notify(e.message, true);
+        } finally {
+          autoGenBtn.innerHTML = `<i data-lucide="bot" class="h-4 w-4"></i> Auto-Gen Status`;
+          autoGenBtn.disabled = false;
+          if (typeof lucide !== 'undefined') lucide.createIcons();
         }
       };
     }
