@@ -24,79 +24,88 @@ $asideVariant = $asideVariant ?? 'login';
   <div class="hero">
     <h1><?= htmlspecialchars($asideTitle) ?></h1>
     <p class="lead"><?= htmlspecialchars($asideLead) ?></p>
-    <div class="lat-features">
-      <div class="lat-feat">
-        <div class="lf-ico"><svg class="ico"><use href="#i-cap"/></svg></div>
-        <div class="lf-txt">
-          <h4>Multi-Level Assessments</h4>
-          <p>Progress through 5 stages of difficulty to prove your skills</p>
-        </div>
-      </div>
-      <div class="lat-feat">
-        <div class="lf-ico"><svg class="ico"><use href="#i-shield"/></svg></div>
-        <div class="lf-txt">
+    <div class="map" aria-hidden="true">
+      <svg class="trail" viewBox="0 0 460 300" fill="none">
+        <path class="trail-base" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40"/>
+        <path class="trail-glow" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40" pathLength="100"/>
+      </svg>
+      <div class="nd" style="--i:0"><b>1</b><em>Foundation</em></div>
+      <div class="nd" style="--i:1"><b>2</b><em>Core skills</em></div>
+      <div class="nd" style="--i:2"><b>3</b><em>Applied</em></div>
+      <div class="nd" style="--i:3"><b>4</b><em>Advanced</em></div>
+      <div class="nd apex" style="--i:4"><b><svg class="ico"><use href="#i-star"/></svg></b><em>Placement ready</em></div>
+      <i class="me"></i>
+      <!-- Floating Feature Cards (LAT Specific, compact and carefully placed) -->
+      <style>
+        .feat-card {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          background: rgba(15, 23, 42, 0.5);
+          border: 1px solid rgba(255,255,255,0.12);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          padding: 10px 14px;
+          border-radius: 14px;
+          box-shadow: 0 16px 30px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+          max-width: 190px;
+          z-index: 10;
+        }
+        .fc-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.08);
+          border: 1px solid rgba(255,255,255,0.05);
+          display: grid;
+          place-items: center;
+          flex-shrink: 0;
+          color: #fff;
+        }
+        .fc-icon svg {
+          width: 16px;
+          height: 16px;
+        }
+        .fc-text h4 {
+          margin: 0 0 2px;
+          font-size: 12px;
+          color: #fff;
+          font-weight: 800;
+        }
+        .fc-text p {
+          margin: 0;
+          font-size: 10.5px;
+          color: #94a3b8;
+          line-height: 1.3;
+          font-weight: 500;
+        }
+        @keyframes float-l {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+        @keyframes float-r {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+      </style>
+
+      <div class="feat-card" style="top: 150px; left: -10px; animation: float-l 6s ease-in-out infinite;">
+        <div class="fc-icon"><svg class="ico"><use href="#i-shield"/></svg></div>
+        <div class="fc-text">
           <h4>AI-Proctored Exams</h4>
-          <p>Secure and fair testing environment for all candidates</p>
+          <p>Secure testing environment</p>
         </div>
       </div>
-      <div class="lat-feat">
-        <div class="lf-ico"><svg class="ico"><use href="#i-check"/></svg></div>
-        <div class="lf-txt">
-          <h4>Instant Skill Reports</h4>
-          <p>Get immediate feedback and detailed performance analytics</p>
-        </div>
-      </div>
-      <div class="lat-feat">
-        <div class="lf-ico"><svg class="ico"><use href="#i-star"/></svg></div>
-        <div class="lf-txt">
+
+      <div class="feat-card" style="bottom: -10px; right: -10px; animation: float-r 7s ease-in-out infinite reverse;">
+        <div class="fc-icon"><svg class="ico"><use href="#i-star"/></svg></div>
+        <div class="fc-text">
           <h4>Direct Placements</h4>
-          <p>Top performers get direct interview calls and placement offers</p>
+          <p>Get direct interview calls</p>
         </div>
       </div>
     </div>
-    <style>
-      .lat-features {
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 28px;
-      }
-      .lat-feat {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-      }
-      .lf-ico {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .lf-ico .ico {
-        width: 24px;
-        height: 24px;
-        color: #fff;
-      }
-      .lf-txt h4 {
-        margin: 0 0 6px;
-        font-size: 16px;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: 0.2px;
-      }
-      .lf-txt p {
-        margin: 0;
-        font-size: 13.5px;
-        font-weight: 500;
-        color: #94a3b8;
-        line-height: 1.4;
-      }
-    </style>
   </div>
   <div class="stats"><div><b>10,000+</b><span>Students</span></div><div><b>500+</b><span>Companies</span></div><div><b>4.9/5</b><span>Rating</span></div></div>
 </aside>
