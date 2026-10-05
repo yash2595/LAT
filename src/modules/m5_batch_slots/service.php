@@ -678,17 +678,17 @@ function auto_generate_questions_for_upcoming_exams(mysqli $conn): void {
         SELECT 
             b.assessment_id,
             a.title AS assessment_title,
-            a.question_bank_id,
+            qb.id AS question_bank_id,
             a.total_questions
         FROM exam_schedules s
         JOIN batches b ON b.id = s.batch_id
         JOIN exam_slots es ON es.exam_schedule_id = s.id
         JOIN assessments a ON a.id = b.assessment_id
-        WHERE s.status = 'provisional' OR s.status = 'scheduled'
+        JOIN question_banks qb ON qb.assessment_id = a.id
+        WHERE (s.status = 'provisional' OR s.status = 'scheduled')
           AND s.is_closed = 0
-          AND a.question_bank_id IS NOT NULL
           AND CONCAT(s.exam_date, ' ', es.start_time) <= ?
-        GROUP BY b.assessment_id, a.title, a.question_bank_id, a.total_questions
+        GROUP BY b.assessment_id, a.title, qb.id, a.total_questions
     ";
     
     $stmt = $conn->prepare($sql);
