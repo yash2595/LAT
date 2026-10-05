@@ -49,11 +49,12 @@
         width: 0;
         height: 0;
       }
+
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/student-dashboard.css?v=35" />
+  <link rel="stylesheet" href="assets/css/student-dashboard.css?v=37" />
     <link rel="stylesheet" href="assets/css/student-pages-theme.css?v=8" />
     <link rel="stylesheet" href="assets/css/student-exam-theme.css?v=4" />
 </head>
@@ -89,7 +90,7 @@
         </nav>
         <div class="shrink-0 border-t-2 border-white/15 p-4 space-y-2">
           <a href="profile.html" class="flex items-center gap-3 rounded-2xl px-3 py-2.5 bg-white/10 border-2 border-white/20 transition hover:bg-white/15">
-            <div id="sidebar-student-avatar" class="av h-10 w-10 text-sm" >
+            <div id="sidebar-student-avatar" class="av relative h-10 w-10 overflow-hidden text-sm" >
               <span data-candidate="initials">KB</span>
             </div>
             <div class="min-w-0 flex-1">
@@ -143,11 +144,10 @@
             title="Open My Profile"
             class="flex items-center gap-3 rounded-xl px-2 py-1.5 hover:bg-slate-50 transition shrink-0"
           >
-            <div
-              class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold"
-              data-candidate="initials"
+            <div id="candidate-header-avatar"
+              class="relative h-9 w-9 overflow-hidden rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-semibold"
             >
-              --
+              <span data-candidate="initials">--</span>
             </div>
 
             <div class="hidden sm:flex flex-col min-w-0">
@@ -527,6 +527,75 @@
               </section>
             </div>
 
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+              <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-slate-100 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <i data-lucide="camera" class="w-5 h-5"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <h2 class="text-sm font-semibold text-slate-600">Profile Photo</h2>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Add a photo so your profile is easy to recognize</p>
+                  </div>
+                </div>
+                <div class="p-5 flex flex-col sm:flex-row items-center gap-5">
+                  <div class="w-24 h-24 shrink-0 rounded-full bg-blue-50 border-4 border-white shadow-md ring-1 ring-slate-200 flex items-center justify-center overflow-hidden">
+                    <span id="profile-photo-placeholder" class="text-2xl font-bold text-blue-600" data-candidate="initials">--</span>
+                    <img id="profile-photo-preview" class="hidden w-full h-full object-cover" alt="Your profile photo">
+                  </div>
+                  <div class="min-w-0 flex-1 text-center sm:text-left">
+                    <p id="profile-photo-status" class="text-sm font-semibold text-slate-700">No profile photo uploaded</p>
+                    <p class="mt-1 text-xs text-slate-500">JPG, PNG, or WebP. Maximum file size: 5 MB.</p>
+                    <label for="profile-photo-input" class="mt-3 inline-flex cursor-pointer items-center gap-2 rounded-xl bg-intern-blue px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700">
+                      <i data-lucide="upload" class="h-4 w-4"></i>
+                      <span id="profile-photo-action">Upload photo</span>
+                    </label>
+                    <input id="profile-photo-input" class="sr-only" type="file" accept="image/jpeg,image/png,image/webp">
+                    <p id="profile-photo-message" class="mt-2 text-xs" role="status" aria-live="polite"></p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-4 py-3 border-b border-slate-100 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                    <i data-lucide="file-user" class="w-5 h-5"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <h2 class="text-sm font-semibold text-slate-600">Resume</h2>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Keep your latest resume attached to your profile</p>
+                  </div>
+                </div>
+                <div class="p-5 space-y-4">
+                  <div class="flex min-w-0 items-start gap-4">
+                    <div class="w-12 h-12 shrink-0 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center">
+                      <i data-lucide="file-text" class="w-6 h-6"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                      <p id="resume-status" class="text-sm font-semibold text-slate-700">No resume uploaded</p>
+                      <p class="mt-1 text-xs text-slate-500">PDF only · Maximum file size: 5 MB</p>
+                    </div>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <a id="resume-view" class="hidden items-center gap-2 rounded-xl border border-slate-200 px-3 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-intern-blue/30" href="api/profile_file.php?type=resume" target="_blank" rel="noopener">
+                      <i data-lucide="eye" class="h-4 w-4"></i>
+                      View resume
+                    </a>
+                    <a id="resume-download" class="hidden items-center gap-2 rounded-xl border border-slate-200 px-3 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-intern-blue/30" href="api/profile_file.php?type=resume&amp;download=1">
+                      <i data-lucide="download" class="h-4 w-4"></i>
+                      Download
+                    </a>
+                    <label for="resume-input" class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-intern-blue px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-700 focus-within:ring-2 focus-within:ring-intern-blue/30">
+                      <i data-lucide="upload" class="h-4 w-4"></i>
+                      <span id="resume-action">Upload resume</span>
+                    </label>
+                    <input id="resume-input" class="sr-only" type="file" accept="application/pdf,.pdf">
+                  </div>
+                  <p id="resume-message" class="hidden text-xs" role="status" aria-live="polite"></p>
+                </div>
+              </section>
+            </div>
+
             
           </div>
         </section>
@@ -538,7 +607,7 @@
          DO NOT CHANGE
     ====================================================== -->
 
-    <script src="js/app.js?v=19"></script>
+    <script src="js/app.js?v=21"></script>
 
     <!-- Lucide Icons -->
     <script>
@@ -583,6 +652,113 @@
 
         // Initial sync
         syncSidebarProfile();
+      });
+
+      function setProfileFileState(type, uploaded) {
+        if (type === "photo") {
+          const image = document.getElementById("profile-photo-preview");
+          const placeholder = document.getElementById("profile-photo-placeholder");
+          document.getElementById("profile-photo-status").textContent = uploaded
+            ? "Profile photo uploaded"
+            : "No profile photo uploaded";
+          document.getElementById("profile-photo-action").textContent = uploaded
+            ? "Change photo"
+            : "Upload photo";
+          if (uploaded) {
+            image.onload = () => {
+              image.classList.remove("hidden");
+              placeholder.classList.add("hidden");
+            };
+            image.onerror = () => {
+              image.classList.add("hidden");
+              placeholder.classList.remove("hidden");
+            };
+            image.src = `api/profile_file.php?type=photo&t=${Date.now()}`;
+          } else {
+            image.removeAttribute("src");
+            image.classList.add("hidden");
+            placeholder.classList.remove("hidden");
+          }
+          return;
+        }
+
+        const view = document.getElementById("resume-view");
+        const download = document.getElementById("resume-download");
+        document.getElementById("resume-status").textContent = uploaded
+          ? "Resume uploaded"
+          : "No resume uploaded";
+        document.getElementById("resume-action").textContent = uploaded
+          ? "Replace resume"
+          : "Upload resume";
+        view.classList.toggle("hidden", !uploaded);
+        view.classList.toggle("inline-flex", uploaded);
+        download.classList.toggle("hidden", !uploaded);
+        download.classList.toggle("inline-flex", uploaded);
+      }
+
+      async function uploadProfileFile(type, file) {
+        const message = document.getElementById(type === "photo" ? "profile-photo-message" : "resume-message");
+        const input = document.getElementById(type === "photo" ? "profile-photo-input" : "resume-input");
+        message.textContent = "";
+        message.className = type === "photo" ? "mt-2 text-xs" : "hidden text-xs";
+
+        if (!file) return;
+        if (file.size > 5 * 1024 * 1024) {
+          message.textContent = "The selected file exceeds the 5 MB limit.";
+          message.classList.remove("hidden");
+          message.classList.add("text-rose-600");
+          input.value = "";
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("type", type);
+        formData.append("file", file);
+
+        try {
+          const csrfResponse = await fetch("api/auth/csrf.php", {
+            headers: { "Accept": "application/json" }
+          });
+          const csrfPayload = await csrfResponse.json();
+          if (!csrfResponse.ok || csrfPayload.status !== "success" || !csrfPayload.data?.token) {
+            throw new Error(csrfPayload.message || "Unable to start a secure upload. Refresh and try again.");
+          }
+
+          const response = await fetch("api/profile_upload.php", {
+            method: "POST",
+            headers: { "X-CSRF-Token": csrfPayload.data.token },
+            body: formData
+          });
+          const payload = await response.json();
+          if (!response.ok || payload.status !== "success") {
+            throw new Error(payload.message || "Upload failed. Please try again.");
+          }
+
+          setProfileFileState(type, true);
+          if (type === "photo" && typeof updateStudentAvatars === "function") {
+            const candidateName = document.querySelector('[data-candidate="name"]')?.textContent.trim();
+            updateStudentAvatars(candidateName, "uploaded");
+          }
+          message.textContent = type === "photo" ? "Profile photo updated." : "Resume uploaded successfully.";
+          message.classList.remove("hidden");
+          message.classList.add("text-emerald-600");
+          if (window.lucide) window.lucide.createIcons();
+        } catch (error) {
+          message.textContent = error.message || "Upload failed. Please try again.";
+          message.classList.remove("hidden");
+          message.classList.add("text-rose-600");
+        } finally {
+          input.value = "";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("profile-photo-input").addEventListener("change", (event) => {
+          uploadProfileFile("photo", event.target.files[0]);
+        });
+        document.getElementById("resume-input").addEventListener("change", (event) => {
+          uploadProfileFile("resume", event.target.files[0]);
+        });
       });
 
       async function saveProfile() {
@@ -659,6 +835,8 @@
           if (payload.status === "success" && payload.data && payload.data.candidate) {
             const candidate = payload.data.candidate;
             const pd = candidate.profile_details || {};
+            setProfileFileState("photo", Boolean(pd.photo_file));
+            setProfileFileState("resume", Boolean(pd.resume_file));
             
             const nameInput = document.getElementById('edit-name');
             if (nameInput && candidate.name) nameInput.value = candidate.name;
@@ -737,6 +915,3 @@
   <script src="js/page-personal.js?v=1"></script>
 </body>
 </html>
-
-
-

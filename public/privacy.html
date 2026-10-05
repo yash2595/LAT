@@ -842,6 +842,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
 </head>
 
 <body>
@@ -850,10 +851,13 @@
 
   <header class="nav">
     <a href="index.html#top" aria-label="InternBoot home"><img src="assets/internboot-logo.png" alt="InternBoot" /></a>
-    <nav aria-label="Primary">
+    <nav id="primary-nav" aria-label="Primary">
       <a href="index.html#top">Home</a><a href="index.html#contrast">About</a><a
         href="achievements.html">Achievements</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a>
     </nav>
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span></span><span></span><span></span>
+    </button>
     <a class="btn" href="register.php">Register now</a>
   </header>
 
@@ -1093,6 +1097,7 @@
       frame();
     })();
   </script>
+  <script src="js/landing-nav.js?v=1"></script>
 </body>
 
 </html>

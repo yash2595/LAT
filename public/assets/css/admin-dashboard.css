@@ -97,3 +97,59 @@ body[data-scroll-reveal-ready="true"] [data-scroll-reveal="true"][data-scroll-vi
   }
 }
 
+html,body { max-width:100%; overflow-x:hidden; }
+body[data-dashboard="admin"]>div.flex-1.flex.flex-col { min-width:0; width:calc(100% - 250px); }
+body[data-dashboard="admin"] main { min-width:0; max-width:100%; }
+body[data-dashboard="admin"] main .overflow-x-auto { max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+body[data-dashboard="admin"] main table { max-width:100%; }
+body[data-dashboard="admin"] main table th,
+body[data-dashboard="admin"] main table td { white-space:nowrap; }
+#m7MobileMenuButton,#m7MobileOverlay { display:none; }
+
+@media(max-width:1023px) {
+  body[data-dashboard="admin"] > aside#sidebar {
+    position:fixed!important; inset:0 auto 0 0!important; z-index:50!important;
+    width:min(250px,85vw)!important; height:100vh!important; height:100dvh!important;
+    transform:translateX(-105%)!important; transition:transform .22s ease!important;
+  }
+  body[data-dashboard="admin"] > aside#sidebar.m7-open {
+    transform:translateX(0)!important;
+  }
+  body[data-dashboard="admin"] #sidebarOverlay,
+  body[data-dashboard="admin"] #m7MobileOverlay {
+    position:fixed!important; inset:0!important; z-index:40!important; border:0;
+  }
+  body[data-dashboard="admin"] #sidebarOverlay:not(.hidden),
+  body[data-dashboard="admin"] #m7MobileOverlay.m7-visible { display:block!important; }
+  body[data-dashboard="admin"].admin-mobile-menu-open { overflow:hidden!important; }
+  body[data-dashboard="admin"]>div.flex-1.flex.flex-col { width:100%; }
+  body[data-dashboard="admin"]>div.flex-1.flex.flex-col>header {
+    height:auto!important; min-height:72px; padding:14px 16px!important; gap:12px;
+  }
+  body[data-dashboard="admin"]>div.flex-1.flex.flex-col>header>div:first-child { min-width:0; }
+  body[data-dashboard="admin"] main>div { min-width:0; padding:16px!important; }
+  body[data-dashboard="admin"] main section { min-width:0; }
+  body[data-dashboard="admin"] main .grid { min-width:0; }
+  body[data-dashboard="admin"] main .rounded-2xl { max-width:100%; }
+  #m7MobileMenuButton { display:flex; }
+}
+
+@media(max-width:639px) {
+  body[data-dashboard="admin"]>div.flex-1.flex.flex-col>header { padding:12px!important; }
+  body[data-dashboard="admin"] main>div { padding:12px!important; }
+  #m7MobileMenuButton { width:40px; height:40px; flex:0 0 40px; }
+  #adminAvatar { flex:0 0 auto; }
+  #adminHeaderName { max-width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  body[data-dashboard="admin"] main .overflow-x-auto table { min-width:760px; }
+}
+
+@media(min-width:1024px) {
+  body[data-dashboard="admin"] > aside#sidebar { position:relative!important; transform:none!important; }
+  body[data-dashboard="admin"] #sidebarOverlay,
+  body[data-dashboard="admin"] #m7MobileMenuButton,
+  body[data-dashboard="admin"] #m7MobileOverlay { display:none!important; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  body[data-dashboard="admin"] > aside#sidebar { transition:none!important; }
+}

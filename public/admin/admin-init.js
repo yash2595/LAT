@@ -3,7 +3,6 @@
  * Shared bootstrap for all admin pages.
  * - Loads admin profile from /api/admin/me.php and populates the sidebar
  * - Wires the sidebar logout button with CSRF-aware POST to /api/auth/logout.php
- * - Handles mobile menu toggle
  */
 (function () {
   'use strict';
@@ -64,31 +63,9 @@
     }
   }
 
-  // ── Mobile menu ────────────────────────────────────────────────────────────
-  function initMobileMenu() {
-    const menuBtn = document.getElementById('menuButton');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('sidebarOverlay');
-
-    if (!menuBtn || !sidebar) return;
-
-    menuBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
-      if (overlay) overlay.classList.toggle('hidden');
-    });
-
-    if (overlay) {
-      overlay.addEventListener('click', () => {
-        sidebar.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
-      });
-    }
-  }
-
   // ── Bootstrap ──────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     loadAdminInfo();
-    initMobileMenu();
 
     const logoutBtn = document.getElementById('sidebar-logout-btn');
     if (logoutBtn) {

@@ -11,11 +11,10 @@ function initStudentResponsiveShell() {
 
     document.body.classList.add("overflow-x-hidden");
     sidebar.classList.remove("hidden", "md:flex");
-    sidebar.classList.add("flex", "-translate-x-full", "transition-transform", "duration-200", "lg:translate-x-0");
-    main.classList.remove("ml-[250px]", "w-[calc(100%-250px)]");
-    main.classList.add("ml-0", "w-full", "lg:ml-[250px]", "lg:w-[calc(100%-250px)]");
+    sidebar.classList.add("student-responsive-sidebar");
+    main.classList.add("student-responsive-main");
     header.classList.remove("left-[250px]");
-    header.classList.add("left-0", "lg:left-[250px]", "px-4", "sm:px-6");
+    header.classList.add("student-responsive-header");
     main.querySelectorAll("table").forEach((table) => {
         table.classList.add("min-w-[640px]");
         table.parentElement?.classList.add("max-w-full", "overflow-x-auto");
@@ -23,41 +22,52 @@ function initStudentResponsiveShell() {
 
     const menuButton = document.createElement("button");
     menuButton.type = "button";
-    menuButton.className = "inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 lg:hidden";
+    menuButton.className = "student-nav-toggle";
     menuButton.setAttribute("aria-label", "Open navigation");
     menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-controls", sidebar.id || "student-sidebar");
     menuButton.innerHTML = '<i data-lucide="menu" class="h-5 w-5"></i>';
+    if (!sidebar.id) sidebar.id = "student-sidebar";
 
     const headerTitle = header.firstElementChild;
     if (headerTitle) {
         headerTitle.classList.add("min-w-0");
         headerTitle.prepend(menuButton);
-        headerTitle.classList.add("gap-2", "sm:gap-3");
+        if (menuButton.nextElementSibling?.tagName === "DIV") {
+            menuButton.nextElementSibling.classList.add("student-header-icon");
+        }
     }
 
     const overlay = document.createElement("button");
     overlay.type = "button";
-    overlay.className = "fixed inset-0 z-40 hidden bg-slate-900/40 lg:hidden";
+    overlay.className = "student-nav-overlay";
     overlay.setAttribute("aria-label", "Close navigation");
     document.body.appendChild(overlay);
 
     const close = () => {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
+        sidebar.classList.remove("is-open");
+        overlay.classList.remove("is-visible");
+        document.body.classList.remove("student-nav-open");
         menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
     };
     const open = () => {
-        sidebar.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
+        sidebar.classList.add("is-open");
+        overlay.classList.add("is-visible");
+        document.body.classList.add("student-nav-open");
         menuButton.setAttribute("aria-expanded", "true");
+        menuButton.setAttribute("aria-label", "Close navigation");
     };
 
     menuButton.addEventListener("click", () => {
-        if (sidebar.classList.contains("-translate-x-full")) open();
+        if (!sidebar.classList.contains("is-open")) open();
         else close();
     });
     overlay.addEventListener("click", close);
     sidebar.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") close();
+    });
     window.addEventListener("resize", () => {
         if (window.innerWidth >= 1024) close();
     });
@@ -98,7 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fillSection("certificate", source.certificate);
         fillSection("placement", source.placement);
 
-        updateAvatar(source.candidate?.name);
+        updateStudentAvatars(source.candidate?.name, source.candidate?.profile_details?.photo_file);
         updateStatusCards(source);
         updateLearningJourney(source);
         document.body.dataset.authState = "ready";
@@ -137,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function handleUnauthenticated(message) {
     document.body.dataset.authState = "unauthenticated";
     document.dispatchEvent(new Event("student:journey-refresh"));
-    updateAvatar("—");
+    updateStudentAvatars("—");
     document.querySelectorAll('[data-candidate="name"]').forEach((el) => {
         el.textContent = "Unauthenticated";
     });
@@ -170,19 +180,70 @@ function fillSection(attribute, data) {
     });
 }
 
-function updateAvatar(name) {
+function updateStudentAvatars(name, photoFile = "") {
     const avatars = document.querySelectorAll('[data-candidate="initials"]');
-    if (!avatars.length || !name || name === "—") return;
+    if (!avatars.length) return;
 
-    const initials = name
-        .trim()
-        .split(/\s+/)
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((part) => part[0].toUpperCase())
-        .join("");
+    const initials = name && name !== "—"
+        ? name
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((part) => part[0].toUpperCase())
+            .join("")
+        : "--";
 
-    avatars.forEach(avatar => avatar.textContent = initials || "--");
+    avatars.forEach((initialsElement) => {
+        if (initialsElement.id === "profile-photo-placeholder") return;
+
+        let avatar = initialsElement.tagName === "SPAN"
+            ? initialsElement.parentElement
+            : initialsElement;
+        if (!avatar) return;
+
+        if (initialsElement === avatar) {
+            const initialsLabel = document.createElement("span");
+            initialsLabel.dataset.candidate = "initials";
+            initialsLabel.textContent = initialsElement.textContent.trim() || initials;
+            initialsElement.removeAttribute("data-candidate");
+            initialsElement.prepend(initialsLabel);
+            avatar = initialsElement;
+        }
+
+        const initialsLabel = avatar.querySelector(':scope > [data-candidate="initials"]');
+        if (!initialsLabel) return;
+        if (initialsLabel.textContent !== initials) {
+            initialsLabel.textContent = initials;
+        }
+
+        avatar.classList.add("student-avatar");
+        let image = avatar.querySelector(":scope > .student-avatar-photo");
+        if (!image) {
+            image = document.createElement("img");
+            image.className = "student-avatar-photo";
+            image.alt = "";
+            image.setAttribute("aria-hidden", "true");
+            avatar.append(image);
+        }
+
+        if (!photoFile) {
+            image.removeAttribute("src");
+            image.classList.remove("is-loaded");
+            avatar.classList.remove("has-student-photo");
+            return;
+        }
+
+        image.onload = () => {
+            image.classList.add("is-loaded");
+            avatar.classList.add("has-student-photo");
+        };
+        image.onerror = () => {
+            image.classList.remove("is-loaded");
+            avatar.classList.remove("has-student-photo");
+        };
+        image.src = "api/profile_file.php?type=photo&t=" + Date.now();
+    });
 }
 
     function updateStatusCards(source) {
@@ -827,7 +888,7 @@ const Journey=(()=>{
   }
   function setCount(c,final,ni){
     const b=$('jrCount'), s=$('jrNext'); b.textContent=c+'/'+ms.length; b.classList.remove('tick'); void b.offsetWidth; b.classList.add('tick');
-    s.innerHTML=!final?'Tracing your path�':ni<0?'<em>All milestones complete</em>':'Up next: <em>'+ms[ni].title+'</em>';
+    s.innerHTML=!final?'Tracing your path�':ni<0?'<em>All milestones complete</em>':'Up next: <em>'+ms[ni].title+'</em>';
     if(final){s.classList.remove('tick');void s.offsetWidth;s.classList.add('tick')}
   }
   function setOrb(L){const p=$('jrProg'),pt=p.getPointAtLength(L),o=$('jrOrb');
@@ -886,7 +947,7 @@ const Journey=(()=>{
   function toast(t){const e=$('jrToast');if(e){e.textContent=t;e.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>e.classList.remove('show'),5000)}}
 
   function ok(){lastOk=Date.now();const l=$('jrLive');if(l)l.classList.remove('err');ago()}
-  function err(){const l=$('jrLive'),a=$('jrAgo');if(l)l.classList.add('err');if(a)a.textContent='Reconnecting�'}
+  function err(){const l=$('jrLive'),a=$('jrAgo');if(l)l.classList.add('err');if(a)a.textContent='Reconnecting�'}
   function ago(){const l=$('jrLive');if(!l||l.classList.contains('err'))return;const s=Math.round((Date.now()-lastOk)/1000),a=$('jrAgo');if(a)a.textContent=s<8?'Live':'Updated '+(s<60?s+'s':Math.floor(s/60)+'m')+' ago'}
   setInterval(ago,5000);
   const stg=$('jrStage'); if(stg) stg.addEventListener('click',()=>{ if(busy) fast=true });

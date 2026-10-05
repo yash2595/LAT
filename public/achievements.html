@@ -1995,6 +1995,7 @@
         }
       }
     </style>
+  <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
   </head>
 
   <body>
@@ -2682,39 +2683,6 @@
         const yr = $("#year");
         if (yr) yr.textContent = new Date().getFullYear();
 
-        /* mobile nav */
-        const nav = $("#primary-nav"),
-          tg = $(".nav-toggle");
-        const closeMenu = () => {
-          nav.classList.remove("is-open");
-          tg.setAttribute("aria-expanded", "false");
-          tg.setAttribute("aria-label", "Open navigation menu");
-        };
-        tg.addEventListener("click", () => {
-          const open = tg.getAttribute("aria-expanded") === "true";
-          nav.classList.toggle("is-open", !open);
-          tg.setAttribute("aria-expanded", String(!open));
-          tg.setAttribute(
-            "aria-label",
-            open ? "Open navigation menu" : "Close navigation menu",
-          );
-        });
-        nav.addEventListener("click", (e) => {
-          if (e.target.closest("a")) closeMenu();
-        });
-        document.addEventListener("click", (e) => {
-          if (!e.target.closest(".nav")) closeMenu();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            closeMenu();
-            tg.focus();
-          }
-        });
-        addEventListener("resize", () => {
-          if (innerWidth > 960) closeMenu();
-        });
-
         /* heading word-by-word reveal (keeps inner spans) */
         $$("h2.sp").forEach((h) => {
           let i = 0;
@@ -2950,5 +2918,6 @@
         );
       })();
     </script>
+    <script src="js/landing-nav.js?v=1"></script>
   </body>
 </html>

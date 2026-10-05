@@ -975,6 +975,7 @@
         }
       }
     </style>
+  <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
   </head>
 
   <body>
@@ -999,40 +1000,6 @@
       </button>
       <a class="btn" href="register.php">Register now</a>
     </header>
-    <script>
-      (() => {
-        const nav = document.getElementById("primary-nav");
-        const toggle = document.querySelector(".nav-toggle");
-        if (!nav || !toggle) return;
-        const closeMenu = () => {
-          nav.classList.remove("is-open");
-          toggle.setAttribute("aria-expanded", "false");
-          toggle.setAttribute("aria-label", "Open navigation menu");
-        };
-        toggle.addEventListener("click", () => {
-          const isOpen = toggle.getAttribute("aria-expanded") === "true";
-          nav.classList.toggle("is-open", !isOpen);
-          toggle.setAttribute("aria-expanded", String(!isOpen));
-          toggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
-        });
-        nav.addEventListener("click", (event) => {
-          if (event.target instanceof Element && event.target.closest("a")) closeMenu();
-        });
-        document.addEventListener("click", (event) => {
-          if (event.target instanceof Node && !event.target.closest(".nav")) closeMenu();
-        });
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-            closeMenu();
-            toggle.focus();
-          }
-        });
-        window.addEventListener("resize", () => {
-          if (window.innerWidth > 820) closeMenu();
-        });
-      })();
-    </script>
-
     <!-- HERO -->
     <section class="hero" id="top">
       <div class="orb"></div>
@@ -1435,5 +1402,6 @@
       }
       addEventListener("scroll", updateFab, { passive: true });
     </script>
+    <script src="js/landing-nav.js?v=1"></script>
   </body>
 </html>

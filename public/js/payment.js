@@ -430,7 +430,7 @@ function setText(selector, value) {
 }
 
 function updateAvatar(name) {
-    const avatarEls = document.querySelectorAll('.avatar, [data-candidate="initials"]');
+    const avatarEls = document.querySelectorAll('[data-candidate="initials"]');
     if (!avatarEls.length || !name || name === "—") return;
 
     const initials = name
@@ -562,4 +562,3 @@ if (document.readyState === "loading") {
 } else {
     bindCandidateLogout();
 }
-

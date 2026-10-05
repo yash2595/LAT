@@ -318,45 +318,6 @@
   }
 
   function initResponsiveShell() {
-    if (!document.getElementById("m7ResponsiveStyles")) {
-      const style = document.createElement("style");
-      style.id = "m7ResponsiveStyles";
-      style.textContent = `
-        html, body { max-width: 100%; overflow-x: hidden; }
-        main { min-width: 0 !important; max-width: 100vw; overflow-x: hidden; }
-        main > section { min-width: 0; }
-        main .overflow-x-auto { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        main table { max-width: 100%; }
-        main table th, main table td { white-space: nowrap; }
-        #m7MobileMenuButton { display:none; }
-        #m7MobileOverlay { display:none; }
-        @media (max-width: 1023px) {
-          #m7MobileMenuButton { display:flex; }
-          aside { transform: translateX(-100%); transition: transform .2s ease; }
-          aside.m7-open { transform: translateX(0); }
-          #m7MobileOverlay.m7-visible { display:block; }
-          main { margin-left: 0 !important; width: 100% !important; }
-          main > header { height: auto !important; min-height: 80px; padding: 16px 20px !important; gap: 12px; }
-          main > header > div:first-child { min-width: 0; }
-          main > header h1 { font-size: 1.35rem !important; line-height: 1.3; }
-          main > header p { font-size: .8rem !important; }
-          main > section { padding: 20px !important; }
-          main .grid { min-width: 0; }
-          main .rounded-2xl { max-width: 100%; }
-        }
-        @media (max-width: 639px) {
-          main > header { padding: 14px 16px !important; }
-          main > section { padding: 16px !important; }
-          #m7MobileMenuButton { width: 40px; height: 40px; flex: 0 0 40px; }
-          #adminAvatar { flex: 0 0 auto; }
-          main > header > div:last-child { min-width: 0; }
-          #adminHeaderName { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-          main .overflow-x-auto table { min-width: 760px; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-
     const sidebar = $("#sidebar") || document.querySelector("aside");
     if (!sidebar || document.getElementById("m7MobileMenuButton")) return;
     if ($("#menuButton") && $("#sidebarOverlay")) return;
@@ -366,6 +327,9 @@
     button.type = "button";
     button.className = "items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm";
     button.setAttribute("aria-label", "Open navigation");
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-controls", sidebar.id || "sidebar");
+    if (!sidebar.id) sidebar.id = "sidebar";
     button.innerHTML = '<i data-lucide="menu" class="h-5 w-5"></i>';
 
     const overlay = document.createElement("button");
@@ -375,19 +339,31 @@
     overlay.setAttribute("aria-label", "Close navigation");
     document.body.appendChild(overlay);
 
-    const header = document.querySelector("main > header");
+    const header = document.querySelector("body > div.flex-1.flex.flex-col > header");
     if (header) header.insertBefore(button, header.firstElementChild);
 
     const close = () => {
       sidebar.classList.remove("m7-open");
       overlay.classList.remove("m7-visible");
+      document.body.classList.remove("admin-mobile-menu-open");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation");
     };
     button.addEventListener("click", () => {
-      sidebar.classList.toggle("m7-open");
-      overlay.classList.toggle("m7-visible");
+      const isOpen = sidebar.classList.toggle("m7-open");
+      overlay.classList.toggle("m7-visible", isOpen);
+      document.body.classList.toggle("admin-mobile-menu-open", isOpen);
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
     });
     overlay.addEventListener("click", close);
     sidebar.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) close();
+    });
     refreshIcons();
   }
 
@@ -438,20 +414,38 @@
     const sidebar = $("#sidebar");
     const overlay = $("#sidebarOverlay");
     if (menuButton && sidebar) {
+      menuButton.setAttribute("aria-controls", sidebar.id || "sidebar");
+      menuButton.setAttribute("aria-label", "Open navigation");
       menuButton.setAttribute("aria-expanded", "false");
+      const closeMenu = () => {
+        sidebar.classList.remove("m7-open");
+        sidebar.classList.add("-translate-x-full");
+        overlay?.classList.add("hidden");
+        document.body.classList.remove("admin-mobile-menu-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      };
       menuButton.addEventListener("click", () => {
-        const isOpen = sidebar.classList.toggle("m7-open");
+        const isOpen = !sidebar.classList.contains("m7-open");
+        sidebar.classList.toggle("m7-open", isOpen);
         sidebar.classList.toggle("-translate-x-full", !isOpen);
         overlay?.classList.toggle("hidden", !isOpen);
+        document.body.classList.toggle("admin-mobile-menu-open", isOpen);
         menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      });
+      overlay?.addEventListener("click", closeMenu);
+      sidebar.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+          closeMenu();
+          menuButton.focus();
+        }
+      });
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024) closeMenu();
       });
     }
-    overlay?.addEventListener("click", () => {
-      sidebar.classList.remove("m7-open");
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-      menuButton?.setAttribute("aria-expanded", "false");
-    });
 
     const userButton = $("#userButton"),
       userDropdown = $("#userDropdown");

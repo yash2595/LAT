@@ -3169,6 +3169,7 @@
         }
       }
     </style>
+  <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
   </head>
 
   <body>
@@ -3196,42 +3197,6 @@
       </button>
       <a class="btn" href="register.php">Register now</a>
     </header>
-    <script>
-      (() => {
-        const nav = document.getElementById("primary-nav"),
-          t = document.querySelector(".nav-toggle");
-        if (!nav || !t) return;
-        const close = () => {
-          nav.classList.remove("is-open");
-          t.setAttribute("aria-expanded", "false");
-          t.setAttribute("aria-label", "Open navigation menu");
-        };
-        t.addEventListener("click", () => {
-          const o = t.getAttribute("aria-expanded") === "true";
-          nav.classList.toggle("is-open", !o);
-          t.setAttribute("aria-expanded", String(!o));
-          t.setAttribute(
-            "aria-label",
-            o ? "Open navigation menu" : "Close navigation menu",
-          );
-        });
-        nav.addEventListener("click", (e) => {
-          if (e.target instanceof Element && e.target.closest("a")) close();
-        });
-        document.addEventListener("click", (e) => {
-          if (e.target instanceof Node && !e.target.closest(".nav")) close();
-        });
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            close();
-          }
-        });
-        window.addEventListener("resize", () => {
-          if (innerWidth > 820) close();
-        });
-      })();
-    </script>
-
     <section class="hero ab-hero">
       <div class="dg" aria-hidden="true"></div>
       <div class="c">
@@ -3769,5 +3734,6 @@
           });
       })();
     </script>
+    <script src="js/landing-nav.js?v=1"></script>
   </body>
 </html>

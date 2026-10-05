@@ -1,0 +1,126 @@
+.nav {
+  position: sticky;
+  z-index: 100;
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 10px;
+  border: 1px solid var(--ln, #dfe7fa);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink, #0f172a);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  margin: 3px 0;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.nav-toggle:focus-visible,
+.nav nav a:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 3px;
+}
+
+.mobile-register {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .nav {
+    gap: 10px !important;
+    padding-right: max(12px, env(safe-area-inset-right)) !important;
+    padding-left: max(12px, env(safe-area-inset-left)) !important;
+  }
+
+  .nav > a:first-child {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
+  .nav > a:first-child img {
+    max-width: min(38vw, 150px);
+    object-fit: contain;
+  }
+
+  .nav > .btn {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    display: block !important;
+    margin-left: auto;
+  }
+
+  .nav nav,
+  .nav nav.is-open {
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    right: 12px !important;
+    left: 12px !important;
+    z-index: 101;
+    display: none !important;
+    max-height: calc(100vh - 100px);
+    max-height: calc(100svh - 100px);
+    margin: 0 !important;
+    padding: 8px !important;
+    overflow-y: auto;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 2px !important;
+    border: 1px solid var(--ln, #dfe7fa);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  }
+
+  .nav nav.is-open {
+    display: flex !important;
+  }
+
+  .nav nav a {
+    display: block;
+    min-height: 42px;
+    padding: 10px 12px !important;
+    border-radius: 10px;
+    font-size: 14px !important;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .nav nav a:hover,
+  .nav nav a[aria-current="page"] {
+    background: var(--sky, #eaf0ff);
+  }
+
+  .nav nav a.mobile-register {
+    display: block !important;
+    margin-top: 4px;
+    background: var(--bl, #1d4ed8);
+    color: #fff !important;
+    text-align: center;
+  }
+
+  .nav nav a.mobile-register:hover {
+    filter: brightness(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav nav,
+  .nav-toggle {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
