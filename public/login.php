@@ -36,7 +36,7 @@ if (isset($_SESSION['user_id']) || isset($_SESSION['candidate_id'])) {
 $pageTitle = 'Log in — InternBoot';
 $asideVariant = 'login';
 $asideTitle = 'Welcome back, Candidate.';
-$asideLead = 'Resume your journey. Your latest assessment scores, reports, and placement status are waiting on your dashboard.';
+$asideLead = 'Welcome back! Resume your journey to secure top placements. Your latest assessment scores, detailed performance reports, and real-time placement status are waiting on your dashboard. Pick up right where you left off and unlock your next career milestone.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
