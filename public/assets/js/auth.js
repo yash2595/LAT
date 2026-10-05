@@ -27,7 +27,35 @@ if(resendBtn)resendBtn.addEventListener('click',async function(){const alertBox=
 const backBtn=document.getElementById('backToDetails');
 if(backBtn)backBtn.addEventListener('click',()=>{clearInterval(resendTimer);otpBoxes.forEach(b=>{b.value=''});syncOtp();hideAlert(document.getElementById('otpAlert'));document.getElementById('otpForm').classList.add('d-none');document.getElementById('registerForm').classList.remove('d-none');setRegStep(1);const em=document.getElementById('email');if(em)em.focus()});
 const loginForm=document.getElementById('loginForm');
-if(loginForm)loginForm.addEventListener('submit',async function(e){e.preventDefault();const btn=document.getElementById('loginBtn'),alertBox=document.getElementById('formAlert');hideAlert(alertBox);const payload={email:document.getElementById('email').value.trim(),password:document.getElementById('password').value,role:loginForm.querySelector('input[name="role"]:checked')?.value};setBusy(btn,'Logging in...');try{const data=await postJson('/api/auth/login.php',payload);if(data.status==='success'){showAlert(alertBox,'success',data.message);setBusy(btn,'Taking you in...');const redirect=(data.data&&data.data.redirect)||'/dashboard.html';setTimeout(()=>{window.location.href=redirect},600)}else{showAlert(alertBox,'error',data.message||'Login failed.');setIdle(btn)}}catch(err){showAlert(alertBox,'error','Something went wrong. Please try again.');setIdle(btn)}});
+if (loginForm) {
+  const emailInput = document.getElementById('email');
+  const asideTitle = document.querySelector('.hero h1');
+  if (emailInput && asideTitle) {
+    let debounceTimer;
+    emailInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(async () => {
+        const email = emailInput.value.trim();
+        if (email.includes('@') && email.length > 5) {
+          try {
+            const res = await postJson('/api/auth/check_email.php', { email });
+            if (res.status === 'success' && res.name) {
+              asideTitle.textContent = `Welcome back, ${res.name}.`;
+            } else {
+              asideTitle.textContent = 'Welcome back, climber.';
+            }
+          } catch(e) {
+            asideTitle.textContent = 'Welcome back, climber.';
+          }
+        } else {
+          asideTitle.textContent = 'Welcome back, climber.';
+        }
+      }, 500);
+    });
+  }
+  
+  loginForm.addEventListener('submit',async function(e){e.preventDefault();const btn=document.getElementById('loginBtn'),alertBox=document.getElementById('formAlert');hideAlert(alertBox);const payload={email:document.getElementById('email').value.trim(),password:document.getElementById('password').value,role:loginForm.querySelector('input[name="role"]:checked')?.value};setBusy(btn,'Logging in...');try{const data=await postJson('/api/auth/login.php',payload);if(data.status==='success'){showAlert(alertBox,'success',data.message);setBusy(btn,'Taking you in...');const redirect=(data.data&&data.data.redirect)||'/dashboard.html';setTimeout(()=>{window.location.href=redirect},600)}else{showAlert(alertBox,'error',data.message||'Login failed.');setIdle(btn)}}catch(err){showAlert(alertBox,'error','Something went wrong. Please try again.');setIdle(btn)}});
+}
 const forgotForm=document.getElementById('forgotPasswordForm');
 if(forgotForm)forgotForm.addEventListener('submit',async function(e){e.preventDefault();const btn=document.getElementById('forgotBtn'),alertBox=document.getElementById('forgotFormAlert');const payload={email:document.getElementById('email').value.trim()};btn.disabled=true;btn.textContent='Sending...';try{const data=await postJson('/api/auth/forgot-password.php',payload);if(data.status==='success')showAlert(alertBox,'success',data.message);else showAlert(alertBox,'error',data.message||'Failed to send reset link.')}catch(err){showAlert(alertBox,'error','Something went wrong. Please try again.')}finally{btn.disabled=false;btn.textContent='Send Reset Link'}});
 const resetForm=document.getElementById('resetPasswordForm');
