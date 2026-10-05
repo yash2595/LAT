@@ -24,109 +24,79 @@ $asideVariant = $asideVariant ?? 'login';
   <div class="hero">
     <h1><?= htmlspecialchars($asideTitle) ?></h1>
     <p class="lead"><?= htmlspecialchars($asideLead) ?></p>
-    <div class="map" aria-hidden="true">
-      <svg class="trail" viewBox="0 0 460 300" fill="none">
-        <path class="trail-base" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40"/>
-        <path class="trail-glow" d="M30 262 C140 262 110 186 205 186 S300 112 352 112 S408 44 432 40" pathLength="100"/>
-      </svg>
-      <div class="nd" style="--i:0"><b>1</b><em>Foundation</em></div>
-      <div class="nd" style="--i:1"><b>2</b><em>Core skills</em></div>
-      <div class="nd" style="--i:2"><b>3</b><em>Applied</em></div>
-      <div class="nd" style="--i:3"><b>4</b><em>Advanced</em></div>
-      <div class="nd apex" style="--i:4"><b><svg class="ico"><use href="#i-star"/></svg></b><em>Placement ready</em></div>
-      <i class="me"></i>
-      <!-- Premium 3D Floating Offer Letters -->
-      <style>
-        .offer-card {
-          position: absolute;
-          width: 220px;
-          background: rgba(15, 23, 42, 0.4);
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          padding: 16px;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.2);
-          z-index: 10;
-        }
-        .offer-card::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 16px;
-          padding: 1px;
-          background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-        }
-        .oc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-        .oc-icon { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; }
-        .oc-icon.blue { background: linear-gradient(135deg, #3b82f6, #6366f1); box-shadow: 0 4px 15px rgba(59,130,246,0.4); }
-        .oc-icon.emerald { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16,185,129,0.4); }
-        .oc-status { text-align: right; }
-        .oc-status span { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 800; margin-bottom: 2px; }
-        .oc-status strong { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 800; background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
-        .oc-body h4 { margin: 0 0 4px; font-size: 15px; color: #fff; font-weight: 800; letter-spacing: -0.02em; }
-        .oc-body p { margin: 0 0 12px; font-size: 12px; color: #cbd5e1; font-weight: 500; display: flex; align-items: center; gap: 4px; }
-        .oc-line { height: 1px; background: rgba(255, 255, 255, 0.1); margin-bottom: 12px; }
-        .oc-footer { display: flex; gap: 8px; }
-        .oc-btn { flex: 1; height: 32px; border-radius: 8px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255,255,255,0.05); }
-        .oc-btn.primary { background: #fff; color: #0f172a; box-shadow: 0 4px 10px rgba(255,255,255,0.2); }
-        
-        @keyframes float-right {
-          0%, 100% { transform: translateY(0) rotate(6deg) scale(0.9); }
-          50% { transform: translateY(-15px) rotate(4deg) scale(0.9); }
-        }
-        @keyframes float-left {
-          0%, 100% { transform: translateY(0) rotate(-5deg) scale(0.85); }
-          50% { transform: translateY(-12px) rotate(-7deg) scale(0.85); }
-        }
-      </style>
-
-      <div class="offer-card" style="top: -10px; right: -50px; animation: float-right 6s ease-in-out infinite;">
-        <div class="oc-header">
-          <div class="oc-icon blue">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-          </div>
-          <div class="oc-status">
-            <span>Level 5 Cleared</span>
-            <strong>OFFERED</strong>
-          </div>
-        </div>
-        <div class="oc-body">
-          <h4>Software Engineer</h4>
-          <p><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Bangalore · ₹15 LPA</p>
-        </div>
-        <div class="oc-line"></div>
-        <div class="oc-footer">
-          <div class="oc-btn">Decline</div>
-          <div class="oc-btn primary">Accept Offer</div>
+    <div class="lat-features">
+      <div class="lat-feat">
+        <div class="lf-ico"><svg class="ico"><use href="#i-cap"/></svg></div>
+        <div class="lf-txt">
+          <h4>Multi-Level Assessments</h4>
+          <p>Progress through 5 stages of difficulty to prove your skills</p>
         </div>
       </div>
-
-      <div class="offer-card" style="bottom: 80px; left: -60px; animation: float-left 7s ease-in-out infinite reverse;">
-        <div class="oc-header">
-          <div class="oc-icon emerald">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          </div>
-          <div class="oc-status">
-            <span>Level 5 Cleared</span>
-            <strong>OFFERED</strong>
-          </div>
+      <div class="lat-feat">
+        <div class="lf-ico"><svg class="ico"><use href="#i-shield"/></svg></div>
+        <div class="lf-txt">
+          <h4>AI-Proctored Exams</h4>
+          <p>Secure and fair testing environment for all candidates</p>
         </div>
-        <div class="oc-body">
-          <h4>Data Analyst</h4>
-          <p><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Remote · ₹12 LPA</p>
+      </div>
+      <div class="lat-feat">
+        <div class="lf-ico"><svg class="ico"><use href="#i-check"/></svg></div>
+        <div class="lf-txt">
+          <h4>Instant Skill Reports</h4>
+          <p>Get immediate feedback and detailed performance analytics</p>
         </div>
-        <div class="oc-line"></div>
-        <div class="oc-footer">
-          <div class="oc-btn">Decline</div>
-          <div class="oc-btn primary">Accept Offer</div>
+      </div>
+      <div class="lat-feat">
+        <div class="lf-ico"><svg class="ico"><use href="#i-star"/></svg></div>
+        <div class="lf-txt">
+          <h4>Direct Placements</h4>
+          <p>Top performers get direct interview calls and placement offers</p>
         </div>
       </div>
     </div>
+    <style>
+      .lat-features {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+      .lat-feat {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lf-ico {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .lf-ico .ico {
+        width: 24px;
+        height: 24px;
+        color: #fff;
+      }
+      .lf-txt h4 {
+        margin: 0 0 6px;
+        font-size: 16px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 0.2px;
+      }
+      .lf-txt p {
+        margin: 0;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #94a3b8;
+        line-height: 1.4;
+      }
+    </style>
   </div>
   <div class="stats"><div><b>10,000+</b><span>Students</span></div><div><b>500+</b><span>Companies</span></div><div><b>4.9/5</b><span>Rating</span></div></div>
 </aside>
