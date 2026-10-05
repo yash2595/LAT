@@ -1721,7 +1721,7 @@
         <div class="flex gap-2 flex-wrap text-[12px] text-slate-400">
           ${j.salary_range  ? `<span class="flex items-center gap-1"><i data-lucide="indian-rupee" class="w-3 h-3"></i>${escapeHtml(j.salary_range)}</span>` : ''}
           ${j.location      ? `<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>${escapeHtml(j.location)}</span>` : ''}
-          ${j.jd_pdf_path   ? `<a href="/api/jd_file.php?id=${j.id}" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>View PDF</a>` : ''}
+          ${j.jd_pdf_path   ? `<a href="/api/jd_file.php?id=${j.id}" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>Job Description</a>` : ''}
           ${j.apply_link    ? `<a href="${escapeHtml(j.apply_link)}" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="external-link" class="w-3 h-3"></i>Ext. Link</a>` : ''}
           <span class="flex items-center gap-1 ml-auto"><i data-lucide="users" class="w-3 h-3"></i>${j.application_count || 0} applied</span>
         </div>
@@ -1873,6 +1873,7 @@
             });
           }
           attachDeleteHandlers();
+          if (window.lucide && typeof window.lucide.createIcons === 'function') window.lucide.createIcons();
           
         } catch (e) { notify(e.message, true); }
       };
@@ -1967,7 +1968,7 @@
       } catch (err) {
         notify(err.message, true);
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Post Job Description';
+        submitBtn.textContent = isEdit ? 'Save Changes' : 'Post Job Description';
       }
     };
   }
@@ -1984,7 +1985,7 @@
     const postBtn = $('#postNewJdBtn');
     if (postBtn && !postBtn.dataset.bound) {
       postBtn.dataset.bound = '1';
-      postBtn.onclick = openPostJdModal;
+      postBtn.onclick = () => openPostJdModal(null);
     }
   }
 
@@ -2044,6 +2045,7 @@
         </td>
         <td class="px-6 py-5 align-middle text-slate-500">
           ${escapeHtml(p.company_name || "—")}
+          ${p.offer_letter_path ? `<a href="${p.offer_letter_path}" target="_blank" class="ml-2 text-intern-blue hover:underline inline-flex items-center" title="View Offer Letter"><i data-lucide="file-text" class="w-4 h-4"></i></a>` : ""}
         </td>
         <td class="px-6 py-5 align-middle">
           <button class="view-placement-btn rounded-lg border border-slate-200 px-3 py-2 text-xs font-medium text-slate-600 hover:border-intern-blue hover:text-intern-blue transition" type="button" data-id="${Number(p.id)}" data-name="${escapeHtml(p.full_name)}" data-level="${escapeHtml(p.level_assigned || "")}" data-status="${escapeHtml(p.placement_status)}" data-company="${escapeHtml(p.company_name || "")}" data-notes="${escapeHtml(p.notes || "")}">Edit</button>
@@ -2065,39 +2067,146 @@
 
   function openPlacementEditor(btn) {
     const root = modal(
-      "Update Placement",
+      "Update Placement Record",
       `
-      <form id="placementEditForm" class="space-y-4">
-        <div><p class="text-sm font-medium text-slate-800">${escapeHtml(btn.dataset.name)}</p></div>
-        <div class="rounded-lg bg-slate-50 p-3">
-          <p class="text-xs font-medium uppercase tracking-wide text-slate-500">Professional Status</p>
-          <div class="mt-2">${badge(professionalLevelInfo(btn.dataset.level), "blue")}</div>
+      <div class="relative overflow-hidden rounded-xl bg-white">
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50/30 p-6 border-b border-slate-100">
+          <div class="flex items-center gap-4">
+            <div class="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-sm border border-blue-100 text-intern-blue">
+              <i data-lucide="user-check" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-800">${escapeHtml(btn.dataset.name)}</h3>
+              <div class="mt-1 flex items-center gap-2">
+                ${badge(professionalLevelInfo(btn.dataset.level), "blue")}
+              </div>
+            </div>
+          </div>
         </div>
-        <label class="block text-sm text-slate-600">Placement Workflow Status
-          <select id="placementWorkflowStatusEdit" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2">
-            ${["eligible", "shortlisted", "interviewing", "placed", "not_placed"].map((x) => `<option value="${x}" ${x === btn.dataset.status ? "selected" : ""}>${label(x)}</option>`).join("")}
-          </select>
-        </label>
-        <label class="block text-sm text-slate-600">Company
-          <input id="placementCompanyEdit" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" value="${escapeHtml(btn.dataset.company || "")}">
-        </label>
-        <label class="block text-sm text-slate-600">Notes
-          <textarea id="placementNotesEdit" class="mt-1 min-h-24 w-full rounded-lg border border-slate-200 px-3 py-2">${escapeHtml(btn.dataset.notes || "")}</textarea>
-        </label>
-        <button class="w-full rounded-lg bg-intern-blue px-4 py-2.5 text-sm font-medium text-white">Save</button>
-      </form>`,
+
+        <form id="placementEditForm" class="p-6 space-y-5">
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Left Column -->
+            <div class="space-y-5">
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5 flex items-center gap-2">
+                  <i data-lucide="activity" class="h-4 w-4 text-slate-400"></i> Placement Status
+                </label>
+                <select id="placementWorkflowStatusEdit" class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm font-medium text-slate-700 shadow-sm focus:border-intern-blue focus:bg-white focus:outline-none focus:ring-4 focus:ring-intern-blue/10 transition">
+                  ${["eligible", "shortlisted", "interviewing", "placed", "not_placed"].map((x) => `<option value="${x}" ${x === btn.dataset.status ? "selected" : ""}>${label(x)}</option>`).join("")}
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5 flex items-center gap-2">
+                  <i data-lucide="building-2" class="h-4 w-4 text-slate-400"></i> Company Name
+                </label>
+                <input id="placementCompanyEdit" class="w-full rounded-lg border border-slate-200 px-3.5 py-2.5 text-sm text-slate-700 shadow-sm placeholder-slate-400 focus:border-intern-blue focus:outline-none focus:ring-4 focus:ring-intern-blue/10 transition" value="${escapeHtml(btn.dataset.company || "")}" placeholder="e.g. Google, Microsoft">
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-5 flex flex-col">
+              <div class="flex-1">
+                <label class="block text-sm font-medium text-slate-700 mb-1.5 flex items-center gap-2">
+                  <i data-lucide="file-check-2" class="h-4 w-4 text-slate-400"></i> Offer Letter (Optional)
+                </label>
+                <div class="relative group">
+                  <input type="file" id="placementOfferLetterEdit" accept="application/pdf, image/png, image/jpeg" class="absolute inset-0 h-full w-full opacity-0 cursor-pointer z-10" />
+                  <div class="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-200 bg-slate-50 px-4 py-6 text-center transition group-hover:border-intern-blue group-hover:bg-blue-50/50">
+                    <i data-lucide="upload-cloud" class="h-8 w-8 text-slate-400 group-hover:text-intern-blue mb-2"></i>
+                    <p class="text-sm font-medium text-slate-600">Click to upload offer letter</p>
+                    <p class="mt-1 text-xs text-slate-400">PDF, PNG, JPG (Max 5MB)</p>
+                    <p id="offerFileName" class="mt-3 text-xs font-semibold text-intern-blue hidden truncate max-w-[200px]"></p>
+                  </div>
+                </div>
+                <button type="button" id="aiExtractBtn" class="mt-3 hidden w-full inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:from-indigo-600 hover:to-purple-600 focus:outline-none focus:ring-4 focus:ring-purple-500/20 transition-all">
+                  <i data-lucide="sparkles" class="h-4 w-4"></i> Auto-Fill with AI
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5 flex items-center gap-2">
+              <i data-lucide="message-square-text" class="h-4 w-4 text-slate-400"></i> Additional Notes
+            </label>
+            <textarea id="placementNotesEdit" class="w-full min-h-[80px] rounded-lg border border-slate-200 px-3.5 py-3 text-sm text-slate-700 shadow-sm placeholder-slate-400 focus:border-intern-blue focus:outline-none focus:ring-4 focus:ring-intern-blue/10 transition" placeholder="Add any relevant remarks or details...">${escapeHtml(btn.dataset.notes || "")}</textarea>
+          </div>
+          
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
+            <button type="button" class="close-modal-btn rounded-lg border border-slate-200 bg-white px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition">Cancel</button>
+            <button type="submit" class="rounded-lg bg-intern-blue px-6 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-500/20 transition">Save Changes</button>
+          </div>
+        </form>
+      </div>`,
     );
+
+    const fileInput = $("#placementOfferLetterEdit", root);
+    const fileNameDisplay = $("#offerFileName", root);
+    const aiExtractBtn = $("#aiExtractBtn", root);
+    
+    fileInput.onchange = (e) => {
+      if (fileInput.files && fileInput.files.length > 0) {
+        fileNameDisplay.textContent = fileInput.files[0].name;
+        fileNameDisplay.classList.remove("hidden");
+        aiExtractBtn.classList.remove("hidden");
+      } else {
+        fileNameDisplay.classList.add("hidden");
+        aiExtractBtn.classList.add("hidden");
+      }
+    };
+
+    aiExtractBtn.onclick = async () => {
+      if (!fileInput.files || fileInput.files.length === 0) return;
+      const originalHtml = aiExtractBtn.innerHTML;
+      aiExtractBtn.innerHTML = '<i data-lucide="loader-2" class="h-4 w-4 animate-spin"></i> Extracting...';
+      aiExtractBtn.disabled = true;
+      if (window.lucide) window.lucide.createIcons();
+
+      try {
+        const formData = new FormData();
+        formData.append("offer_letter", fileInput.files[0]);
+        const res = await api("extract_offer_ai", {
+          method: "POST",
+          body: formData,
+        });
+        
+        if (res && res.company_name) {
+          $("#placementCompanyEdit", root).value = res.company_name;
+          $("#placementWorkflowStatusEdit", root).value = "placed";
+          notify("Extracted company name with AI!");
+        } else {
+          notify("AI couldn't find a company name.", true);
+        }
+      } catch (e) {
+        notify(e.message, true);
+      } finally {
+        aiExtractBtn.innerHTML = originalHtml;
+        aiExtractBtn.disabled = false;
+        if (window.lucide) window.lucide.createIcons();
+      }
+    };
+
+    $(".close-modal-btn", root).onclick = () => root.remove();
+
     $("#placementEditForm", root).onsubmit = async (e) => {
       e.preventDefault();
       try {
+        const formData = new FormData();
+        formData.append("id", Number(btn.dataset.id));
+        formData.append("status", $("#placementWorkflowStatusEdit", root).value);
+        formData.append("company_name", $("#placementCompanyEdit", root).value);
+        formData.append("notes", $("#placementNotesEdit", root).value);
+        
+        if (fileInput.files && fileInput.files.length > 0) {
+            formData.append("offer_letter", fileInput.files[0]);
+        }
+        
         await api("placement", {
           method: "POST",
-          body: {
-            id: Number(btn.dataset.id),
-            status: $("#placementWorkflowStatusEdit", root).value,
-            company_name: $("#placementCompanyEdit", root).value,
-            notes: $("#placementNotesEdit", root).value,
-          },
+          body: formData,
         });
         root.remove();
         notify("Placement updated.");

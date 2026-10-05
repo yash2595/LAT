@@ -278,6 +278,32 @@
                 </div>
               </div>
 
+              <!-- Offer Letter -->
+              <div
+                id="pl-offer-row"
+                class="hidden flex-col gap-3 py-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div
+                  class="flex items-center gap-3 text-[13px] font-medium text-slate-500"
+                >
+                  <i
+                    data-lucide="file-text"
+                    class="h-5 w-5 text-intern-blue"
+                  ></i>
+
+                  <span>Offer Letter</span>
+                </div>
+
+                <div
+                  id="pl-offer-container"
+                  class="text-[13px] font-semibold text-slate-600"
+                >
+                  <a id="pl-offer-link" href="#" target="_blank" class="inline-flex items-center gap-1.5 text-intern-blue hover:underline">
+                    <i data-lucide="external-link" class="h-4 w-4"></i> View Offer Letter
+                  </a>
+                </div>
+              </div>
+
               <!-- Notes -->
               <div
                 id="pl-notes-row"
@@ -623,6 +649,19 @@
                 }
               }
 
+              /* Offer Letter */
+              if (p.offer_letter) {
+                const offerRow = document.getElementById("pl-offer-row");
+                const offerLink = document.getElementById("pl-offer-link");
+                if (offerLink) {
+                  offerLink.href = p.offer_letter;
+                }
+                if (offerRow) {
+                  offerRow.classList.remove("hidden");
+                  offerRow.classList.add("flex");
+                }
+              }
+
               /* Notes */
               if (p.notes) {
                 const notesEl = document.getElementById("pl-notes");
@@ -796,7 +835,7 @@
               <div class="flex gap-3 flex-wrap text-[12px] text-slate-400">
                 ${j.salary_range ? '<span class="flex items-center gap-1"><i data-lucide="indian-rupee" class="w-3 h-3"></i>' + escHtml(j.salary_range) + '</span>' : ''}
                 ${j.location     ? '<span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i>' + escHtml(j.location) + '</span>' : ''}
-                ${j.jd_pdf_path  ? '<a href="api/jd_file.php?id=' + j.id + '" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>View PDF</a>' : ''}
+                ${j.jd_pdf_path  ? '<a href="api/jd_file.php?id=' + j.id + '" target="_blank" class="flex items-center gap-1 text-intern-blue hover:underline"><i data-lucide="file-text" class="w-3 h-3"></i>Job Description</a>' : ''}
               </div>
               ${actionHtml}
             `;

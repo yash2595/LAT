@@ -3,13 +3,17 @@ require_once __DIR__ . '/service.php';
 
 function m7_request_body(): array
 {
-    $raw = file_get_contents('php://input');
-    if (!$raw) return [];
-    $data = json_decode($raw, true);
-    if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
-        throw new InvalidArgumentException('Request body must contain valid JSON.');
+    $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+    if (strpos($contentType, 'application/json') !== false) {
+        $raw = file_get_contents('php://input');
+        if (!$raw) return [];
+        $data = json_decode($raw, true);
+        if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
+            throw new InvalidArgumentException('Request body must contain valid JSON.');
+        }
+        return is_array($data) ? $data : [];
     }
-    return is_array($data) ? $data : [];
+    return $_POST;
 }
 
 /**
@@ -263,6 +267,74 @@ function m7_handle_request(mysqli $conn): void
                 send_json_response('error', 'Failed to generate certificates.', null, 500);
             }
 
+        case 'extract_offer_ai':
+            if (!isset($_FILES['offer_letter']) || $_FILES['offer_letter']['error'] !== UPLOAD_ERR_OK) {
+                throw new InvalidArgumentException('Please upload a valid offer letter file.');
+            }
+            $file = $_FILES['offer_letter'];
+            if ((int)$file['size'] > 5 * 1024 * 1024) throw new InvalidArgumentException('Offer letter must be 5MB or smaller.');
+            
+            $mime = mime_content_type($file['tmp_name']);
+            if (!in_array($mime, ['application/pdf', 'image/png', 'image/jpeg', 'image/webp'])) {
+                throw new InvalidArgumentException('Only PDF or image files are supported by the AI.');
+            }
+            
+            $apiKey = trim((string)env_value('GEMINI_API_KEY', ''));
+            if ($apiKey === '' || $apiKey === 'YOUR_GEMINI_API_KEY') {
+                throw new RuntimeException('Gemini API key is not configured.');
+            }
+            
+            $base64Data = base64_encode(file_get_contents($file['tmp_name']));
+            
+            $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" . rawurlencode($apiKey);
+            $payload = [
+                'contents' => [
+                    [
+                        'parts' => [
+                            ['text' => 'Extract ONLY the company name that is issuing this offer letter. Respond with JUST the company name, nothing else.'],
+                            [
+                                'inlineData' => [
+                                    'mimeType' => $mime,
+                                    'data' => $base64Data
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
+                'generationConfig' => [
+                    'temperature' => 0.1
+                ]
+            ];
+            
+            $ch = curl_init($url);
+            curl_setopt_array($ch, [
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST => true,
+                CURLOPT_HTTPHEADER => ['Content-Type: application/json'],
+                CURLOPT_POSTFIELDS => json_encode($payload),
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_SSL_VERIFYPEER => false
+            ]);
+            $response = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            
+            if ($httpCode !== 200 || $response === false) {
+                throw new RuntimeException('AI extraction failed. Please enter the company name manually.');
+            }
+            
+            $resData = json_decode((string)$response, true);
+            $companyName = trim($resData['candidates'][0]['content']['parts'][0]['text'] ?? '');
+            
+            // Remove any trailing periods or newlines from the AI response
+            $companyName = rtrim(preg_replace('/\n.*/s', '', $companyName), '.');
+            
+            if ($companyName === '') {
+                throw new RuntimeException('AI could not confidently find a company name.');
+            }
+            
+            send_json_response('success', 'Company name extracted', ['company_name' => $companyName]);
+
         case 'placement':
             $id=require_positive_int($body['id']??null,'id');
             $status=trim((string)($body['status']??''));
@@ -272,7 +344,26 @@ function m7_handle_request(mysqli $conn): void
             }
             $allowed=['eligible','shortlisted','interviewing','placed','not_placed'];
             if(!in_array($status,$allowed,true)) throw new InvalidArgumentException('Invalid placement status.');
-            update_placement($conn,$id,$status,$company,isset($body['notes'])?(string)$body['notes']:null);
+            
+            $offerLetterUrl = null;
+            if (isset($_FILES['offer_letter']) && $_FILES['offer_letter']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['offer_letter'];
+                if ((int)$file['size'] > 5 * 1024 * 1024) throw new InvalidArgumentException('Offer letter must be 5MB or smaller.');
+                $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+                if (!in_array($ext, ['pdf', 'png', 'jpg', 'jpeg'])) throw new InvalidArgumentException('Only PDF, PNG, or JPG files are allowed for offer letters.');
+                
+                $uploadDir = dirname(__DIR__, 3) . '/public/uploads/offers';
+                if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true) && !is_dir($uploadDir)) {
+                    throw new RuntimeException('Upload directory could not be created.');
+                }
+                $filename = 'offer-' . $id . '-' . bin2hex(random_bytes(5)) . '.' . $ext;
+                if (!move_uploaded_file($file['tmp_name'], $uploadDir . '/' . $filename)) {
+                    throw new RuntimeException('Could not save the offer letter.');
+                }
+                $offerLetterUrl = '/uploads/offers/' . $filename;
+            }
+            
+            update_placement($conn,$id,$status,$company,isset($body['notes'])?(string)$body['notes']:null, $offerLetterUrl);
             create_admin_log($conn,$_SESSION['user_id']??null,'update_placement',json_encode(['placement_id'=>$id,'status'=>$status]));
             send_json_response('success','Placement record updated successfully.');
 

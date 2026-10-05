@@ -37,6 +37,8 @@ function parse_profile_details(?string $raw): array {
 try {
     // Dynamically check and cancel any underfilled slots (< 100 candidates) within 30 minutes
     check_and_notify_underfilled_slots($conn);
+    // Dynamically generate any missing questions for exams starting in <= 1.5 hours
+    auto_generate_questions_for_upcoming_exams($conn);
 
     $candidateId = resolve_candidate_id($_GET);
 
@@ -148,7 +150,7 @@ try {
 
     /* 3. Placement record (LEFT JOIN — only Level 1-2 candidates have a row) */
     $stmt = $conn->prepare(
-        'SELECT placement_status, company_name, notes, updated_at
+        'SELECT placement_status, company_name, offer_letter_path, notes, updated_at
          FROM placement_records
          WHERE candidate_id = ?
          ORDER BY updated_at DESC LIMIT 1'
@@ -370,6 +372,7 @@ try {
         'statusLabel'=> null,
         'company'    => null,
         'notes'      => null,
+        'offer_letter' => null,
         'updated_at' => null,
     ];
 
@@ -385,6 +388,7 @@ try {
             $placement['statusLabel'] = $placementStatusLabels[$rawStatus] ?? ucfirst(str_replace('_', ' ', $rawStatus));
             $placement['company']     = $placementRow['company_name'] ?: null;
             $placement['notes']       = $placementRow['notes'] ?: null;
+            $placement['offer_letter']= $placementRow['offer_letter_path'] ?: null;
             $placement['updated_at']  = !empty($placementRow['updated_at']) ? date('d M Y', strtotime($placementRow['updated_at'])) : date('d M Y');
         }
     }

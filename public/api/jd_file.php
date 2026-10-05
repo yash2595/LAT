@@ -38,8 +38,11 @@ if (!$isAdmin) {
     $candidateLevel = (int)($row['level_assigned'] ?? 0);
 }
 
-// Fetch job
-$stmt = $conn->prepare("SELECT target_levels, jd_pdf_path FROM job_opportunities WHERE id = ? AND status = 'active'");
+// Fetch job — admins can access any job's PDF; candidates only see active ones
+$jobQuery = $isAdmin
+    ? "SELECT target_levels, jd_pdf_path FROM job_opportunities WHERE id = ?"
+    : "SELECT target_levels, jd_pdf_path FROM job_opportunities WHERE id = ? AND status = 'active'";
+$stmt = $conn->prepare($jobQuery);
 $stmt->bind_param("i", $jobId);
 $stmt->execute();
 $job = $stmt->get_result()->fetch_assoc();
@@ -47,7 +50,7 @@ $stmt->close();
 
 if (!$job || !$job['jd_pdf_path']) {
     http_response_code(404);
-    die('PDF not found or job inactive.');
+    die('PDF not found.');
 }
 
 if (!$isAdmin) {
@@ -67,10 +70,19 @@ if (!file_exists($filepath)) {
     die('File missing on server.');
 }
 
-$mime = mime_content_type($filepath);
+// Use finfo if available, fallback to application/pdf for .pdf extension
+$mime = 'application/pdf';
+if (function_exists('mime_content_type')) {
+    $detected = mime_content_type($filepath);
+    if ($detected !== false) $mime = $detected;
+} elseif (class_exists('finfo')) {
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $detected = $finfo->file($filepath);
+    if ($detected !== false) $mime = $detected;
+}
 $filename = basename($filepath);
 
-header('Content-Type: ' . ($mime ?: 'application/pdf'));
+header('Content-Type: ' . $mime);
 header('Content-Disposition: inline; filename="' . $filename . '"');
 header('Content-Length: ' . filesize($filepath));
 header('Cache-Control: private, max-age=86400'); // Cache for 1 day

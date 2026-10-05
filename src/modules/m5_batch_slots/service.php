@@ -667,6 +667,67 @@ function is_within_reassignment_cutoff(string $examDate, string $startTime, ?str
 }
 
 /**
+ * Automatically generates approved questions via AI for upcoming exams (within 1.5 hours)
+ * if the assessment's question bank doesn't have enough approved questions.
+ */
+function auto_generate_questions_for_upcoming_exams(mysqli $conn): void {
+    $cutoffTime = time() + (90 * 60); // 90 minutes from now
+    $cutoffDateTimeStr = date('Y-m-d H:i:s', $cutoffTime);
+
+    $sql = "
+        SELECT 
+            b.assessment_id,
+            a.title AS assessment_title,
+            a.question_bank_id,
+            a.total_questions
+        FROM exam_schedules s
+        JOIN batches b ON b.id = s.batch_id
+        JOIN exam_slots es ON es.exam_schedule_id = s.id
+        JOIN assessments a ON a.id = b.assessment_id
+        WHERE s.status = 'provisional' OR s.status = 'scheduled'
+          AND s.is_closed = 0
+          AND a.question_bank_id IS NOT NULL
+          AND CONCAT(s.exam_date, ' ', es.start_time) <= ?
+        GROUP BY b.assessment_id, a.title, a.question_bank_id, a.total_questions
+    ";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $cutoffDateTimeStr);
+    $stmt->execute();
+    $upcomingAssessments = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+
+    if (empty($upcomingAssessments)) {
+        return;
+    }
+
+    require_once dirname(__DIR__) . '/m1_ai_qbank/service.php';
+
+    foreach ($upcomingAssessments as $ass) {
+        $qbankId = (int)$ass['question_bank_id'];
+        $requiredCount = (int)$ass['total_questions'];
+        
+        $qStmt = $conn->prepare("SELECT COUNT(*) AS c FROM questions WHERE question_bank_id = ? AND approval_status = 'approved'");
+        $qStmt->bind_param("i", $qbankId);
+        $qStmt->execute();
+        $currentCount = (int)$qStmt->get_result()->fetch_assoc()['c'];
+        $qStmt->close();
+
+        if ($currentCount < $requiredCount) {
+            $needed = $requiredCount - $currentCount;
+            // Generate in chunks of max 5 to avoid timeouts, or just one big call. 
+            // generate_questions_via_ai natively handles chunks inside it.
+            try {
+                // Generates automatically with 'approved' status!
+                generate_questions_via_ai($qbankId, $ass['assessment_title'], $needed, 'hard', $conn, 'approved');
+            } catch (Throwable $e) {
+                error_log("InternBoot Auto-Gen AI failed for QBank {$qbankId}: " . $e->getMessage());
+            }
+        }
+    }
+}
+
+/**
  * Checks all open provisional slots that are within 30 minutes of their start time
  * (or where the start time has already passed).
  * 

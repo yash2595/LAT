@@ -230,7 +230,7 @@ function sync_placement_records(mysqli $conn): void
 function get_placement_records(mysqli $conn): array
 {
     return q_all($conn, "SELECT pr.id, pr.candidate_id, c.full_name, c.phone, u.email, pr.result_id,
-        r.percentage, r.level_assigned, pr.placement_status, pr.company_name, pr.notes, pr.updated_at
+        r.percentage, r.level_assigned, pr.placement_status, pr.company_name, pr.offer_letter_path, pr.notes, pr.updated_at
       FROM placement_records pr
       JOIN candidates c ON c.id=pr.candidate_id
       JOIN users u ON u.id=c.user_id
@@ -435,10 +435,17 @@ function upsert_certificate(mysqli $conn, int $candidateId, int $resultId, int $
     return ['id'=>$id,'certificate_number'=>$number,'issue_date'=>date('Y-m-d')];
 }
 
-function update_placement(mysqli $conn,int $id,string $status,?string $company,?string $notes): void
+function update_placement(mysqli $conn,int $id,string $status,?string $company,?string $notes,?string $offerLetterUrl=null): void
 {
-    $stmt=$conn->prepare('UPDATE placement_records SET placement_status=?, company_name=?, notes=?, updated_at=NOW() WHERE id=?');
-    $stmt->bind_param('sssi',$status,$company,$notes,$id); $stmt->execute(); $stmt->close();
+    if ($offerLetterUrl !== null) {
+        $stmt=$conn->prepare('UPDATE placement_records SET placement_status=?, company_name=?, notes=?, offer_letter_path=?, updated_at=NOW() WHERE id=?');
+        $stmt->bind_param('ssssi',$status,$company,$notes,$offerLetterUrl,$id);
+    } else {
+        $stmt=$conn->prepare('UPDATE placement_records SET placement_status=?, company_name=?, notes=?, updated_at=NOW() WHERE id=?');
+        $stmt->bind_param('sssi',$status,$company,$notes,$id);
+    }
+    $stmt->execute(); 
+    $stmt->close();
 }
 
 function update_question_status(mysqli $conn, int $questionId, string $status): void

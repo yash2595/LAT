@@ -112,7 +112,8 @@ function generate_questions_via_ai(
     string $topic,
     int $count,
     string $difficultyMix,
-    mysqli $conn
+    mysqli $conn,
+    string $approvalStatus = 'pending'
 ): array {
     // 1. Validate Question Bank exists
     $stmt = $conn->prepare("SELECT id FROM question_banks WHERE id = ?");
@@ -428,7 +429,7 @@ function generate_questions_via_ai(
             }
             $existingTexts[$normalized] = true;
 
-            $qId = insert_question($qbankId, $q['question_text'], $q['difficulty'], $conn, 'pending');
+            $qId = insert_question($qbankId, $q['question_text'], $q['difficulty'], $conn, $approvalStatus);
             foreach ($q['options'] as $opt) {
                 insert_question_option($qId, $opt['option_text'], $opt['is_correct'], $conn);
             }

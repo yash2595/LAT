@@ -1,4 +1,8 @@
 <?php
+// Suppress HTML error output immediately — must be first to prevent poisoning JSON API responses
+ini_set('display_errors', '0');
+error_reporting(0);
+
 /**
  * InternBoot M7 database bootstrap.
  *

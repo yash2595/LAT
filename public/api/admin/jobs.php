@@ -31,6 +31,9 @@ if ($method === 'POST' && $action === 'create') {
     if (strpos($contentType, 'application/json') !== false) {
         $data = json_decode(file_get_contents('php://input'), true) ?? [];
     } else {
+        if (empty($_POST) && isset($_SERVER['CONTENT_LENGTH']) && (int)$_SERVER['CONTENT_LENGTH'] > 0) {
+            send_json_response('error', 'The uploaded file is too large and exceeds the server limit.', null, 413);
+        }
         $data = $_POST;
     }
 
@@ -56,7 +59,7 @@ if ($method === 'POST' && $action === 'create') {
         }
 
         // Validate type
-        $mime = mime_content_type($file['tmp_name']);
+        $mime = $file['type'] ?? '';
         if ($mime !== 'application/pdf') {
             send_json_response('error', 'Only PDF files are allowed.', null, 400);
         }
@@ -100,6 +103,9 @@ if ($method === 'POST' && $action === 'edit') {
     if (strpos($contentType, 'application/json') !== false) {
         $data = json_decode(file_get_contents('php://input'), true) ?? [];
     } else {
+        if (empty($_POST) && isset($_SERVER['CONTENT_LENGTH']) && (int)$_SERVER['CONTENT_LENGTH'] > 0) {
+            send_json_response('error', 'The uploaded file is too large and exceeds the server limit.', null, 413);
+        }
         $data = $_POST;
     }
 
@@ -113,6 +119,7 @@ if ($method === 'POST' && $action === 'edit') {
     $applyLink    = trim((string)($data['apply_link']    ?? ''));
 
     if (!$jobId || !$companyName || !$jobTitle || !$targetLevels) {
+        error_log('[JD-EDIT-DEBUG] POST=' . json_encode($_POST) . ' FILES=' . json_encode(array_keys($_FILES)));
         send_json_response('error', 'Job ID, Company name, job title, and target levels are required.', null, 400);
     }
 
@@ -121,7 +128,7 @@ if ($method === 'POST' && $action === 'edit') {
     if (isset($_FILES['jd_pdf']) && $_FILES['jd_pdf']['error'] === UPLOAD_ERR_OK) {
         $file = $_FILES['jd_pdf'];
         if ($file['size'] > 5 * 1024 * 1024) send_json_response('error', 'PDF file exceeds 5MB limit.', null, 400);
-        $mime = mime_content_type($file['tmp_name']);
+        $mime = $file['type'] ?? '';
         if ($mime !== 'application/pdf') send_json_response('error', 'Only PDF files are allowed.', null, 400);
         $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         if ($ext !== 'pdf') send_json_response('error', 'Only PDF files are allowed.', null, 400);
@@ -223,7 +230,6 @@ if ($method === 'GET' && $action === 'applications') {
     $stmt->execute();
     $apps = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
-    send_json_response('success', 'Applications fetched', $apps);
     send_json_response('success', 'Applications fetched', $apps);
 }
 
