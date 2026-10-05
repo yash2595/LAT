@@ -90,7 +90,7 @@ $asideVariant = $asideVariant ?? 'login';
         }
       </style>
 
-      <div class="feat-card" style="top: 150px; left: -10px; animation: float-l 6s ease-in-out infinite;">
+      <div class="feat-card" style="top: 30px; left: -40px; animation: float-l 6s ease-in-out infinite;">
         <div class="fc-icon"><svg class="ico"><use href="#i-shield"/></svg></div>
         <div class="fc-text">
           <h4>AI-Proctored Exams</h4>
@@ -98,7 +98,7 @@ $asideVariant = $asideVariant ?? 'login';
         </div>
       </div>
 
-      <div class="feat-card" style="bottom: -10px; right: -10px; animation: float-r 7s ease-in-out infinite reverse;">
+      <div class="feat-card" style="bottom: -10px; right: -20px; animation: float-r 7s ease-in-out infinite reverse;">
         <div class="fc-icon"><svg class="ico"><use href="#i-star"/></svg></div>
         <div class="fc-text">
           <h4>Direct Placements</h4>
