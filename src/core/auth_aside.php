@@ -38,10 +38,10 @@ $asideVariant = $asideVariant ?? 'login';
       <div class="gc g-lvl"><svg class="ico"><use href="#i-check"/></svg>Level 3 cleared</div>
       <div class="gc g-cert"><svg class="ico"><use href="#i-shield"/></svg>Certificate verified</div>
       
-      <!-- New Placement Popups -->
-      <div class="gc g-place1" style="top: 12%; right: -2%; background: linear-gradient(135deg, #10b981, #059669); color: white; border: 2px solid rgba(255,255,255,0.3); animation: pop1 14s ease-out infinite; animation-delay: 1.2s; box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.5);"><svg class="ico" style="color:white; fill:white;"><use href="#i-star"/></svg>Placed at Microsoft</div>
-      <div class="gc g-place2" style="top: 55%; left: 0%; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; border: 2px solid rgba(255,255,255,0.3); animation: pop2 15s ease-out infinite; animation-delay: 2.4s; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);"><svg class="ico" style="color:white; fill:white;"><use href="#i-star"/></svg>Placed at Google</div>
-      <div class="gc g-place3" style="bottom: 5%; right: 18%; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: 2px solid rgba(255,255,255,0.3); animation: pop1 13s ease-out infinite; animation-delay: 3.6s; box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.5);"><svg class="ico" style="color:white; fill:white;"><use href="#i-star"/></svg>Placed at Amazon</div>
+      <!-- Elegant Placement Popups -->
+      <div class="gc g-place1" style="top: 15%; right: 5%; animation: pop1 14s ease-out infinite; animation-delay: 1.2s;"><svg class="ico"><use href="#i-check"/></svg>Profile Shortlisted</div>
+      <div class="gc g-place2" style="top: 45%; left: 0%; animation: pop2 15s ease-out infinite; animation-delay: 2.4s;"><svg class="ico"><use href="#i-star"/></svg>Top 1% Performer</div>
+      <div class="gc g-place3" style="bottom: 12%; right: 20%; animation: pop1 13s ease-out infinite; animation-delay: 3.6s;"><svg class="ico"><use href="#i-cap"/></svg>Placement Offer Received</div>
     </div>
   </div>
   <div class="stats"><div><b>10,000+</b><span>Students</span></div><div><b>500+</b><span>Companies</span></div><div><b>4.9/5</b><span>Rating</span></div></div>
