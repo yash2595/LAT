@@ -42,13 +42,13 @@ if (loginForm) {
             if (res.status === 'success' && res.name) {
               asideTitle.textContent = `Welcome back, ${res.name}.`;
             } else {
-              asideTitle.textContent = 'Welcome back, climber.';
+              asideTitle.textContent = 'Welcome back, Candidate.';
             }
           } catch(e) {
-            asideTitle.textContent = 'Welcome back, climber.';
+            asideTitle.textContent = 'Welcome back, Candidate.';
           }
         } else {
-          asideTitle.textContent = 'Welcome back, climber.';
+          asideTitle.textContent = 'Welcome back, Candidate.';
         }
       }, 500);
     });

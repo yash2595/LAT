@@ -35,8 +35,8 @@ if (isset($_SESSION['user_id']) || isset($_SESSION['candidate_id'])) {
 
 $pageTitle = 'Log in — InternBoot';
 $asideVariant = 'login';
-$asideTitle = 'Welcome back, climber.';
-$asideLead = 'Pick up your climb where you left off. Your levels, scores and verified certificates are waiting on your dashboard.';
+$asideTitle = 'Welcome back, Candidate.';
+$asideLead = 'Resume your journey. Your latest assessment scores, reports, and placement status are waiting on your dashboard.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,5 +59,5 @@ $asideLead = 'Pick up your climb where you left off. Your levels, scores and ver
 <div class="field"><div class="lrow"><label for="password" style="margin:0">Password</label><a href="forgot-password.php">Forgot password?</a></div><div class="ctl pw"><svg class="ico"><use href="#i-lock"/></svg><input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required><button type="button" class="eye ib-toggle-password" data-target="password" aria-label="Show password"><svg class="ico on-i"><use href="#i-eye"/></svg><svg class="ico off"><use href="#i-eyeoff"/></svg></button></div></div>
 <div id="formAlert" class="alert" role="alert"></div><button type="submit" class="btn" id="loginBtn" data-label="Log in">Log in</button></form>
 <p class="foot"><svg class="ico"><use href="#i-lock"/></svg>Your data is encrypted in transit.</p></div><div class="perf"></div>
-<footer class="stub" aria-hidden="true"><span class="bars"></span><div class="stub-t"><b>Admit one climber</b><small>Level Assessment Test</small></div><span class="stub-lv"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span></footer>
+<footer class="stub" aria-hidden="true"><span class="bars"></span><div class="stub-t"><b>Admit one Candidate</b><small>Level Assessment Test</small></div><span class="stub-lv"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i></span></footer>
 </section></div></main></div><script src="assets/js/auth.js"></script></body></html>
