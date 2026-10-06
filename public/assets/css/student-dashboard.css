@@ -62,7 +62,7 @@ body>div>aside.fixed>div:last-child>a:last-child,body>div>aside.side>div:last-ch
 body>div>main,body>main { color:var(--ib-ink); background:transparent!important; }
 body>div>main>header,body>main>header {
   min-height:68px; color:var(--ib-ink); background:rgba(255,255,255,.94)!important;
-  border-bottom:1px solid var(--ib-line)!important; box-shadow:0 1px 0 rgba(20,40,80,.025); backdrop-filter:blur(16px);
+  border-bottom:0!important; box-shadow:none; backdrop-filter:blur(16px);
 }
 body>div>main>header h1,body>main>header h1 { color:var(--ib-ink)!important; font:800 16px/1.3 Manrope,sans-serif!important; letter-spacing:-.03em; }
 .student-responsive-main { width:100%!important; margin-left:0!important; }

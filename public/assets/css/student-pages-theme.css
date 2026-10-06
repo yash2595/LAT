@@ -1,7 +1,7 @@
 /* Shared exam-portal theme for ALL student pages (after student-dashboard.css) */
 :is(:is(body[data-dashboard="student"], body[data-dashboard="admin"]), body[data-dashboard="admin"]){--x-navy:#0f1e4a;--x-blue:#2457d6;--x-amber:#ffb703;--x-mint:#12b886;background:#f1f5fd radial-gradient(circle,#d3dcf1 1px,transparent 1.2px) 0 0/24px 24px fixed!important}
 /* Top bar */
-:is(body[data-dashboard="student"], body[data-dashboard="admin"]) .hbar{background:rgba(255,255,255,.86)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--ib-line)!important;box-shadow:0 1px 0 rgba(36,87,214,.08),0 8px 24px -16px rgba(15,30,74,.25)!important}
+:is(body[data-dashboard="student"], body[data-dashboard="admin"]) .hbar{background:rgba(255,255,255,.86)!important;backdrop-filter:blur(12px);border-bottom:0!important;box-shadow:none!important}
 /* Sidebar active item */
 :is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .nl{border-radius:12px!important;transition:background .2s,transform .2s}
 :is(body[data-dashboard="student"], body[data-dashboard="admin"]) aside .nl:hover{transform:translateX(3px)}
