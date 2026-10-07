@@ -4815,6 +4815,36 @@
       top: 12px;
     }
   }
+
+  @media (min-width: 901px) and (max-width: 1100px) {
+    #journey .stage {
+      padding-right: 56px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    #journey .left {
+      display: block;
+    }
+    #journey .left > div {
+      flex: none;
+    }
+    #journey h2 {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 20px;
+      line-height: 1.15;
+    }
+    #journey .step p,
+    #journey .step.now p {
+      max-height: 68px;
+      margin-top: 2px;
+      overflow: visible;
+      font-size: 11px;
+      line-height: 1.25;
+      opacity: 1;
+    }
+  }
 </style>
 <script>
 
