@@ -7102,9 +7102,9 @@
       $$(".tall").forEach((t) => t.style.setProperty("--sp", prog(t)));
 
       let hideFab = (window.innerWidth > 820) ? ftrShowing : finalInView;
-      if (!hideFab) {
+      if (fab && !hideFab) {
         fab.classList.toggle("show", scrollY > innerHeight * 0.9);
-      } else {
+      } else if (fab) {
         fab.classList.remove("show");
       }
     };
