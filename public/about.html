@@ -3597,6 +3597,7 @@
         .gv-live i {
           animation: none;
         }
+      }
     </style>
     <div class="c">
       <span class="gv-live rv"><i></i>LIVE · <b id="gv-n">0</b> Government Partners</span>
@@ -3652,6 +3653,311 @@
           var io = new IntersectionObserver(function (e, o) {
             if (e[0].isIntersecting) { o.disconnect(); run(); }
           }, { threshold: 0.25 });
+          io.observe(grid);
+        } else { run(); }
+      })();
+    </script>
+  </section>
+
+  <!-- ── NGO / CSR Partner logos ── same slide-in + ping counter animation ── -->
+  <section class="ngo" id="ngo-partners" aria-labelledby="ngo-h">
+    <style>
+      .ngo {
+        background: linear-gradient(180deg, #fff, var(--bg));
+        padding: 64px 0 84px;
+        overflow: hidden;
+      }
+
+      .ngo .c {
+        text-align: center;
+      }
+
+      .ngo .lead {
+        margin: 12px auto 0;
+      }
+
+      .ngo-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 6px 14px;
+        border: 1px solid var(--ln);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      }
+
+      .ngo-live i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ro);
+        animation: ngoPing 1.8s infinite;
+      }
+
+      .ngo-live b {
+        color: var(--bl);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .ngo-grid {
+        max-width: 1120px;
+        margin: 40px auto 0;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+      }
+
+      .ngo-card {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 26px 16px 20px;
+        background: #fff;
+        border: 1px solid var(--ln);
+        border-radius: 18px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+        opacity: 0;
+        transform: translateX(-22px);
+        transition:
+          opacity 0.6s var(--d, 0s),
+          transform 0.6s var(--d, 0s),
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .ngo-grid.in .ngo-card {
+        opacity: 1;
+        transform: none;
+      }
+
+      .ngo-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--ro), #f472b6);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.7s ease;
+      }
+
+      .ngo-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(100deg, transparent 30%, rgba(190, 75, 99, 0.08) 50%, transparent 70%);
+        transform: translateX(-120%);
+      }
+
+      .ngo-card.on {
+        border-color: #f9c8d2;
+        animation: ngoRing 0.9s ease-out;
+      }
+
+      .ngo-card.on::before {
+        transform: scaleX(1);
+      }
+
+      .ngo-card.on::after {
+        animation: ngoShine 8s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.32s + 1s);
+      }
+
+      .ngo-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--ro);
+        box-shadow: 0 10px 24px rgba(190, 75, 99, 0.12);
+      }
+
+      .ngo-logo {
+        width: 92px;
+        height: 92px;
+        display: grid;
+        place-items: center;
+      }
+
+      .ngo-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+        transition: transform 0.3s;
+      }
+
+      .ngo-card:hover .ngo-logo img {
+        transform: scale(1.06);
+      }
+
+      .ngo-name {
+        min-height: 2.7em;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-size: 13.5px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--ink);
+      }
+
+      @keyframes ngoPing {
+        0% { box-shadow: 0 0 0 0 #be4b6366; }
+        70%, 100% { box-shadow: 0 0 0 8px #be4b6300; }
+      }
+
+      @keyframes ngoRing {
+        0% { box-shadow: 0 0 0 0 #be4b6360; }
+        70%, 100% { box-shadow: 0 0 0 14px #be4b6300; }
+      }
+
+      @keyframes ngoShine {
+        0% { transform: translateX(-120%); }
+        22%, 100% { transform: translateX(120%); }
+      }
+
+      @media (max-width: 1100px) {
+        .ngo-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .ngo-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .ngo {
+          padding: 40px 0 46px;
+        }
+
+        .ngo-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .ngo-card {
+          padding: 20px 12px 16px;
+          border-radius: 14px;
+        }
+
+        .ngo-logo {
+          width: 76px;
+          height: 76px;
+        }
+
+        .ngo-name {
+          font-size: 12.5px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ngo-card {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .ngo-card::before {
+          transform: scaleX(1);
+          transition: none;
+        }
+
+        .ngo-card.on {
+          animation: none;
+        }
+
+        .ngo-card.on::after {
+          animation: none;
+        }
+
+        .ngo-live i {
+          animation: none;
+        }
+      }
+    </style>
+    <div class="c">
+      <span class="ngo-live rv"><i></i>LIVE · <b id="ngo-n">0</b> NGO &amp; CSR Partners</span>
+      <h2 id="ngo-h" class="rv" style="--d: 0.05s">NGO &amp; CSR partners in our network</h2>
+      <p class="lead rv" style="--d: 0.12s">
+        Non-profits, foundations and corporate social responsibility bodies
+        working alongside MYLAT to expand access to skill-verified talent.
+      </p>
+    </div>
+    <div class="ngo-grid" id="ngo-grid" aria-label="NGO and CSR partner logos"></div>
+
+    <script>
+      (function () {
+        // Add a partner = drop a logo in assets/NGO/ and add one line here: [file, display name]
+        var PARTNERS = [
+          ["american india foundation.jpeg", "American India Foundation"],
+          ["av foundation.png", "AV Foundation"],
+          ["cisco.png", "Cisco"],
+          ["citadel.png", "Citadel"],
+          ["dsci.png", "DSCI"],
+          ["etrain india.png", "eTrain India"],
+          ["geeks of gurukul.png", "Geeks of Gurukul"],
+          ["ibm.png", "IBM"],
+          ["infosys.png", "Infosys"],
+          ["isect.jpeg", "ISECT"],
+          ["lokbharti.jpeg", "Lokbharti"],
+          ["microsoft.png", "Microsoft"],
+          ["mirae asset.png", "Mirae Asset"],
+          ["nasscom.png", "NASSCOM"],
+          ["niit foundation.jpeg", "NIIT Foundation"],
+          ["nsdc.png", "NSDC"],
+          ["prakriti.jpeg", "Prakriti"],
+          ["prerna group.jpeg", "Prerna Group"],
+          ["sakshi foundation.jpeg", "Sakshi Foundation"],
+          ["sambhav.jpeg", "Sambhav"],
+          ["smart brains.jpeg", "Smart Brains"],
+          ["tech vimal.jpeg", "Tech Vimal"],
+          ["the_collective_consciousness_logo.jpeg", "The Collective Consciousness"],
+          ["times india foundation.png", "Times of India Foundation"],
+        ];
+        var grid = document.getElementById("ngo-grid");
+        var counter = document.getElementById("ngo-n");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        grid.innerHTML = PARTNERS.map(function (p, i) {
+          return (
+            '<div class="ngo-card" style="--i:' + i + ";--d:" + (i * 0.08).toFixed(2) + 's">' +
+            '<div class="ngo-logo"><img src="assets/NGO/' + p[0] + '" alt="' + p[1] +
+            '" width="92" height="92" loading="lazy" decoding="async"></div>' +
+            '<div class="ngo-name">' + p[1].replace(/&/g, "&amp;") + "</div></div>"
+          );
+        }).join("");
+        var cards = grid.querySelectorAll(".ngo-card");
+        function run() {
+          grid.classList.add("in");
+          if (reduce) {
+            cards.forEach(function (c) { c.classList.add("on"); });
+            counter.textContent = cards.length;
+            return;
+          }
+          cards.forEach(function (c, i) {
+            setTimeout(function () {
+              c.classList.add("on");
+              counter.textContent = i + 1;
+            }, 350 + i * 120);
+          });
+        }
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(function (e, o) {
+            if (e[0].isIntersecting) { o.disconnect(); run(); }
+          }, { threshold: 0.15 });
           io.observe(grid);
         } else { run(); }
       })();
