@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../src/core/bootstrap.php';
+require_once __DIR__ . '/../../src/core/mailer.php';
 
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
@@ -32,7 +33,8 @@ if ($firstName === '' && !empty($data['name'])) {
 }
 $email = trim((string)($data['email'] ?? ''));
 $phone = trim((string)($data['phone'] ?? $data['phone_number'] ?? ''));
-$inquiryType = trim((string)($data['inquiry_type'] ?? $data['inquiryType'] ?? $data['type_of_inquiry'] ?? 'General Inquiry'));
+$inquiryType = trim((string)($data['inquiry_type'] ?? $data['inquiryType'] ?? $data['type_of_inquiry'] ?? $data['subject'] ?? 'General Inquiry'));
+$inquiryType = substr(preg_replace('/[\r\n\t]+/', ' ', $inquiryType) ?? 'General Inquiry', 0, 120);
 $message = trim((string)($data['message'] ?? ''));
 
 if ($firstName === '') {
@@ -84,6 +86,49 @@ if (count($existing) > 200) {
     $existing = array_slice($existing, -200);
 }
 @file_put_contents($logFile, json_encode($existing, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+$recipient = trim((string)env_value('MAIL_CONTACT_TO', env_value('MAIL_USERNAME', '')));
+$fullName = trim($firstName . ' ' . $lastName);
+$safeTicketId = htmlspecialchars($ticketId, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeName = htmlspecialchars($fullName, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeEmail = htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safePhone = htmlspecialchars($phone !== '' ? $phone : 'Not provided', ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeInquiryType = htmlspecialchars($inquiryType, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
+$subject = '[LAT contact] ' . $inquiryType;
+$htmlBody = "<div style='font-family:Arial,sans-serif;max-width:640px;margin:0 auto;color:#172033'>"
+    . "<h2>New website contact message</h2>"
+    . "<p><strong>Ticket:</strong> {$safeTicketId}</p>"
+    . "<p><strong>Name:</strong> {$safeName}<br><strong>Email:</strong> {$safeEmail}<br>"
+    . "<strong>Phone:</strong> {$safePhone}<br><strong>Topic:</strong> {$safeInquiryType}</p>"
+    . "<hr><p><strong>Message</strong></p><p>{$safeMessage}</p></div>";
+$altBody = "New website contact message\n"
+    . "Ticket: {$ticketId}\nName: {$fullName}\nEmail: {$email}\n"
+    . "Phone: " . ($phone !== '' ? $phone : 'Not provided') . "\nTopic: {$inquiryType}\n\nMessage:\n{$message}";
+
+try {
+    $mailOut = null;
+    $sent = $recipient !== '' && send_mail(
+        $recipient,
+        'LAT Support',
+        $subject,
+        $htmlBody,
+        $altBody,
+        $mailOut,
+        true,
+        $email,
+        $fullName
+    );
+} catch (Throwable $e) {
+    error_log('[Contact] Email delivery could not be initialized: ' . $e->getMessage());
+    $sent = false;
+}
+
+if (!$sent) {
+    send_json_response('error', 'We could not send your message right now. Please try again later.', [
+        'ticket_id' => $ticketId
+    ], 503);
+}
 
 send_json_response('success', 'Thank you! Your message has been received. Our candidate support team will get back to you shortly.', [
     'ticket_id' => $ticketId,
