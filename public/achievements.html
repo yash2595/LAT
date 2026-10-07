@@ -1969,6 +1969,26 @@
           max-width: 110px;
           max-height: 50px;
         }
+
+        .gov-proj { padding: 80px 0; }
+        .gov-grid { display: grid; grid-template-columns: 4fr 5.5fr; gap: 40px; margin-top: 40px; text-align: left; }
+        .gov-grid.eq { grid-template-columns: 1fr 1fr; margin-top: 30px; }
+        .gov-dark-box { background: #2f3647; color: #fff; border-radius: 20px; padding: 30px; height: 100%; box-sizing: border-box; }
+        .gov-dark-box h3 { font-size: 20px; margin-bottom: 24px; font-weight: 700; color: #fff; }
+        .gov-dark-box ul { list-style: none; padding: 0; margin: 0; }
+        .gov-dark-box li { position: relative; padding-left: 20px; margin-bottom: 14px; font-size: 15px; font-weight: 600; line-height: 1.4; color: #fff; }
+        .gov-dark-box li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+        .gov-info { display: flex; flex-direction: column; gap: 34px; padding-top: 5px; }
+        .gov-block h3 { font-size: 21px; color: #232f3f; margin-bottom: 16px; font-weight: 700; }
+        .gov-block p { color: #555; font-size: 15px; line-height: 1.7; margin-bottom: 14px; }
+        .gov-block ul { list-style: none; padding: 0; margin: 0; }
+        .gov-block li { font-size: 15px; color: #555; margin-bottom: 12px; line-height: 1.5; }
+        .gov-block li strong { color: #232f3f; font-weight: 700; }
+        .tags-like { font-size: 15px !important; color: #444 !important; line-height: 1.8 !important; font-weight: 500; }
+        
+        @media(max-width: 900px) {
+          .gov-grid, .gov-grid.eq { grid-template-columns: 1fr; gap: 30px; }
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -2244,6 +2264,70 @@
 
       
 
+
+      <!-- GOVERNMENT PROJECTS -->
+      <section class="sec gov-proj" id="gov-projects">
+        <div class="c">
+          <div class="sechead">
+            <h2 class="sp">Government &amp; Public Sector Projects</h2>
+            <p class="lead rv" style="--d: 0.15s; max-width: 900px; text-align: left; margin: 20px auto 0 0;">
+              Employment Express has executed and supported projects across multiple government aligned initiatives
+              focused on workforce development, digital skilling, employability, cyber security, financial literacy, and
+              technology awareness. The organization has served as an implementation partner for state skill missions and
+              national programs, delivering at scale across geographies.
+            </p>
+          </div>
+          
+          <div class="gov-grid rv" style="--d: 0.25s;">
+            <div class="gov-dark-box">
+              <h3>Key Engagement Areas</h3>
+              <ul>
+                <li>Skill Development &amp; Employability</li>
+                <li>Cybersecurity Programs</li>
+                <li>Faculty Development (FDPs)</li>
+                <li>Digital Literacy &amp; Financial Inclusion</li>
+                <li>AI Awareness &amp; Emerging Technologies</li>
+                <li>Assessment Programs &amp; Internship</li>
+                <li>Ecosystems</li>
+              </ul>
+            </div>
+            <div class="gov-info">
+              <div class="gov-block">
+                <h3>Microsoft Ecosystem Projects</h3>
+                <p>Employment Express has actively participated in Microsoft aligned initiatives across multiple states:</p>
+                <ul>
+                  <li><strong>Punjab Skill Development Mission (PSDM)</strong> Technology and employability initiatives</li>
+                  <li><strong>Tamil Nadu Government Programs</strong> Digital skills and workforce readiness</li>
+                  <li><strong>Karnataka Government Programs</strong> Technology enabled skilling and employability</li>
+                </ul>
+              </div>
+              <div class="gov-block">
+                <h3>AI Awareness Programs</h3>
+                <p>Large scale initiatives on AI Fundamentals, Generative AI, Responsible AI, and Future Skills conducted for school students, college students, faculty, and community learners.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="sechead" style="margin-top: 100px;">
+            <h2 class="sp">Large-Scale Assessment Infrastructure</h2>
+            <p class="lead rv" style="--d: 0.35s; max-width: 900px; text-align: left; margin: 20px auto 0 0;">
+              Employment Express has successfully managed <strong>1,16,000+ candidate assessments</strong> through its proprietary
+              digital ecosystem, enabling scalable execution of national level projects and workforce initiatives.
+            </p>
+          </div>
+          
+          <div class="gov-grid eq rv" style="--d: 0.45s;">
+            <div class="gov-block">
+              <h3>Assessment Capabilities</h3>
+              <p class="tags-like">Online Assessments &middot; Aptitude Evaluations &middot; Employability Assessments &middot; Certification Assessments &middot; Skill Evaluations &middot; Program Monitoring &middot; Candidate Screening</p>
+            </div>
+            <div class="gov-block">
+              <h3>Faculty Development Programs (FDPs)</h3>
+              <p>Successfully delivered FDPs focused on Artificial Intelligence, Cybersecurity, Data Analytics, Emerging Technologies, Digital Pedagogy, and Industry Aligned Learning 4 strengthening institutional capabilities and promoting industry academia integration.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- CERTIFICATION NETWORK -->
       <section class="sec net" id="network">
