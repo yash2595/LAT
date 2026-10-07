@@ -2242,105 +2242,234 @@
         </div>
       </section>
 
-      <!-- GOVERNMENT PROJECTS -->
-      <section class="sec dk projects" id="projects">
+      <!-- GOVERNMENT PARTNERS -->
+      <section class="sec dk projects" id="projects" aria-labelledby="agv-h">
+        <style>
+          .agv-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+            padding: 6px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 999px;
+            background: rgba(255,255,255,0.07);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+          }
+
+          .agv-live i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: agvPing 1.8s infinite;
+          }
+
+          .agv-live b {
+            color: #93c5fd;
+            font-variant-numeric: tabular-nums;
+          }
+
+          .agv-grid {
+            max-width: 1120px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+          }
+
+          .agv-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            padding: 26px 16px 20px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            opacity: 0;
+            transform: translateX(-22px);
+            transition:
+              opacity 0.6s var(--d, 0s),
+              transform 0.6s var(--d, 0s),
+              border-color 0.3s,
+              box-shadow 0.3s;
+          }
+
+          .agv-grid.in .agv-card {
+            opacity: 1;
+            transform: none;
+          }
+
+          .agv-card::before {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; top: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #1d4ed8, #60a5fa);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.7s ease;
+          }
+
+          .agv-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(100deg, transparent 30%, rgba(96,165,250,0.1) 50%, transparent 70%);
+            transform: translateX(-120%);
+          }
+
+          .agv-card.on {
+            border-color: rgba(96,165,250,0.35);
+            animation: agvRing 0.9s ease-out;
+          }
+
+          .agv-card.on::before { transform: scaleX(1); }
+
+          .agv-card.on::after {
+            animation: agvShine 8s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.32s + 1s);
+          }
+
+          .agv-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(96,165,250,0.6);
+            box-shadow: 0 12px 28px rgba(29,78,216,0.25);
+          }
+
+          .agv-logo {
+            width: 92px;
+            height: 92px;
+            display: grid;
+            place-items: center;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            padding: 8px;
+          }
+
+          .agv-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+          }
+
+          .agv-card:hover .agv-logo img { transform: scale(1.06); }
+
+          .agv-name {
+            min-height: 2.7em;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: rgba(255,255,255,0.9);
+          }
+
+          @keyframes agvPing {
+            0% { box-shadow: 0 0 0 0 #4ade8066; }
+            70%, 100% { box-shadow: 0 0 0 8px #4ade8000; }
+          }
+
+          @keyframes agvRing {
+            0% { box-shadow: 0 0 0 0 #60a5fa60; }
+            70%, 100% { box-shadow: 0 0 0 14px #60a5fa00; }
+          }
+
+          @keyframes agvShine {
+            0% { transform: translateX(-120%); }
+            22%, 100% { transform: translateX(120%); }
+          }
+
+          @media (max-width: 900px) {
+            .agv-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+          }
+
+          @media (max-width: 640px) {
+            .agv-logo { width: 72px; height: 72px; }
+            .agv-name { font-size: 12px; }
+            .agv-card { padding: 20px 12px 16px; border-radius: 14px; }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .agv-card { opacity: 1; transform: none; transition: none; }
+            .agv-card::before { transform: scaleX(1); transition: none; }
+            .agv-card.on { animation: none; }
+            .agv-card.on::after { animation: none; }
+            .agv-live i { animation: none; }
+          }
+        </style>
         <div class="c">
           <div class="sechead">
-            <p class="pill rv"><b>★</b> Public-sector initiatives</p>
-            <h2 class="sp">Government Projects</h2>
-            <p class="lead rv" style="--d: 0.15s">
-              Employment and internship programmes delivered with state partners
-              and participating companies.
+            <span class="agv-live rv"><i></i>LIVE · <b id="agv-n">0</b> Government Partners</span>
+            <h2 id="agv-h" class="sp">Government partners in our network</h2>
+            <p class="lead rv" style="--d: 0.12s">
+              State and national skilling and employment bodies working
+              alongside MYLAT to connect verified talent with opportunity.
             </p>
           </div>
-          <div class="pg2">
-            <article class="pc rv">
-              <div class="pc-h">
-                <span class="pc-ico" aria-hidden="true">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#fff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M15 9h.01M9 13h.01M15 13h.01M10 21v-4h4v4"
-                    />
-                  </svg>
-                </span>
-                <div>
-                  <small>State employment initiative</small>
-                  <h3>Government Project - Punjab</h3>
-                </div>
-              </div>
-              <p class="big-n" data-count="16000">16,000</p>
-              <p class="big-c">candidates provided jobs</p>
-              <div class="pstats">
-                <div class="pstat">
-                  <b data-count="20" data-prefix="" data-suffix="+">20+</b
-                  ><span>job fairs / placement drives</span>
-                </div>
-                <div class="pstat">
-                  <b data-count="125" data-suffix="+">125+</b
-                  ><span>companies involved</span>
-                </div>
-              </div>
-              <p class="pnote">
-                Assistance provided in multiple job fairs to Punjab Government
-                in “Ghar Ghar Rozgar Yojana”
-              </p>
-              <div class="chips" aria-label="Sectors">
-                <span>IT</span><span>Pharma</span><span>Sales/BD</span
-                ><span>BFSI</span><span>HR</span><span>BPO</span>
-              </div>
-            </article>
-            <article class="pc rv" style="--d: 0.15s">
-              <div class="pc-h">
-                <span
-                  class="pc-ico"
-                  aria-hidden="true"
-                  style="
-                    background: linear-gradient(145deg, #6545d5, #8b5cf6);
-                    box-shadow: 0 10px 24px #8b5cf655;
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#fff"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"
-                    />
-                    <path d="M8 7h8M8 11h8" />
-                  </svg>
-                </span>
-                <div>
-                  <small>State internship initiative</small>
-                  <h3>Government Project - Andhra Pradesh</h3>
-                </div>
-              </div>
-              <p class="big-n" data-count="20000">20,000</p>
-              <p class="big-c">candidates from APITA provided internships</p>
-              <div class="pstats">
-                <div class="pstat">
-                  <b data-count="25" data-suffix="+">25+</b
-                  ><span>companies involved</span>
-                </div>
-              </div>
-              <div class="chips" aria-label="Sectors">
-                <span>IT</span><span>Pharma</span><span>Sales/BD</span
-                ><span>BFSI</span><span>HR</span>
-              </div>
-            </article>
-          </div>
         </div>
+        <div class="agv-grid" id="agv-grid" aria-label="Government partner logos"></div>
+
+        <script>
+          (function () {
+            var PARTNERS = [
+              ["qci.jpeg",              "Quality Council of India"],
+              ["apita.jpeg",            "APITA"],
+              ["apsche.png",            "Andhra Pradesh State Council of Higher Education"],
+              ["ksdma.jpeg",            "Kerala State Disaster Management Authority"],
+              ["naan-mudhalvan.png",    "Naan Mudhalvan"],
+              ["psdm.jpeg",             "Punjab Skill Development Mission"],
+              ["punjab-employment.jpeg","Punjab Employment &amp; Enterprise Mission"],
+              ["tnsdc.jpeg",            "Tamil Nadu Skill Development Corporation"],
+            ];
+            var grid    = document.getElementById("agv-grid");
+            var counter = document.getElementById("agv-n");
+            var reduce  = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            grid.innerHTML = PARTNERS.map(function (p, i) {
+              return (
+                '<div class="agv-card" style="--i:' + i + ';--d:' + (i * 0.1).toFixed(2) + 's">' +
+                '<div class="agv-logo"><img src="assets/government/' + p[0] + '" alt="' + p[1].replace(/&amp;/g,"&") +
+                '" width="92" height="92" loading="lazy" decoding="async"></div>' +
+                '<div class="agv-name">' + p[1] + '</div></div>'
+              );
+            }).join("");
+            var cards = grid.querySelectorAll(".agv-card");
+            function run() {
+              grid.classList.add("in");
+              if (reduce) {
+                cards.forEach(function (c) { c.classList.add("on"); });
+                counter.textContent = cards.length;
+                return;
+              }
+              cards.forEach(function (c, i) {
+                setTimeout(function () {
+                  c.classList.add("on");
+                  counter.textContent = i + 1;
+                }, 350 + i * 180);
+              });
+            }
+            if ("IntersectionObserver" in window) {
+              var io = new IntersectionObserver(function (e, o) {
+                if (e[0].isIntersecting) { o.disconnect(); run(); }
+              }, { threshold: 0.2 });
+              io.observe(grid);
+            } else { run(); }
+          })();
+        </script>
       </section>
+
 
       <!-- CERTIFICATION NETWORK -->
       <section class="sec net" id="network">
