@@ -1,4 +1,4 @@
-// M4 Dashboard - Railway MySQL API Integration
+﻿// M4 Dashboard - Railway MySQL API Integration
 // Values available from the API are dynamic. Static descriptive UI text remains in dashboard.html.
 
 function initStudentResponsiveShell() {
@@ -503,7 +503,7 @@ function renderProfileState(source) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.5 10.5c-1 0-1.5-.5-2-1.5A3 3 0 0 0 12 6a3 3 0 0 0-5.5 3c-.5 1-1 1.5-2 1.5A3 3 0 0 0 3 13.5c1 0 1.5.5 2 1.5A3 3 0 0 0 10.5 18a3 3 0 0 0 5.5-3c.5-1 1-1.5 2-1.5A3 3 0 0 0 19.5 10.5Z"/></svg>
                         </div>
                         <div class="min-w-0">
-                            <p class="text-sm font-semibold text-slate-800">InternBoot Certificate</p>
+                            <p class="text-sm font-semibold text-slate-800">MYLAT Certificate</p>
                             <p class="text-xs text-slate-500 mt-1 flex flex-wrap items-center gap-2">
                                 <span>No: <strong class="text-slate-800">${certNumber}</strong></span>
                                 <span class="w-1 h-1 bg-slate-300 rounded-full"></span>
@@ -532,7 +532,7 @@ function renderProfileState(source) {
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.5 10.5c-1 0-1.5-.5-2-1.5A3 3 0 0 0 12 6a3 3 0 0 0-5.5 3c-.5 1-1 1.5-2 1.5A3 3 0 0 0 3 13.5c1 0 1.5.5 2 1.5A3 3 0 0 0 10.5 18a3 3 0 0 0 5.5-3c.5-1 1-1.5 2-1.5A3 3 0 0 0 19.5 10.5Z"/></svg>
                         </div>
                         <div class="min-w-0">
-                            <p class="text-sm font-semibold text-slate-800">InternBoot Certificate</p>
+                            <p class="text-sm font-semibold text-slate-800">MYLAT Certificate</p>
                             <p class="text-xs text-slate-500 mt-1">Your certificate will appear here once it is issued.</p>
                         </div>
                     </div>

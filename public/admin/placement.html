@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Dashboard – Placement | InternBoot</title>
+    <title>Admin Dashboard � Placement | MYLAT</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -29,14 +29,17 @@
     <aside id="sidebar"
       class="w-[250px] bg-gradient-to-b from-[#294fae] to-[#347de9] text-white h-full flex-shrink-0 transition-transform absolute lg:relative z-40 -translate-x-full lg:translate-x-0 flex flex-col">
       <!-- Logo -->
-      <div class="h-16 shrink-0 px-5 flex items-center border-b border-white/10">
+      <div class="h-[72px] shrink-0 px-5 flex items-center border-b border-white/10">
         <a href="index.html" class="flex items-center gap-3 min-w-0">
-          <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center shrink-0 overflow-hidden">
-            <img src="../assets/internboot-logo.png" alt="InternBoot logo" class="w-full h-full object-contain p-1" />
+          <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+            <img src="../assets/mylat-admin-logo.png" alt="MYLAT logo" class="w-full h-full object-contain p-1.5" />
           </div>
           <div class="min-w-0">
-            <div class="text-base font-bold leading-tight">InternBoot</div>
-            <div class="text-[11px] text-blue-100 mt-0.5">Admin Dashboard</div>
+            <div class="text-lg font-bold leading-tight tracking-wide">MYLAT</div>
+            <div class="flex items-center gap-1.5 mt-0.5">
+              <span class="w-2 h-2 rounded-full bg-green-400 shrink-0"></span>
+              <span class="text-[10px] font-semibold text-blue-100 tracking-widest uppercase">Admin Dashboard</span>
+            </div>
           </div>
         </a>
       </div>
@@ -140,7 +143,7 @@
             </div>
           </section>
 
-          <!-- ── PLACEMENT STATS ─────────────────────────────────────────── -->
+          <!-- -- PLACEMENT STATS ------------------------------------------- -->
           <h2 class="text-2xl font-semibold text-slate-800 mb-6">Placements</h2>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3 mb-8">
@@ -174,7 +177,7 @@
             </div>
           </div>
 
-          <!-- ── CANDIDATES TABLE ────────────────────────────────────────── -->
+          <!-- -- CANDIDATES TABLE ------------------------------------------ -->
           <div class="mt-8 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div class="p-4 border-b border-slate-100 flex flex-wrap gap-4 items-center bg-slate-50/50">
               <div class="flex-1 min-w-[200px] relative">
@@ -218,15 +221,15 @@
             </div>
           </div>
 
-          <!-- ══════════════════════════════════════════════════════════════
+          <!-- --------------------------------------------------------------
                JOB DESCRIPTIONS (JD) MANAGEMENT
-          ══════════════════════════════════════════════════════════════════ -->
+          ------------------------------------------------------------------ -->
           <div class="mt-10">
             <div class="flex items-center justify-between mb-5 gap-4 flex-wrap">
               <div>
                 <h2 class="text-xl font-bold text-slate-800">Job Descriptions (JD)</h2>
                 <p class="text-[13px] text-slate-500 mt-1">
-                  Post level-targeted job opportunities — only matching-level candidates will see them on their Placement page.
+                  Post level-targeted job opportunities � only matching-level candidates will see them on their Placement page.
                 </p>
               </div>
               <button id="postNewJdBtn"

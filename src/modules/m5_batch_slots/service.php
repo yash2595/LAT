@@ -721,7 +721,7 @@ function auto_generate_questions_for_upcoming_exams(mysqli $conn): void {
                 // Generates automatically with 'approved' status!
                 generate_questions_via_ai($qbankId, $ass['assessment_title'], $needed, 'hard', $conn, 'approved');
             } catch (Throwable $e) {
-                error_log("InternBoot Auto-Gen AI failed for QBank {$qbankId}: " . $e->getMessage());
+                error_log("MYLAT Auto-Gen AI failed for QBank {$qbankId}: " . $e->getMessage());
             }
         }
     }
@@ -914,7 +914,7 @@ function check_and_notify_underfilled_slots(mysqli $conn, ?int $assessmentId = n
                               . "<p>We regret to inform you that the examination batch for your selected slot on <strong>{$formattedDate}</strong> at <strong>{$formattedTime}</strong> could not be formed because the minimum requirement of <strong>{$threshold} candidates</strong> was not reached 30 minutes prior to the exam start time.</p>"
                               . "<p>Your slot choice has been reopened. <strong>Only affected candidates like you</strong> can now log in to the student dashboard and choose an alternate available slot.</p>"
                               . "<p><a href=\"" . (function_exists('env_value') ? env_value('APP_URL', 'http://localhost:8000') : 'http://localhost:8000') . "/batches-slots.html\" style=\"display:inline-block;padding:10px 18px;background:#2563eb;color:#fff;border-radius:6px;text-decoration:none;font-weight:bold;\">Choose Alternate Slot &rarr;</a></p>"
-                              . "<p>Best regards,<br>InternBoot Team</p>";
+                              . "<p>Best regards,<br>MYLAT Team</p>";
                     try {
                         send_mail($email, $fullName, $subject, $htmlBody, strip_tags($htmlBody));
                     } catch (Throwable $mEx) {

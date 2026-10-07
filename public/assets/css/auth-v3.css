@@ -1,4 +1,4 @@
-/* InternBoot — Login / Register (v3)
+﻿/* MYLAT — Login / Register (v3)
    Theme: exam hall ticket + level climb (L1 -> L5). */
 :root{--navy:#060d2b;--blue:#2f5fe0;--violet:#6d4cf5;--amber:#ffb020;--ink:#0f172a;--mute:#5b6b85;--line:#dbe3f3;--paper:#f4f7ff;--ok:#15803d;--err:#b91c1c;--display:'Bricolage Grotesque','Manrope','Segoe UI',Arial,sans-serif;--body:'Manrope','Segoe UI',Arial,sans-serif}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%}body{font-family:var(--body);color:var(--ink);background:var(--navy);-webkit-font-smoothing:antialiased;line-height:1.5}a{color:inherit}:focus-visible{outline:3px solid rgba(109,76,245,.55);outline-offset:2px}

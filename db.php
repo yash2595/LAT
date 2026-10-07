@@ -1,10 +1,10 @@
-<?php
+﻿<?php
 // Suppress HTML error output immediately — must be first to prevent poisoning JSON API responses
 ini_set('display_errors', '0');
 error_reporting(0);
 
 /**
- * InternBoot M7 database bootstrap.
+ * MYLAT M7 database bootstrap.
  *
  * Supports both the project's DB_* variables and all Railway MySQL variables:
  * MYSQL_DATABASE, MYSQL_PUBLIC_URL, MYSQL_ROOT_PASSWORD, MYSQL_URL,

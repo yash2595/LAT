@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../src/core/bootstrap.php';
 if (isset($_SESSION['user_id'])) { header('Location: /dashboard.html'); exit; }
-$pageTitle='Create Account — InternBoot'; $asideVariant='register'; $asideTitle='Prove Your Skills. Unlock Your Future.'; $asideLead='Take the assessment. Stand out. Move closer to your dream career.';
+$pageTitle='Create Account — MYLAT'; $asideVariant='register'; $asideTitle='Prove Your Skills. Unlock Your Future.'; $asideLead='Take the assessment. Stand out. Move closer to your dream career.';
 ?>
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title><?= htmlspecialchars($pageTitle) ?></title><link rel="icon" href="assets/css/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/css/auth-v3.css"></head>
-<body><div class="auth"><?php require __DIR__ . '/../src/core/auth_aside.php'; ?><main class="main"><div class="top"><img class="m-logo" src="assets/css/internboot-official-logo.webp" alt="InternBoot"></div>
+<body><div class="auth"><?php require __DIR__ . '/../src/core/auth_aside.php'; ?><main class="main"><div class="top"><img class="m-logo" src="assets/mylat-logo.png" alt="MYLAT"></div>
 <div class="shell"><section class="card is-login" id="regCard" data-step="1">
 <div class="body">
     <style>
@@ -17,7 +17,7 @@ $pageTitle='Create Account — InternBoot'; $asideVariant='register'; $asideTitl
     </style>
     <form id="registerForm" novalidate autocomplete="off">
         <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: #60a5fa; margin-bottom: 8px;">
-            👋 <span>Welcome to InternBoot</span>
+            👋 <span>Welcome to MYLAT</span>
         </div>
         <div class="login-header-group">
             <h2 id="regTitle">Create Account</h2>
@@ -133,7 +133,7 @@ $pageTitle='Create Account — InternBoot'; $asideVariant='register'; $asideTitl
         </div>
 
         <p class="foot" style="margin-top: 20px; font-size: 13px; color: #64748b; display: flex; align-items: center; justify-content: center; gap: 8px;">
-            <svg class="ico" style="width: 16px; height: 16px; color: #10b981; stroke-width: 2.5;"><use href="#i-shield"/></svg> 256-bit SSL Encrypted &bull; <b style="color:#60a5fa;">InternBoot</b>
+            <svg class="ico" style="width: 16px; height: 16px; color: #10b981; stroke-width: 2.5;"><use href="#i-shield"/></svg> 256-bit SSL Encrypted &bull; <b style="color:#60a5fa;">MYLAT</b>
         </p>
     </form>
     

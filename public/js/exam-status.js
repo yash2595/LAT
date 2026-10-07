@@ -1,5 +1,5 @@
-/**
- * InternBoot - Exam Status Handler (M6 Integration)
+﻿/**
+ * MYLAT - Exam Status Handler (M6 Integration)
  * Connects public/exam.html to backend API:
  * - GET api/exam/exam_status.php
  */

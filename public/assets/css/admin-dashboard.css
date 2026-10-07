@@ -1,4 +1,4 @@
-/* InternBoot admin workspace — quiet, information-first, landing-page aligned */
+﻿/* MYLAT admin workspace — quiet, information-first, landing-page aligned */
 :root { --ia-ink:#101b35; --ia-muted:#66738b; --ia-blue:#1d4ed8; --ia-bg:#f6f8fd; --ia-line:#e4eaf5; --ia-shadow:0 12px 34px rgba(22,45,94,.055),0 2px 8px rgba(22,45,94,.035); }
 html,body { min-height:100%; }
 body { color:var(--ia-ink)!important; background:radial-gradient(ellipse at 92% 0%,#eaf0ff 0,transparent 30rem),var(--ia-bg)!important; font-family:Manrope,ui-sans-serif,system-ui,sans-serif!important; -webkit-font-smoothing:antialiased; }

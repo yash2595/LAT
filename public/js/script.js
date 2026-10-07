@@ -1,5 +1,5 @@
-/* ==========================================================
-   InternBoot — Landing Page (M2)
+﻿/* ==========================================================
+   MYLAT — Landing Page (M2)
    Pure JavaScript + Bootstrap 5
    
    EDIT ONLY THE CONFIG BELOW when the client confirms the

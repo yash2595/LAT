@@ -57,8 +57,10 @@ function m7_handle_request(mysqli $conn): void
 
     if ($method === 'GET') {
         switch ($action) {
-            case 'dashboard': send_json_response('success','Dashboard data loaded',m7_dashboard($conn));
-            case 'ai-status': 
+            case 'dashboard':
+                send_json_response('success','Dashboard data loaded',m7_dashboard($conn));
+                break;
+            case 'ai-status':
                 require_once __DIR__ . '/../m1_ai_qbank/controller.php';
                 handle_ai_status_request($conn);
                 break;

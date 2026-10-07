@@ -1,4 +1,4 @@
-/* InternBoot landing: lean interaction layer (v3)
+﻿/* MYLAT landing: lean interaction layer (v3)
    Only what helps the visitor: scroll progress, chapter rail, working contact form. */
 (() => {
   const $ = (s) => document.querySelector(s);

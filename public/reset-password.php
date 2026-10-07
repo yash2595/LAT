@@ -13,7 +13,7 @@ if (!$token || !$email) {
     exit;
 }
 
-$pageTitle = 'Reset Password — InternBoot';
+$pageTitle = 'Reset Password — MYLAT';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +28,7 @@ $pageTitle = 'Reset Password — InternBoot';
 <body>
 <main class="ib-auth-page-rich">
   <div class="ib-auth-card-full">
-    <img src="assets/css/internboot-official-logo.webp" alt="InternBoot" class="ib-form-logo">
+    <img src="assets/mylat-logo.png" alt="MYLAT" class="ib-form-logo">
     <h1 class="ib-auth-title text-center">Create new <span class="ib-gradient-text">Password</span></h1>
     <p class="ib-auth-sub text-center">Enter your new password below.</p>
 

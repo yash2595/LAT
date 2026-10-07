@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   "use strict";
 
   const API = "/api/admin/evaluate.php";
@@ -1645,7 +1645,7 @@
 
     const csvContent = generateCsv(headers, rows);
     const dateStr = new Date().toISOString().slice(0, 10);
-    downloadCsv(`internboot-placements-${dateStr}.csv`, csvContent);
+    downloadCsv(`mylat-placements-${dateStr}.csv`, csvContent);
     notify(`Exported ${filtered.length} placement record${filtered.length === 1 ? "" : "s"}.`);
   }
 

@@ -1,5 +1,5 @@
-/**
- * InternBoot M4 - Payment Module Integration
+﻿/**
+ * MYLAT M4 - Payment Module Integration
  * Connects public/payment.html to public/api/payment/payment.php
  * Handles token-based demo payment flow:
  * 1. GET api/payment/payment.php?action=details

@@ -429,7 +429,7 @@ try {
         'demo_mode' => demo_mode()
     ]);
 } catch (Throwable $e) {
-    error_log('InternBoot dashboard error: ' . $e->getMessage() . ' on line ' . $e->getLine());
+    error_log('MYLAT dashboard error: ' . $e->getMessage() . ' on line ' . $e->getLine());
     send_json_response('error', 'Unable to fetch dashboard data. Please try again or contact support. Line: ' . $e->getLine(), null, 500);
 }
 

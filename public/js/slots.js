@@ -1,5 +1,5 @@
-/**
- * InternBoot - Batches & Slots Candidate Flow (M5 Integration)
+﻿/**
+ * MYLAT - Batches & Slots Candidate Flow (M5 Integration)
  * Connects public/batches-slots.html to backend APIs:
  * - GET api/dashboard.php
  * - GET/POST api/slots/preference.php

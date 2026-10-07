@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Seed: 5:20 PM TODAY batch with 110 registered candidates
  * Run: php scripts/seed_520.php
@@ -13,7 +13,7 @@ try {
 $res = $conn->query("SELECT id FROM assessments LIMIT 1");
 $assessment_id = ($row = $res->fetch_assoc()) ? (int)$row['id'] : null;
 if (!$assessment_id) {
-    $conn->query("INSERT INTO assessments (title, description, duration_minutes, total_questions, passing_percentage, status) VALUES ('InternBoot Level Assessment', 'Auto seeded', 60, 100, 60.00, 'active')");
+    $conn->query("INSERT INTO assessments (title, description, duration_minutes, total_questions, passing_percentage, status) VALUES ('MYLAT Level Assessment', 'Auto seeded', 60, 100, 60.00, 'active')");
     $assessment_id = (int)$conn->insert_id;
 }
 echo "Assessment ID: $assessment_id\n";
@@ -89,7 +89,7 @@ for ($i = 0; $i < 110; $i++) {
         $name  = 'Yash Mishra (You)';
     } else {
         $ts    = substr(time(), -4);
-        $email = "cand520_{$ts}_{$i}@internboot.test";
+        $email = "cand520_{$ts}_{$i}@mylat.test";
         $name  = "Candidate 520-{$i}";
     }
 

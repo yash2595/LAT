@@ -351,7 +351,7 @@ function get_settings(mysqli $conn): array
     } else {
         $profile = [
             'id'=>null,
-            'email'=>$map['admin_email'] ?? 'admin@internboot.com',
+            'email'=>$map['admin_email'] ?? 'admin@mylat.com',
             'full_name'=>$map['admin_full_name'] ?? 'Admin',
             'phone'=>$map['admin_phone'] ?? ''
         ];

@@ -1,4 +1,4 @@
-/* InternBoot landing polish layer */
+﻿/* MYLAT landing polish layer */
 (() => {
   const fine = matchMedia("(hover:hover) and (pointer:fine)").matches;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -128,7 +128,7 @@
   }
 
   /* Footer watermark */
-  $(".ib-footer")?.appendChild(div("fx-wm", "<i>INTERNBOOT</i>")).setAttribute("aria-hidden", "true");
+  $(".ib-footer")?.appendChild(div("fx-wm", "<i>MYLAT</i>")).setAttribute("aria-hidden", "true");
 
   /* Section rail */
   const secs = [["#home", "HERO"], ["#compare", "WITH vs WITHOUT LAT"], ["#placement", "PLACEMENT"], ["#how", "HOW IT WORKS"], ["#levels", "LEVELS"], ["#pattern", "ASSESSMENT"], ["#fee", "FEE"], ["#faq", "FAQS"]].filter(([s]) => $(s));

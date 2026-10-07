@@ -10,7 +10,7 @@ function render_certificate_error_page(string $message, int $statusCode = 500): 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Unavailable — InternBoot</title>
+    <title>Certificate Unavailable — MYLAT</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
         .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 32px; max-width: 480px; width: 100%; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
@@ -87,7 +87,7 @@ try {
 } catch (InvalidArgumentException $e) {
     render_certificate_error_page($e->getMessage(), 422);
 } catch (Throwable $e) {
-    error_log('InternBoot M7 certificate PDF error: ' . $e->getMessage());
+    error_log('MYLAT M7 certificate PDF error: ' . $e->getMessage());
     render_certificate_error_page(is_dev_env() ? $e->getMessage() : 'Certificate could not be generated. Please try again or contact support.', 500);
 }
 

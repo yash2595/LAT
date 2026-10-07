@@ -48,7 +48,7 @@ function handle_add_question_request(array $input, mysqli $conn): void {
     } catch (InvalidArgumentException $e) {
         send_json_response('error', $e->getMessage(), null, 400);
     } catch (Throwable $e) {
-        error_log('InternBoot M1 add question error: ' . $e->getMessage());
+        error_log('MYLAT M1 add question error: ' . $e->getMessage());
         send_json_response('error', is_dev_env() ? $e->getMessage() : 'Failed to add question. Please try again.', null, 500);
     }
 }
@@ -105,7 +105,7 @@ function handle_generate_questions_request(array $input, mysqli $conn): void {
         send_json_response('error', $e->getMessage(), null, 400);
     } catch (Throwable $e) {
         $msg = $e->getMessage();
-        error_log('InternBoot M1 question generation error: ' . $msg);
+        error_log('MYLAT M1 question generation error: ' . $msg);
         if (str_contains($msg, 'AI provider') || str_contains($msg, 'network')) {
             send_json_response('error', 'AI Generation Error: ' . $msg, null, 502);
         } else {

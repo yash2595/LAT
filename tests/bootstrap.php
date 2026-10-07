@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Path: tests/bootstrap.php
 
 // Load .env to get DB credentials
@@ -17,7 +17,7 @@ if (is_file($envFile)) {
 
 // Force testing environment to protect production data
 $_ENV['APP_ENV'] = 'testing';
-$_ENV['DB_NAME'] = 'internboot_test';
+$_ENV['DB_NAME'] = 'mylat_test';
 $_ENV['OTP_PEPPER'] = 'test_pepper_123';
 $_ENV['M4_DEMO_MODE'] = '0';
 $_SERVER['M4_DEMO_MODE'] = '0';
@@ -32,7 +32,7 @@ $port = $_ENV['DB_PORT'] ?? 3306;
 try {
     $tempConn = @new mysqli($host, $user, $pass, '', (int)$port);
     if (!$tempConn->connect_error) {
-        $tempConn->query("CREATE DATABASE IF NOT EXISTS `internboot_test`");
+        $tempConn->query("CREATE DATABASE IF NOT EXISTS `mylat_test`");
         $tempConn->close();
     }
 } catch (\Throwable $e) {
@@ -47,14 +47,14 @@ $host = $_ENV['DB_HOST'] ?? '127.0.0.1';
 $user = $_ENV['DB_USER'] ?? 'root';
 $pass = $_ENV['DB_PASSWORD'] ?? '';
 $port = $_ENV['DB_PORT'] ?? 3306;
-$dbName = 'internboot_test';
+$dbName = 'mylat_test';
 
 $GLOBALS['conn'] = new mysqli($host, $user, $pass, $dbName, (int)$port);
 $conn = $GLOBALS['conn'];
 
 // Ensure we are connected to the test database
-if ($dbName !== 'internboot_test') {
-    die("FATAL: Tests must run against a database named 'internboot_test'. Currently pointing to: {$dbName}");
+if ($dbName !== 'mylat_test') {
+    die("FATAL: Tests must run against a database named 'mylat_test'. Currently pointing to: {$dbName}");
 }
 
 // Attempt to create the test database and select it
