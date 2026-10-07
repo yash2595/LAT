@@ -64,14 +64,15 @@ DB_NAME=railway
 M4_DEMO_MODE=0
 M4_DEMO_SECRET=your_local_demo_secret_here
 
-# SMTP Mail Configuration (Required for M3 candidate registration & OTP verification)
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_smtp_username
-MAIL_PASSWORD=your_smtp_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@internboot.com
-MAIL_FROM_NAME="InternBoot"
+# SMTP Mail Configuration (OTP, password reset, and contact form)
+MAIL_HOST=smtp.hostinger.com
+MAIL_PORT=465
+MAIL_USERNAME=connect@mylatindia.com
+MAIL_PASSWORD=SET_IN_LOCAL_ENV_OR_DEPLOYMENT_SECRET
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=connect@mylatindia.com
+MAIL_FROM_NAME="InternBoot Support"
+MAIL_CONTACT_TO=connect@mylatindia.com
 ```
 > ⚠️ **STRICT WARNING:** Never commit `.env` to Git! It is excluded by `.gitignore`.
 
@@ -149,13 +150,14 @@ M4_DEMO_MODE=0
 M4_DEMO_SECRET=generate_a_long_random_secret_here
 
 # SMTP Mail Delivery Variables (Production / Cloud)
-MAIL_HOST=smtp.sendgrid.net
-MAIL_PORT=587
-MAIL_USERNAME=apikey
-MAIL_PASSWORD=YOUR_SENDGRID_API_KEY
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@yourdomain.com
-MAIL_FROM_NAME="InternBoot"
+MAIL_HOST=smtp.hostinger.com
+MAIL_PORT=465
+MAIL_USERNAME=connect@mylatindia.com
+MAIL_PASSWORD=SET_AS_A_PRIVATE_DEPLOYMENT_ENVIRONMENT_VARIABLE
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=connect@mylatindia.com
+MAIL_FROM_NAME="InternBoot Support"
+MAIL_CONTACT_TO=connect@mylatindia.com
 
 # Payment Gateway Configuration (M4 Payment Integration - Easebuzz / PayU)
 KEY=YOUR_PAYMENT_MERCHANT_KEY
