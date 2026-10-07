@@ -3465,16 +3465,13 @@
       (function () {
         // Row 1 scrolls left, row 2 scrolls right. Add a logo = drop a PNG in assets/recruiters/ and add one line here.
         var ROWS = [
-          [["ibm", "IBM"], ["oracle", "Oracle"], ["tcs", "Tata Consultancy Services"], ["cognizant", "Cognizant"],
-          ["wipro", "Wipro"], ["hgs-cx", "HGS CX"], ["niit", "NIIT"], ["aicte", "AICTE"]],
-          [["genpact", "Genpact"], ["infosys", "Infosys"], ["bajaj", "Bajaj"], ["aif", "American India Foundation"],
-          ["niit-foundation", "NIIT Foundation"], ["dsci", "DSCI"], ["punjab-govt", "Government of Punjab"],
-          ["ap-sche", "Andhra Pradesh State Council of Higher Education"]]
+          [["Capitalbox.jpeg", "Capitalbox"], ["Cognizent.jpg.jpeg", "Cognizent"], ["Collabera.png", "Collabera"], ["EXL.png", "EXL"], ["G_BIG.png", "G BIG"], ["Glovia.jpeg", "Glovia"], ["HCL Tech.png", "HCL Tech"], ["HDFC.png", "HDFC"], ["HEXAWARE.NS_BIG-3c8842d4.png", "HEXAWARE"], ["Heights.png", "Heights"], ["ICICI bank.png", "ICICI Bank"], ["ICICIPrudentialLifeInsurancejp-1542860734947.jpeg", "ICICI Prudential"], ["IMad.jpeg", "IMad"], ["ITC.png", "ITC"], ["JSL-Black-1.webp", "JSL"], ["Mphasis Logo.png", "Mphasis"], ["P.png", "P"], ["Pixels infosys.png", "Pixels Infosys"], ["Policy bazar.png", "Policy Bazar"], ["ProNoesis.png", "ProNoesis"], ["RJ solar.png", "RJ Solar"]],
+          [["RealOne.png", "RealOne"], ["SBI card.jpg.jpeg", "SBI Card"], ["Scalar.png", "Scalar"], ["Startek_Logo.jpg.jpeg", "Startek"], ["Sutherland.png", "Sutherland"], ["TATA communication.png", "TATA Communication"], ["Task us.png", "Task Us"], ["UFLEX.jpg.jpeg", "UFLEX"], ["UKB.jpeg", "UKB"], ["Untitled design.png", "Untitled Design"], ["WhiteHat coders.jpeg", "WhiteHat Coders"], ["Wipro.png", "Wipro"], ["XMS.png", "XMS"], ["YSF.png", "YSF"], ["cogent.png", "Cogent"], ["genpact.png", "Genpact"], ["iEnergizer.jpg.jpeg", "iEnergizer"], ["infosys.png", "Infosys"], ["paisa bazar.png", "Paisa Bazar"], ["reboot xp.jpeg", "Reboot XP"]]
         ];
         function set(list, clone) {
           return list.map(function (l) {
             return '<div class="rc-card"' + (clone ? ' aria-hidden="true"' : '') + '><img src="assets/recruiters/' + l[0] +
-              '.png" alt="' + (clone ? '' : l[1]) + '" width="163" height="120" loading="lazy" decoding="async"></div>';
+              '" alt="' + (clone ? '' : l[1]) + '" width="163" height="120" loading="lazy" decoding="async"></div>';
           }).join("");
         }
         document.querySelectorAll(".rc-track").forEach(function (t) {
