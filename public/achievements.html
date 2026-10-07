@@ -2242,233 +2242,7 @@
         </div>
       </section>
 
-      <!-- GOVERNMENT PARTNERS -->
-      <section class="sec dk projects" id="projects" aria-labelledby="agv-h">
-        <style>
-          .agv-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 14px;
-            padding: 6px 14px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 999px;
-            background: rgba(255,255,255,0.07);
-            font-size: 12.5px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-          }
-
-          .agv-live i {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4ade80;
-            animation: agvPing 1.8s infinite;
-          }
-
-          .agv-live b {
-            color: #93c5fd;
-            font-variant-numeric: tabular-nums;
-          }
-
-          .agv-grid {
-            max-width: 1120px;
-            margin: 40px auto 0;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-          }
-
-          .agv-card {
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            padding: 26px 16px 20px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 18px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-            opacity: 0;
-            transform: translateX(-22px);
-            transition:
-              opacity 0.6s var(--d, 0s),
-              transform 0.6s var(--d, 0s),
-              border-color 0.3s,
-              box-shadow 0.3s;
-          }
-
-          .agv-grid.in .agv-card {
-            opacity: 1;
-            transform: none;
-          }
-
-          .agv-card::before {
-            content: "";
-            position: absolute;
-            left: 0; right: 0; top: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1d4ed8, #60a5fa);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.7s ease;
-          }
-
-          .agv-card::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: linear-gradient(100deg, transparent 30%, rgba(96,165,250,0.1) 50%, transparent 70%);
-            transform: translateX(-120%);
-          }
-
-          .agv-card.on {
-            border-color: rgba(96,165,250,0.35);
-            animation: agvRing 0.9s ease-out;
-          }
-
-          .agv-card.on::before { transform: scaleX(1); }
-
-          .agv-card.on::after {
-            animation: agvShine 8s ease-in-out infinite;
-            animation-delay: calc(var(--i) * 0.32s + 1s);
-          }
-
-          .agv-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(96,165,250,0.6);
-            box-shadow: 0 12px 28px rgba(29,78,216,0.25);
-          }
-
-          .agv-logo {
-            width: 92px;
-            height: 92px;
-            display: grid;
-            place-items: center;
-            background: rgba(255,255,255,0.9);
-            border-radius: 12px;
-            padding: 8px;
-          }
-
-          .agv-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s;
-          }
-
-          .agv-card:hover .agv-logo img { transform: scale(1.06); }
-
-          .agv-name {
-            min-height: 2.7em;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 1.35;
-            color: rgba(255,255,255,0.9);
-          }
-
-          @keyframes agvPing {
-            0% { box-shadow: 0 0 0 0 #4ade8066; }
-            70%, 100% { box-shadow: 0 0 0 8px #4ade8000; }
-          }
-
-          @keyframes agvRing {
-            0% { box-shadow: 0 0 0 0 #60a5fa60; }
-            70%, 100% { box-shadow: 0 0 0 14px #60a5fa00; }
-          }
-
-          @keyframes agvShine {
-            0% { transform: translateX(-120%); }
-            22%, 100% { transform: translateX(120%); }
-          }
-
-          @media (max-width: 900px) {
-            .agv-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-          }
-
-          @media (max-width: 640px) {
-            .agv-logo { width: 72px; height: 72px; }
-            .agv-name { font-size: 12px; }
-            .agv-card { padding: 20px 12px 16px; border-radius: 14px; }
-          }
-
-          @media (prefers-reduced-motion: reduce) {
-            .agv-card { opacity: 1; transform: none; transition: none; }
-            .agv-card::before { transform: scaleX(1); transition: none; }
-            .agv-card.on { animation: none; }
-            .agv-card.on::after { animation: none; }
-            .agv-live i { animation: none; }
-          }
-        </style>
-        <div class="c">
-          <div class="sechead">
-            <span class="agv-live rv"><i></i>LIVE · <b id="agv-n">0</b> Government Partners</span>
-            <h2 id="agv-h" class="sp">Government partners in our network</h2>
-            <p class="lead rv" style="--d: 0.12s">
-              State and national skilling and employment bodies working
-              alongside MYLAT to connect verified talent with opportunity.
-            </p>
-          </div>
-        </div>
-        <div class="agv-grid" id="agv-grid" aria-label="Government partner logos"></div>
-
-        <script>
-          (function () {
-            var PARTNERS = [
-              ["qci.jpeg",              "Quality Council of India"],
-              ["apita.jpeg",            "APITA"],
-              ["apsche.png",            "Andhra Pradesh State Council of Higher Education"],
-              ["ksdma.jpeg",            "Kerala State Disaster Management Authority"],
-              ["naan-mudhalvan.png",    "Naan Mudhalvan"],
-              ["psdm.jpeg",             "Punjab Skill Development Mission"],
-              ["punjab-employment.jpeg","Punjab Employment &amp; Enterprise Mission"],
-              ["tnsdc.jpeg",            "Tamil Nadu Skill Development Corporation"],
-            ];
-            var grid    = document.getElementById("agv-grid");
-            var counter = document.getElementById("agv-n");
-            var reduce  = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            grid.innerHTML = PARTNERS.map(function (p, i) {
-              return (
-                '<div class="agv-card" style="--i:' + i + ';--d:' + (i * 0.1).toFixed(2) + 's">' +
-                '<div class="agv-logo"><img src="assets/government/' + p[0] + '" alt="' + p[1].replace(/&amp;/g,"&") +
-                '" width="92" height="92" loading="lazy" decoding="async"></div>' +
-                '<div class="agv-name">' + p[1] + '</div></div>'
-              );
-            }).join("");
-            var cards = grid.querySelectorAll(".agv-card");
-            function run() {
-              grid.classList.add("in");
-              if (reduce) {
-                cards.forEach(function (c) { c.classList.add("on"); });
-                counter.textContent = cards.length;
-                return;
-              }
-              cards.forEach(function (c, i) {
-                setTimeout(function () {
-                  c.classList.add("on");
-                  counter.textContent = i + 1;
-                }, 350 + i * 180);
-              });
-            }
-            if ("IntersectionObserver" in window) {
-              var io = new IntersectionObserver(function (e, o) {
-                if (e[0].isIntersecting) { o.disconnect(); run(); }
-              }, { threshold: 0.2 });
-              io.observe(grid);
-            } else { run(); }
-          })();
-        </script>
-      </section>
+      
 
 
       <!-- CERTIFICATION NETWORK -->
@@ -2545,44 +2319,307 @@
         </div>
       </section>
 
-      <!-- PARTNERS -->
-      <section class="sec partners" id="partners">
-        <div class="c">
-          <div class="sechead">
-            <p class="pill rv"><b>★</b> Working together</p>
-            <h2 class="sp">Our Government Partners</h2>
-          </div>
-          <div class="pgrid">
-            <div class="pcard rv">
-              <img src="assets/recruiters/dsci.png" alt="DSCI" loading="lazy" />
-            </div>
-            <div class="pcard rv" style="--d: 0.06s">
-              <span class="wordmark">PRĒRNA <small>GROUP</small></span>
-            </div>
-            <div class="pcard rv" style="--d: 0.12s">
-              <img
-                src="assets/recruiters/ap-sche.png"
-                alt="AP SCHE"
-                loading="lazy"
-              />
-            </div>
-            <div class="pcard rv" style="--d: 0.24s">
-              <img
-                src="assets/recruiters/niit-foundation.png"
-                alt="NIIT Foundation"
-                loading="lazy"
-              />
-            </div>
-            <div class="pcard rv" style="--d: 0.3s">
-              <img
-                src="assets/recruiters/punjab-govt.png"
-                alt="Government of Punjab"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- Government partners: 8 logo cards. Cards reveal left to right, light up one by one while the live counter
+         counts 0 -> 8, then a soft shine keeps sweeping across. Classes prefixed "gv-".
+         Add/remove a partner = drop a logo in assets/government/ and edit the PARTNERS list in the script below. -->
+  <section class="gv" id="partners" aria-labelledby="gv-h">
+    <style>
+      .gv {
+        background: linear-gradient(180deg, var(--bg), #fff);
+        padding: 64px 0 84px;
+        overflow: hidden;
+      }
+
+      .gv .c {
+        text-align: center;
+      }
+
+      .gv .lead {
+        margin: 12px auto 0;
+      }
+
+      .gv-live {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 6px 14px;
+        border: 1px solid var(--ln);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 12.5px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--ink);
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      }
+
+      .gv-live i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gr);
+        animation: gvPing 1.8s infinite;
+      }
+
+      .gv-live b {
+        color: var(--bl);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .gv-grid {
+        max-width: 1120px;
+        margin: 40px auto 0;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .gv-card {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 26px 16px 20px;
+        background: #fff;
+        border: 1px solid var(--ln);
+        border-radius: 18px;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+        opacity: 0;
+        transform: translateX(-22px);
+        transition:
+          opacity 0.6s var(--d, 0s),
+          transform 0.6s var(--d, 0s),
+          border-color 0.3s,
+          box-shadow 0.3s;
+      }
+
+      .gv-grid.in .gv-card {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* progress bar that fills left to right when the card lights up */
+      .gv-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--bl), #8b5cf6);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.7s ease;
+      }
+
+      /* soft shine that keeps sweeping across the cards, one after another */
+      .gv-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(100deg, transparent 30%, rgba(29, 78, 216, 0.09) 50%, transparent 70%);
+        transform: translateX(-120%);
+      }
+
+      .gv-card.on {
+        border-color: #c9d6fb;
+        animation: gvRing 0.9s ease-out;
+      }
+
+      .gv-card.on::before {
+        transform: scaleX(1);
+      }
+
+      .gv-card.on::after {
+        animation: gvShine 8s ease-in-out infinite;
+        animation-delay: calc(var(--i) * 0.32s + 1s);
+      }
+
+      .gv-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--bl);
+        box-shadow: 0 10px 24px rgba(29, 78, 216, 0.12);
+      }
+
+      .gv-logo {
+        width: 92px;
+        height: 92px;
+        display: grid;
+        place-items: center;
+      }
+
+      .gv-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        mix-blend-mode: multiply;
+        transition: transform 0.3s;
+      }
+
+      .gv-card:hover .gv-logo img {
+        transform: scale(1.06);
+      }
+
+      .gv-name {
+        min-height: 2.7em;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-size: 13.5px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--ink);
+      }
+
+      @keyframes gvPing {
+        0% {
+          box-shadow: 0 0 0 0 #16a34a66;
+        }
+
+        70%,
+        100% {
+          box-shadow: 0 0 0 8px #16a34a00;
+        }
+      }
+
+      @keyframes gvRing {
+        0% {
+          box-shadow: 0 0 0 0 #1d4ed860;
+        }
+
+        70%,
+        100% {
+          box-shadow: 0 0 0 14px #1d4ed800;
+        }
+      }
+
+      @keyframes gvShine {
+        0% {
+          transform: translateX(-120%);
+        }
+
+        22%,
+        100% {
+          transform: translateX(120%);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .gv-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .gv {
+          padding: 40px 0 46px;
+        }
+
+        .gv-card {
+          padding: 20px 12px 16px;
+          border-radius: 14px;
+        }
+
+        .gv-logo {
+          width: 76px;
+          height: 76px;
+        }
+
+        .gv-name {
+          font-size: 12.5px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .gv-card {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .gv-card::before {
+          transform: scaleX(1);
+          transition: none;
+        }
+
+        .gv-card.on {
+          animation: none;
+        }
+
+        .gv-card.on::after {
+          animation: none;
+        }
+
+        .gv-live i {
+          animation: none;
+        }
+      }
+    </style>
+    <div class="c">
+      <span class="gv-live rv"><i></i>LIVE · <b id="gv-n">0</b> Government Partners</span>
+      <h2 id="gv-h" class="rv" style="--d: 0.05s">Government partners in our network</h2>
+      <p class="lead rv" style="--d: 0.12s">
+        State and national skilling and employment bodies working alongside
+        InternBoot.
+      </p>
+    </div>
+    <div class="gv-grid" id="gv-grid" aria-label="Government partner logos"></div>
+
+    <script>
+      (function () {
+        // Add a partner = drop a logo in assets/government/ and add one line here: [file, display name]
+        var PARTNERS = [
+          ["qci.jpeg", "Quality Council of India"],
+          ["apita.jpeg", "APITA"],
+          ["apsche.png", "Andhra Pradesh State Council of Higher Education"],
+          ["ksdma.jpeg", "Kerala State Disaster Management Authority"],
+          ["naan-mudhalvan.png", "Naan Mudhalvan"],
+          ["psdm.jpeg", "Punjab Skill Development Mission"],
+          ["punjab-employment.jpeg", "Punjab Employment & Enterprise Mission"],
+          ["tnsdc.jpeg", "Tamil Nadu Skill Development Corporation"],
+        ];
+        var grid = document.getElementById("gv-grid");
+        var counter = document.getElementById("gv-n");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        grid.innerHTML = PARTNERS.map(function (p, i) {
+          return (
+            '<div class="gv-card" style="--i:' + i + ";--d:" + (i * 0.1).toFixed(2) + 's">' +
+            '<div class="gv-logo"><img src="assets/government/' + p[0] + '" alt="' + p[1] +
+            '" width="92" height="92" loading="lazy" decoding="async"></div>' +
+            '<div class="gv-name">' + p[1].replace(/&/g, "&amp;") + "</div></div>"
+          );
+        }).join("");
+        var cards = grid.querySelectorAll(".gv-card");
+        function run() {
+          grid.classList.add("in");
+          if (reduce) {
+            cards.forEach(function (c) { c.classList.add("on"); });
+            counter.textContent = cards.length;
+            return;
+          }
+          // light the cards up one by one, left to right; the counter follows
+          cards.forEach(function (c, i) {
+            setTimeout(function () {
+              c.classList.add("on");
+              counter.textContent = i + 1;
+            }, 350 + i * 180);
+          });
+        }
+        if ("IntersectionObserver" in window) {
+          var io = new IntersectionObserver(function (e, o) {
+            if (e[0].isIntersecting) { o.disconnect(); run(); }
+          }, { threshold: 0.25 });
+          io.observe(grid);
+        } else { run(); }
+      })();
+    </script>
+  </section>
 
       <!-- FINAL CTA + FOOTER (same as landing) -->
       <section id="final">
@@ -2985,3 +3022,4 @@
     <script src="js/landing-nav.js?v=1"></script>
   </body>
 </html>
+
