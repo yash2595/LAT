@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -1332,8 +1332,30 @@
       footer {
         transition:
           opacity 0.45s,
-          visibility 0.45s;
+          visibility 0.45s,
+          fill 0.3s,
+          transform 0.3s;
         transform: translateX(-50%) !important;
+      }
+
+      .ftr-social a:hover svg {
+        transform: scale(1.15);
+      }
+
+      .ftr-social a.in-link:hover svg {
+        fill: #0a66c2;
+      }
+
+      .ftr-social a.x-link:hover svg {
+        fill: #ffffff;
+      }
+
+      .ftr-social a.fb-link:hover svg {
+        fill: #1877f2;
+      }
+
+      .ftr-social a.yt-link:hover svg {
+        fill: #ff0000;
       }
 
       @media (max-width: 820px) {
@@ -3575,7 +3597,6 @@
         .gv-live i {
           animation: none;
         }
-      }
     </style>
     <div class="c">
       <span class="gv-live rv"><i></i>LIVE · <b id="gv-n">0</b> Government Partners</span>
@@ -3586,6 +3607,7 @@
       </p>
     </div>
     <div class="gv-grid" id="gv-grid" aria-label="Government partner logos"></div>
+
     <script>
       (function () {
         // Add a partner = drop a logo in assets/government/ and add one line here: [file, display name]
