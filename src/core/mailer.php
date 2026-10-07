@@ -28,6 +28,8 @@ if (!function_exists('env_value')) {
  * @param string|null $altBody Plain-text email body (must NOT be HTML-escaped)
  * @param PHPMailer|null &$mailOut Optional output reference to the prepared PHPMailer instance (for testing/inspection)
  * @param bool $send Whether to invoke $mail->send() (default true; set false for testing/dry-runs)
+ * @param string|null $replyToEmail Optional Reply-To email address
+ * @param string|null $replyToName Optional Reply-To display name
  * @return bool True on success, false on failure
  */
 function send_mail(
@@ -37,7 +39,9 @@ function send_mail(
     string $htmlBody,
     ?string $altBody = null,
     ?PHPMailer &$mailOut = null,
-    bool $send = true
+    bool $send = true,
+    ?string $replyToEmail = null,
+    ?string $replyToName = null
 ): bool {
     $autoloadPath = dirname(__DIR__, 2) . '/vendor/autoload.php';
     if (!file_exists($autoloadPath)) {
@@ -90,6 +94,9 @@ function send_mail(
         $mail->Timeout    = 5;
 
         $mail->setFrom($fromAddress, $fromName);
+        if ($replyToEmail !== null && filter_var($replyToEmail, FILTER_VALIDATE_EMAIL)) {
+            $mail->addReplyTo($replyToEmail, $replyToName ?? '');
+        }
         $mail->addAddress($toEmail, $toName);
 
         $mail->isHTML(true);
