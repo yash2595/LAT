@@ -4675,7 +4675,7 @@
 <style id="journey-replacement">
 .hp-hd h2 .g{background:linear-gradient(100deg,#1d4ed8,#6d4bf0);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-@property --journey-a{syntax:'<angle>';initial-value:0deg;inherits:false}#journey{--bg:#f6f8ff;--ink:#0c1230;--mute:#5d6688;--soft:#98a0bd;--blue:#1d4ed8;--vio:#6d3df0;--line:#e1e6f8;--green:#12a36b;--fire:#ff8a3d}#journey, #journey *{box-sizing:border-box;margin:0}#journey{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif}#journey{position:relative;overflow-x:clip;background:var(--bg)}#journey .pin{height:620vh;position:relative}#journey .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;padding:0 24px;isolation:isolate}#journey .stage::before, #journey .stage::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(90px);transition:background 1s}#journey .stage::before{width:700px;height:700px;left:-160px;top:6%;background:rgba(79,100,240,.22);animation:journey-drift 16s ease-in-out infinite alternate}#journey .stage::after{width:620px;height:620px;right:-120px;bottom:-5%;background:rgba(120,90,255,.14);animation:journey-drift 20s ease-in-out infinite alternate-reverse}#journey.lit .stage::after{background:rgba(255,138,61,.22)}#journey.lit .stage::before{background:rgba(109,61,240,.26)}
+@property --journey-a{syntax:'<angle>';initial-value:0deg;inherits:false}#journey{--bg:#f6f8ff;--ink:#0c1230;--mute:#5d6688;--soft:#98a0bd;--blue:#1d4ed8;--vio:#6d3df0;--line:#e1e6f8;--green:#12a36b;--fire:#ff8a3d}#journey, #journey *{box-sizing:border-box;margin:0}#journey{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif}#journey{position:relative;overflow-x:clip;background:var(--bg)}#journey .pin{height:480vh;position:relative}#journey .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden;padding:0 24px;isolation:isolate}#journey .stage::before, #journey .stage::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(90px);transition:background 1s}#journey .stage::before{width:700px;height:700px;left:-160px;top:6%;background:rgba(79,100,240,.22);animation:journey-drift 16s ease-in-out infinite alternate}#journey .stage::after{width:620px;height:620px;right:-120px;bottom:-5%;background:rgba(120,90,255,.14);animation:journey-drift 20s ease-in-out infinite alternate-reverse}#journey.lit .stage::after{background:rgba(255,138,61,.22)}#journey.lit .stage::before{background:rgba(109,61,240,.26)}
 @keyframes journey-drift{to{transform:translate(70px,50px) scale(1.12)}}#journey .dots{position:absolute;inset:-200px 0;z-index:-1;background-image:radial-gradient(rgba(29,78,216,.17) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:radial-gradient(75% 60% at 50% 50%,#000,transparent);mask-image:radial-gradient(75% 60% at 50% 50%,#000,transparent)}#journey .wrap{width:100%;max-width:1360px;margin:0 auto;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:72px;align-items:center}
 
 /* LEFT */
@@ -4686,7 +4686,7 @@
 @keyframes journey-wheel{to{transform:translateY(12px);opacity:0}}
 
 /* TIMELINE */
-#journey .tl{position:relative;padding-left:62px}#journey .rail{position:absolute;left:19px;top:0;bottom:0;width:4px;border-radius:4px;background:var(--line)}#journey .rail i{position:absolute;left:0;top:0;width:100%;height:0;border-radius:4px;background:linear-gradient(180deg,var(--blue),var(--vio));box-shadow:0 0 14px rgba(109,61,240,.55)}#journey.hot .rail i{background:linear-gradient(180deg,var(--blue),var(--vio),var(--fire))}#journey .rail i::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;border:4px solid var(--vio);box-shadow:0 0 0 6px rgba(109,61,240,.2),0 0 20px rgba(109,61,240,.7)}#journey .step{--mx:50%;--my:0%;--rx:0deg;--ry:0deg;position:relative;margin-bottom:14px;padding:22px 26px;border-radius:22px;background:rgba(255,255,255,.58);
+#journey .tl{position:relative;padding-left:62px}#journey .rail{position:absolute;left:19px;top:0;bottom:0;width:4px;border-radius:4px;background:var(--line);transform:none}#journey .rail i{position:absolute;left:0;top:0;width:100%;height:0;border-radius:4px;background:linear-gradient(180deg,var(--blue),var(--vio));box-shadow:0 0 14px rgba(109,61,240,.55)}#journey.hot .rail i{background:linear-gradient(180deg,var(--blue),var(--vio),var(--fire))}#journey .rail i::after{content:"";position:absolute;left:50%;bottom:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;border:4px solid var(--vio);box-shadow:0 0 0 6px rgba(109,61,240,.2),0 0 20px rgba(109,61,240,.7)}#journey .step{--mx:50%;--my:0%;--rx:0deg;--ry:0deg;position:relative;margin-bottom:14px;padding:22px 26px;border-radius:22px;background:rgba(255,255,255,.58);
   border:3px solid rgba(255,255,255,.8);box-shadow:0 8px 30px rgba(60,80,200,.06);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
   transition:transform .25s,background .5s,box-shadow .5s}#journey .step:last-of-type{margin-bottom:0}#journey .step::before{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(280px circle at var(--mx) var(--my),rgba(79,100,240,.13),transparent 70%);opacity:0;transition:opacity .4s;pointer-events:none}#journey .step:hover::before{opacity:1}#journey:not(.go) .step{opacity:0}#journey.go .step{animation:journey-in .8s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--n)*.1s + .2s)}
 @keyframes journey-in{from{opacity:0;transform:translateX(40px)}}#journey .step.now{background:#fff;border-color:var(--blue);box-shadow:0 0 0 6px rgba(29,78,216,.08),0 24px 60px rgba(29,78,216,.22)}
@@ -4731,7 +4731,7 @@
   #journey .bar{height:9px;margin:0 0 6px}
   #journey .bar b{width:20px;height:20px;margin:-10px 0 0 -10px;border-width:4px}
   #journey .tl{padding-left:34px}
-  #journey .rail{left:10px}
+  #journey .rail{left:10px;transform:none}
   #journey .step{padding:4px 8px;margin-bottom:3px;border-width:2px;border-radius:12px}
   #journey .dot{left:-34px;top:7px;width:23px;height:23px}
   #journey .dot svg{width:12px;height:12px}
@@ -4852,7 +4852,7 @@
   var J=document.getElementById('journey'),$=function(i){return J.querySelector('#'+i)},pin=$('pin'),tl=$('tl'),rf=$('rf'),node=$('node'),boom=$('boom'),bt=$('bt'),num=$('num'),nw=$('nw'),
   bf=$('bf'),bk=$('bk'),dl=$('dl'),hint=$('hint'),dots=$('dots'),fin=$('journey-final'),lv=$('lv'),pv=$('pv'),tm=$('tm'),cr=$('cr'),
   steps=[].slice.call(tl.querySelectorAll('.step')),ticks=[].slice.call(J.querySelectorAll('.tk')),
-  G=.34,fired=false,igniting=false,shot=false,lastDay=-1,lastIdx=-1,anchors=[],reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  G=.22,fired=false,igniting=false,shot=false,lastDay=-1,lastIdx=-1,anchors=[],reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   var cols=[0,1,2].map(function(){var c=document.createElement('div'),d=document.createElement('div');c.className='col';
     for(var i=0;i<10;i++){var s=document.createElement('span');s.textContent=i;d.appendChild(s)}c.appendChild(d);num.appendChild(c);return c});
@@ -4870,7 +4870,7 @@
   function layout(){
     var c=steps.map(function(s){return s.offsetTop+s.offsetHeight/2}),gy=(steps[2].offsetTop+steps[2].offsetHeight+steps[3].offsetTop)/2,h=tl.offsetHeight;
     node.style.top=(gy-node.offsetHeight/2)+'px';tl.style.setProperty('--gp',(gy/h*100)+'%');
-    anchors=[[0,c[0]],[.11,c[1]],[.22,c[2]],[G,gy],[.62,c[3]],[.8,c[4]],[1,c[4]+10]]}
+    anchors=[[0,c[0]],[.08,c[1]],[.15,c[2]],[G,gy],[.62,c[3]],[.8,c[4]],[1,c[4]+10]]}
   function interp(p){for(var i=1;i<anchors.length;i++){if(p<=anchors[i][0]){var a=anchors[i-1],b=anchors[i];return a[1]+(b[1]-a[1])*(p-a[0])/(b[0]-a[0])}}return anchors[anchors.length-1][1]}
 
   function confetti(){
@@ -4896,7 +4896,7 @@
     if(live0&&!fired)ignite();
     if(P<G-.05&&fired){fired=false;node.classList.remove('lit')}
 
-    var idx=P<.11?0:P<.22?1:P<G?2:P<.8?3:4;
+    var idx=P<.08?0:P<.15?1:P<G?2:P<.8?3:4;
     steps.forEach(function(s,i){s.classList.toggle('now',i===idx);s.classList.toggle('done',i<idx);s.classList.toggle('act',i<=idx)});
     if(J.classList.contains('go')&&idx!==lastIdx){for(var i=0;i<5;i++)if(i>idx)reset(i);if(fx[idx]&&idx>lastIdx)fx[idx]();lastIdx=idx}
 
