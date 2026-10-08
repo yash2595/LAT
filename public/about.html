@@ -4561,7 +4561,6 @@
       }
     </style>
     <div class="c">
-      <span class="acad-live rv"><i></i>LIVE · <b id="acad-n">0</b> Academic Partners</span>
       <h2 id="acad-h" class="rv" style="--d: 0.05s">Academic partners in our network</h2>
       <p class="lead rv" style="--d: 0.12s">
         Universities, colleges, and educational institutions
@@ -4621,13 +4620,13 @@
           grid.classList.add("in");
           if (reduce) {
             cards.forEach(function (c) { c.classList.add("on"); });
-            counter.textContent = cards.length;
+            if (counter) counter.textContent = cards.length;
             return;
           }
           cards.forEach(function (c, i) {
             setTimeout(function () {
               c.classList.add("on");
-              counter.textContent = i + 1;
+              if (counter) counter.textContent = i + 1;
             }, 350 + i * 120);
           });
         }
@@ -4791,10 +4790,6 @@
     </style>
     <div class="c">
       <div class="sechead" style="text-align: center; margin-bottom: 56px;">
-        <div class="acad-live">
-          <span class="acad-ping"></span>
-          <span class="acad-count" id="ref-counter">0</span> references and counting
-        </div>
         <h2 id="ref-h" class="sp rv">References & Highlights</h2>
       </div>
       <div class="acad-grid" id="ref-grid" aria-live="polite"></div>
@@ -4819,13 +4814,13 @@
           grid.classList.add("in");
           if (reduce) {
             cards.forEach(function (c) { c.classList.add("on"); });
-            counter.textContent = cards.length;
+            if (counter) counter.textContent = cards.length;
             return;
           }
           cards.forEach(function (c, i) {
             setTimeout(function () {
               c.classList.add("on");
-              counter.textContent = i + 1;
+              if (counter) counter.textContent = i + 1;
             }, 350 + i * 120);
           });
         }
