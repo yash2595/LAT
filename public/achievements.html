@@ -3359,8 +3359,8 @@
           if ("IntersectionObserver" in window) {
             var io = new IntersectionObserver(function (e, o) {
               if (e[0].isIntersecting) { o.disconnect(); run(); }
-            }, { threshold: 0.5 });
-            io.observe(counter.parentElement);
+            }, { threshold: 1.0 });
+            io.observe(document.getElementById("gv-h"));
           } else { run(); }
         })();
       </script>
