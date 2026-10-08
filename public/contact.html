@@ -3350,40 +3350,36 @@
     if ($("#contactForm")) {
         $("#contactForm").onsubmit = async (e) => {
           e.preventDefault();
-          const f = e.target,
-            m = $("#cs"),
-            b = f.querySelector("button");
-          b.disabled = true;
-          b.textContent = "Sending…";
-          m.className = "";
-          m.textContent = "";
+          const f = e.target, b = f.querySelector("button");
+          b.disabled = true; b.textContent = "Sending…";
+          
+          let toast = document.getElementById("landingToast");
+          if(!toast) {
+              toast = document.createElement("div");
+              toast.id = "landingToast";
+              toast.className = "landing-toast";
+              document.body.appendChild(toast);
+          }
+          toast.classList.remove("show", "err");
+          
           try {
-            const r = await fetch(f.action, {
-              method: "POST",
-              body: new FormData(f),
-            });
+            const r = await fetch(f.action, { method: "POST", body: new FormData(f) });
             const data = await r.json().catch(()=>({}));
             
             if (r.ok) {
-                m.className = "ok";
-                m.textContent = data.message || "Thanks! We will reply soon.";
+                toast.textContent = "✓ Message sent successfully!";
+                toast.classList.add("show");
                 f.reset();
-                b.textContent = "Sent Successfully!";
-                setTimeout(() => {
-                    b.disabled = false;
-                    b.textContent = "Send message →";
-                    m.className = "";
-                    m.textContent = "";
-                }, 5000);
-                return; // Keep disabled for 5 seconds
             } else {
-                m.className = "err";
-                m.textContent = data.message || "Could not send. Please try again.";
+                toast.textContent = data.message || "Could not send. Please try again.";
+                toast.classList.add("show", "err");
             }
           } catch (_) {
-            m.className = "err";
-            m.textContent = "Network error. Please try again.";
+            toast.textContent = "Network error. Please try again.";
+            toast.classList.add("show", "err");
           }
+          
+          setTimeout(() => toast.classList.remove("show"), 4000);
           b.disabled = false;
           b.textContent = "Send message →";
         };

@@ -6603,33 +6603,42 @@
       },
       { passive: true },
     );
-    $("#contactForm").onsubmit = async (e) => {
-      e.preventDefault();
-      const f = e.target,
-        m = $("#cs"),
-        b = f.querySelector("button");
-      b.disabled = true;
-      b.textContent = "Sending…";
-      m.className = "";
-      m.textContent = "";
-      try {
-        const r = await fetch(f.action, {
-          method: "POST",
-          body: new FormData(f),
-        });
-        m.className = r.ok ? "ok" : "err";
-        m.textContent = r.ok
-          ? "Thanks! We will reply soon."
-          : "Could not send. Email info@mylat.com.";
-        r.ok && f.reset();
-      } catch (_) {
-        m.className = "err";
-        m.textContent = "Could not send. Email info@mylat.com.";
-      }
-      b.disabled = false;
-      b.textContent = "Send message →";
-    };
-  </script>
+            $("#contactForm").onsubmit = async (e) => {
+          e.preventDefault();
+          const f = e.target, b = f.querySelector("button");
+          b.disabled = true; b.textContent = "Sending…";
+          
+          let toast = document.getElementById("landingToast");
+          if(!toast) {
+              toast = document.createElement("div");
+              toast.id = "landingToast";
+              toast.className = "landing-toast";
+              document.body.appendChild(toast);
+          }
+          toast.classList.remove("show", "err");
+          
+          try {
+            const r = await fetch(f.action, { method: "POST", body: new FormData(f) });
+            const data = await r.json().catch(()=>({}));
+            
+            if (r.ok) {
+                toast.textContent = "✓ Message sent successfully!";
+                toast.classList.add("show");
+                f.reset();
+            } else {
+                toast.textContent = data.message || "Could not send. Please try again.";
+                toast.classList.add("show", "err");
+            }
+          } catch (_) {
+            toast.textContent = "Network error. Please try again.";
+            toast.classList.add("show", "err");
+          }
+          
+          setTimeout(() => toast.classList.remove("show"), 4000);
+          b.disabled = false;
+          b.textContent = "Send message →";
+        };
+</script>
   <script>
     $("#stairs").innerHTML =
       LV.slice()
