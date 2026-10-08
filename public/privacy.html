@@ -108,41 +108,57 @@
       position: sticky;
       top: 10px;
       z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 16px;
       height: 56px;
       width: min(1040px, calc(100% - 32px));
       margin: 10px auto -66px;
       padding: 0 8px 0 22px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, .72);
+      background: rgba(255, 255, 255, 0.72);
       -webkit-backdrop-filter: blur(18px) saturate(160%);
       backdrop-filter: blur(18px) saturate(160%);
-      border: 1px solid rgba(223, 231, 250, .9);
-      box-shadow: 0 8px 30px rgba(15, 23, 42, .16)
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.16);
     }
 
-    .nav img {
-      height: 52px;
-      display: block
+    .nav>a:first-child img {
+      display: block;
+      height: 28px;
     }
 
     .nav nav {
       margin-left: auto;
       display: flex;
-      gap: clamp(10px, 1.4vw, 20px)
+      align-items: center;
+      gap: clamp(10px, 1.4vw, 20px);
     }
 
     .nav nav a {
+      position: relative;
       color: var(--ink);
       text-decoration: none;
       font-weight: 700;
-      font-size: clamp(12px, 1.05vw, 13.5px)
+      font-size: clamp(12px, 1.05vw, 13.5px);
+      white-space: nowrap;
     }
 
-    .nav nav a:hover {
-      color: var(--bl)
+    .nav nav a:hover,
+    .nav nav a[aria-current] {
+      color: var(--bl);
+    }
+
+    .nav nav a[aria-current]::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -7px;
+      width: 5px;
+      height: 5px;
+      margin-left: -2.5px;
+      border-radius: 50%;
+      background: var(--bl);
     }
 
     .btn {
@@ -151,16 +167,24 @@
       color: #fff;
       font-weight: 800;
       text-decoration: none;
-      padding: 8px 16px;
-      font-size: 13.5px;
-      border-radius: 999px;
-      box-shadow: 0 6px 16px #1d4ed84d;
-      transition: transform .2s, box-shadow .2s
+      padding: 10px 18px;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px #1d4ed84d;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 28px #1d4ed870
+      box-shadow: 0 12px 28px #1d4ed870;
+    }
+
+    .nav>.btn {
+      padding: 8px 16px;
+      font-size: 13.5px;
+      border-radius: 999px;
+      box-shadow: 0 6px 16px #1d4ed84d;
     }
 
     /* ---------- page header ---------- */

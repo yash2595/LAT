@@ -54,58 +54,232 @@
         }
 
         .nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            padding: 0 max(20px, 5vw);
-            background: #fffd;
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--ln);
+
+
+          position: sticky;
+
+
+          top: 10px;
+
+
+          z-index: 50;
+
+
+          display: flex;
+
+
+          align-items: center;
+
+
+          gap: 16px;
+
+
+          height: 56px;
+
+
+          width: min(1040px, calc(100% - 32px));
+
+
+          margin: 10px auto -66px;
+
+
+          padding: 0 8px 0 22px;
+
+
+          border-radius: 999px;
+
+
+          background: rgba(255, 255, 255, 0.72);
+
+
+          -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+
+          backdrop-filter: blur(18px) saturate(160%);
+
+
+          border: 1px solid rgba(255, 255, 255, 0.55);
+
+
+          box-shadow: 0 8px 30px rgba(15, 23, 42, 0.16);
+
+
         }
 
-        .nav img {
-            height: 52px;
-            display: block;
+
+
+        .nav>a:first-child img {
+
+
+          display: block;
+
+
+          height: 28px;
+
+
         }
+
+
 
         .nav nav {
-            margin-left: auto;
-            display: flex;
-            gap: 22px;
+
+
+          margin-left: auto;
+
+
+          display: flex;
+
+
+          align-items: center;
+
+
+          gap: clamp(10px, 1.4vw, 20px);
+
+
         }
+
+
 
         .nav nav a {
-            color: var(--mut);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
+
+
+          position: relative;
+
+
+          color: var(--ink);
+
+
+          text-decoration: none;
+
+
+          font-weight: 700;
+
+
+          font-size: clamp(12px, 1.05vw, 13.5px);
+
+
+          white-space: nowrap;
+
+
         }
 
-        .nav nav a:hover {
-            color: var(--bl);
+
+
+        .nav nav a:hover,
+
+
+        .nav nav a[aria-current] {
+
+
+          color: var(--bl);
+
+
         }
+
+
+
+        .nav nav a[aria-current]::after {
+
+
+          content: "";
+
+
+          position: absolute;
+
+
+          left: 50%;
+
+
+          bottom: -7px;
+
+
+          width: 5px;
+
+
+          height: 5px;
+
+
+          margin-left: -2.5px;
+
+
+          border-radius: 50%;
+
+
+          background: var(--bl);
+
+
+        }
+
+
 
         .btn {
-            background: var(--bl);
-            color: #fff;
-            font-weight: 800;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 12px;
-            display: inline-block;
-            transition:
-                transform 0.2s,
-                box-shadow 0.2s;
-            box-shadow: 0 8px 22px #1d4ed84d;
+
+
+          display: inline-block;
+
+
+          background: var(--bl);
+
+
+          color: #fff;
+
+
+          font-weight: 800;
+
+
+          text-decoration: none;
+
+
+          padding: 10px 18px;
+
+
+          border-radius: 12px;
+
+
+          box-shadow: 0 8px 22px #1d4ed84d;
+
+
+          transition:
+
+
+            transform 0.2s,
+
+
+            box-shadow 0.2s;
+
+
         }
 
+
+
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 28px #1d4ed870;
+
+
+          transform: translateY(-2px);
+
+
+          box-shadow: 0 12px 28px #1d4ed870;
+
+
+        }
+
+
+
+        .nav>.btn {
+
+
+          padding: 8px 16px;
+
+
+          font-size: 13.5px;
+
+
+          border-radius: 999px;
+
+
+          box-shadow: 0 6px 16px #1d4ed84d;
+
+
         }
 
         .big {
@@ -4074,9 +4248,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-01-1.jpg"
+                                            data-src="assets/reference/APITA–E2V MOU.png"
                                             data-cap="Scanned copy · Page 1 of 8" data-n="1"><img
-                                                src="assets/reference/ref-01-1.jpg"
+                                                src="assets/reference/APITA–E2V MOU.png"
                                                 alt="Scanned copy: MOU — APITA &amp;amp; Employment express Verband LLP (E2V)"
                                                 width="827" height="1170" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 8</span></button></div>
@@ -4181,9 +4355,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-02-1.jpg"
+                                            data-src="assets/reference/Wroots–E2V Vendor Agreement.png"
                                             data-cap="Cover page · Wroots–E2V Vendor Agreement · Page 1 of 1"
-                                            data-n="2"><img src="assets/reference/ref-02-1.jpg"
+                                            data-n="2"><img src="assets/reference/Wroots–E2V Vendor Agreement.png"
                                                 alt="Scanned copy: Vendor Agreement — Wroots Global Private Limited &amp;amp; Employment Express Verband LLP"
                                                 width="827" height="1169" loading="lazy" decoding="async"><span>Cover
                                                 page · Wroots–E2V Vendor Agreement · Page 1 of 1</span></button></div>
@@ -4264,9 +4438,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-03-1.jpg"
+                                            data-src="assets/reference/Sathyas Networks–E2V Agreement.png"
                                             data-cap="Scanned copy · Page 1 of 1" data-n="3"><img
-                                                src="assets/reference/ref-03-1.jpg"
+                                                src="assets/reference/Sathyas Networks–E2V Agreement.png"
                                                 alt="Scanned copy: Agreement — Sathyas Networks &amp;amp; Employmentexpress Verband LLP"
                                                 width="721" height="1100" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 1</span></button></div>
@@ -4341,8 +4515,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-04-1.jpg" data-cap="Scanned copy"
-                                            data-n="4"><img src="assets/reference/ref-04-1.jpg"
+                                            data-src="assets/reference/shikshit.jpg" data-cap="Scanned copy"
+                                            data-n="4"><img src="assets/reference/shikshit.jpg"
                                                 alt="Scanned copy: Shikshit — Environ Friend Institute" width="982"
                                                 height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4409,8 +4583,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-05-1.jpg" data-cap="Scanned copy"
-                                            data-n="5"><img src="assets/reference/ref-05-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Gate Degree College, Tirupati.jpg" data-cap="Scanned copy"
+                                            data-n="5"><img src="assets/reference/Employment Express Verband LLP — Gate Degree College, Tirupati.jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Gate Degree College, Tirupati"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4490,8 +4664,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-06-1.jpg" data-cap="Scanned copy"
-                                            data-n="6"><img src="assets/reference/ref-06-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Universal College of Applied & General Studies (UCAGS), Colombo.jpg" data-cap="Scanned copy"
+                                            data-n="6"><img src="assets/reference/Employment Express Verband LLP — Universal College of Applied & General Studies (UCAGS), Colombo.jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Universal College of Applied &amp;amp; General Studies (UCAGS), Colombo"
                                                 width="969" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4602,9 +4776,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-07-1.jpg"
+                                            data-src="assets/reference/Agreement — HDFC Life & NSDC Initiative Project.jpg"
                                             data-cap="Scanned copy · Page 1 of 3" data-n="7"><img
-                                                src="assets/reference/ref-07-1.jpg"
+                                                src="assets/reference/Agreement — HDFC Life & NSDC Initiative Project.jpg"
                                                 alt="Scanned copy: Agreement — HDFC Life &amp;amp; NSDC Initiative Project"
                                                 width="678" height="1100" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 3</span></button></div>
@@ -4688,8 +4862,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-08-1.jpg" data-cap="Scanned copy"
-                                            data-n="8"><img src="assets/reference/ref-08-1.jpg"
+                                            data-src="assets/reference/. Employment Express Verband LLP — Bengal Institute of Technology and Management (BITM).jpg" data-cap="Scanned copy"
+                                            data-n="8"><img src="assets/reference/. Employment Express Verband LLP — Bengal Institute of Technology and Management (BITM).jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Bengal Institute of Technology and Management (BITM)"
                                                 width="990" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4769,8 +4943,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-09-1.jpg" data-cap="Scanned copy"
-                                            data-n="9"><img src="assets/reference/ref-09-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Camellia Institute of Technology and Management (CITM).jpg" data-cap="Scanned copy"
+                                            data-n="9"><img src="assets/reference/Employment Express Verband LLP — Camellia Institute of Technology and Management (CITM).jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Camellia Institute of Technology and Management (CITM)"
                                                 width="989" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4849,8 +5023,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-10-1.jpg" data-cap="Scanned copy"
-                                            data-n="10"><img src="assets/reference/ref-10-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Seacom Engineering College, Kolkata.jpg" data-cap="Scanned copy"
+                                            data-n="10"><img src="assets/reference/Employment Express Verband LLP — Seacom Engineering College, Kolkata.jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Seacom Engineering College, Kolkata"
                                                 width="990" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -4928,8 +5102,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-11-1.jpg" data-cap="Scanned copy"
-                                            data-n="11"><img src="assets/reference/ref-11-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Etrain Education Private Limited.jpg" data-cap="Scanned copy"
+                                            data-n="11"><img src="assets/reference/Employment Express Verband LLP — Etrain Education Private Limited.jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Etrain Education Private Limited"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -5010,8 +5184,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-12-1.jpg" data-cap="Scanned copy"
-                                            data-n="12"><img src="assets/reference/ref-12-1.jpg"
+                                            data-src="assets/reference/Employment Express Verband LLP — Etrain Education Private Limited.jpg" data-cap="Scanned copy"
+                                            data-n="12"><img src="assets/reference/Employment Express Verband LLP — Etrain Education Private Limited.jpg"
                                                 alt="Scanned copy: Employment Express Verband LLP — Etrain Education Private Limited"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -5099,8 +5273,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-13-1.jpg" data-cap="Scanned copy"
-                                            data-n="13"><img src="assets/reference/ref-13-1.jpg"
+                                            data-src="assets/reference/Shikshit — NIIT Foundation.jpg" data-cap="Scanned copy"
+                                            data-n="13"><img src="assets/reference/Shikshit — NIIT Foundation.jpg"
                                                 alt="Scanned copy: Shikshit — NIIT Foundation" width="1082"
                                                 height="1400" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -5210,9 +5384,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-14-1.jpg"
+                                            data-src="assets/reference/Agreement — Times Employ India Foundation (TEIF) & Employmentexpress Verband LLP.jpg"
                                             data-cap="Scanned copy · Page 1 of 1" data-n="14"><img
-                                                src="assets/reference/ref-14-1.jpg"
+                                                src="assets/reference/Agreement — Times Employ India Foundation (TEIF) & Employmentexpress Verband LLP.jpg"
                                                 alt="Scanned copy: Agreement — Times Employ India Foundation (TEIF) &amp;amp; Employmentexpress Verband LLP"
                                                 width="850" height="1100" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 1</span></button></div>
@@ -5313,9 +5487,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-15-1.jpg"
+                                            data-src="assets/reference/MOU — Shikshit & Roorkee Institute of Technology (RIT Roorkee).jpg"
                                             data-cap="Cover page · Shikshit–RIT Roorkee MOU · Page 1 of 1"
-                                            data-n="15"><img src="assets/reference/ref-15-1.jpg"
+                                            data-n="15"><img src="assets/reference/MOU — Shikshit & Roorkee Institute of Technology (RIT Roorkee).jpg"
                                                 alt="Scanned copy: MOU — Shikshit &amp;amp; Roorkee Institute of Technology (RIT Roorkee)"
                                                 width="828" height="1170" loading="lazy" decoding="async"><span>Cover
                                                 page · Shikshit–RIT Roorkee MOU · Page 1 of 1</span></button></div>
@@ -5422,8 +5596,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-16-1.jpg" data-cap="Scanned copy"
-                                            data-n="16"><img src="assets/reference/ref-16-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & Geeks of Gurukul.jpg" data-cap="Scanned copy"
+                                            data-n="16"><img src="assets/reference/MOU — Employment Express Verband LLP & Geeks of Gurukul.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; Geeks of Gurukul"
                                                 width="828" height="1170" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -5524,9 +5698,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-17-1.jpg"
+                                            data-src="assets/reference/MOU — Shikshit (Powered by Employment Express) & Niyuktipath.jpg"
                                             data-cap="Cover page · Shikshit–Niyuktipath MOU · Page 1 of 1"
-                                            data-n="17"><img src="assets/reference/ref-17-1.jpg"
+                                            data-n="17"><img src="assets/reference/MOU — Shikshit (Powered by Employment Express) & Niyuktipath.jpg"
                                                 alt="Scanned copy: MOU — Shikshit (Powered by Employment Express) &amp;amp; Niyuktipath"
                                                 width="827" height="1170" loading="lazy" decoding="async"><span>Cover
                                                 page · Shikshit–Niyuktipath MOU · Page 1 of 1</span></button></div>
@@ -5639,9 +5813,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-18-1.jpg"
+                                            data-src="assets/reference/MOU — Sambhav Foundation & Employment Express Verband LLP (EEV LLP).jpg"
                                             data-cap="Scanned copy · Page 1 of 1" data-n="18"><img
-                                                src="assets/reference/ref-18-1.jpg"
+                                                src="assets/reference/MOU — Sambhav Foundation & Employment Express Verband LLP (EEV LLP).jpg"
                                                 alt="Scanned copy: MOU — Sambhav Foundation &amp;amp; Employment Express Verband LLP (EEV LLP)"
                                                 width="827" height="1170" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 1</span></button></div>
@@ -5736,9 +5910,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-19-1.jpg"
+                                            data-src="assets/reference/MOU — RX Medical Trust & Aadiv Care Foundation.jpg"
                                             data-cap="Scanned copy · Page 1 of 1" data-n="19"><img
-                                                src="assets/reference/ref-19-1.jpg"
+                                                src="assets/reference/MOU — RX Medical Trust & Aadiv Care Foundation.jpg"
                                                 alt="Scanned copy: MOU — RX Medical Trust &amp;amp; Aadiv Care Foundation"
                                                 width="741" height="1170" loading="lazy" decoding="async"><span>Scanned
                                                 copy · Page 1 of 1</span></button></div>
@@ -5847,8 +6021,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-20-1.jpg" data-cap="Scanned copy"
-                                            data-n="20"><img src="assets/reference/ref-20-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP (InternBoot) & AAVTAR LTD.jpg" data-cap="Scanned copy"
+                                            data-n="20"><img src="assets/reference/MOU — Employment Express Verband LLP (InternBoot) & AAVTAR LTD.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP (InternBoot) &amp;amp; AAVTAR LTD"
                                                 width="827" height="1170" loading="lazy" decoding="async"><span>Scanned
                                                 copy</span></button></div>
@@ -5967,8 +6141,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-21-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="21"><img src="assets/reference/ref-21-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP (InternBoot) & Aharada Education (For IIMT University, Meerut).jpg" data-cap="MOU Cover Page"
+                                            data-n="21"><img src="assets/reference/MOU — Employment Express Verband LLP (InternBoot) & Aharada Education (For IIMT University, Meerut).jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP (InternBoot) &amp;amp; Aharada Education (For IIMT University, Meerut)"
                                                 width="989" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -6135,9 +6309,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-22-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & EFOS Edumarketers Private Limited (Candidate Sourcing & Referral Partnership).jpg"
                                             data-cap="MOU First Page (e-Stamp Certificate)" data-n="22"><img
-                                                src="assets/reference/ref-22-1.jpg"
+                                                src="assets/reference/MOU — Employment Express Verband LLP & EFOS Edumarketers Private Limited (Candidate Sourcing & Referral Partnership).jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; EFOS Edumarketers Private Limited (Candidate Sourcing &amp;amp; Referral Partnership)"
                                                 width="989" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 First Page (e-Stamp Certificate)</span></button></div>
@@ -6259,8 +6433,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-23-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="23"><img src="assets/reference/ref-23-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & AISECT Ltd..jpg" data-cap="MOU Cover Page"
+                                            data-n="23"><img src="assets/reference/MOU — Employment Express Verband LLP & AISECT Ltd..jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; AISECT Ltd."
                                                 width="939" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -6413,8 +6587,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-24-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="24"><img src="assets/reference/ref-24-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & IASSCOM Fortune Educational Society, Bhopal.jpg" data-cap="MOU Cover Page"
+                                            data-n="24"><img src="assets/reference/MOU — Employment Express Verband LLP & IASSCOM Fortune Educational Society, Bhopal.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; IASSCOM Fortune Educational Society, Bhopal"
                                                 width="990" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -6574,9 +6748,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-25-1.jpg"
+                                            data-src="assets/reference/MoU — Data Security Council of India (DSCI) & Employment Express Verband LLP (E2VLLP).jpg"
                                             data-cap="MSA Cover Page (Page 1 of 16)" data-n="25"><img
-                                                src="assets/reference/ref-25-1.jpg"
+                                                src="assets/reference/MoU — Data Security Council of India (DSCI) & Employment Express Verband LLP (E2VLLP).jpg"
                                                 alt="Scanned copy: MoU — Data Security Council of India (DSCI) &amp;amp; Employment Express Verband LLP (E2VLLP)"
                                                 width="990" height="1400" loading="lazy" decoding="async"><span>MSA
                                                 Cover Page (Page 1 of 16)</span></button></div>
@@ -6738,9 +6912,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-26-1.jpg"
+                                            data-src="assets/reference/MSA — Data Security Council of India (DSCI) & Employment Express Verband LLP (E2VLLP).jpg"
                                             data-cap="MSA Cover Page (Page 1 of 16)" data-n="26"><img
-                                                src="assets/reference/ref-26-1.jpg"
+                                                src="assets/reference/MSA — Data Security Council of India (DSCI) & Employment Express Verband LLP (E2VLLP).jpg"
                                                 alt="Scanned copy: MSA — Data Security Council of India (DSCI) &amp;amp; Employment Express Verband LLP (E2VLLP)"
                                                 width="990" height="1400" loading="lazy" decoding="async"><span>MSA
                                                 Cover Page (Page 1 of 16)</span></button></div>
@@ -6924,9 +7098,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-27-1.jpg"
+                                            data-src="assets/reference/Agreement — Times Employ India Foundation (TEIF) & Employment Express Verband LLP.jpg"
                                             data-cap="Agreement Cover Page (Page 1 of 10)" data-n="27"><img
-                                                src="assets/reference/ref-27-1.jpg"
+                                                src="assets/reference/Agreement — Times Employ India Foundation (TEIF) & Employment Express Verband LLP.jpg"
                                                 alt="Scanned copy: Agreement — Times Employ India Foundation (TEIF) &amp;amp; Employment Express Verband LLP"
                                                 width="1082" height="1400" loading="lazy"
                                                 decoding="async"><span>Agreement Cover Page (Page 1 of
@@ -7039,8 +7213,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-28-1.jpg" data-cap="Authorisation Letter"
-                                            data-n="28"><img src="assets/reference/ref-28-1.jpg"
+                                            data-src="assets/reference/Authorisation Letter — Tech Vimal Foundation & Shikshit Foundation.jpg" data-cap="Authorisation Letter"
+                                            data-n="28"><img src="assets/reference/Authorisation Letter — Tech Vimal Foundation & Shikshit Foundation.jpg"
                                                 alt="Scanned copy: Authorisation Letter — Tech Vimal Foundation &amp;amp; Shikshit Foundation"
                                                 width="989" height="1400" loading="lazy"
                                                 decoding="async"><span>Authorisation Letter</span></button></div>
@@ -7261,8 +7435,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-29-1.jpg" data-cap="MOU Cover Page (e-Stamp)"
-                                            data-n="29"><img src="assets/reference/ref-29-1.jpg"
+                                            data-src="assets/reference/MOU — Lamrin Tech Skills University Punjab (LTSU) & Shikshit.jpg" data-cap="MOU Cover Page (e-Stamp)"
+                                            data-n="29"><img src="assets/reference/MOU — Lamrin Tech Skills University Punjab (LTSU) & Shikshit.jpg"
                                                 alt="Scanned copy: MOU — Lamrin Tech Skills University Punjab (LTSU) &amp;amp; Shikshit"
                                                 width="989" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page (e-Stamp)</span></button></div>
@@ -7429,8 +7603,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-30-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="30"><img src="assets/reference/ref-30-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & Europortals Computer Academy.jpg" data-cap="MOU Cover Page"
+                                            data-n="30"><img src="assets/reference/MOU — Employment Express Verband LLP & Europortals Computer Academy.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; Europortals Computer Academy"
                                                 width="1082" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -7585,9 +7759,9 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-31-1.jpg"
+                                            data-src="assets/reference/Vendor Agreement — Nasscom Foundation & Employment Express Verband LLP.jpg"
                                             data-cap="Agreement Cover Page (e-Stamp)" data-n="31"><img
-                                                src="assets/reference/ref-31-1.jpg"
+                                                src="assets/reference/Vendor Agreement — Nasscom Foundation & Employment Express Verband LLP.jpg"
                                                 alt="Scanned copy: Vendor Agreement — Nasscom Foundation &amp;amp; Employment Express Verband LLP"
                                                 width="983" height="1400" loading="lazy"
                                                 decoding="async"><span>Agreement Cover Page (e-Stamp)</span></button>
@@ -7730,8 +7904,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-32-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="32"><img src="assets/reference/ref-32-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & SmartBrains.jpg" data-cap="MOU Cover Page"
+                                            data-n="32"><img src="assets/reference/MOU — Employment Express Verband LLP & SmartBrains.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; SmartBrains"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -7875,8 +8049,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-33-1.jpg" data-cap="MOU Cover Page"
-                                            data-n="33"><img src="assets/reference/ref-33-1.jpg"
+                                            data-src="assets/reference/MOU — Employment Express Verband LLP & Etrain Education Private Limited.jpg" data-cap="MOU Cover Page"
+                                            data-n="33"><img src="assets/reference/MOU — Employment Express Verband LLP & Etrain Education Private Limited.jpg"
                                                 alt="Scanned copy: MOU — Employment Express Verband LLP &amp;amp; Etrain Education Private Limited"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 Cover Page</span></button></div>
@@ -8063,8 +8237,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-34-1.jpg" data-cap="Agreement Cover Page"
-                                            data-n="34"><img src="assets/reference/ref-34-1.jpg"
+                                            data-src="assets/reference/Agreement — Employment Express Verband LLP & Prerna Engineering Educational Group Pvt. Ltd. (HDFC Life & NSDC Initiative Project).jpg" data-cap="Agreement Cover Page"
+                                            data-n="34"><img src="assets/reference/Agreement — Employment Express Verband LLP & Prerna Engineering Educational Group Pvt. Ltd. (HDFC Life & NSDC Initiative Project).jpg"
                                                 alt="Scanned copy: Agreement — Employment Express Verband LLP &amp;amp; Prerna Engineering Educational Group Pvt. Ltd. (HDFC Life &amp;amp; NSDC Initiative Project)"
                                                 width="863" height="1400" loading="lazy"
                                                 decoding="async"><span>Agreement Cover Page</span></button></div>
@@ -8187,8 +8361,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-35-1.jpg" data-cap="MOU First Page"
-                                            data-n="35"><img src="assets/reference/ref-35-1.jpg"
+                                            data-src="assets/reference/MOU — Institute of Sales and Professional Development (ISPD) & Employment Express Verband (E2V).jpg" data-cap="MOU First Page"
+                                            data-n="35"><img src="assets/reference/MOU — Institute of Sales and Professional Development (ISPD) & Employment Express Verband (E2V).jpg"
                                                 alt="Scanned copy: MOU — Institute of Sales and Professional Development (ISPD) &amp;amp; Employment Express Verband (E2V)"
                                                 width="991" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 First Page</span></button></div>
@@ -8419,8 +8593,8 @@
                                 <section class="rf-g">
                                     <h5>Scanned copy</h5>
                                     <div class="rf-scs"><button type="button" class="rf-th"
-                                            data-src="assets/reference/ref-36-1.jpg" data-cap="MOU First Page"
-                                            data-n="36"><img src="assets/reference/ref-36-1.jpg"
+                                            data-src="assets/reference/MOU — Shikshit & NIIT Foundation.jpg" data-cap="MOU First Page"
+                                            data-n="36"><img src="assets/reference/MOU — Shikshit & NIIT Foundation.jpg"
                                                 alt="Scanned copy: MOU — Shikshit &amp;amp; NIIT Foundation"
                                                 width="1082" height="1400" loading="lazy" decoding="async"><span>MOU
                                                 First Page</span></button></div>
