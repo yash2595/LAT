@@ -3010,7 +3010,7 @@
           var io = new IntersectionObserver(function (e, o) {
             if (e[0].isIntersecting) { o.disconnect(); run(); }
           }, { threshold: 0.25 });
-          io.observe(counter.parentElement || grid);
+          io.observe(grid);
         } else { run(); }
       })();
     </script>
