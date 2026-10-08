@@ -729,15 +729,39 @@
       transition: 0.4s;
     }
 
-    .ms li.on {
+    .ms li.on,
+    .ms li.cur {
       opacity: 1;
       transform: none;
     }
 
     .ms li.on::before {
+      background: var(--gr);
+      border-color: var(--gr);
+      box-shadow: none;
+    }
+
+    .ms li.cur::before {
       background: var(--bl);
       border-color: var(--bl);
       box-shadow: 0 0 0 6px #1d4ed82e;
+    }
+
+    .ms li::after {
+      content: "";
+      position: absolute;
+      left: -41px;
+      top: 6px;
+      width: 22px;
+      height: 22px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat;
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+
+    .ms li.on:not(.cur)::after {
+      opacity: 1;
     }
 
     .ms small {
@@ -3486,9 +3510,10 @@
       $("#dn").textContent = Math.round(pj * 100);
       let cur = 0;
       $$("#ms li").forEach((l, i) => {
-        const o = pj >= MS[i][3];
-        l.classList.toggle("on", o);
-        if (o) cur = i;
+        l.classList.toggle("on", pj >= MS[i][3]);
+        if (pj >= (i === 0 ? -1 : MS[i - 1][3]) + 0.015) {
+          cur = i;
+        }
       });
       $$("#ms li").forEach((l, i) => l.classList.toggle("cur", i == cur));
       const pr = prog(R),
