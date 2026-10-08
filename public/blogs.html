@@ -4,12 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>
-    MyLAT | Level Assessment Test – Level 1–5 + 5 placement opportunities
-    in 100 days
-  </title>
+  <title>Blogs | MyLAT</title>
   <meta name="description"
-    content="Take one 60-minute test, get a verified Level 1–5 and a QR certificate, and get 5+ placement opportunities within 100 days." />
+    content="MyLAT helps students and freshers prove their skills with a verified Level 1–5 assessment, a QR-verifiable certificate and placement opportunities within 100 days." />
   <link rel="icon" href="assets/mylat-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -280,11 +277,6 @@
       color: #0b1230;
       line-height: 1.25;
       max-width: 230px;
-    }
-
-    .ch.qr-proof span {
-      max-width: none;
-      white-space: nowrap;
     }
 
     .ch small {
@@ -729,39 +721,15 @@
       transition: 0.4s;
     }
 
-    .ms li.on,
-    .ms li.cur {
+    .ms li.on {
       opacity: 1;
       transform: none;
     }
 
     .ms li.on::before {
-      background: var(--gr);
-      border-color: var(--gr);
-      box-shadow: none;
-    }
-
-    .ms li.cur::before {
       background: var(--bl);
       border-color: var(--bl);
       box-shadow: 0 0 0 6px #1d4ed82e;
-    }
-
-    .ms li::after {
-      content: "";
-      position: absolute;
-      left: -41px;
-      top: 6px;
-      width: 22px;
-      height: 22px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat;
-      opacity: 0;
-      transition: opacity 0.4s;
-      pointer-events: none;
-    }
-
-    .ms li.on:not(.cur)::after {
-      opacity: 1;
     }
 
     .ms small {
@@ -780,57 +748,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 36px;
       align-items: center;
-    }
-
-    #sl {
-      list-style: none;
-      padding: 0;
-      margin: 16px 0 20px;
-      display: grid;
-      gap: 6px;
-    }
-
-    #sl li {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      padding: 9px 12px;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: 0.3s;
-      color: var(--mut);
-    }
-
-    #sl b {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: #e3e9f7;
-      flex: none;
-      transition: 0.3s;
-    }
-
-    #sl .on {
-      background: #fff;
-      color: var(--ink);
-      box-shadow: 0 10px 26px #1d4ed824;
-    }
-
-    #sl .on b,
-    #sl .done b {
-      background: var(--bl);
-      color: #fff;
-    }
-
-    #sl small {
-      display: none;
-      font-weight: 500;
-    }
-
-    #sl .on small {
-      display: block;
     }
 
     .dev {
@@ -999,12 +916,20 @@
       color: #fff;
       padding-bottom: calc(var(--ftr, 68px) + 32px);
       background:
-        radial-gradient(55% 50% at 15% 10%, rgba(59, 130, 246, 0.38), transparent 62%),
-        radial-gradient(50% 55% at 88% 22%, rgba(139, 92, 246, 0.32), transparent 62%),
-        radial-gradient(60% 50% at 55% 105%, rgba(34, 211, 238, 0.22), transparent 65%),
+        radial-gradient(55% 50% at 15% 10%,
+          rgba(59, 130, 246, 0.38),
+          transparent 62%),
+        radial-gradient(50% 55% at 88% 22%,
+          rgba(139, 92, 246, 0.32),
+          transparent 62%),
+        radial-gradient(60% 50% at 55% 105%,
+          rgba(34, 211, 238, 0.22),
+          transparent 65%),
         linear-gradient(180deg, #070d26 0%, #060b22 55%, #0a1236 100%);
     }
-    #final::before, #final::after {
+
+    #final::before,
+    #final::after {
       content: "";
       position: absolute;
       border-radius: 50%;
@@ -1015,38 +940,55 @@
       pointer-events: none;
       animation: driftOrb 16s ease-in-out infinite alternate;
     }
+
     #final::before {
       background: rgba(59, 130, 246, 0.25);
       top: -10vw;
       left: -10vw;
     }
+
     #final::after {
       background: rgba(139, 92, 246, 0.25);
       bottom: -10vw;
       right: -10vw;
       animation-delay: -8s;
     }
+
     .fin-hairline {
       position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
       background: linear-gradient(90deg, transparent, #60a5fa, transparent);
       z-index: 2;
     }
+
     @keyframes driftOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(10vw, 5vw) scale(1.15); }
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(10vw, 5vw) scale(1.15);
+      }
     }
+
     .fin-dots {
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1.5px);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.6) 1px,
+          transparent 1.5px);
       background-size: 28px 28px;
       opacity: 0.07;
       z-index: -1;
       pointer-events: none;
-      -webkit-mask: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+      -webkit-mask: radial-gradient(ellipse at center,
+          #000 30%,
+          transparent 75%);
       mask: radial-gradient(ellipse at center, #000 30%, transparent 75%);
     }
+
     .fin-rings {
       position: absolute;
       left: 50%;
@@ -1057,12 +999,24 @@
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(circle, transparent 219px, rgba(255,255,255,.07) 220px, transparent 221px),
-        radial-gradient(circle, transparent 359px, rgba(255,255,255,.07) 360px, transparent 361px),
-        radial-gradient(circle, transparent 499px, rgba(255,255,255,.07) 500px, transparent 501px);
-      -webkit-mask: radial-gradient(circle at center, #000 20%, transparent 60%);
+        radial-gradient(circle,
+          transparent 219px,
+          rgba(255, 255, 255, 0.07) 220px,
+          transparent 221px),
+        radial-gradient(circle,
+          transparent 359px,
+          rgba(255, 255, 255, 0.07) 360px,
+          transparent 361px),
+        radial-gradient(circle,
+          transparent 499px,
+          rgba(255, 255, 255, 0.07) 500px,
+          transparent 501px);
+      -webkit-mask: radial-gradient(circle at center,
+          #000 20%,
+          transparent 60%);
       mask: radial-gradient(circle at center, #000 20%, transparent 60%);
     }
+
     .fin-content {
       position: relative;
       z-index: 1;
@@ -1076,29 +1030,34 @@
       width: 100%;
       padding: 40px 20px;
     }
+
     #final h2 {
       margin: 0;
       font-size: clamp(28px, 3.4vw, 46px);
       line-height: 1.1;
       text-wrap: balance;
     }
+
     #final h2 span {
       background: linear-gradient(90deg, #8fb4ff, #67e8f9);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
+
     @media (min-width: 1100px) {
       #final h2 {
         white-space: nowrap;
       }
     }
+
     .fin-chips {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 8px;
     }
+
     .fin-chip {
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1110,30 +1069,44 @@
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
     }
+
     #final .btn {
       background: #fff;
       color: var(--bl);
       margin-top: 0;
       position: relative;
-      box-shadow: 0 0 0 6px rgba(255,255,255,.08), 0 18px 50px rgba(59,130,246,.45);
+      box-shadow:
+        0 0 0 6px rgba(255, 255, 255, 0.08),
+        0 18px 50px rgba(59, 130, 246, 0.45);
     }
+
     #final .btn::before {
       content: "";
       position: absolute;
       inset: -4px;
       border-radius: inherit;
-      border: 2px solid rgba(255,255,255,0.6);
+      border: 2px solid rgba(255, 255, 255, 0.6);
       animation: pulse-ring 2s cubic-bezier(0.2, 0, 0.2, 1) infinite;
       z-index: -1;
     }
+
     #final .btn:hover::before {
       animation: none;
       display: none;
     }
+
     @keyframes pulse-ring {
-      0% { transform: scale(0.95); opacity: 1; }
-      100% { transform: scale(1.15); opacity: 0; }
+      0% {
+        transform: scale(0.95);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.15);
+        opacity: 0;
+      }
     }
+
     footer {
       position: fixed;
       left: 50%;
@@ -1144,14 +1117,19 @@
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.45s, transform 0.45s, visibility 0.45s;
+      transition:
+        opacity 0.45s,
+        transform 0.45s,
+        visibility 0.45s;
     }
+
     footer.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
       visibility: visible;
       pointer-events: auto;
     }
+
     .ftr-inner {
       border-radius: 32px;
       padding: 40px 48px;
@@ -1162,18 +1140,24 @@
       box-shadow: 0 20px 60px rgba(2, 6, 24, 0.5);
       color: rgba(255, 255, 255, 0.92);
     }
+
     @supports not (backdrop-filter: blur(18px)) {
-      .ftr-inner { background: rgba(16, 24, 64, 0.85); }
+      .ftr-inner {
+        background: rgba(16, 24, 64, 0.85);
+      }
     }
+
     .ftr-top {
       display: flex;
       justify-content: space-between;
       gap: 40px;
     }
+
     .ftr-brand {
       flex: 1;
       max-width: 340px;
     }
+
     .ftr-logo {
       background: #fff;
       padding: 6px 12px;
@@ -1181,6 +1165,7 @@
       display: inline-flex;
       margin-bottom: 24px;
     }
+
     .ftr-desc {
       font-size: 15px;
       line-height: 1.5;
@@ -1188,15 +1173,18 @@
       margin: 0;
       white-space: normal;
     }
+
     .ftr-cols {
       display: flex;
       gap: 60px;
     }
+
     .ftr-col {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
+
     .ftr-col strong {
       font-size: 11px;
       letter-spacing: 1px;
@@ -1205,19 +1193,23 @@
       margin-bottom: 4px;
       color: #fff;
     }
+
     .ftr-col a {
       font-size: 14px;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255, 255, 255, 0.92);
       text-decoration: none;
     }
+
     .ftr-col a:hover {
       color: #fff;
       text-decoration: underline;
     }
+
     .ftr-col a:focus-visible {
       outline: 2px solid #fbbf24;
       outline-offset: 4px;
     }
+
     .ftr-bot-out {
       display: flex;
       justify-content: space-between;
@@ -1226,33 +1218,65 @@
       font-size: 13px;
       color: rgba(255, 255, 255, 0.92);
     }
+
     .ftr-out-links {
       display: flex;
       gap: 24px;
     }
+
     .ftr-out-links a {
       color: rgba(255, 255, 255, 0.92);
       text-decoration: none;
     }
+
     .ftr-out-links a:hover {
       color: #fff;
       text-decoration: underline;
     }
+
     .ftr-social {
       display: flex;
       gap: 20px;
+      align-items: center;
     }
+
     .ftr-social a {
       color: rgba(255, 255, 255, 0.92);
       text-decoration: none;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
-    .ftr-social a svg { width: 22px; height: 22px; fill: currentColor; vertical-align: middle; }
-    .ftr-social a:hover {
-      color: #fff;
+
+    .ftr-social a svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      transition:
+        fill 0.3s,
+        transform 0.3s;
     }
+
+    .ftr-social a:hover svg {
+      transform: scale(1.15);
+    }
+
+    .ftr-social a.in-link:hover svg {
+      fill: #0a66c2;
+    }
+
+    .ftr-social a.ig-link:hover svg {
+      fill: url(#ig-gradient);
+    }
+
+    .ftr-social a.fb-link:hover svg {
+      fill: #1877f2;
+    }
+
+    .ftr-social a.ig-link:hover svg {
+      fill: #E1306C;
+    }
+
     @media (max-width: 820px) {
       footer {
         position: relative;
@@ -1265,39 +1289,75 @@
         visibility: visible;
         pointer-events: auto;
       }
+
       .ftr-inner {
         padding: 32px 24px;
       }
+
       .ftr-top {
         flex-direction: column;
         gap: 32px;
       }
+
       .ftr-cols {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px;
       }
+
       .ftr-col a {
         padding: 10px 0;
       }
+
       .ftr-bot-out {
         flex-direction: column;
         gap: 16px;
         padding: 16px 12px 0;
         text-align: center;
       }
+
       .ftr-out-links {
         justify-content: center;
       }
     }
+
     @media (prefers-reduced-motion: reduce) {
-      #final::before, #final::after, #final .btn::before {
+
+      #final::before,
+      #final::after,
+      #final .btn::before {
         animation: none !important;
       }
+
       footer {
-        transition: opacity 0.45s, visibility 0.45s;
+        transition:
+          opacity 0.45s,
+          visibility 0.45s,
+          fill 0.3s,
+          transform 0.3s;
         transform: translateX(-50%) !important;
       }
+
+      .ftr-social a:hover svg {
+        transform: scale(1.15);
+      }
+
+      .ftr-social a.in-link:hover svg {
+        fill: #0a66c2;
+      }
+
+      .ftr-social a.x-link:hover svg {
+        fill: #ffffff;
+      }
+
+      .ftr-social a.fb-link:hover svg {
+        fill: #1877f2;
+      }
+
+      .ftr-social a.ig-link:hover svg {
+        fill: #E1306C;
+      }
+
       @media (max-width: 820px) {
         footer {
           transform: none !important;
@@ -1418,7 +1478,7 @@
 
     .hero h1 {
       color: #fff;
-      font-size: clamp(30px, 4.7vw, 58px);
+      font-size: clamp(34px, 5vw, 60px);
     }
 
     .hero h1 span:last-child {
@@ -1842,7 +1902,7 @@
       bottom: 0;
       left: calc(var(--k) * 20%);
       width: 20%;
-      height: calc(12% + var(--k) * 11%);
+      height: calc(16% + var(--k) * 10%);
       border-radius: 14px 14px 0 0;
       background: #ffffff12;
       border: 1px solid #ffffff26;
@@ -1872,7 +1932,7 @@
       position: absolute;
       height: 40%;
       left: calc(var(--f) * 20% + 10%);
-      bottom: calc(12% + var(--f) * 11%);
+      bottom: calc(16% + var(--f) * 10%);
       transform: translateX(-50%);
       filter: drop-shadow(0 14px 16px #0009);
     }
@@ -2302,44 +2362,44 @@
       margin: 10px auto -66px;
       padding: 0 8px 0 22px;
       gap: 16px;
-      box-shadow: 0 8px 30px rgba(15, 23, 42, .16)
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.16);
     }
 
     .nav img {
-      height: 52px
+      height: 52px;
     }
 
     .nav nav {
-      gap: clamp(10px, 1.4vw, 20px)
+      gap: clamp(10px, 1.4vw, 20px);
     }
 
     .nav nav a {
-      font-size: clamp(12px, 1.05vw, 13.5px)
+      font-size: clamp(12px, 1.05vw, 13.5px);
     }
 
     .nav .btn {
       padding: 8px 16px;
       font-size: 13.5px;
       border-radius: 999px;
-      box-shadow: 0 6px 16px #1d4ed84d
+      box-shadow: 0 6px 16px #1d4ed84d;
     }
 
-    @media(max-width:820px) {
+    @media (max-width: 820px) {
       .nav {
         top: 8px;
         height: 52px;
         width: calc(100% - 20px);
         margin: 8px auto -60px;
-        padding: 0 8px 0 16px
+        padding: 0 8px 0 16px;
       }
 
       .nav img {
-        height: 52px
+        height: 52px;
       }
 
       .nav .btn {
         padding: 7px 14px;
-        font-size: 13px
+        font-size: 13px;
       }
     }
 
@@ -2348,32 +2408,32 @@
       font-size: 13px;
       font-weight: 700;
       color: #9fb4ee;
-      letter-spacing: .02em
+      letter-spacing: 0.02em;
     }
 
     .cue i {
       display: inline-block;
       font-style: normal;
       margin-right: 8px;
-      animation: cueb 1.6s ease-in-out infinite
+      animation: cueb 1.6s ease-in-out infinite;
     }
 
     @keyframes cueb {
       50% {
-        transform: translateY(5px)
+        transform: translateY(5px);
       }
     }
 
     .st {
-      background: linear-gradient(180deg, #fff, #f4f7ff)
+      background: linear-gradient(180deg, #fff, #f4f7ff);
     }
 
     .st h2 {
-      text-align: center
+      text-align: center;
     }
 
     .sg {
-      gap: 16px
+      gap: 16px;
     }
 
     .sg>div {
@@ -2382,30 +2442,32 @@
       border-radius: 20px;
       padding: 22px 12px;
       box-shadow: 0 12px 30px #1d4ed814;
-      transition: transform .25s, box-shadow .25s
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
     }
 
     .sg>div:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 40px #1d4ed82a
+      box-shadow: 0 18px 40px #1d4ed82a;
     }
 
     .sg b {
       background: linear-gradient(135deg, #1d4ed8, #7c3aed);
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent
+      color: transparent;
     }
 
     .sg span {
       display: block;
-      margin-top: 6px
+      margin-top: 6px;
     }
 
     .s4 {
       gap: 26px;
       margin-top: 34px;
-      counter-reset: st
+      counter-reset: st;
     }
 
     .s4>div {
@@ -2413,12 +2475,12 @@
       counter-increment: st;
       background: #fff;
       border: 1px solid var(--ln);
-      box-shadow: 0 12px 30px #1d4ed814
+      box-shadow: 0 12px 30px #1d4ed814;
     }
 
     .s4>div:hover {
       box-shadow: 0 22px 44px #1d4ed830;
-      border-color: #b7caf9
+      border-color: #b7caf9;
     }
 
     .s4>div::before {
@@ -2434,7 +2496,7 @@
       background: var(--bl);
       color: #fff;
       font-weight: 800;
-      font-size: 14px
+      font-size: 14px;
     }
 
     .s4>div:not(:last-child)::after {
@@ -2452,7 +2514,7 @@
       border: 1px solid var(--ln);
       color: var(--bl);
       font-weight: 800;
-      z-index: 2
+      z-index: 2;
     }
 
     .s4 em {
@@ -2462,7 +2524,7 @@
       height: 52px;
       border-radius: 14px;
       background: var(--sky);
-      font-size: 28px
+      font-size: 28px;
     }
 
     .s4 small {
@@ -2473,64 +2535,64 @@
       background: var(--sky);
       color: var(--bl);
       font-weight: 800;
-      font-size: 12px
+      font-size: 12px;
     }
 
     .s4>div:last-child {
       background: linear-gradient(145deg, #1d4ed8, #6d4bf0);
       color: #fff;
-      border-color: transparent
+      border-color: transparent;
     }
 
     .s4>div:last-child p {
-      color: #dfe7ff
+      color: #dfe7ff;
     }
 
     .s4>div:last-child em,
     .s4>div:last-child small {
       background: #ffffff26;
-      color: #fff
+      color: #fff;
     }
 
     .s4>div:last-child::before {
       background: #fff;
-      color: var(--bl)
+      color: var(--bl);
     }
 
     .lk {
       font-weight: 800;
       color: var(--bl);
-      text-decoration: none
+      text-decoration: none;
     }
 
     .lk:hover {
-      text-decoration: underline
+      text-decoration: underline;
     }
 
-    @media(max-width:900px) {
+    @media (max-width: 900px) {
       .s4 {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .s4>div::after {
-        display: none
+        display: none;
       }
     }
 
-    @media(max-width:820px) {
+    @media (max-width: 820px) {
       .sg>div:last-child {
-        grid-column: 1/-1
+        grid-column: 1/-1;
       }
     }
 
-    @media(max-width:560px) {
+    @media (max-width: 560px) {
       .s4 {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
     }
 
     .cg2 {
-      align-items: start
+      align-items: start;
     }
 
     .cn-list {
@@ -2538,7 +2600,7 @@
       padding: 0;
       display: grid;
       gap: 14px;
-      margin: 26px 0 18px
+      margin: 26px 0 18px;
     }
 
     .cn-item {
@@ -2550,12 +2612,14 @@
       border-radius: 18px;
       padding: 16px 18px;
       box-shadow: 0 10px 26px #1d4ed810;
-      transition: box-shadow .25s, border-color .25s
+      transition:
+        box-shadow 0.25s,
+        border-color 0.25s;
     }
 
     .cn-item:hover {
       border-color: #b7caf9;
-      box-shadow: 0 16px 36px #1d4ed824
+      box-shadow: 0 16px 36px #1d4ed824;
     }
 
     .cn-ico {
@@ -2567,16 +2631,16 @@
       display: grid;
       place-items: center;
       font-size: 20px;
-      font-style: normal
+      font-style: normal;
     }
 
     .cn-item small {
       display: block;
       font-size: 12px;
       font-weight: 800;
-      letter-spacing: .06em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--mut)
+      color: var(--mut);
     }
 
     .cn-item a,
@@ -2585,69 +2649,69 @@
       color: var(--ink);
       font-weight: 700;
       text-decoration: none;
-      word-break: break-word
+      word-break: break-word;
     }
 
     .cn-item a:hover {
-      color: var(--bl)
+      color: var(--bl);
     }
 
     .cn-item .cn-map {
       font-size: 13px;
       color: var(--bl);
-      margin-top: 4px
+      margin-top: 4px;
     }
 
     .cn-faq {
-      color: var(--mut)
+      color: var(--mut);
     }
 
     .cn-faq a {
       color: var(--bl);
       font-weight: 800;
-      text-decoration: none
+      text-decoration: none;
     }
 
     .cn-faq a:hover {
-      text-decoration: underline
+      text-decoration: underline;
     }
 
     .ct {
       padding: 32px;
       border-radius: 26px;
       gap: 16px;
-      box-shadow: 0 24px 60px #1d4ed824
+      box-shadow: 0 24px 60px #1d4ed824;
     }
 
     .cf-head {
       font-size: 22px;
-      letter-spacing: -.01em;
-      margin: 0
+      letter-spacing: -0.01em;
+      margin: 0;
     }
 
     .cf-sub {
       color: var(--mut);
       font-size: 14px;
-      margin-top: -8px
+      margin-top: -8px;
     }
 
     .cf-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px
+      gap: 14px;
     }
 
     .cf-field {
       display: grid;
       gap: 6px;
       font-size: inherit;
-      color: inherit
+      color: inherit;
     }
 
     .cf-field>span {
       font-size: 13px;
       font-weight: 800;
-      color: var(--ink)
+      color: var(--ink);
     }
 
     .ct input,
@@ -2659,20 +2723,25 @@
       border-radius: 12px;
       background: #fff;
       color: var(--ink);
-      font: 500 15px Manrope, system-ui, sans-serif;
-      transition: border-color .2s, box-shadow .2s
+      font:
+        500 15px Manrope,
+        system-ui,
+        sans-serif;
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
     }
 
     .ct textarea {
       height: auto;
       min-height: 130px;
       padding: 12px 14px;
-      resize: vertical
+      resize: vertical;
     }
 
     .ct input::placeholder,
     .ct textarea::placeholder {
-      color: #8a96b2
+      color: #8a96b2;
     }
 
     .ct input:focus,
@@ -2680,14 +2749,14 @@
     .ct textarea:focus {
       outline: 0;
       border-color: var(--bl);
-      box-shadow: 0 0 0 4px #1d4ed820
+      box-shadow: 0 0 0 4px #1d4ed820;
     }
 
     .ct select {
       -webkit-appearance: none;
       appearance: none;
       padding-right: 40px;
-      background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2356627a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 14px center/14px
+      background: #fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2356627a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 14px center/14px;
     }
 
     .ct .cf-consent {
@@ -2695,7 +2764,7 @@
       align-items: flex-start;
       gap: 10px;
       font-size: 13px;
-      color: var(--mut)
+      color: var(--mut);
     }
 
     .ct .cf-consent input {
@@ -2704,82 +2773,490 @@
       height: 18px;
       padding: 0;
       margin-top: 2px;
-      accent-color: var(--bl)
+      accent-color: var(--bl);
     }
 
     .ct .cf-consent a {
       color: var(--bl);
-      font-weight: 700
+      font-weight: 700;
     }
 
     .ct .btn {
       height: 50px;
       border-radius: 14px;
       font-size: 16px;
-      background: linear-gradient(135deg, #1d4ed8, #3b5ef0)
+      background: linear-gradient(135deg, #1d4ed8, #3b5ef0);
     }
 
     .ct .btn:disabled {
-      opacity: .7;
+      opacity: 0.7;
       cursor: progress;
-      transform: none
+      transform: none;
     }
 
     #cs:empty {
-      display: none
+      display: none;
     }
 
     #cs {
       font-size: 14px;
       font-weight: 700;
       padding: 12px 14px;
-      border-radius: 12px
+      border-radius: 12px;
     }
 
     #cs.ok {
       background: #ecfdf3;
       color: #15803d;
-      border: 1px solid #bbf7d0
+      border: 1px solid #bbf7d0;
     }
 
     #cs.err {
       background: #fef2f2;
       color: #b91c1c;
-      border: 1px solid #fecaca
+      border: 1px solid #fecaca;
     }
 
-    @media(max-width:560px) {
+    @media (max-width: 560px) {
       .cf-row {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
 
       .ct {
-        padding: 22px 18px
+        padding: 22px 18px;
       }
 
       .ct input,
       .ct select,
       .ct textarea {
-        font-size: 16px
+        font-size: 16px;
       }
     }
 
     .rail a.on span {
       opacity: 0;
-      transform: translateY(-50%) translateX(8px)
+      transform: translateY(-50%) translateX(8px);
     }
 
     .rail a:hover span {
       opacity: 1;
-      transform: translateY(-50%)
+      transform: translateY(-50%);
     }
+  
+    /* Blogs Styles */
+    .blog-hero {
+      padding: clamp(60px, 10vw, 100px) 20px 40px;
+      text-align: center;
+      background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
+    }
+    .blog-hero h1 { margin-bottom: 16px; }
+    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      padding: 40px 20px 80px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
+      border-color: #cfdcfb;
+    }
+    
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      background: #f1f5f9;
+      object-fit: cover;
+    }
+    
+    .blog-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .blog-tag {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bl);
+      background: var(--sky);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .blog-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    
+    .blog-card p {
+      color: var(--mut);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 16px;
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    
+    .blog-meta a {
+      color: var(--bl);
+      text-decoration: none;
+    }
+    .blog-meta a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+  <script>
+    setTimeout(() => {
+      window.__ok || document.documentElement.classList.add("nj");
+    }, 2500);
+  </script>
+
+  <style>
+    .ab-hero {
+      padding: clamp(120px, 14vw, 170px) 0 clamp(44px, 6vw, 80px);
+    }
+
+    .ab-hero .lead {
+      font-size: 18px;
+      max-width: 640px;
+      margin-top: 18px;
+    }
+
+    .ab-hero h1 span {
+      display: inline;
+      color: var(--bl);
+    }
+
+    .ab-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .ab-stat {
+      background: #fff;
+      border: 1px solid var(--ln);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 28px #1d4ed814;
+    }
+
+    .ab-stat b {
+      display: block;
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 800;
+      color: var(--bl);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .ab-stat small {
+      color: var(--mut);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .ab-eyebrow {
+      display: inline-block;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bl);
+      margin-bottom: 10px;
+    }
+
+    .ab-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .ab-two p {
+      color: var(--mut);
+      margin-top: 14px;
+    }
+
+    .ab-two p b {
+      color: var(--ink);
+    }
+
+    .ab-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .ab-card {
+      background: #fff;
+      border: 1px solid var(--ln);
+      border-radius: 20px;
+      padding: 24px;
+      transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+    }
+
+    .ab-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px #1d4ed824;
+    }
+
+    .ab-card i {
+      font-style: normal;
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--sky);
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .ab-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .ab-card p {
+      color: var(--mut);
+      font-size: 15px;
+    }
+
+    .ab-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+      counter-reset: s;
+    }
+
+    .ab-step {
+      background: #fff;
+      border: 1px solid var(--ln);
+      border-radius: 18px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .ab-step::before {
+      counter-increment: s;
+      content: counter(s);
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bl);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .ab-step b {
+      display: block;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .ab-step p {
+      color: var(--mut);
+      font-size: 14.5px;
+    }
+
+    .ab-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .ab-list li {
+      background: #fff;
+      border: 1px solid var(--ln);
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 700;
+    }
+
+    .ab-list li::before {
+      content: "✓";
+      color: var(--gr);
+      font-weight: 800;
+      margin-right: 10px;
+    }
+
+    @media (max-width: 860px) {
+
+      .ab-stats,
+      .ab-steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .ab-two,
+      .ab-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .ab-stats,
+      .ab-steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* Blogs Styles */
+    .blog-hero {
+      padding: clamp(60px, 10vw, 100px) 20px 40px;
+      text-align: center;
+      background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
+    }
+    .blog-hero h1 { margin-bottom: 16px; }
+    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      padding: 40px 20px 80px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
+      border-color: #cfdcfb;
+    }
+    
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      background: #f1f5f9;
+      object-fit: cover;
+    }
+    
+    .blog-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .blog-tag {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--bl);
+      background: var(--sky);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .blog-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    
+    .blog-card p {
+      color: var(--mut);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 16px;
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    
+    .blog-meta a {
+      color: var(--bl);
+      text-decoration: none;
+    }
+    .blog-meta a:hover {
+      text-decoration: underline;
+    }
+
   </style>
   <style>
+    /* nav (toggle + mobile menu) */
+    .nav nav a[] {
+      color: var(--bl);
+    }
+
     .nav-toggle {
       display: none;
       width: 40px;
       height: 40px;
-      padding: 10px;
+      padding: 9px 10px;
       border: 1px solid var(--ln);
       border-radius: 12px;
       background: #fff;
@@ -2790,7 +3267,7 @@
     .nav-toggle span {
       display: block;
       height: 2px;
-      margin: 3px 0;
+      margin: 4px 0;
       border-radius: 2px;
       background: currentColor;
     }
@@ -2799,12 +3276,8 @@
       display: none;
     }
 
-    @media (max-width: 960px) {
-      .nav {
-        gap: 10px;
-      }
-
-      .nav > .btn {
+    @media (max-width: 820px) {
+      .nav>.btn {
         display: none;
       }
 
@@ -2814,15 +3287,13 @@
         margin-left: auto;
       }
 
-      .nav nav,
-      .nav nav.is-open {
+      .nav nav {
         position: absolute;
         top: calc(100% + 8px);
-        right: 0;
         left: 0;
+        right: 0;
         display: none;
         max-height: calc(100vh - 100px);
-        max-height: calc(100svh - 100px);
         margin: 0;
         padding: 8px;
         overflow-y: auto;
@@ -2845,462 +3316,329 @@
         font-size: 14px;
       }
 
-      .nav nav a:hover {
+      .nav nav a:hover,
+      .nav nav a[] {
         background: var(--sky);
       }
 
-      .nav nav .mobile-register {
+      .mobile-register {
         display: block;
         margin-top: 4px;
         background: var(--bl);
-        color: #fff;
+        color: #fff !important;
         text-align: center;
       }
-
-      .nav nav .mobile-register:hover {
-        background: #1e40af;
-        color: #fff;
-      }
     }
 
-    @media (max-width: 380px) {
-      .hero h1 {
-        font-size: clamp(26px, 8.2vw, 32px);
-      }
-
-      .nav {
-        padding-right: 6px;
-        padding-left: 10px;
-      }
-
-      .nav img {
-        height: 52px;
-      }
-
-      .nav .btn {
-        padding: 7px 10px;
-        font-size: 12px;
-      }
-    }
-
-    .nav nav a[aria-current="page"] {
+    /* dark hero */
+    .ab-hero .c {
       position: relative;
+      z-index: 1;
+    }
+
+    .ab-hero .lead {
+      color: #b8c5ee;
+    }
+
+    .ab-hero .ab-stat {
+      background: #ffffff0f;
+      border-color: #ffffff26;
+      box-shadow: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .ab-hero .ab-stat b {
+      background: linear-gradient(135deg, #8fb4ff, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .ab-hero .ab-stat small {
+      color: #aebde8;
+    }
+
+    /* footer: always visible, sits inside the dark closing section */
+    #final {
+      padding-bottom: 0;
+      min-height: 0;
+    }
+
+    #final footer {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      transform: none !important;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      width: min(1250px, calc(100% - 32px));
+      margin: 0 auto 20px;
+      z-index: 2;
+    }
+
+    #final .fin-content {
+      padding: 70px 20px 50px;
+    }
+
+    .ftr-bot-out {
+      padding-bottom: 6px;
+    }
+
+    @media (max-width: 820px) {
+      .ftr-top {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ftr-cols {
+        margin-left: 0;
+        justify-content: flex-start;
+      }
+    }
+  
+    /* Blogs Styles */
+    .blog-hero {
+      padding: clamp(60px, 10vw, 100px) 20px 40px;
+      text-align: center;
+      background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
+    }
+    .blog-hero h1 { margin-bottom: 16px; }
+    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      padding: 40px 20px 80px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
+      border-color: #cfdcfb;
+    }
+    
+    .blog-img {
+      width: 100%;
+      height: 220px;
+      background: #f1f5f9;
+      object-fit: cover;
+    }
+    
+    .blog-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .blog-tag {
+      font-size: 13px;
+      font-weight: 700;
       color: var(--bl);
+      background: var(--sky);
+      padding: 4px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .blog-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    
+    .blog-card p {
+      color: var(--mut);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 16px;
+      font-size: 14px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    
+    .blog-meta a {
+      color: var(--bl);
+      text-decoration: none;
+    }
+    .blog-meta a:hover {
+      text-decoration: underline;
     }
 
-    .nav nav a[aria-current="page"]::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -7px;
-      width: 5px;
-      height: 5px;
-      margin-left: -2.5px;
-      border-radius: 50%;
-      background: var(--bl);
-    }
-
-    @media (max-width: 960px) {
-      .nav nav a[aria-current="page"] {
-        background: var(--sky);
-      }
-
-      .nav nav a[aria-current="page"]::after {
-        display: none;
-      }
-    }
   </style>
-  <script>
-    setTimeout(() => {
-      window.__ok || document.documentElement.classList.add("nj");
-    }, 2500);
-  </script>
-  <link rel="stylesheet" href="assets/css/landing-nav.css?v=3" />
+  <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
 </head>
 
 <body>
   <i id="pg"></i>
   <header class="nav">
-    <a href="#top"><img src="assets/mylat-logo.png" alt="MyLAT" /></a>
+    <a href="index.html" aria-label="MyLAT home"><img src="assets/mylat-logo.png" alt="MyLAT" /></a>
     <nav id="primary-nav" aria-label="Primary navigation">
-      <a href="#top" aria-current="page">Home</a><a href="about.html">About</a><a href="achievements.html">Achievements</a><a href="blogs.html">Blogs</a><a
-        href="#contact">Contact</a><a href="#faq">FAQ</a>
+      <a href="index.html#top">Home</a>
+      <a href="about.html" >About</a>
+      <a href="achievements.html">Achievements</a>
+      <a href="contact.html">Contact</a>
+      <a href="blogs.html" aria-current="page">Blogs</a><a href="faq.html">FAQ</a>
       <a class="mobile-register" href="register.php">Register now</a>
     </nav>
-    <a class="btn" href="register.php">Register now</a>
-    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
+      aria-controls="primary-nav">
       <span></span><span></span><span></span>
     </button>
+    <a class="btn" href="register.php">Register now</a>
   </header>
-
-  <section class="hero" id="top">
-    <div class="dg"></div>
-    <div class="w2">
-      <div>
-        <p class="pill rv"><b>★</b> First to give 5+ placement opportunities to every level</p>
-        <h1><span class="rv">One test between</span><span
-            class="rv" style="--d:.24s">you and your next job</span></h1>
-        <p class="sub rv" style="--d:.36s">Take one 60-minute Level Assessment Test (LAT). Get a verified Level 1–5 and
-          a QR certificate employers can check. Then our placement team lines up at least 5 opportunities for you,
-          whatever your level.</p>
-        <div class="cta rv" style="--d: 0.48s">
-          <a class="btn big" href="register.php">Register now</a><a class="btn ghost big" href="#contrast">See what
-            changes</a>
-        </div>
-        <p class="cue rv" style="--d:.6s"><i>↓</i>Scroll to see how the test, the 5 levels and your placement plan work
-        </p>
-      </div>
-      <div class="hv rv" style="--d: 0.3s">
-        <div class="orb"></div>
-        <div class="pw" data-d="-12">
-          <img src="assets/lat-candidate-after.png" alt="Candidate happy after seeing his LAT result" />
-        </div>
-        <div class="ch" data-d="26" style="top: 6%; left: -2%">
-          <span><small>Not sure where you stand?</small><b>✅ Take the 60-min LAT</b></span>
-        </div>
-        <div class="ch qr-proof" data-d="-30" style="top: 20%; right: -2%">
-          <span style="animation-delay: -2s"><small>Need proof recruiters trust?</small><b>🏅 Get a QR-verified
-              certificate</b></span>
-        </div>
-        <div class="ch" data-d="22" style="bottom: 20%; left: -4%">
-          <span style="animation-delay: -3s"><small>How do I get a job?</small><b>💼 5+ placement chances</b></span>
-        </div>
-        <div class="ch" data-d="-24" style="bottom: 6%; right: 0">
-          <span style="animation-delay: -1s"><small>How long will it take?</small><b>📅 Within 100 days</b></span>
-        </div>
-      </div>
-    </div>
-    <div class="lv5" id="lv5"></div>
-    <div class="mq">
-      <div>
-        <span>Results in minutes</span><span>Weekend exam slots</span><span>QR-verifiable certificate</span><span>Higher
-          levels surfaced first</span><span>100 questions · 60 minutes</span>
-      </div>
-    </div>
+  <section class="blog-hero rv">
+    <h1>Our <span>Insights & News</span></h1>
+    <p>Stay updated with the latest trends in placements, career growth, and how MyLAT is revolutionizing hiring.</p>
   </section>
-
-  <section class="st">
-    <div class="c">
-      <div class="sg">
-        <div><b data-c="100">0</b><span>Questions in the test</span></div>
-        <div><b data-c="60">0</b><span>Minutes to finish</span></div>
-        <div><b data-c="5">0</b><span>Levels, 1 to 5</span></div>
-        <div>
-          <b data-c="5" data-s="+">0</b><span>Placement opportunities</span>
-        </div>
-        <div><b data-c="100">0</b><span>Days to get your chances</span></div>
-      </div>
-      <h2 class="rv" style="margin-top: 56px">LAT in 4 steps.</h2>
-      <p class="lead rv" style="margin:10px auto 0;text-align:center">No long process. Here is exactly what happens
-        after you register.</p>
-      <div class="s4" id="s4"></div>
-      <div class="cta rv" style="justify-content:center;align-items:center;gap:22px;margin-top:34px"><a class="btn big"
-          href="register.php">Register for the LAT</a><a class="lk" href="#climb">See the 5 levels ↓</a></div>
-    </div>
-  </section>
-  <section id="contrast" class="tall" style="--h: 290vh">
-    <div class="stk">
-      <div>
-        <div class="hd" style="margin-bottom: 10px">
-          <h2>Same student. One test apart.</h2>
-          <p class="lead">
-            Scroll and watch what changes once you have a verified level.
-          </p>
-        </div>
-        <div class="cg">
-          <div class="bw">
-            <div class="wA"></div>
-            <div class="wB"></div>
-            <img class="b1" src="assets/lat-candidate-before.png" alt="Candidate without LAT, worried" /><img class="b2"
-              src="assets/lat-candidate-after.png" alt="Candidate with LAT, confident" /><em class="bd"
-              style="--t: 0.2; top: 8%; left: 5%">✅ Level verified</em><em class="bd"
-              style="--t: 0.5; top: 36%; right: 4%">🏅 QR certificate</em><em class="bd"
-              style="--t: 0.78; bottom: 16%; left: 4%">💼 Seen by hiring partners</em><i class="wl"></i><span
-              class="tag" id="tag">Without LAT · Unverified</span>
-          </div>
-          <div>
-            <div class="tg">
-              <button data-g="0">Without LAT</button><button data-g="1">With LAT</button>
-            </div>
-            <div class="vis">
-              Recruiter visibility
-              <div class="bar"><i></i></div>
-              <b id="vl">Low</b>
-            </div>
-            <ul class="rows" id="rows"></ul>
-          </div>
+  
+  <section class="blog-grid">
+    <!-- Card 1 -->
+    <article class="blog-card rv" style="--d:.1s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #dbe6ff, #9db8ff);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">Career Advice</span>
+        <h3>How to crack top-tier placements in 2026</h3>
+        <p>Discover the exact roadmap and skills top recruiters are looking for, and how the LAT score sets you apart.</p>
+        <div class="blog-meta">
+          <span>Oct 12, 2026 • 5 min read</span>
+          <a href="#">Read more →</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="climb" class="tall dk" style="--h: 340vh">
-    <div class="stk">
-      <div>
-        <h2>Higher level. Bigger opportunity.</h2>
-        <p class="lead">
-          Scroll and watch the candidate climb from Level 5 to Level 1.
-        </p>
-        <div class="cl2">
-          <div class="stairs" id="stairs"></div>
-          <div class="clp" id="clp"></div>
+    </article>
+    
+    <!-- Card 2 -->
+    <article class="blog-card rv" style="--d:.2s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #fecaca, #f87171);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">Platform Update</span>
+        <h3>Introducing AI-Proctored Level 5 Exams</h3>
+        <p>We are thrilled to announce the rollout of our advanced AI proctoring system for Level 5 assessments, ensuring 100% integrity.</p>
+        <div class="blog-meta">
+          <span>Oct 05, 2026 • 3 min read</span>
+          <a href="#">Read more →</a>
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <section id="journey" class="tall" style="--h: 330vh">
-    <div class="stk">
-      <div class="jg">
-        <div class="jl">
-          <h2>Your 100 days, mapped.</h2>
-          <div class="day"><b id="dn">0</b><span>of 100 days</span></div>
-          <div class="jb"><i></i></div>
-          <p class="lead">
-            5+ placement opportunities, across your 100-day journey.
-          </p>
-        </div>
-        <ol class="ms" id="ms"></ol>
-      </div>
-    </div>
-  </section>
-
-  <section id="register" class="tall" style="--h: 390vh">
-    <div class="stk">
-      <div class="rg">
-        <div class="rl">
-          <h2>Register in 5 simple steps.</h2>
-          <ol id="sl"></ol>
-          <a class="btn big" href="register.php">Start registration</a>
-        </div>
-        <div class="dev">
-          <i></i>
-          <div class="pn on">
-            <h3>Create your profile</h3>
-            <div class="f">
-              <small>Full name</small><span class="t" style="--n: 12">Aarav Sharma</span>
-            </div>
-            <div class="f">
-              <small>College</small><span class="t" style="--n: 15">Your college name</span>
-            </div>
-            <div class="f">
-              <small>Target stream</small><span class="t" style="--n: 16">Computer Science</span>
-            </div>
-          </div>
-          <div class="pn">
-            <h3>Assessment fee</h3>
-            <p style="font-size: 34px; font-weight: 800">
-              ₹2999
-              <small style="font-size: 15px; color: var(--mut)">+ 18% GST</small>
-            </p>
-            <span class="k p">UPI</span><span class="k">Card</span><span class="k">Net banking</span><br /><span
-              class="ok">✓ Seat confirmed</span>
-          </div>
-          <div class="pn">
-            <h3>Pick your weekend slot</h3>
-            <p style="color: var(--mut)">Batch of 100 candidates</p>
-            <span class="k">Sat · Morning</span><span class="k">Sat · Afternoon</span><span class="k p">Sun ·
-              Morning</span><span class="k">Sun · Afternoon</span><br /><span class="ok">✓ Slot booked</span>
-          </div>
-          <div class="pn">
-            <h3>Question 42 / 100 · 59:42</h3>
-            <p style="font-weight: 700">
-              Which data structure follows FIFO order?
-            </p>
-            <div class="o">Stack</div>
-            <div class="o" style="border-color: var(--bl); background: var(--sky)">
-              Queue
-            </div>
-            <div class="o">Tree</div>
-            <span class="ok">✓ Answer autosaved</span>
-          </div>
-          <div class="pn">
-            <div class="cert">
-              <small>MyLAT · Level Assessment</small>
-              <h4>Level 2 · Intermediate</h4>
-              <p>Awarded to <b>Your Name</b></p>
-              <div class="qr"></div>
-              <small>QR-verifiable · 5–10 LPA placement opportunities</small>
-            </div>
-          </div>
+    </article>
+    
+    <!-- Card 3 -->
+    <article class="blog-card rv" style="--d:.3s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #bbf7d0, #4ade80);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">Success Stories</span>
+        <h3>From Tier-3 College to a 24 LPA Package</h3>
+        <p>Read Rahul's inspiring journey of how his LAT Level 4 certificate landed him a dream job within 45 days.</p>
+        <div class="blog-meta">
+          <span>Sep 28, 2026 • 6 min read</span>
+          <a href="#">Read more →</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="assessment" class="sec dk">
-    <div class="c">
-      <h2 class="rv">100 questions. 3 skill areas. 60 minutes.</h2>
-      <p class="lead rv">
-        One focused paper across aptitude, your stream and reasoning.
-      </p>
-      <div class="seg rv">
-        <i style="--w: 30"></i><i style="--w: 40"></i><i style="--w: 30"></i>
-      </div>
-      <div class="ag" id="ag"></div>
-    </div>
-  </section>
-  <section id="fee" class="sec">
-    <div class="c fg">
-      <div class="rv">
-        <h2>One fee. Everything included.</h2>
-        <p class="lead">See what you get before you register.</p>
-        <ul class="inc" id="inc"></ul>
-      </div>
-      <div class="price rv" style="--d: 0.2s">
-        <small>Assessment fee</small><b>₹2999</b><span>+ 18% GST</span>
-        <div class="pm"><i>UPI</i><i>Card</i><i>Net banking</i></div>
-        <a class="btn big" href="register.php">Register now</a>
-      </div>
-    </div>
-  </section>
-  <section id="faq" class="sec">
-    <div class="c" style="max-width: 780px">
-      <h2 class="rv">Questions candidates ask</h2>
-      <details class="rv">
-        <summary>Who can take this assessment?</summary>
-        <p>
-          Any college student, fresher or early-career graduate. There are no
-          college tier or percentage cutoffs.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>When is the exam?</summary>
-        <p>
-          A batch forms once 100 candidates enroll. Exams run on weekends and
-          you pick your slot from your dashboard.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>What if my internet drops?</summary>
-        <p>
-          Answers autosave on every question. Log back in on the same browser
-          and carry on; the timer stays on our server.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>What does the paper contain?</summary>
-        <p>
-          100 multiple-choice questions across Quantitative Aptitude,
-          Technical Fundamentals and Logical Reasoning, in 60 minutes.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>When do I get my result and certificate?</summary>
-        <p>
-          Evaluation is automated. Your score, level and certificate appear on
-          your dashboard within a few minutes of submission.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>Can employers verify my certificate?</summary>
-        <p>
-          Yes. Every certificate has a unique ID and QR code that recruiters
-          can check against our records.
-        </p>
-      </details>
-      <details class="rv">
-        <summary>Can I retake it for a higher level?</summary>
-        <p>
-          You can take the test once per drive. Retake windows are announced
-          on your dashboard.
-        </p>
-      </details>
-    </div>
-  </section>
-
-  <section id="contact" class="sec">
-    <div class="c cg2">
-      <div class="rv">
-        <h2>Talk to the MyLAT team.</h2>
-        <p class="lead">
-          Questions about the assessment, your registration or the next step?
-          Send a note.
-        </p>
-        <ul class="cn-list">
-          <li class="cn-item"><i class="cn-ico">✉️</i>
-            <div><small>Email</small><a href="mailto:connect@mylatindia.com">connect@mylatindia.com</a></div>
-          </li>
-          <li class="cn-item"><i class="cn-ico">📞</i>
-            <div><small>Phone</small><a href="tel:+919557019604">+91 95570 19604</a></div>
-          </li>
-          <li class="cn-item"><i class="cn-ico">📍</i>
-            <div><small>Address</small><span>C56A/25, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh
-                201309</span><a class="cn-map"
-                href="https://www.google.com/maps/search/?api=1&query=C56A%2F25+C+Block+Phase+2+Industrial+Area+Sector+62+Noida+Uttar+Pradesh+201309"
-                target="_blank" rel="noopener">Open in Google Maps ↗</a></div>
-          </li>
-        </ul>
-        <p class="cn-faq">Looking for quick answers? <a href="#faq">Read the FAQs →</a></p>
-      </div>
-      <form id="contactForm" class="ct rv" action="api/contact.php" method="post" style="--d:.15s">
-        <h3 class="cf-head">Send us a message</h3>
-        <p class="cf-sub">Fill in the form and our team will get back to you by email.</p>
-        <div class="cf-row">
-          <label class="cf-field"><span>Full name *</span><input name="name" placeholder="Your full name"
-              autocomplete="name" required></label>
-          <label class="cf-field"><span>Email *</span><input name="email" type="email" placeholder="you@example.com"
-              autocomplete="email" required></label>
+    </article>
+    
+    <!-- Card 4 -->
+    <article class="blog-card rv" style="--d:.4s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #ddd6fe, #a78bfa);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">Industry Trends</span>
+        <h3>Why companies are moving away from resumes</h3>
+        <p>Proof-based hiring is the new norm. Learn why HRs prefer verified assessments over traditional CV screening.</p>
+        <div class="blog-meta">
+          <span>Sep 15, 2026 • 4 min read</span>
+          <a href="#">Read more →</a>
         </div>
-        <div class="cf-row">
-          <label class="cf-field"><span>Phone</span><input name="phone" type="tel" inputmode="tel"
-              placeholder="+91 98765 43210" autocomplete="tel"></label>
-          <label class="cf-field"><span>Topic</span><select name="subject">
-              <option>General Inquiry</option>
-              <option>Registration / Payment</option>
-              <option>Exam Support</option>
-              <option>Certificate / Result Query</option>
-              <option>Placement Inquiry</option>
-              <option>Partnership Opportunity</option>
-            </select></label>
+      </div>
+    </article>
+    
+    <!-- Card 5 -->
+    <article class="blog-card rv" style="--d:.5s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #fef08a, #facc15);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">Interview Tips</span>
+        <h3>Top 10 Soft Skills for the Modern Workplace</h3>
+        <p>Technical skills get you the interview, but soft skills get you the job. Here are the 10 most critical ones.</p>
+        <div class="blog-meta">
+          <span>Sep 02, 2026 • 5 min read</span>
+          <a href="#">Read more →</a>
         </div>
-        <label class="cf-field"><span>Message *</span><textarea name="message" placeholder="How can we help you?"
-            required></textarea></label>
-        <label class="cf-consent"><input type="checkbox" required><span>I agree to the <a href="terms.html">Terms</a>
-            and <a href="privacy.html">Privacy Policy</a>.</span></label>
-        <button class="btn" type="submit">Send message →</button>
-        <div id="cs" role="status" aria-live="polite"></div>
-      </form>
-    </div>
+      </div>
+    </article>
+    
+    <!-- Card 6 -->
+    <article class="blog-card rv" style="--d:.6s">
+      <div style="width:100%; height:220px; background:linear-gradient(135deg, #fed7aa, #fb923c);"></div>
+      <div class="blog-content">
+        <span class="blog-tag">News</span>
+        <h3>MyLAT partners with 50+ new NGOs</h3>
+        <p>Our initiative to bring proof-based hiring to the grassroots level expands further across the country.</p>
+        <div class="blog-meta">
+          <span>Aug 21, 2026 • 2 min read</span>
+          <a href="#">Read more →</a>
+        </div>
+      </div>
+    </article>
   </section>
-  <section id="final" class="sec">
+<section id="final" class="sec">
     <div class="fin-dots" aria-hidden="true"></div>
     <div class="fin-content">
       <div class="fin-rings" aria-hidden="true"></div>
       <h2 class="rv">Find your level. Plan your next step.</h2>
       <div class="fin-chips">
-        <span class="fin-chip rv" style="--d:.1s">₹2999 + 18% GST</span>
-        <span class="fin-chip rv" style="--d:.15s">100 questions</span>
-        <span class="fin-chip rv" style="--d:.2s">60 minutes</span>
-        <span class="fin-chip rv" style="--d:.25s">result in minutes</span>
+        <span class="fin-chip rv" style="--d: 0.1s">₹2999 + 18% GST</span>
+        <span class="fin-chip rv" style="--d: 0.15s">100 questions</span>
+        <span class="fin-chip rv" style="--d: 0.2s">60 minutes</span>
+        <span class="fin-chip rv" style="--d: 0.25s">result in minutes</span>
       </div>
-      <a class="btn big rv" style="--d:.3s" href="register.php">Register now</a>
+      <a class="btn big rv" style="--d: 0.3s" href="register.php">Register now</a>
     </div>
     <footer>
       <div class="ftr-inner">
         <div class="ftr-top">
           <div class="ftr-brand">
-            <span class="ftr-logo"><img src="assets/mylat-logo.png" alt="MyLAT" height="32"></span>
-            <p class="ftr-desc">The Placement Operating System built for the top 1% who want to be mathematically proven.</p>
+            <span class="ftr-logo"><img src="assets/mylat-logo.png" alt="MyLAT" height="32" /></span>
+            <p class="ftr-desc">
+              The Placement Operating System built for the top 1% who want to
+              be mathematically proven.
+            </p>
           </div>
           <div class="ftr-cols">
             <div class="ftr-col">
-              <strong>PLATFORM</strong>
-              <a href="#top">Home</a>
-              <a href="about.html">About</a>
-              <a href="achievements.html">Achievements</a><a href="blogs.html">Blogs</a>
+              <strong>PLATFORM</strong><a href="index.html#top">Home</a><a href="about.html">About</a><a
+                href="achievements.html">Achievements</a>
             </div>
             <div class="ftr-col">
-              <strong>EXPLORE</strong>
-              <a href="#contact">Contact</a>
-              <a href="#faq">FAQ</a>
-              <a href="register.php">Register</a>
+              <strong>EXPLORE</strong><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a
+                href="register.php">Register</a>
             </div>
             <div class="ftr-col">
-              <strong>LEGAL</strong>
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="terms.html">Terms of Service</a>
+              <strong>LEGAL</strong><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a>
             </div>
           </div>
         </div>
@@ -3312,500 +3650,68 @@
           <a href="terms.html">Terms of Service</a>
         </div>
         <div class="ftr-social">
-          <a href="https://www.linkedin.com/company/mylat/about/?viewAsMember=true" target="_blank" rel="noopener" title="LinkedIn">IN</a>
-          <a href="https://x.com/mylat_" target="_blank" rel="noopener" title="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.473l8.6-9.83L0 1.153h7.594l5.243 6.932zm-1.293 19.49h2.039L6.486 3.24H4.298z"/></svg></a>
-          <a href="https://www.facebook.com/profile.php?id=61595083444472" target="_blank" rel="noopener" title="Facebook">FB</a>
-          <a href="https://www.instagram.com/mylat.india/" target="_blank" rel="noopener" title="Instagram" class="ig-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <svg width="0" height="0" style="position: absolute; visibility: hidden">
+            <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f09433" />
+              <stop offset="25%" stop-color="#e6683c" />
+              <stop offset="50%" stop-color="#dc2743" />
+              <stop offset="75%" stop-color="#cc2366" />
+              <stop offset="100%" stop-color="#bc1888" />
+            </linearGradient>
+          </svg>
+          <a href="https://www.linkedin.com/showcase/mylat/" target="_blank" rel="noopener" title="LinkedIn"
+            class="in-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg></a>
+          <a href="https://x.com/mylat_" target="_blank" rel="noopener" title="X (Twitter)" aria-label="X (Twitter)" class="x-link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.473l8.6-9.83L0 1.153h7.594l5.243 6.932zm-1.293 19.49h2.039L6.486 3.24H4.298z"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61595012547804" target="_blank" rel="noopener"
+            title="Facebook" class="fb-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path
+                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+            </svg></a>
+          <a href="https://www.instagram.com/mylat.india/" target="_blank" rel="noopener" title="Instagram"
+            class="ig-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg></a>
         </div>
       </div>
     </footer>
   </section>
 
   <script>
-    const $ = (s, r = document) => r.querySelector(s),
-      $$ = (s, r = document) => [...r.querySelectorAll(s)],
-      cl = (v) => Math.min(1, Math.max(0, v));
-    const LV = [
-      [
-        "Level 1",
-        "Top / Excellent",
-        "10+ LPA",
-        "Placement track",
-        "Package opportunities in the 10+ LPA band. Your profile is surfaced first to hiring partners.",
-      ],
-      [
-        "Level 2",
-        "Intermediate",
-        "5–10 LPA",
-        "Placement track",
-        "Placement opportunities in the 5–10 LPA band, matched to your assessed level.",
-      ],
-      [
-        "Level 3",
-        "Basic / Employable",
-        "Up to 5 LPA",
-        "Placement track",
-        "Placement opportunities up to 5 LPA for candidates who are employable today.",
-      ],
-      [
-        "Level 4",
-        "Basic knowledge",
-        "Paid internship",
-        "Internship track",
-        "A paid internship is your way in while you build on your basics.",
-      ],
-      [
-        "Level 5",
-        "Needs training",
-        "Training → internship",
-        "Internship track",
-        "You start with training, then move toward an internship.",
-      ],
-    ];
-    const RW = [
-      [
-        "Skill proof",
-        "Claims written on a resume",
-        "A verified Level 1–5 result",
-      ],
-      [
-        "Employer visibility",
-        "Easy to get lost in the pile",
-        "Get discovered by hiring partners faster",
-      ],
-      [
-        "Credential",
-        "Nothing a recruiter can verify",
-        "QR-verifiable digital certificate",
-      ],
-      [
-        "Placement",
-        "Hope and wait",
-        "5+ placement opportunities in 100 days",
-      ],
-      [
-        "Next step",
-        "Unclear direction",
-        "A clear path matched to your level",
-      ],
-    ];
-    const MS = [
-      [
-        "Before day 1",
-        "Register and pay",
-        "Create one profile and pay ₹2999 + 18% GST. Your seat is confirmed instantly.",
-        0,
-      ],
-      [
-        "Exam weekend",
-        "Take the 60-minute LAT",
-        "100 questions online. Pick a Saturday or Sunday slot once your batch of 100 fills.",
-        0.18,
-      ],
-      [
-        "A few minutes later",
-        "Get your Level 1–5",
-        "Your level and QR-verifiable certificate appear on your dashboard.",
-        0.36,
-      ],
-      [
-        "Days 1–100",
-        "Hiring partners see you",
-        "Higher levels are surfaced first across placement drives.",
-        0.6,
-      ],
-      [
-        "By day 100",
-        "5+ placement opportunities",
-        "At least 5 opportunities matched to your level. The maximum has no cap.",
-        0.95,
-      ],
-    ];
-    const ST = [
-      [
-        "Create your profile",
-        "Add your academic details and target stream. One account for exam, result and certificate.",
-      ],
-      [
-        "Pay ₹2999 + 18% GST",
-        "UPI, card or net banking. Your seat is confirmed instantly.",
-      ],
-      [
-        "Pick your weekend slot",
-        "When your batch of 100 fills, choose a Saturday or Sunday slot.",
-      ],
-      [
-        "Take the 60-minute test",
-        "100 questions online. Answers autosave, so you can reconnect without losing progress.",
-      ],
-      [
-        "Get your level and certificate",
-        "Level 1–5 and a QR-verifiable certificate, minutes after you submit.",
-      ],
-    ];
-    $("#lv5").innerHTML = LV.map(
-      (l) => `<a href="#climb"><b>${l[0]}</b><span>${l[2]}</span></a>`,
-    ).join("");
-    $("#rows").innerHTML = RW.map(
-      (r) =>
-        `<li><em>${r[0]}</em><span class="x">${r[1]}</span><span class="v">${r[2]}</span></li>`,
-    ).join("");
-    $("#ms").innerHTML = MS.map(
-      (m) => `<li><small>${m[0]}</small><b> ${m[1]}</b><p>${m[2]}</p></li>`,
-    ).join("");
-    $("#sl").innerHTML = ST.map(
-      (s, i) =>
-        `<li tabindex="0" data-i="${i}"><b>${i + 1}</b><div class="tx"><strong>${s[0]}</strong><small>${s[1]}</small></div></li>`,
-    ).join("");
-
-    const m = $(".mq div");
-    m.innerHTML += m.innerHTML;
-    const io = new IntersectionObserver(
-      (e) =>
-        e.forEach((x) => {
-          if (x.isIntersecting) {
-            x.target.classList.add("in");
-            io.unobserve(x.target);
-          }
-        }),
-      { threshold: 0.15 },
-    );
-    $$(".rv").forEach((e) => io.observe(e));
-    const C = $("#contrast"),
-      J = $("#journey"),
-      R = $("#register");
-    const prog = (el) => {
-      const r = el.getBoundingClientRect();
-      return cl((76 - r.top) / (r.height - innerHeight + 76));
-    };
-    const go = (el, p) =>
-      scrollTo({
-        top: el.offsetTop - 76 + p * (el.offsetHeight - innerHeight + 76),
-      });
-    $$(".tg button").forEach(
-      (b) => (b.onclick = () => go(C, b.dataset.g == 1 ? 0.97 : 0.02)),
-    );
-    $$("#sl li").forEach((li) => {
-      const f = () => go(R, (+li.dataset.i + 0.5) / 5);
-      li.onclick = f;
-      li.onkeydown = (e) => e.key == "Enter" && f();
-    });
-    function tick() {
-      const d = document.documentElement;
-      $("#pg").style.transform =
-        `scaleX(${scrollY / (d.scrollHeight - innerHeight)})`;
-      const ph = cl((prog(C) - 0.1) / 0.7);
-      C.style.setProperty("--ph", ph);
-      $$("#rows li").forEach((l, i) =>
-        l.classList.toggle("on", ph >= (i + 1) / 6),
-      );
-      $("#tag").textContent =
-        ph > 0.5 ? "With LAT · Verified level" : "Without LAT · Unverified";
-      $("#vl").textContent = ph < 0.34 ? "Low" : ph < 0.7 ? "Medium" : "High";
-      $$(".tg button").forEach((b, i) =>
-        b.classList.toggle("a", ph > 0.5 == i),
-      );
-      const pj = prog(J);
-      J.style.setProperty("--pj", pj);
-      $("#dn").textContent = Math.round(pj * 100);
-      let cur = 0;
-      $$("#ms li").forEach((l, i) => {
-        l.classList.toggle("on", pj >= MS[i][3]);
-        if (pj >= (i === 0 ? -1 : MS[i - 1][3]) + 0.015) {
-          cur = i;
-        }
-      });
-      $$("#ms li").forEach((l, i) => l.classList.toggle("cur", i == cur));
-      const pr = prog(R),
-        k = Math.min(4, Math.floor(pr * 5));
-      R.style.setProperty("--pr", pr);
-      $$("#sl li").forEach((l, i) => {
-        l.classList.toggle("on", i == k);
-        l.classList.toggle("done", i < k);
-      });
-      $$(".pn").forEach((p, i) => p.classList.toggle("on", i == k));
-    }
-    let q = 0;
-    addEventListener(
-      "scroll",
-      () => {
-        q ||
-          (q = requestAnimationFrame(() => {
-            q = 0;
-            tick();
-          }));
-      },
-      { passive: true },
-    );
-    addEventListener("resize", tick);
-    tick();
-    if (!matchMedia("(prefers-reduced-motion:reduce)").matches)
-      $(".hero").addEventListener("pointermove", (e) => {
-        const x = e.clientX / innerWidth - 0.5,
-          y = e.clientY / innerHeight - 0.5;
-        $$("[data-d]").forEach(
-          (el) =>
-            (el.style.transform = `translate(${x * el.dataset.d}px,${y * el.dataset.d}px)`),
-        );
-      });
-  </script>
-  <script>
-    const D = {
-      s4: [['📝', 'Take the LAT', '100 questions, 60 minutes, online.', '60 min'], ['🎯', 'Get your level', 'Your verified Level 1–5, in minutes.', 'In minutes'], ['🏅', 'Get certified', 'A QR-verifiable certificate any employer can check.', 'QR verified'], ['💼', 'Get 5+ chances', 'Our team lines up at least 5 placement opportunities for you.', 'Within 100 days']],
-      ag: [
-        [
-          "Quantitative & Aptitude",
-          "30",
-          "30 questions · about 18 min",
-          "Speed, numerical reasoning, pattern recognition and data interpretation needed in technical roles.",
-        ],
-        [
-          "Core Domain Knowledge",
-          "40",
-          "40 questions · about 24 min",
-          "Fundamentals of your stream: software engineering, web concepts, logic and problem structuring.",
-        ],
-        [
-          "Logical Reasoning",
-          "30",
-          "30 questions · about 18 min",
-          "Analytical deductions, critical thinking, algorithm tracing and situational decisions.",
-        ],
-      ],
-      inc: [
-        "100-question online assessment with a server-side timer",
-        "Automated evaluation and Level 1–5 assignment",
-        "Verifiable digital certificate for LinkedIn and your resume",
-        "Profile considered for placement opportunities by your level",
-        "Candidate dashboard with weekend slot selector",
-        "Dedicated support until your result is published",
-      ],
-    };
-    $("#s4").innerHTML = D.s4
-      .map(
-        (x, i) =>
-          `<div class="rv" style="--d:${i * 0.12}s"><em>${x[0]}</em><b>${x[1]}</b><p>${x[2]}</p><small>${x[3]}</small></div>`,
-      )
-      .join("");
-    $("#ag").innerHTML = D.ag
-      .map(
-        (a, i) =>
-          `<div class="rv" style="--d:${i * 0.15}s"><div class="cd tl"><b>${a[1]}%</b><small>${a[2]}</small><h3>${a[0]}</h3><p>${a[3]}</p></div></div>`,
-      )
-      .join("");
-    $("#inc").innerHTML = D.inc
-      .map((t, i) => `<li style="--i:${i}">${t}</li>`)
-      .join("");
-    $$("#s4 .rv,#ag .rv").forEach((e) => io.observe(e));
-    $$("[data-c]").forEach((el) =>
-      new IntersectionObserver((e, o) => {
-        if (e[0].isIntersecting) {
-          o.disconnect();
-          const n = +el.dataset.c,
-            t0 = performance.now(),
-            f = (t) => {
-              const p = Math.min(1, (t - t0) / 1400);
-              el.textContent =
-                Math.round(n * (1 - Math.pow(1 - p, 3))) +
-                (el.dataset.s || "");
-              p < 1 && requestAnimationFrame(f);
-            };
-          requestAnimationFrame(f);
-        }
-      }).observe(el),
-    );
-    $$(".tl").forEach((el) => {
-      el.onpointermove = (e) => {
-        const r = el.getBoundingClientRect();
-        el.style.transform = `perspective(700px) rotateY(${((e.clientX - r.left) / r.width - 0.5) * 10}deg) rotateX(${-((e.clientY - r.top) / r.height - 0.5) * 10}deg)`;
-      };
-      el.onpointerleave = () => (el.style.transform = "");
-    });
-    let w = 0;
-    addEventListener(
-      "scroll",
-      () => {
-        const p = +C.style.getPropertyValue("--ph");
-        if (p > 0.97 && !w) {
-          w = 1;
-          const b = $(".bw");
-          for (let i = 0; i < 30; i++) {
-            const c = document.createElement("s"),
-              a = Math.random() * 6.28,
-              d = 90 + Math.random() * 150;
-            c.className = "cf";
-            c.style.cssText = `--h:${(Math.random() * 360) | 0};--x:${Math.cos(a) * d}px;--y:${Math.sin(a) * d}px;--r:${Math.random() * 720}deg`;
-            b.append(c);
-            setTimeout(() => c.remove(), 1400);
-          }
-        }
-        if (p < 0.5) w = 0;
-      },
-      { passive: true },
-    );
-            $("#contactForm").onsubmit = async (e) => {
-          e.preventDefault();
-          const f = e.target, b = f.querySelector("button");
-          b.disabled = true; b.textContent = "Sending…";
-          
-          let toast = document.getElementById("landingToast");
-          if(!toast) {
-              toast = document.createElement("div");
-              toast.id = "landingToast";
-              toast.className = "landing-toast";
-              document.body.appendChild(toast);
-          }
-          toast.classList.remove("show", "err");
-          
-          try {
-            const r = await fetch(f.action, { method: "POST", body: new FormData(f) });
-            const data = await r.json().catch(()=>({}));
-            
-            if (r.ok) {
-                toast.textContent = "✓ Message sent successfully!";
-                toast.classList.add("show");
-                f.reset();
-            } else {
-                toast.textContent = data.message || "Could not send. Please try again.";
-                toast.classList.add("show", "err");
+    window.__ok = true;
+    (function () {
+      var io = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
             }
-          } catch (_) {
-            toast.textContent = "Network error. Please try again.";
-            toast.classList.add("show", "err");
-          }
-          
-          setTimeout(() => toast.classList.remove("show"), 4000);
-          b.disabled = false;
-          b.textContent = "Send message →";
-        };
-</script>
-  <script>
-    $("#stairs").innerHTML =
-      LV.slice()
-        .reverse()
-        .map(
-          (l, k) =>
-            `<div class="stp" style="--k:${k}"><b>${l[0]}</b><span>${l[2]}</span></div>`,
-        )
-        .join("") +
-      '<img class="hk" src="assets/lat-candidate-after.png" alt="Candidate climbing from Level 5 to Level 1">';
-    const K = $("#climb");
-    let li = -1;
-    const cu = () => {
-      const f = prog(K) * 4,
-        i = Math.min(4, Math.round(f));
-      K.style.setProperty("--f", f);
-      $$(".stp").forEach((s, j) => s.classList.toggle("on", j <= i));
-      if (i != li) {
-        li = i;
-        const L = LV[4 - i];
-        $("#clp").innerHTML =
-          `<small>${L[3]}</small><b>${L[0]} · ${L[1]}</b><b style="color:#8fb4ff">${L[2]}</b><p>${L[4]}</p>`;
-      }
-    };
-    addEventListener("scroll", cu, { passive: true });
-    addEventListener("resize", cu);
-    cu();
-    $(".hero").addEventListener("pointermove", (e) => {
-      const h = e.currentTarget,
-        r = h.getBoundingClientRect();
-      h.style.setProperty("--mx", e.clientX - r.left + "px");
-      h.style.setProperty("--my", e.clientY - r.top + "px");
-    });
-    $$(".btn.big").forEach((b) => {
-      b.onpointermove = (e) => {
-        const r = b.getBoundingClientRect();
-        b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.12}px,${(e.clientY - r.top - r.height / 2) * 0.2}px)`;
-      };
-      b.onpointerleave = () => (b.style.transform = "");
-    });
-  </script>
-  <script>
-    const SC = [
-      ["top", "Start"],
-      ["contrast", "Why LAT"],
-      ["climb", "Levels"],
-      ["journey", "100 days"],
-      ["register", "Registration"],
-      ["assessment", "Assessment"],
-      ["fee", "Fee"],
-      ["faq", "FAQs"],
-      ["contact", "Contact"],
-      ["final", "Register"],
-    ];
-    document.body.insertAdjacentHTML(
-      "beforeend",
-      '<nav class="rail" aria-label="Page sections">' +
-      SC.map(
-        (x) =>
-          `<a href="#${x[0]}" data-s="${x[0]}" aria-label="${x[1]}"><span>${x[1]}</span></a>`,
-      ).join("") +
-      "</nav>",
-    );
-    $$("h2").forEach((h) => {
-      h.innerHTML = h.textContent
-        .split(" ")
-        .map((w, i) => `<span class="w" style="--i:${i}">${w}</span>`)
-        .join(" ");
-      h.classList.add("sp");
-      io.observe(h);
-    });
-    const hero = $(".hero");
-    for (let i = 0; i < 24; i++) {
-      const u = document.createElement("u");
-      u.className = "pt";
-      u.style.cssText = `--l:${Math.random() * 100}%;--s:${2 + Math.random() * 4}px;--t:${7 + Math.random() * 9}s;--dl:-${Math.random() * 12}s`;
-      hero.append(u);
-    }
-    const fab = $(".fab"),
-      ftr = $("footer"),
-      finBtn = $("#final .btn"),
-      finalSec = $("#final");
-      
-    let ftrShowing = false;
-    let finalInView = false;
-
-    new IntersectionObserver(e => {
-      finalInView = e[0].isIntersecting;
-      if (typeof sc === "function") sc();
-    }, { threshold: 0.1 }).observe(finalSec);
-
-    let fObs;
-    new ResizeObserver(() => {
-      const fh = ftr.getBoundingClientRect().height;
-      finalSec.style.setProperty("--ftr", fh + "px");
-      if (fObs) fObs.disconnect();
-      fObs = new IntersectionObserver((e) => {
-        ftrShowing = e[0].isIntersecting;
-        if (window.innerWidth > 820) {
-          ftr.classList.toggle("show", ftrShowing);
-        }
-        if (typeof sc === "function") sc();
-      }, { rootMargin: `0px 0px -${Math.round(fh) + 16}px 0px`, threshold: 1 });
-      fObs.observe(finBtn);
-    }).observe(ftr);
-
-    const sc = () => {
-      let c = "top";
-      SC.forEach((x) => {
-        const e = document.getElementById(x[0]);
-        if (e && e.getBoundingClientRect().top < innerHeight * 0.5) c = x[0];
-      });
-      $$(".rail a").forEach((a) =>
-        a.classList.toggle("on", a.dataset.s == c),
+          });
+        },
+        { threshold: 0.15 },
       );
-      $$(".tall").forEach((t) => t.style.setProperty("--sp", prog(t)));
-      
-      let hideFab = (window.innerWidth > 820) ? ftrShowing : finalInView;
-      if (!hideFab) {
-        fab.classList.toggle("show", scrollY > innerHeight * 0.9);
-      } else {
-        fab.classList.remove("show");
+      document.querySelectorAll(".rv").forEach(function (el) {
+        io.observe(el);
+      });
+      var pg = document.getElementById("pg");
+      function sc() {
+        var h = document.documentElement,
+          m = h.scrollHeight - innerHeight;
+        pg.style.transform = "scaleX(" + (m > 0 ? scrollY / m : 0) + ")";
       }
-    };
-    addEventListener("scroll", sc, { passive: true });
-    sc();
-    window.__ok = 1;
+      addEventListener("scroll", sc, { passive: true });
+      sc();
+      var hero = document.querySelector(".hero");
+      hero &&
+        hero.addEventListener("mousemove", function (e) {
+          var r = hero.getBoundingClientRect();
+          hero.style.setProperty("--mx", e.clientX - r.left + "px");
+          hero.style.setProperty("--my", e.clientY - r.top + "px");
+        });
+    })();
   </script>
   <script src="js/landing-nav.js?v=1"></script>
 </body>
