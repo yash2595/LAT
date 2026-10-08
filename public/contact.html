@@ -3362,14 +3362,27 @@
               method: "POST",
               body: new FormData(f),
             });
-            m.className = r.ok ? "ok" : "err";
-            m.textContent = r.ok
-              ? "Thanks! We will reply soon."
-              : "Could not send. Email info@mylat.com.";
-            r.ok && f.reset();
+            const data = await r.json().catch(()=>({}));
+            
+            if (r.ok) {
+                m.className = "ok";
+                m.textContent = data.message || "Thanks! We will reply soon.";
+                f.reset();
+                b.textContent = "Sent Successfully!";
+                setTimeout(() => {
+                    b.disabled = false;
+                    b.textContent = "Send message →";
+                    m.className = "";
+                    m.textContent = "";
+                }, 5000);
+                return; // Keep disabled for 5 seconds
+            } else {
+                m.className = "err";
+                m.textContent = data.message || "Could not send. Please try again.";
+            }
           } catch (_) {
             m.className = "err";
-            m.textContent = "Could not send. Email info@mylat.com.";
+            m.textContent = "Network error. Please try again.";
           }
           b.disabled = false;
           b.textContent = "Send message →";
