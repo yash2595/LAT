@@ -23,7 +23,7 @@ if (file_exists(dirname(__DIR__, 2) . '/core/bootstrap.php')) {
     >
     <meta name="csrf-token" content="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>">
 
-    <title>MYLAT Level Assessment</title>
+    <title>MyLAT Level Assessment</title>
 
     <style>
 
@@ -733,7 +733,7 @@ if (file_exists(dirname(__DIR__, 2) . '/core/bootstrap.php')) {
 <header class="exam-header">
 
     <div class="brand">
-        MYLAT Level Assessment
+        MyLAT Level Assessment
     </div>
 
     <div style="display:flex; align-items:center; gap:20px;">

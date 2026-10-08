@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id']) || isset($_SESSION['candidate_id'])) {
     destroy_session();
 }
 
-$pageTitle = 'Log in — MYLAT';
+$pageTitle = 'Log in — MyLAT';
 $asideVariant = 'login';
 $asideTitle = 'Welcome back, Candidate.';
 $asideLead = 'Resume your journey. Your latest assessment scores, reports, and placement status are waiting on your dashboard.';
@@ -50,7 +50,7 @@ $asideLead = 'Resume your journey. Your latest assessment scores, reports, and p
 </head>
 <body><div class="auth">
 <?php require __DIR__ . '/../src/core/auth_aside.php'; ?>
-<main class="main"><div class="top"><img class="m-logo" src="assets/mylat-logo.png" alt="MYLAT"></div>
+<main class="main"><div class="top"><img class="m-logo" src="assets/mylat-logo.png" alt="MyLAT"></div>
 <div class="shell"><section class="card is-login">
 <div class="body">
     <style>
@@ -114,7 +114,7 @@ $asideLead = 'Resume your journey. Your latest assessment scores, reports, and p
     </div>
 
     <p class="foot" style="margin-top: 32px; font-size: 13px; color: #64748b; display: flex; align-items: center; justify-content: center; gap: 8px;">
-        <svg class="ico" style="width: 16px; height: 16px; color: #10b981; stroke-width: 2.5;"><use href="#i-shield"/></svg> 256-bit SSL Encrypted &bull; <b style="color:#60a5fa;">MYLAT</b>
+        <svg class="ico" style="width: 16px; height: 16px; color: #10b981; stroke-width: 2.5;"><use href="#i-shield"/></svg> 256-bit SSL Encrypted &bull; <b style="color:#60a5fa;">MyLAT</b>
     </p>
 </div>
 </section></div></main></div><script src="assets/js/auth.js"></script></body></html>

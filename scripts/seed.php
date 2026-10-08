@@ -13,7 +13,7 @@
 //   SEED_ADMIN_NAME     — display name stored in candidates.full_name
 //
 // Optional env vars (all have sensible defaults):
-//   SEED_ASSESSMENT_TITLE       — default: "MYLAT Level Assessment"
+//   SEED_ASSESSMENT_TITLE       — default: "MyLAT Level Assessment"
 //   SEED_ASSESSMENT_DURATION    — minutes, default: 60
 //   SEED_ASSESSMENT_QUESTIONS   — total questions, default: 50
 //   SEED_QBANK_NAME             — default: "Main Question Bank"
@@ -53,13 +53,13 @@ if (strlen($adminPassword) < 8) {
     seed_die('SEED_ADMIN_PASSWORD must be at least 8 characters long.');
 }
 
-$assessmentTitle     = seed_env('SEED_ASSESSMENT_TITLE',     'MYLAT Level Assessment');
+$assessmentTitle     = seed_env('SEED_ASSESSMENT_TITLE',     'MyLAT Level Assessment');
 $assessmentDuration  = (int)seed_env('SEED_ASSESSMENT_DURATION',  '60');
 $assessmentQuestions = (int)seed_env('SEED_ASSESSMENT_QUESTIONS', '50');
 $qbankName           = seed_env('SEED_QBANK_NAME',           'Main Question Bank');
 
 echo "=================================================\n";
-echo "MYLAT Seed — Starting\n";
+echo "MyLAT Seed — Starting\n";
 echo "=================================================\n\n";
 
 // ── Step 1: Admin user ────────────────────────────────────────────────────────

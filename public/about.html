@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About MYLAT | Proof-based hiring &amp; placement</title>
+  <title>About MyLAT | Proof-based hiring &amp; placement</title>
   <meta name="description"
-    content="MYLAT helps students and freshers prove their skills with a verified Level 1–5 assessment, a QR-verifiable certificate and placement opportunities within 100 days." />
+    content="MyLAT helps students and freshers prove their skills with a verified Level 1–5 assessment, a QR-verifiable certificate and placement opportunities within 100 days." />
   <link rel="icon" href="assets/mylat-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -3209,7 +3209,7 @@
 <body>
   <i id="pg"></i>
   <header class="nav">
-    <a href="index.html" aria-label="MYLAT home"><img src="assets/mylat-logo.png" alt="MYLAT" /></a>
+    <a href="index.html" aria-label="MyLAT home"><img src="assets/mylat-logo.png" alt="MyLAT" /></a>
     <nav id="primary-nav" aria-label="Primary navigation">
       <a href="index.html#top">Home</a>
       <a href="about.html" aria-current="page">About</a>
@@ -3227,12 +3227,12 @@
   <section class="hero ab-hero">
     <div class="dg" aria-hidden="true"></div>
     <div class="c">
-      <span class="pill rv"><b>About</b> MYLAT</span>
+      <span class="pill rv"><b>About</b> MyLAT</span>
       <h1 class="rv">
         Skills should be <span>proven</span>, not just claimed.
       </h1>
       <p class="lead rv" style="--d: 0.1s">
-        MYLAT is a proof-based hiring and placement platform. We help
+        MyLAT is a proof-based hiring and placement platform. We help
         students and freshers turn their skills into a verified Level 1–5
         result, a QR-verifiable certificate and real placement opportunities.
       </p>
@@ -3257,27 +3257,38 @@
     </div>
   </section>
 
-  <section class="sec">
-    <div class="c ab-two">
-      <div class="rv">
-        <span class="ab-eyebrow">Our mission</span>
-        <h2>Make hiring fair, fast and based on proof.</h2>
-      </div>
-      <div class="rv" style="--d: 0.1s">
-        <p>
-          Most freshers have similar resumes, so employers struggle to tell
-          who is actually ready. And capable students often go unnoticed
-          simply because they lack a way to prove what they know.
-        </p>
-        <p>
-          <b>MYLAT fixes that.</b> One Level Assessment Test (LAT) gives
-          every candidate an objective, verified level. Employers see it
-          upfront, and candidates get a clear path matched to where they
-          stand.
-        </p>
-      </div>
-    </div>
-  </section>
+      <!-- VISION / FOUNDER -->
+      <section class="sec vision" id="vision">
+        <div class="c">
+          <div class="vision-grid">
+            <div class="vision-img-col rv">
+              <div class="founder-img-wrapper">
+                <img src="assets/founder.png" alt="Founder" loading="lazy" />
+                <div class="circular-text">
+                  <svg viewBox="0 0 100 100">
+                    <path id="txt-path" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent"></path>
+                    <text>
+                      <textPath href="#txt-path" startOffset="0">MARCHING FORWARD • UNEMPLOYMENT FREE INDIA • </textPath>
+                    </text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="vision-text-col">
+              <h2 class="sp" style="font-size: 42px; line-height: 1.1; margin-bottom: 24px; color: var(--ink);">Marching Forward for an Unemployment-Free India.</h2>
+              <p class="lead rv" style="--d: 0.15s; font-size: 1.1rem; line-height: 1.6; color: var(--mut); margin-bottom: 24px;">
+                Featured in SiliconIndia as one of the <b>10 Most Promising Recruitment Companies in Mumbai (2022)</b>, Employment Express has consistently aligned itself with changing industry patterns to train and make candidates industry-ready.
+              </p>
+              
+              <div class="vision-quote rv" style="--d: 0.25s">
+                <p>
+                  "The commitment and determination are linked with the vision of Unemployment-Free India, building a talent pool of professionals to increase employability."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
   <section class="sec" style="background: #fff; border-block: 1px solid var(--ln)">
     <div class="c">
@@ -3599,6 +3610,124 @@
           animation: none;
         }
       }
+
+      /* ---------- vision/founder section ---------- */
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .vision-img-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .founder-img-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .founder-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      }
+      .circular-text {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        background: var(--bl);
+        border-radius: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+        animation: spin-slow 12s linear infinite;
+      }
+      .circular-text svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .circular-text text {
+        font-family: 'Manrope', sans-serif;
+        font-size: 13.5px;
+        font-weight: 800;
+        fill: #fff;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      @keyframes spin-slow {
+        100% { transform: translateY(-50%) rotate(360deg); }
+      }
+      .vision-text-col .sp {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      .vision-quote {
+        position: relative;
+        padding: 30px 40px;
+        background: #fff;
+        border-radius: 16px;
+        border-left: 6px solid var(--bl);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 30px;
+        z-index: 1;
+      }
+      .vision-quote::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 120px;
+        color: rgba(29, 78, 216, 0.05);
+        font-family: serif;
+        line-height: 1;
+        z-index: -1;
+      }
+      .vision-quote p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+      }
+      @media (max-width: 900px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 70px;
+        }
+        .circular-text {
+          left: 50%;
+          top: auto;
+          bottom: -50px;
+          transform: translateX(-50%);
+          animation: spin-slow-mob 12s linear infinite;
+        }
+        @keyframes spin-slow-mob {
+          100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        .vision-text-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .vision-quote {
+          text-align: left;
+        }
+      }
     </style>
     <div class="c">
       <span class="gv-live rv"><i></i>LIVE · <b id="gv-n">0</b> Government Partners</span>
@@ -3889,13 +4018,131 @@
           animation: none;
         }
       }
+
+      /* ---------- vision/founder section ---------- */
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .vision-img-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .founder-img-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .founder-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      }
+      .circular-text {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        background: var(--bl);
+        border-radius: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+        animation: spin-slow 12s linear infinite;
+      }
+      .circular-text svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .circular-text text {
+        font-family: 'Manrope', sans-serif;
+        font-size: 13.5px;
+        font-weight: 800;
+        fill: #fff;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      @keyframes spin-slow {
+        100% { transform: translateY(-50%) rotate(360deg); }
+      }
+      .vision-text-col .sp {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      .vision-quote {
+        position: relative;
+        padding: 30px 40px;
+        background: #fff;
+        border-radius: 16px;
+        border-left: 6px solid var(--bl);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 30px;
+        z-index: 1;
+      }
+      .vision-quote::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 120px;
+        color: rgba(29, 78, 216, 0.05);
+        font-family: serif;
+        line-height: 1;
+        z-index: -1;
+      }
+      .vision-quote p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+      }
+      @media (max-width: 900px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 70px;
+        }
+        .circular-text {
+          left: 50%;
+          top: auto;
+          bottom: -50px;
+          transform: translateX(-50%);
+          animation: spin-slow-mob 12s linear infinite;
+        }
+        @keyframes spin-slow-mob {
+          100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        .vision-text-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .vision-quote {
+          text-align: left;
+        }
+      }
     </style>
     <div class="c">
       <span class="ngo-live rv"><i></i>LIVE · <b id="ngo-n">0</b> NGO &amp; CSR Partners</span>
       <h2 id="ngo-h" class="rv" style="--d: 0.05s">NGO &amp; CSR partners in our network</h2>
       <p class="lead rv" style="--d: 0.12s">
         Non-profits, foundations and corporate social responsibility bodies
-        working alongside MYLAT to expand access to skill-verified talent.
+        working alongside MyLAT to expand access to skill-verified talent.
       </p>
     </div>
     <div class="ngo-grid" id="ngo-grid" aria-label="NGO and CSR partner logos"></div>
@@ -4194,13 +4441,131 @@
           animation: none;
         }
       }
+
+      /* ---------- vision/founder section ---------- */
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .vision-img-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .founder-img-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .founder-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      }
+      .circular-text {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        background: var(--bl);
+        border-radius: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+        animation: spin-slow 12s linear infinite;
+      }
+      .circular-text svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .circular-text text {
+        font-family: 'Manrope', sans-serif;
+        font-size: 13.5px;
+        font-weight: 800;
+        fill: #fff;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      @keyframes spin-slow {
+        100% { transform: translateY(-50%) rotate(360deg); }
+      }
+      .vision-text-col .sp {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      .vision-quote {
+        position: relative;
+        padding: 30px 40px;
+        background: #fff;
+        border-radius: 16px;
+        border-left: 6px solid var(--bl);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 30px;
+        z-index: 1;
+      }
+      .vision-quote::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 120px;
+        color: rgba(29, 78, 216, 0.05);
+        font-family: serif;
+        line-height: 1;
+        z-index: -1;
+      }
+      .vision-quote p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+      }
+      @media (max-width: 900px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 70px;
+        }
+        .circular-text {
+          left: 50%;
+          top: auto;
+          bottom: -50px;
+          transform: translateX(-50%);
+          animation: spin-slow-mob 12s linear infinite;
+        }
+        @keyframes spin-slow-mob {
+          100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        .vision-text-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .vision-quote {
+          text-align: left;
+        }
+      }
     </style>
     <div class="c">
       <span class="acad-live rv"><i></i>LIVE · <b id="acad-n">0</b> Academic Partners</span>
       <h2 id="acad-h" class="rv" style="--d: 0.05s">Academic partners in our network</h2>
       <p class="lead rv" style="--d: 0.12s">
         Universities, colleges, and educational institutions
-        partnering with MYLAT to empower students with verified skills and assessments.
+        partnering with MyLAT to empower students with verified skills and assessments.
       </p>
     </div>
     <div class="acad-grid" id="acad-grid" aria-label="Academic partner logos"></div>
@@ -4305,6 +4670,124 @@
         object-fit: cover;
         object-position: top;
       }
+
+      /* ---------- vision/founder section ---------- */
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .vision-img-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .founder-img-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .founder-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      }
+      .circular-text {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        background: var(--bl);
+        border-radius: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+        animation: spin-slow 12s linear infinite;
+      }
+      .circular-text svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .circular-text text {
+        font-family: 'Manrope', sans-serif;
+        font-size: 13.5px;
+        font-weight: 800;
+        fill: #fff;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      @keyframes spin-slow {
+        100% { transform: translateY(-50%) rotate(360deg); }
+      }
+      .vision-text-col .sp {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      .vision-quote {
+        position: relative;
+        padding: 30px 40px;
+        background: #fff;
+        border-radius: 16px;
+        border-left: 6px solid var(--bl);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 30px;
+        z-index: 1;
+      }
+      .vision-quote::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 120px;
+        color: rgba(29, 78, 216, 0.05);
+        font-family: serif;
+        line-height: 1;
+        z-index: -1;
+      }
+      .vision-quote p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+      }
+      @media (max-width: 900px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 70px;
+        }
+        .circular-text {
+          left: 50%;
+          top: auto;
+          bottom: -50px;
+          transform: translateX(-50%);
+          animation: spin-slow-mob 12s linear infinite;
+        }
+        @keyframes spin-slow-mob {
+          100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        .vision-text-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .vision-quote {
+          text-align: left;
+        }
+      }
     </style>
     <div class="c">
       <div class="sechead" style="text-align: center; margin-bottom: 56px;">
@@ -4360,7 +4843,7 @@
   <section class="sec" id="portfolio">
     <div class="c">
       <div class="sechead" style="text-align: center; margin-bottom: 48px;">
-        <p class="pill rv"><b>★</b> Inside MYLAT</p>
+        <p class="pill rv"><b>★</b> Inside MyLAT</p>
         <h2 class="sp">Our Portfolio &amp; Events</h2>
       </div>
       <div class="port-scroll-wrapper rv" style="--d: 0.1s">
@@ -4460,6 +4943,124 @@
         .port-col:nth-child(1) .port-slice { background-position-x: 0%; }
         .port-col:nth-child(2) .port-slice { background-position-x: 100%; }
       }
+
+      /* ---------- vision/founder section ---------- */
+      .vision-grid {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+      }
+      .vision-img-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .founder-img-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        aspect-ratio: 4/5;
+        border-radius: 24px;
+      }
+      .founder-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      }
+      .circular-text {
+        position: absolute;
+        left: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        background: var(--bl);
+        border-radius: 50%;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 12px 32px rgba(29, 78, 216, 0.4);
+        animation: spin-slow 12s linear infinite;
+      }
+      .circular-text svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+      .circular-text text {
+        font-family: 'Manrope', sans-serif;
+        font-size: 13.5px;
+        font-weight: 800;
+        fill: #fff;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      @keyframes spin-slow {
+        100% { transform: translateY(-50%) rotate(360deg); }
+      }
+      .vision-text-col .sp {
+        font-size: 38px;
+        margin-bottom: 20px;
+      }
+      .vision-quote {
+        position: relative;
+        padding: 30px 40px;
+        background: #fff;
+        border-radius: 16px;
+        border-left: 6px solid var(--bl);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        margin-top: 30px;
+        z-index: 1;
+      }
+      .vision-quote::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 20px;
+        font-size: 120px;
+        color: rgba(29, 78, 216, 0.05);
+        font-family: serif;
+        line-height: 1;
+        z-index: -1;
+      }
+      .vision-quote p {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0;
+      }
+      @media (max-width: 900px) {
+        .vision-grid {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 70px;
+        }
+        .circular-text {
+          left: 50%;
+          top: auto;
+          bottom: -50px;
+          transform: translateX(-50%);
+          animation: spin-slow-mob 12s linear infinite;
+        }
+        @keyframes spin-slow-mob {
+          100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        .vision-text-col {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .vision-quote {
+          text-align: left;
+        }
+      }
     </style>
   </section>
 
@@ -4510,7 +5111,7 @@
       <div class="ftr-inner">
         <div class="ftr-top">
           <div class="ftr-brand">
-            <span class="ftr-logo"><img src="assets/mylat-logo.png" alt="MYLAT" height="32" /></span>
+            <span class="ftr-logo"><img src="assets/mylat-logo.png" alt="MyLAT" height="32" /></span>
             <p class="ftr-desc">
               The Placement Operating System built for the top 1% who want to
               be mathematically proven.
@@ -4532,7 +5133,7 @@
         </div>
       </div>
       <div class="ftr-bot-out">
-        <span>© 2026 MYLAT. All rights reserved.</span>
+        <span>© 2026 MyLAT. All rights reserved.</span>
         <div class="ftr-out-links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>

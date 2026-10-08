@@ -21,7 +21,7 @@ $asideVariant = $asideVariant ?? 'login';
 <symbol id="i-login-arrow" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></symbol>
 </defs></svg>
 <aside class="aside" data-variant="<?= htmlspecialchars($asideVariant) ?>">
-  <a class="chip" href="/index.html" aria-label="MYLAT home"><img src="/assets/mylat-logo.png" alt="MYLAT"></a>
+  <a class="chip" href="/index.html" aria-label="MyLAT home"><img src="/assets/mylat-logo.png" alt="MyLAT"></a>
   <div class="hero">
     <h1><?= htmlspecialchars($asideTitle) ?></h1>
     <p class="lead"><?= htmlspecialchars($asideLead) ?></p>

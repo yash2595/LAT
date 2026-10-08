@@ -13,7 +13,7 @@ try {
     $stmt->close();
     
     // Fetch new count — scoped to this candidate to prevent IDOR read-back.
-    // Closing Finding: "Violation-count read-back is not candidate-scoped" (MYLAT MVP audit).
+    // Closing Finding: "Violation-count read-back is not candidate-scoped" (MyLAT MVP audit).
     $stmt = $conn->prepare('SELECT violations, status FROM attempts WHERE id = ? AND candidate_id = ? FOR UPDATE');
     $stmt->bind_param('ii', $attemptId, $candidateId);
     $stmt->execute();

@@ -377,7 +377,7 @@ function handle_reset_password_request(array $data, mysqli $conn): void {
         $conn->commit();
     } catch (Throwable $e) {
         $conn->rollback();
-        error_log('MYLAT password reset error: ' . $e->getMessage());
+        error_log('MyLAT password reset error: ' . $e->getMessage());
         send_json_response('error', 'Could not reset password. Please try again.', null, 500);
     }
 

@@ -1,7 +1,7 @@
 <?php
 // Path: public/forgot-password.php
 require_once __DIR__ . '/../src/core/bootstrap.php';
-$pageTitle = 'Forgot Password — MYLAT';
+$pageTitle = 'Forgot Password — MyLAT';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ $pageTitle = 'Forgot Password — MYLAT';
 <body>
 <main class="ib-auth-page-rich">
   <div class="ib-auth-card-full">
-    <img src="assets/mylat-logo.png" alt="MYLAT" class="ib-form-logo">
+    <img src="assets/mylat-logo.png" alt="MyLAT" class="ib-form-logo">
     <h1 class="ib-auth-title text-center">Reset your <span class="ib-gradient-text">Password</span></h1>
     <p class="ib-auth-sub text-center">Enter your email and we'll send you a reset link.</p>
 

@@ -51,10 +51,10 @@ function output_certificate_pdf(array $data, bool $inline = false): void
     // A4 Landscape: 842 pt x 595 pt
     $pdf = new TCPDF('L', 'pt', 'A4', true, 'UTF-8', false);
 
-    $pdf->SetCreator('MYLAT Platform');
-    $pdf->SetAuthor('MYLAT Assessment Engine');
+    $pdf->SetCreator('MyLAT Platform');
+    $pdf->SetAuthor('MyLAT Assessment Engine');
     $pdf->SetTitle('Certificate of Achievement - ' . $name);
-    $pdf->SetSubject('MYLAT Certificate of Achievement');
+    $pdf->SetSubject('MyLAT Certificate of Achievement');
 
     $pdf->setPrintHeader(false);
     $pdf->setPrintFooter(false);

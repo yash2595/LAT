@@ -4,7 +4,7 @@ ini_set('display_errors', '0');
 error_reporting(0);
 
 /**
- * MYLAT M7 database bootstrap.
+ * MyLAT M7 database bootstrap.
  *
  * Supports both the project's DB_* variables and all Railway MySQL variables:
  * MYSQL_DATABASE, MYSQL_PUBLIC_URL, MYSQL_ROOT_PASSWORD, MYSQL_URL,

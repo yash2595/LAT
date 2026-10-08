@@ -68,7 +68,7 @@ function send_mail(
     $username = env_value('MAIL_USERNAME', '');
     $password = env_value('MAIL_PASSWORD', '');
     $encryption = strtolower((string) env_value('MAIL_ENCRYPTION', 'tls'));
-    $fromName = env_value('MAIL_FROM_NAME', 'MYLAT');
+    $fromName = env_value('MAIL_FROM_NAME', 'MyLAT');
 
     $mail = new PHPMailer(true);
 
@@ -137,10 +137,10 @@ function send_otp_email(string $toEmail, string $toName, string $otp, ?PHPMailer
     // as defense-in-depth against future changes to code format.
     $safeOtp = htmlspecialchars($otp, ENT_QUOTES, 'UTF-8');
 
-    $subject = 'Your MYLAT verification code';
+    $subject = 'Your MyLAT verification code';
     $htmlBody = "
         <div style='font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto;'>
-            <h2 style='color:#2F6FEB;'>MYLAT Email Verification</h2>
+            <h2 style='color:#2F6FEB;'>MyLAT Email Verification</h2>
             <p>Hi {$safeName},</p>
             <p>Your verification code is:</p>
             <div style='font-size: 32px; font-weight: 800; letter-spacing: 8px; color: #1E4FD1; margin: 20px 0;'>{$safeOtp}</div>
@@ -149,7 +149,7 @@ function send_otp_email(string $toEmail, string $toName, string $otp, ?PHPMailer
     ";
 
     // Plain-text alternative must NOT be HTML-escaped to avoid showing raw entities in plain-text clients
-    $altBody = "Your MYLAT verification code is: {$otp} (expires in 10 minutes)";
+    $altBody = "Your MyLAT verification code is: {$otp} (expires in 10 minutes)";
 
     return send_mail($toEmail, $toName, $subject, $htmlBody, $altBody, $mailOut, $send);
 }
@@ -171,12 +171,12 @@ function send_password_reset_email(string $toEmail, string $toName, string $rese
     // Escape reset link in both href attribute and displayed text for defense-in-depth
     $safeResetLink = htmlspecialchars($resetLink, ENT_QUOTES, 'UTF-8');
 
-    $subject = 'Reset your MYLAT password';
+    $subject = 'Reset your MyLAT password';
     $htmlBody = "
         <div style='font-family: Arial, sans-serif; max-width: 480px; margin: 0 auto;'>
             <h2 style='color:#2F6FEB;'>Reset your password</h2>
             <p>Hi {$safeName},</p>
-            <p>Click the link below to reset your MYLAT password. This link expires in 30 minutes.</p>
+            <p>Click the link below to reset your MyLAT password. This link expires in 30 minutes.</p>
             <p><a href='{$safeResetLink}' style='background:#1E4FD1;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;'>Reset Password</a></p>
             <p style='font-size: 13px; color: #64748b; word-break: break-all;'>Or copy and paste this link into your browser:<br><a href='{$safeResetLink}'>{$safeResetLink}</a></p>
             <p>If you didn't request this, you can safely ignore this email.</p>
@@ -184,7 +184,7 @@ function send_password_reset_email(string $toEmail, string $toName, string $rese
     ";
 
     // Plain-text alternative must NOT be HTML-escaped to avoid showing raw entities in plain-text clients
-    $altBody = "Reset your MYLAT password: {$resetLink} (expires in 30 minutes)";
+    $altBody = "Reset your MyLAT password: {$resetLink} (expires in 30 minutes)";
 
     return send_mail($toEmail, $toName, $subject, $htmlBody, $altBody, $mailOut, $send);
 }

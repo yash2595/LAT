@@ -161,7 +161,7 @@ if ($searched) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verify Certificate — MYLAT Platform</title>
+  <title>Verify Certificate — MyLAT Platform</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     body {
@@ -279,7 +279,7 @@ if ($searched) {
     <div class="verify-card">
       <div class="text-center mb-4">
         <h1 class="verify-title">Certificate Verification</h1>
-        <p class="verify-sub">Verify the authenticity of credentials issued by the MYLAT Assessment Engine.</p>
+        <p class="verify-sub">Verify the authenticity of credentials issued by the MyLAT Assessment Engine.</p>
       </div>
 
       <form method="GET" action="verify-certificate.php" class="row g-2">
@@ -346,7 +346,7 @@ if ($searched) {
   </div>
 
   <footer>
-    &copy; <?= date('Y') ?> MYLAT Platform. All rights reserved. &bull; <a href="login.php" class="text-secondary text-decoration-none">Login</a>
+    &copy; <?= date('Y') ?> MyLAT Platform. All rights reserved. &bull; <a href="login.php" class="text-secondary text-decoration-none">Login</a>
   </footer>
 </body>
 </html>
