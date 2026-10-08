@@ -3730,7 +3730,6 @@
       }
     </style>
     <div class="c">
-      <span class="gv-live rv"><i></i>LIVE · <b id="gv-n">0</b> Government Partners</span>
       <h2 id="gv-h" class="rv" style="--d: 0.05s">Government partners in our network</h2>
       <p class="lead rv" style="--d: 0.12s">
         State and national skilling and employment bodies working alongside
@@ -3768,14 +3767,14 @@
           grid.classList.add("in");
           if (reduce) {
             cards.forEach(function (c) { c.classList.add("on"); });
-            counter.textContent = cards.length;
+            if (counter) counter.textContent = cards.length;
             return;
           }
           // light the cards up one by one, left to right; the counter follows
           cards.forEach(function (c, i) {
             setTimeout(function () {
               c.classList.add("on");
-              counter.textContent = i + 1;
+              if (counter) counter.textContent = i + 1;
             }, 350 + i * 180);
           });
         }
@@ -4138,7 +4137,6 @@
       }
     </style>
     <div class="c">
-      <span class="ngo-live rv"><i></i>LIVE · <b id="ngo-n">0</b> NGO &amp; CSR Partners</span>
       <h2 id="ngo-h" class="rv" style="--d: 0.05s">NGO &amp; CSR partners in our network</h2>
       <p class="lead rv" style="--d: 0.12s">
         Non-profits, foundations and corporate social responsibility bodies
@@ -4192,13 +4190,13 @@
           grid.classList.add("in");
           if (reduce) {
             cards.forEach(function (c) { c.classList.add("on"); });
-            counter.textContent = cards.length;
+            if (counter) counter.textContent = cards.length;
             return;
           }
           cards.forEach(function (c, i) {
             setTimeout(function () {
               c.classList.add("on");
-              counter.textContent = i + 1;
+              if (counter) counter.textContent = i + 1;
             }, 350 + i * 120);
           });
         }
