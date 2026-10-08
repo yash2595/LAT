@@ -3598,6 +3598,27 @@
         object-fit: contain;
       }
 
+      .rc-card-labeled {
+        height: 112px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      .rc-card-labeled img {
+        max-height: 52px;
+      }
+
+      .rc-card-name {
+        display: block;
+        color: var(--ink);
+        font-size: 10px;
+        font-weight: 800;
+        line-height: 1.1;
+        text-align: center;
+        white-space: nowrap;
+      }
+
       @keyframes rcLeft {
         to {
           transform: translateX(-50%)
@@ -3625,6 +3646,10 @@
           margin-right: 12px;
           padding: 12px;
           border-radius: 14px
+        }
+
+        .rc-card-labeled {
+          height: 102px;
         }
       }
 
@@ -3668,8 +3693,10 @@
         ];
         function set(list, clone) {
           return list.map(function (l) {
-            return '<div class="rc-card"' + (clone ? ' aria-hidden="true"' : '') + '><img src="assets/recruiters/' + l[0] +
-              '" alt="' + (clone ? '' : l[1]) + '" loading="lazy" decoding="async"></div>';
+            return '<div class="rc-card' + (l[0] === "Untitled design.png" ? ' rc-card-labeled' : '') + '"' + (clone ? ' aria-hidden="true"' : '') + '><img src="assets/recruiters/' + l[0] +
+              '" alt="' + (clone ? '' : l[1]) + '" loading="lazy" decoding="async">' +
+              (l[0] === "Untitled design.png" ? '<span class="rc-card-name">Bridge Group Solutions</span>' : '') +
+              '</div>';
           }).join("");
         }
         document.querySelectorAll(".rc-track").forEach(function (t) {
