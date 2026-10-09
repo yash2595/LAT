@@ -1332,8 +1332,26 @@
       max-width: 340px;
     }
 
-    .ftr-logo { display: inline-flex; margin-bottom: 24px; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
-    .ftr-logo img { display: block; width: 190px; max-width: 100%; height: auto; filter: none; }
+    .ftr-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      padding: 12px 24px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .ftr-logo img {
+      display: block;
+      width: 140px;
+      max-width: 100%;
+      height: auto;
+      filter: none;
+    }
 
     .ftr-desc {
       font-size: 15px;
@@ -3011,16 +3029,25 @@
       opacity: 1;
       transform: translateY(-50%);
     }
-  
+
     /* Blogs Styles */
     .blog-hero {
       padding: clamp(60px, 10vw, 100px) 20px 40px;
       text-align: center;
       background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
     }
-    .blog-hero h1 { margin-bottom: 16px; }
-    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
-    
+
+    .blog-hero h1 {
+      margin-bottom: 16px;
+    }
+
+    .blog-hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--mut);
+      font-size: 18px;
+    }
+
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -3029,38 +3056,38 @@
       max-width: 1120px;
       margin: 0 auto;
     }
-    
+
     .blog-card {
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-    
+
     .blog-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
       border-color: #cfdcfb;
     }
-    
+
     .blog-img {
       width: 100%;
       height: 220px;
       background: #f1f5f9;
       object-fit: cover;
     }
-    
+
     .blog-content {
       padding: 24px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    
+
     .blog-tag {
       font-size: 13px;
       font-weight: 700;
@@ -3072,7 +3099,7 @@
       align-self: flex-start;
       margin-bottom: 12px;
     }
-    
+
     .blog-card h3 {
       font-size: 20px;
       font-weight: 800;
@@ -3080,7 +3107,7 @@
       margin-bottom: 12px;
       color: var(--ink);
     }
-    
+
     .blog-card p {
       color: var(--mut);
       font-size: 15px;
@@ -3088,7 +3115,7 @@
       margin-bottom: 24px;
       flex-grow: 1;
     }
-    
+
     .blog-meta {
       display: flex;
       justify-content: space-between;
@@ -3099,15 +3126,15 @@
       color: #94a3b8;
       font-weight: 600;
     }
-    
+
     .blog-meta a {
       color: var(--bl);
       text-decoration: none;
     }
+
     .blog-meta a:hover {
       text-decoration: underline;
     }
-
   </style>
   <script>
     setTimeout(() => {
@@ -3317,16 +3344,25 @@
         grid-template-columns: 1fr;
       }
     }
-  
+
     /* Blogs Styles */
     .blog-hero {
       padding: clamp(60px, 10vw, 100px) 20px 40px;
       text-align: center;
       background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
     }
-    .blog-hero h1 { margin-bottom: 16px; }
-    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
-    
+
+    .blog-hero h1 {
+      margin-bottom: 16px;
+    }
+
+    .blog-hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--mut);
+      font-size: 18px;
+    }
+
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -3335,38 +3371,38 @@
       max-width: 1120px;
       margin: 0 auto;
     }
-    
+
     .blog-card {
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-    
+
     .blog-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
       border-color: #cfdcfb;
     }
-    
+
     .blog-img {
       width: 100%;
       height: 220px;
       background: #f1f5f9;
       object-fit: cover;
     }
-    
+
     .blog-content {
       padding: 24px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    
+
     .blog-tag {
       font-size: 13px;
       font-weight: 700;
@@ -3378,7 +3414,7 @@
       align-self: flex-start;
       margin-bottom: 12px;
     }
-    
+
     .blog-card h3 {
       font-size: 20px;
       font-weight: 800;
@@ -3386,7 +3422,7 @@
       margin-bottom: 12px;
       color: var(--ink);
     }
-    
+
     .blog-card p {
       color: var(--mut);
       font-size: 15px;
@@ -3394,7 +3430,7 @@
       margin-bottom: 24px;
       flex-grow: 1;
     }
-    
+
     .blog-meta {
       display: flex;
       justify-content: space-between;
@@ -3405,15 +3441,15 @@
       color: #94a3b8;
       font-weight: 600;
     }
-    
+
     .blog-meta a {
       color: var(--bl);
       text-decoration: none;
     }
+
     .blog-meta a:hover {
       text-decoration: underline;
     }
-
   </style>
   <style>
     /* nav (toggle + mobile menu) */
@@ -3561,16 +3597,25 @@
         justify-content: flex-start;
       }
     }
-  
+
     /* Blogs Styles */
     .blog-hero {
       padding: clamp(60px, 10vw, 100px) 20px 40px;
       text-align: center;
       background: radial-gradient(circle at center 0%, #eaf0ff, #f7f9ff 70%);
     }
-    .blog-hero h1 { margin-bottom: 16px; }
-    .blog-hero p { max-width: 600px; margin: 0 auto; color: var(--mut); font-size: 18px; }
-    
+
+    .blog-hero h1 {
+      margin-bottom: 16px;
+    }
+
+    .blog-hero p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--mut);
+      font-size: 18px;
+    }
+
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -3579,38 +3624,38 @@
       max-width: 1120px;
       margin: 0 auto;
     }
-    
+
     .blog-card {
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
     }
-    
+
     .blog-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 12px 30px rgba(29, 78, 216, 0.08);
       border-color: #cfdcfb;
     }
-    
+
     .blog-img {
       width: 100%;
       height: 220px;
       background: #f1f5f9;
       object-fit: cover;
     }
-    
+
     .blog-content {
       padding: 24px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    
+
     .blog-tag {
       font-size: 13px;
       font-weight: 700;
@@ -3622,7 +3667,7 @@
       align-self: flex-start;
       margin-bottom: 12px;
     }
-    
+
     .blog-card h3 {
       font-size: 20px;
       font-weight: 800;
@@ -3630,7 +3675,7 @@
       margin-bottom: 12px;
       color: var(--ink);
     }
-    
+
     .blog-card p {
       color: var(--mut);
       font-size: 15px;
@@ -3638,7 +3683,7 @@
       margin-bottom: 24px;
       flex-grow: 1;
     }
-    
+
     .blog-meta {
       display: flex;
       justify-content: space-between;
@@ -3649,15 +3694,15 @@
       color: #94a3b8;
       font-weight: 600;
     }
-    
+
     .blog-meta a {
       color: var(--bl);
       text-decoration: none;
     }
+
     .blog-meta a:hover {
       text-decoration: underline;
     }
-
   </style>
   <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
   <style>
@@ -3750,8 +3795,8 @@
       padding: 28px;
       border: 1px solid rgba(190, 207, 255, .28);
       border-radius: 26px;
-      background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
-      box-shadow: 0 28px 60px rgba(0, 0, 0, .2), inset 0 1px rgba(255,255,255,.16);
+      background: linear-gradient(145deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .04));
+      box-shadow: 0 28px 60px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .16);
       backdrop-filter: blur(14px);
       transform: rotate(2deg);
     }
@@ -3903,7 +3948,7 @@
       overflow: hidden;
       border-color: #e1e8f7;
       box-shadow: 0 12px 28px rgba(15, 31, 61, .07);
-      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+      transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s ease, border-color .35s ease;
     }
 
     .blog-card::before {
@@ -3929,7 +3974,7 @@
       transform: translateX(-120%);
     }
 
-    .blog-card > * {
+    .blog-card>* {
       position: relative;
       z-index: 2;
     }
@@ -3939,10 +3984,14 @@
     }
 
     @keyframes blog-card-shine {
-      0%, 35% {
+
+      0%,
+      35% {
         transform: translateX(-120%);
       }
-      65%, 100% {
+
+      65%,
+      100% {
         transform: translateX(120%);
       }
     }
@@ -4106,8 +4155,9 @@
       <a href="index.html#top">Home</a>
       <a href="about.html">About</a>
       <a href="achievements.html">Achievements</a>
-      <a href="blogs.html" aria-current="page">Blogs</a><a href="faq.html">FAQ</a>
+      <a href="blogs.html" aria-current="page">Blogs</a>
       <a href="contact.html">Contact</a>
+      <a href="faq.html">FAQ</a>
       <a class="mobile-register" href="register.php">Register now</a>
     </nav>
     <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false"
@@ -4120,7 +4170,8 @@
     <div class="blog-hero-inner">
       <div>
         <h1>Our <span>Insights & News</span></h1>
-        <p>Stay updated with the latest trends in placements, career growth, and how MyLAT is revolutionizing hiring.</p>
+        <p>Stay updated with the latest trends in placements, career growth, and how MyLAT is revolutionizing hiring.
+        </p>
         <div class="blog-hero-links" aria-label="Blog topics">
           <a href="#blog-stories">Career growth</a>
           <a href="#blog-stories">Assessment tips</a>
@@ -4136,121 +4187,145 @@
       </div>
     </div>
   </section>
-  
+
   <section class="blog-grid" id="blog-stories">
     <!-- Card 1 -->
     <article class="blog-card rv" style="--d:.1s">
-      <img class="blog-img" src="assets/blogs/rejection-missing-piece.png" alt="Professional thinking about why job applications are being rejected" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/rejection-missing-piece.png"
+        alt="Professional thinking about why job applications are being rejected" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Career Advice</span>
         <h3>I’m Not Getting Rejected Because I’m Bad… So What Am I Missing?</h3>
-        <p>Rejection does not always mean a lack of ability. Understand what may be missing between your skills and the opportunities you want.</p>
+        <p>Rejection does not always mean a lack of ability. Understand what may be missing between your skills and the
+          opportunities you want.</p>
         <div class="blog-meta">
           <span>Career guidance</span>
-          <a href="https://medium.com/@blogs_87340/im-not-getting-rejected-because-i-m-bad-so-what-am-i-missing-8161cb156525" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://medium.com/@blogs_87340/im-not-getting-rejected-because-i-m-bad-so-what-am-i-missing-8161cb156525"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
-    
+
     <!-- Card 2 -->
     <article class="blog-card rv" style="--d:.2s">
-      <img class="blog-img" src="assets/blogs/mylat-worth-2999.png" alt="MyLAT worth 2999 honest review thumbnail" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/mylat-worth-2999.png" alt="MyLAT worth 2999 honest review thumbnail"
+        loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">MyLAT Review</span>
         <h3>Is MyLAT Worth ₹2,999? Here’s Exactly What You Get</h3>
-        <p>Take an honest look at what MyLAT offers for ₹2,999, including the assessment, results, certificate, and career value.</p>
+        <p>Take an honest look at what MyLAT offers for ₹2,999, including the assessment, results, certificate, and
+          career value.</p>
         <div class="blog-meta">
           <span>Product review</span>
-          <a href="https://medium.com/@blogs_87340/is-mylat-worth-2-999-heres-exactly-what-you-get-570752754483" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://medium.com/@blogs_87340/is-mylat-worth-2-999-heres-exactly-what-you-get-570752754483"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
-    
+
     <!-- Card 3 -->
     <article class="blog-card rv" style="--d:.3s">
-      <img class="blog-img" src="assets/blogs/applied-everywhere.png" alt="Level check graphic asking where an applicant actually stands" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/applied-everywhere.png"
+        alt="Level check graphic asking where an applicant actually stands" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Career Guidance</span>
         <h3>I’ve Applied Everywhere. Maybe It’s Time to Find Out Where I Actually Stand</h3>
-        <p>When applications keep going out without the right response, it may be time to understand your current level and identify your next step.</p>
+        <p>When applications keep going out without the right response, it may be time to understand your current level
+          and identify your next step.</p>
         <div class="blog-meta">
           <span>Career guidance</span>
-          <a href="https://mylat.substack.com/p/ive-applied-everywhere-maybe-its?r=9872fs&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://mylat.substack.com/p/ive-applied-everywhere-maybe-its?r=9872fs&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
-    
+
     <!-- Card 4 -->
     <article class="blog-card rv" style="--d:.4s">
-      <img class="blog-img" src="assets/blogs/same-college-different-salary.png" alt="Two professionals with different salary paths at work" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/same-college-different-salary.png"
+        alt="Two professionals with different salary paths at work" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Career Growth</span>
         <h3>Same College. Same Degree. Different Salary. Here’s Why</h3>
-        <p>Education is only one part of career growth. Discover the skills, proof, and decisions that can create different salary outcomes.</p>
+        <p>Education is only one part of career growth. Discover the skills, proof, and decisions that can create
+          different salary outcomes.</p>
         <div class="blog-meta">
           <span>Career growth</span>
-          <a href="https://mylat.substack.com/p/same-college-same-degree-different?r=9872fs&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://mylat.substack.com/p/same-college-same-degree-different?r=9872fs&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
-    
+
     <!-- Card 5 -->
     <article class="blog-card rv" style="--d:.5s">
-      <img class="blog-img" src="assets/blogs/what-level-are-you-really-at.png" alt="Career level graphic asking what level you are really at" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/what-level-are-you-really-at.png"
+        alt="Career level graphic asking what level you are really at" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Career Guidance</span>
         <h3>Before You Apply for Another Job, Answer This One Question</h3>
-        <p>Before sending another application, understand your current skill level and apply for roles that genuinely fit your readiness.</p>
+        <p>Before sending another application, understand your current skill level and apply for roles that genuinely
+          fit your readiness.</p>
         <div class="blog-meta">
           <span>Career guidance</span>
-          <a href="https://dev.to/mylat/before-you-apply-for-another-job-answer-this-one-question-what-level-are-you-really-at-4gkd" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://dev.to/mylat/before-you-apply-for-another-job-answer-this-one-question-what-level-are-you-really-at-4gkd"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
-    
+
     <!-- Card 6 -->
     <article class="blog-card rv" style="--d:.6s">
-      <img class="blog-img" src="assets/blogs/resume-skills-proof.jpg" alt="Resume and skills proof career graphic" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/resume-skills-proof.jpg" alt="Resume and skills proof career graphic"
+        loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Skills &amp; Proof</span>
         <h3>My Resume Says I’m Good. Can My Skills Prove It?</h3>
-        <p>A resume can list your skills, but real projects and applied knowledge show whether you can actually use them.</p>
+        <p>A resume can list your skills, but real projects and applied knowledge show whether you can actually use
+          them.</p>
         <div class="blog-meta">
           <span>Skills &amp; proof</span>
-          <a href="https://www.tumblr.com/mylatindia/829895385866698752/my-resume-says-im-good-can-my-skills-prove-it?source=share" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://www.tumblr.com/mylatindia/829895385866698752/my-resume-says-im-good-can-my-skills-prove-it?source=share"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
 
     <!-- Card 7 -->
     <article class="blog-card rv" style="--d:.7s">
-      <img class="blog-img" src="assets/blogs/100-days-roadmap.png" alt="100 days, one test, and five placement chances roadmap graphic" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/100-days-roadmap.png"
+        alt="100 days, one test, and five placement chances roadmap graphic" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Placement Roadmap</span>
         <h3>100 Days. 1 Test. 5 Chances. Here’s the Full Roadmap</h3>
-        <p>See how one assessment, a clear skill level, and a structured 100-day plan can lead to five or more placement opportunities.</p>
+        <p>See how one assessment, a clear skill level, and a structured 100-day plan can lead to five or more placement
+          opportunities.</p>
         <div class="blog-meta">
           <span>Placement guidance</span>
-          <a href="https://dev.to/mylat/100-days-1-test-5-chances-heres-the-full-roadmap-5e02" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://dev.to/mylat/100-days-1-test-5-chances-heres-the-full-roadmap-5e02" target="_blank"
+            rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
 
     <!-- Card 8 -->
     <article class="blog-card rv" style="--d:.8s">
-      <img class="blog-img" src="assets/blogs/first-job-not-ready.png" alt="Career roadmap showing the skills needed to become job ready" loading="lazy" />
+      <img class="blog-img" src="assets/blogs/first-job-not-ready.png"
+        alt="Career roadmap showing the skills needed to become job ready" loading="lazy" />
       <div class="blog-content">
         <span class="blog-tag">Career Readiness</span>
         <h3>What If Your First Job Isn’t Waiting for You — You’re Just Not Ready for It Yet?</h3>
-        <p>Understand the gap between applying for jobs and being ready for them, then build the skills and proof employers expect.</p>
+        <p>Understand the gap between applying for jobs and being ready for them, then build the skills and proof
+          employers expect.</p>
         <div class="blog-meta">
           <span>Career readiness</span>
-          <a href="https://www.tumblr.com/mylatindia/829896710233980928/what-if-your-first-job-isnt-waiting-for-you?source=share" target="_blank" rel="noopener noreferrer">Read more →</a>
+          <a href="https://www.tumblr.com/mylatindia/829896710233980928/what-if-your-first-job-isnt-waiting-for-you?source=share"
+            target="_blank" rel="noopener noreferrer">Read more →</a>
         </div>
       </div>
     </article>
   </section>
-<section id="final" class="sec">
+  <section id="final" class="sec">
     <div class="fin-dots" aria-hidden="true"></div>
     <div class="fin-content">
       <div class="fin-rings" aria-hidden="true"></div>
@@ -4290,10 +4365,6 @@
       </div>
       <div class="ftr-bot-out">
         <span>© 2026 MyLAT. All rights reserved.</span>
-        <div class="ftr-out-links">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms of Service</a>
-        </div>
         <div class="ftr-social">
           <svg width="0" height="0" style="position: absolute; visibility: hidden">
             <linearGradient id="ig-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -4309,7 +4380,11 @@
               <path
                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
             </svg></a>
-          <a href="https://x.com/mylat_" target="_blank" rel="noopener" title="X (Twitter)" aria-label="X (Twitter)" class="x-link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.473l8.6-9.83L0 1.153h7.594l5.243 6.932zm-1.293 19.49h2.039L6.486 3.24H4.298z"/></svg></a>
+          <a href="https://x.com/mylat_" target="_blank" rel="noopener" title="X (Twitter)" aria-label="X (Twitter)"
+            class="x-link"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path
+                d="M18.901 1.153h3.68l-8.04 9.19L24 22.847h-7.406l-5.8-7.584-6.638 7.584H.473l8.6-9.83L0 1.153h7.594l5.243 6.932zm-1.293 19.49h2.039L6.486 3.24H4.298z" />
+            </svg></a>
           <a href="https://www.facebook.com/profile.php?id=61595012547804" target="_blank" rel="noopener"
             title="Facebook" class="fb-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path
@@ -4317,7 +4392,8 @@
             </svg></a>
           <a href="https://www.instagram.com/mylat.india/" target="_blank" rel="noopener" title="Instagram"
             class="ig-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
             </svg></a>
         </div>
       </div>
