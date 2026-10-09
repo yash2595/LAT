@@ -4620,6 +4620,18 @@
         transition: transform 0.3s;
       }
 
+      .acad-logo img.acad-crop-left,
+      .acad-logo img.acad-crop-right {
+        width: 92px;
+        height: 92px;
+        max-width: none;
+        max-height: none;
+        object-fit: cover;
+      }
+
+      .acad-logo img.acad-crop-left { object-position: left center; }
+      .acad-logo img.acad-crop-right { object-position: right center; }
+
       .acad-card:hover .acad-logo img {
         transform: scale(1.06);
       }
@@ -4842,13 +4854,14 @@
     <script>
       (function () {
         // Add a partner = drop a logo in assets/ACADEMIC/ and add one line here: [file, display name]
-        var PARTNERS = [
+                var PARTNERS = [
           ["AHARADA.png", "Aharada"],
           ["CAMELLIA.png", "Camellia"],
           ["CAREER.png", "Career"],
           ["CETPA.png", "CETPA"],
           ["CMRIT.png", "CMRIT"],
           ["Centurion.png", "Centurion"],
+          ["DBIT.png", "Don Bosco Institute of Technology"],
           ["EDUVENTURE.png", "Eduventure"],
           ["GEI.png", "GEI"],
           ["GNIOT.png", "GNIOT"],
@@ -4863,26 +4876,34 @@
           ["MCPS.png", "MCPS"],
           ["NEYUKTI.png", "Neyukti"],
           ["Presidency university.png", "Presidency University"],
+          ["PVPPCOE.svg", "Padmabhushan Vasantdada Patil Pratishthan's College of Engineering"],
           ["RIT.png", "RIT"],
+          ["SARASWATI.jpg", "Saraswati College of Engineering"],
           ["SEACOM.png", "Seacom"],
           ["SFSCP.png", "SFSCP"],
           ["SGDC.png", "SGDC"],
           ["SMC.png", "SMC"],
+          ["SNDT-COLLEGE.png", "SNDT Women's College, Mumbai", "acad-crop-left"],
+          ["XAVIERS.png", "St. Xavier's College, Mumbai"],
           ["SVC.png", "SVC"],
           ["SVSU.png", "SVSU"],
+          ["THAKUR_COLLEGE.jpg", "Thakur College of Science & Commerce", "acad-crop-right"],
           ["THAKUR GROUP.png", "Thakur Group"],
+          ["TSEC.webp", "Thakur Shyamnarayan Engineering College", "acad-crop-left"],
           ["UCAGS.png", "UCAGS"],
           ["UPES.png", "UPES"],
+          ["VISHWANIKETAN.jpg", "Vishwaniketan iMEET"],
         ];
         var grid = document.getElementById("acad-grid");
         var counter = document.getElementById("acad-n");
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         grid.innerHTML = PARTNERS.map(function (p, i) {
+          var name = p[1].replace(/&/g, "&amp;").replace(/"/g, "&quot;");
           return (
             '<div class="acad-card" style="--i:' + i + ";--d:" + (i * 0.08).toFixed(2) + 's">' +
-            '<div class="acad-logo"><img src="assets/ACADEMIC/' + p[0] + '" alt="' + p[1] +
+            '<div class="acad-logo"><img class="' + (p[2] || '') + '" src="assets/ACADEMIC/' + p[0] + '" alt="' + name +
             '" width="92" height="92" loading="lazy" decoding="async"></div>' +
-            '<div class="acad-name">' + p[1].replace(/&/g, "&amp;") + "</div></div>"
+            '<div class="acad-name">' + name + "</div></div>"
           );
         }).join("");
         var cards = grid.querySelectorAll(".acad-card");
