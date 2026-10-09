@@ -65,6 +65,7 @@ M4_DEMO_MODE=0
 M4_DEMO_SECRET=your_local_demo_secret_here
 
 # SMTP Mail Configuration (OTP, password reset, and contact form)
+MAIL_TRANSPORT=smtp
 MAIL_HOST=smtp.hostinger.com
 MAIL_PORT=465
 MAIL_USERNAME=connect@mylatindia.com
@@ -75,6 +76,9 @@ MAIL_FROM_NAME="InternBoot Support"
 MAIL_CONTACT_TO=connect@mylatindia.com
 ```
 > ⚠️ **STRICT WARNING:** Never commit `.env` to Git! It is excluded by `.gitignore`.
+
+For Render Free, use an HTTPS email API instead of SMTP because outbound SMTP ports are blocked:
+set `MAIL_TRANSPORT=resend`, `RESEND_API_KEY` as a private environment variable, and `MAIL_FROM_ADDRESS` to a sender address on a domain verified with Resend. Keep the API key in Render's environment settings; never commit it.
 
 ### Step 3: Serve the Application
 The web server's **document root MUST point to the `public/` folder**, never the repository root.
@@ -298,3 +302,4 @@ The platform uses 23 relational tables defined in `schema.sql`:
 2. **Anti-Cheating Client-Side Limits:** Anti-cheat tracking (tab-blur) is strictly client-side JS right now. Acceptable for MVP but documentable as a known limitation.
 3. **Automated Testing:** The platform currently lacks a PHPUnit automated test suite around the critical financial/certification path (M7 Evaluation).
 4. **PDF Certificate Design Template:** PDF generation is active in M7 (`certificate_pdf.php`), but the visual layout uses a standard placeholder layout requiring final graphic styling.
+
