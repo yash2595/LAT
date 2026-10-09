@@ -869,8 +869,8 @@ function check_and_notify_underfilled_slots(mysqli $conn, ?int $assessmentId = n
             $notifMessage = "Your batch for the slot on {$formattedDate} ({$formattedTime}) could not be created because the minimum required candidates ({$threshold}) were not met. Please select an alternate slot.";
 
             // Mailer setup if file exists
-            if (file_exists(__DIR__ . '/../../core/Mailer.php')) {
-                require_once __DIR__ . '/../../core/Mailer.php';
+            if (file_exists(__DIR__ . '/../../core/mailer.php')) {
+                require_once __DIR__ . '/../../core/mailer.php';
             }
 
             foreach ($candidates as $cand) {
@@ -945,4 +945,5 @@ function check_and_notify_underfilled_slots(mysqli $conn, ?int $assessmentId = n
 
     return $results;
 }
+
 

@@ -61,7 +61,7 @@ function initiate_registration(mysqli $conn, string $fullName, string $email, st
     }
 
     try {
-        require_once __DIR__ . '/../../core/Mailer.php';
+        require_once __DIR__ . '/../../core/mailer.php';
         $sent = send_otp_email($email, $fullName, $otp);
         if (!$sent) {
             return ['success' => false, 'message' => 'Registration succeeded but verification email could not be sent. Contact support with your registration email.', 'code' => 500];
@@ -121,5 +121,6 @@ function complete_registration_with_otp(mysqli $conn, string $email, string $otp
 
     return ['success' => true, 'user_id' => $result['user_id']];
 }
+
 
 

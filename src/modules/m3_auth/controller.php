@@ -105,7 +105,7 @@ function handle_resend_otp_request(array $data, mysqli $conn): void {
     }
 
     try {
-        require_once __DIR__ . '/../../core/Mailer.php';
+        require_once __DIR__ . '/../../core/mailer.php';
         $sent = send_otp_email($email, $pending['full_name'], $otp);
         if (!$sent) {
             error_log('Could not send verification email to ' . $email);
@@ -294,7 +294,7 @@ function handle_forgot_password_request(array $data, mysqli $conn): void {
                 $stmt->execute();
                 $stmt->close();
 
-                require_once __DIR__ . '/../../core/Mailer.php';
+                require_once __DIR__ . '/../../core/mailer.php';
                 $rawAppUrl = env_value('APP_URL');
                 if (empty($rawAppUrl)) {
                     if (!is_dev_env()) {
@@ -383,4 +383,5 @@ function handle_reset_password_request(array $data, mysqli $conn): void {
 
     send_json_response('success', 'Password reset successfully. You can now log in.', null, 200);
 }
+
 

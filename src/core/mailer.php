@@ -1,5 +1,5 @@
 <?php
-// Path: src/core/Mailer.php
+// Path: src/core/mailer.php
 
 $autoloadPath = dirname(__DIR__, 2) . '/vendor/autoload.php';
 if (file_exists($autoloadPath)) {
@@ -188,3 +188,4 @@ function send_password_reset_email(string $toEmail, string $toName, string $rese
 
     return send_mail($toEmail, $toName, $subject, $htmlBody, $altBody, $mailOut, $send);
 }
+
