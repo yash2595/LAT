@@ -30,7 +30,7 @@
     ["60", "", "Minutes to finish", "60 minutes to finish"],
     ["5", "", "Levels, 1 to 5", "5 levels, 1 to 5"],
     ["5", "+", "Placement opportunities", "5 or more placement opportunities"],
-    ["100", "", "Days to get your chances", "100 days to get your chances"],
+    ["100", "", "100 days to get your offers", "100 days to get your offers"],
   ];
   const reel = [...Array(30)].map((_, k) => `<i>${k % 10}</i>`).join("");
   root.innerHTML = `<div class="ls-p">${C.map((c) => `<div class="ls-c" role="group" aria-label="${c[3]}"><div class="ls-n" aria-hidden="true">${[...c[0]].map((d) => `<span class="ls-d" data-v="${d}"><span class="ls-r">${reel}</span></span>`).join("")}${c[1] ? `<span class="ls-d ls-x"><b>${c[1]}</b></span>` : ""}</div><span class="ls-l" aria-hidden="true">${c[2]}</span></div>`).join("")}</div>`;
