@@ -346,7 +346,7 @@ if ($searched) {
   </div>
 
   <footer>
-    &copy; <?= date('Y') ?> MyLAT Platform. All rights reserved. &bull; <a href="login.php" class="text-secondary text-decoration-none">Login</a>
+    &copy; <?= date('Y') ?> MyLAT Platform. All rights reserved. &bull; <a href="login.php" class="text-secondary text-decoration-none">Login</a> &bull; <a href="refund.html" class="text-secondary text-decoration-none">Refund Policy</a>
   </footer>
 </body>
 </html>
