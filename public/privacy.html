@@ -567,14 +567,47 @@
       max-width: 340px
     }
 
-    .ftr-logo { display: inline-flex; align-items: center; justify-content: center; margin-bottom: 24px; padding: 12px 24px; border-radius: 40px; background: rgba(255, 255, 255, 0.2); box-shadow: 0 4px 16px rgba(0,0,0,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .ftr-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border: 1px solid rgba(198, 220, 255, 0.82);
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(219, 234, 254, 0.97), rgba(199, 210, 254, 0.91));
+      box-shadow: 0 10px 28px rgba(59, 130, 246, 0.2), inset 0 1px rgba(255, 255, 255, 0.72);
+    }
 
-    .ftr-logo img { display: block; width: 140px; max-width: 100%; height: auto; filter: none; }
+    .ftr-logo img {
+      display: block;
+      width: 245px;
+      height: 74px;
+      max-width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .ftr-tagline {
+      display: block;
+      width: 100%;
+      color: #142c58;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      line-height: 1.3;
+      text-align: center;
+      white-space: nowrap;
+    }
 
     .ftr-desc {
       font-size: 15px;
-      line-height: 1.5;
-      opacity: .85
+      line-height: 1.55;
+      color: rgba(245, 248, 255, 0.96);
+      opacity: 1;
+      margin: 0;
+      white-space: normal;
     }
 
     .ftr-cols {
@@ -1019,7 +1052,7 @@
       <div class="ftr-inner">
         <div class="ftr-top">
           <div class="ftr-brand">
-            <span class="ftr-logo"><img src="assets/mylat-footer-logo.svg" alt="MyLAT" height="32"></span>
+            <span class="ftr-logo"><img src="assets/mylat-footer-logo.svg" alt="MyLAT" /><span class="ftr-tagline">MY LEVEL ASSESSMENT TEST</span></span>
             <p class="ftr-desc">The Placement Operating System built for the top 1% who want to be mathematically proven.</p>
           </div>
           <div class="ftr-cols">
