@@ -693,7 +693,7 @@
     .bar i {
       display: block;
       height: 100%;
-      width: calc(10% + var(--ph, 0) * 80%);
+      width: calc(10% + var(--ph, 0) * 90%);
       background: color-mix(in srgb,
           var(--bl) calc(var(--ph, 0) * 100%),
           var(--ro));
@@ -5022,6 +5022,10 @@
   #journey .step h3{font-size:13px;line-height:1.1;margin-top:1px}
   #journey .step p{font-size:10px;line-height:1.1;margin-top:1px}
 }</style>
+<style id="journey-final-marker-fix">
+  #journey .step.last .dot svg { stroke-dashoffset: 0; }
+  #journey .rail i::after { display: none; }
+</style>
 <style id="journey-viewport-fit">
   @media (min-width: 901px) {
     #journey .stage {
@@ -5119,9 +5123,10 @@
   function reset(i){if(i===0)pv.textContent='₹0';if(i===1){tm.textContent='60:00';cr.style.strokeDashoffset=0}if(i===2)lv.children[3].classList.remove('pick')}
 
   function layout(){
-    var c=steps.map(function(s){return s.offsetTop+s.offsetHeight/2}),gy=(steps[2].offsetTop+steps[2].offsetHeight+steps[3].offsetTop)/2,h=tl.offsetHeight;
+    var c=steps.map(function(s){var d=s.querySelector('.dot');return s.offsetTop+d.offsetTop+d.offsetHeight/2}),start=c[0],end=c[4],gy=(steps[2].offsetTop+steps[2].offsetHeight+steps[3].offsetTop)/2,h=tl.offsetHeight,track=rf.parentElement;
+    track.style.top=start+'px';track.style.bottom=(h-end)+'px';
     node.style.top=(gy-node.offsetHeight/2)+'px';tl.style.setProperty('--gp',(gy/h*100)+'%');
-    anchors=[[0,c[0]],[.08,c[1]],[.15,c[2]],[G,gy],[.62,c[3]],[.8,c[4]],[1,c[4]+10]]}
+    anchors=[[0,0],[.08,c[1]-start],[.15,c[2]-start],[G,gy-start],[.62,c[3]-start],[.8,end-start],[1,end-start]]}
   function interp(p){for(var i=1;i<anchors.length;i++){if(p<=anchors[i][0]){var a=anchors[i-1],b=anchors[i];return a[1]+(b[1]-a[1])*(p-a[0])/(b[0]-a[0])}}return anchors[anchors.length-1][1]}
 
   function confetti(){
