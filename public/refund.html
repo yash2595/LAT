@@ -14,9 +14,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet" />
   <script>document.documentElement.classList.add("js")</script>
   <style>
-    .docswitch { grid-template-columns: repeat(3, 1fr) }
-    .docswitch i { width: calc(33.333% - 2.67px) }
-    @media(max-width:560px) { .docswitch a { padding: 9px 7px; font-size: 11px } }
     :root {
       --ink: #0f172a;
       --mut: #56627a;
@@ -892,6 +889,21 @@
         transform: none !important
       }
     }
+
+    .docswitch.refund-switch {
+      grid-template-columns: repeat(3, 1fr)
+    }
+
+    .docswitch.refund-switch i {
+      width: calc(33.333% - 2.67px)
+    }
+
+    @media(max-width:560px) {
+      .docswitch.refund-switch a {
+        padding: 9px 7px;
+        font-size: 11px
+      }
+    }
   </style>
   <link rel="stylesheet" href="assets/css/landing-nav.css?v=1" />
 </head>
@@ -918,7 +930,7 @@
         <h1>Refund Policy</h1>
         <p class="lead">Clear guidance for payment issues, enrollment, cancellations, and eligible refunds</p>
         <div class="dh-meta">
-          <nav class="docswitch" aria-label="Legal documents" style="--pos:200%">
+          <nav class="docswitch refund-switch" aria-label="Legal documents" style="--pos:200%">
             <i aria-hidden="true"></i>
             <a href="privacy.html">Privacy Policy</a>
             <a href="terms.html">Terms of Service</a>
@@ -945,54 +957,53 @@
       </aside>
       <article class="dc">
         <div class="intro rv">
-          <p>This Refund Policy applies to paid MyLAT assessments and related services provided by <strong>Employment Express Verband LLP</strong> (“MyLAT”, “we”, “us”). Please read it before paying. The amount and any applicable taxes or charges shown at checkout are the amount payable for your purchase.</p>
-          <p>Our general policy is that a confirmed assessment enrollment is non-refundable. We do, however, provide a refund or correction for the specific payment and service issues listed below. This policy does not take away any rights or remedies available to you under applicable law.</p>
+          <p>This page explains when MyLAT assessment fees can be refunded and what to do if a payment or enrollment goes wrong. MyLAT is operated by <strong>Employment Express Verband LLP</strong>.</p>
+          <p>Once your enrollment is confirmed, the fee is usually non-refundable. Refunds are available for the cases listed below and wherever required by law.</p>
         </div>
         <section class="sec-doc rv">
           <h2 id="scope"><span class="n" aria-hidden="true">1</span><span>Scope and Fees</span></h2>
-          <p>Assessment fees are charged for the assessment access and enrollment shown at checkout. Payments are processed by third-party payment providers. MyLAT does not store your full card number, PIN, CVV, password, or one-time password.</p>
-          <p>This policy covers payments made through the MyLAT website. If a partner or institution collected your payment separately, please also contact that organization using the details on your receipt.</p>
+          <p>This policy covers payments made on the MyLAT website. The fee and applicable taxes are shown before you pay. If you paid through a college or another partner, contact them using the details on your receipt.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="eligible-refunds"><span class="n" aria-hidden="true">2</span><span>When a Refund Applies</span></h2>
           <ul>
-            <li><strong>Payment debited but enrollment not confirmed:</strong> If your bank or payment app shows a successful debit but MyLAT does not confirm your enrollment, contact us with the transaction details. We will check the payment and enrollment records. We will complete your enrollment if the payment is valid and a place is available; if we cannot provide the paid enrollment, we will refund the amount received for that transaction.</li>
-            <li><strong>Duplicate successful payment:</strong> If two or more successful payments are collected for the same candidate and assessment, one payment will be applied to the enrollment and the verified duplicate payment or payments will be refunded.</li>
-            <li><strong>MyLAT cannot provide the paid assessment:</strong> If MyLAT cancels the assessment or a platform-side failure prevents access and we cannot restore access or offer a reasonable reschedule, you may choose a refund of the fee paid for the affected assessment.</li>
-            <li><strong>Required by law:</strong> We will provide a refund or other remedy wherever applicable law requires it.</li>
+            <li><strong>Money debited, enrollment not confirmed:</strong> We will check the payment. If it went through, we will confirm your enrollment. If we cannot, we will refund that payment.</li>
+            <li><strong>Paid twice:</strong> We will refund the extra successful payment for the same candidate and assessment.</li>
+            <li><strong>MyLAT cannot provide your assessment:</strong> If we cannot fix the issue or offer another suitable slot, you can choose a refund for that assessment.</li>
+            <li><strong>Required by law:</strong> We will provide any refund or other remedy required by law.</li>
           </ul>
-          <p>Refunds under these cases cover the amount actually received by MyLAT for the affected transaction. Any fee charged separately by a bank, card issuer, wallet, or payment provider is governed by that provider’s terms and applicable law.</p>
+          <p>Eligible refunds are for the amount paid to MyLAT for the affected assessment.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="non-refundable"><span class="n" aria-hidden="true">3</span><span>When a Refund Does Not Apply</span></h2>
-          <p>Except for the eligible cases above or where law requires otherwise, an assessment fee is not refundable once enrollment is confirmed. This includes a change of mind, choosing not to take the assessment, missing or arriving late for a booked slot, or not meeting the published eligibility requirements.</p>
-          <p>A refund is generally not available after you start or complete an assessment, or where access is lost because of a candidate’s device, software, power, or internet connection. If you believe a technical problem on the MyLAT platform prevented your assessment, contact us promptly so we can review the event and determine whether access can be restored, a reschedule offered, or a refund is due under this policy or applicable law.</p>
-          <p>Fees are not refundable where an assessment is invalidated due to a breach of assessment rules, misuse, fraud, or unauthorized assistance, subject to applicable law.</p>
+          <p>Other than the cases above or where law requires a refund, fees are not refundable after enrollment is confirmed. This includes changing your mind, missing your slot, or deciding not to take the assessment.</p>
+          <p>Fees are also usually non-refundable after you start or complete the assessment, or when a problem is caused by your device, power, or internet connection. If a MyLAT technical issue affected your assessment, contact us so we can review it and help with access or another suitable solution.</p>
+          <p>Fees may not be refunded if an assessment is cancelled because of a breach of exam rules, fraud, or unauthorized help, subject to applicable law.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="failed-payments"><span class="n" aria-hidden="true">4</span><span>Failed and Pending Payments</span></h2>
-          <p>A payment may remain pending or appear debited even though the payment provider has not confirmed it to MyLAT. Please do not pay again immediately. Check your MyLAT enrollment status and payment-provider history first. If the payment remains unresolved, contact us with the transaction reference so we can reconcile it.</p>
-          <p>Where a transaction is classified as failed, reversal is handled through the payment system, bank, or payment provider under the timelines and compensation rules applicable to that payment method, including relevant Reserve Bank of India requirements. The time for the credit to appear can depend on your bank or provider.</p>
+          <p>Your bank may show a debit before MyLAT receives payment confirmation. Check your enrollment status and wait for the payment status to update before paying again. If it still is not confirmed, email us the transaction reference and we will check it.</p>
+          <p>If the payment failed, your bank or payment provider handles the reversal under the rules and timelines for that payment method. The time for the money to appear in your account depends on them.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="how-to-request"><span class="n" aria-hidden="true">5</span><span>How to Request Help</span></h2>
-          <p>Email <a href="mailto:connect@mylatindia.com?subject=MyLAT%20payment%20or%20refund%20request">connect@mylatindia.com</a> from your registered email address. Use the subject “MyLAT payment or refund request” and include:</p>
+          <p>Email <a href="mailto:connect@mylatindia.com?subject=MyLAT%20payment%20or%20refund%20request">connect@mylatindia.com</a> from your registered email address. Include:</p>
           <ul>
             <li>Your full name and registered email address or phone number.</li>
             <li>The assessment or enrollment you paid for.</li>
             <li>Payment date, amount, payment method, and transaction/order reference.</li>
             <li>A screenshot or receipt showing the transaction status, if available.</li>
           </ul>
-          <p>Never email your card number, CVV, UPI PIN, bank password, or one-time password. We may ask for reasonable information needed to verify the payment and prevent an incorrect refund.</p>
+          <p>Never send your card number, CVV, UPI PIN, password, or one-time password.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="processing-time"><span class="n" aria-hidden="true">6</span><span>Review and Processing</span></h2>
-          <p>We aim to acknowledge a complaint within 48 hours and redress it within 30 days, or sooner where applicable law requires. We may need to verify records with the payment provider or bank before deciding whether a refund is due.</p>
-          <p>Once an eligible refund is approved, we will initiate it to the original payment method, generally within 5 business days. Your bank or payment provider may take additional time to post the credit. We will share the refund reference when one is available. This processing estimate does not replace any shorter or otherwise applicable legal or payment-system timeline.</p>
+          <p><strong>Allow up to 72 hours for MyLAT to review your request</strong> after we receive your details. We will check the payment and enrollment records and let you know the outcome.</p>
+          <p>If approved, we will send the refund to the original payment method. Your bank or payment app then processes it. That can take extra time depending on its banking hours, payment method, weekends, or holidays. This bank processing time is separate from MyLAT’s 72-hour review.</p>
         </section>
         <section class="sec-doc rv">
           <h2 id="contact-us"><span class="n" aria-hidden="true">7</span><span>Contact Us</span></h2>
-          <p>For payment issues, enrollment confirmation, or refund requests, contact <a href="mailto:connect@mylatindia.com">connect@mylatindia.com</a>. Please include your payment reference so we can trace the transaction.</p>
+          <p>For payment or enrollment help, email <a href="mailto:connect@mylatindia.com">connect@mylatindia.com</a>.</p>
           <p><strong>Employment Express Verband LLP</strong><br>C56A/25, C Block, Phase 2, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309</p>
         </section>
       </article>
